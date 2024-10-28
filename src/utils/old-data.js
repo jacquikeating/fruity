@@ -1,4 +1,4 @@
-const session1 = {
+export const session1 = {
   sessionDate: "Friday August 4th",
   sessionNum: 1,
   fflogsLink: "",
