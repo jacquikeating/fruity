@@ -1,0 +1,32 @@
+.report {    
+    &__link {
+        margin-left: 1rem;
+    }
+
+    &__subheading {
+        margin-top: 2rem;
+    }
+
+    &__pulls-list {
+        list-style: none;
+    }
+
+}
+
+.pull {
+    margin: 1.5rem 0;
+
+    &__nums {
+        display: flex;
+        align-items: center;
+    }
+
+    &__num-today {
+        margin: 0;
+    }
+
+    &__num-total {
+        margin-left: 1rem;
+        font-style: italic;
+    }
+}
