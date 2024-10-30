@@ -42,6 +42,26 @@ const ReportPage = () => {
     return goldStars;
   }
 
+  function getPhaseBreakdown() {
+    let phasesReached = [];
+
+    session1.pulls.map((pull) => {
+      phasesReached.push(pull.phase);
+    });
+
+    let phaseBreakdown = phasesReached.reduce((accumulator, item) => {
+      return (
+        accumulator[item] ? ++accumulator[item] : (accumulator[item] = 1),
+        accumulator
+      );
+    }, {});
+
+    return phaseBreakdown;
+  }
+
+  const phaseBreakdown = getPhaseBreakdown();
+  console.log(phaseBreakdown);
+
   return (
     <main className="report">
       <h1 className="report__heading">Report: {session1.sessionDate}</h1>
