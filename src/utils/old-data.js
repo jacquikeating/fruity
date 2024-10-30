@@ -1,6 +1,16 @@
 export const session1 = {
   sessionDate: "Friday August 4th",
   sessionNum: 1,
+  players: [
+    "Chro",
+    "Saki",
+    "Anivia",
+    "Ella",
+    "Laveera",
+    "Char",
+    "Tori",
+    "Ruvien",
+  ],
   fflogsLink: "",
   twitchLink: "",
   pulls: [

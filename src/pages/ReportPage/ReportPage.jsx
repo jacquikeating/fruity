@@ -5,7 +5,7 @@ import "./ReportPage.scss";
 const ReportPage = () => {
   function numSuffix(number) {
     const lastNumeral = JSON.stringify(number).slice(-1);
-    const last2Numerals = JSON.stringify(number).slice(-2); // console.log(last2Numerals);
+    const last2Numerals = JSON.stringify(number).slice(-2);
     if (lastNumeral == 1 && last2Numerals != 11) {
       return "st";
     } else if (lastNumeral == 2 && last2Numerals != 22) {
@@ -15,6 +15,31 @@ const ReportPage = () => {
     } else {
       return "th";
     }
+  }
+
+  function findGoldStars() {
+    let causedWipes = [];
+    let goldStars = [];
+
+    session1.pulls.map((pull) => {
+      pull.playerNames.forEach((playerName) => {
+        if (!causedWipes.includes(playerName)) {
+          causedWipes.push(playerName);
+        }
+      });
+    });
+
+    session1.players.forEach((player) => {
+      if (!causedWipes.includes(player)) {
+        goldStars.push(player);
+      }
+    });
+
+    if (goldStars.length === 0) {
+      return "None";
+    }
+
+    return goldStars;
   }
 
   return (
@@ -29,6 +54,7 @@ const ReportPage = () => {
           VoD
         </a>
       </p>
+      <p className="report__gold-stars">Gold Stars: {findGoldStars()}</p>
 
       <h2 className="report__subheading">Pulls ({session1.pulls.length})</h2>
       <ul className="report__pulls-list">
