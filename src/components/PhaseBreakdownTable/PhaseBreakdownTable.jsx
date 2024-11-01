@@ -31,28 +31,48 @@ const PhaseBreakdownTable = ({ sessionData }) => {
     phaseBreakdown[7] ? phaseBreakdown[7] : 0,
   ];
 
+  function getTextColour(phase) {
+    let targetMech = sessionData.progPoint;
+    let cleanupMech = sessionData.progPoint - 1;
+
+    if (phase > 0) {
+      if (phase < cleanupMech) {
+        return "old";
+      } else if (phase == cleanupMech) {
+        return "cleanup";
+      } else if (phase == targetMech) {
+        return "target";
+      } else {
+        return "null";
+      }
+    }
+  }
+
+  let counter = 1;
+
   return (
     <table className="phases-table">
       <tbody>
         <tr className="phases-table__row">
           <th className="phases-table__header">Phase</th>
-          <td className="phases-table__cell">1</td>
-          <td className="phases-table__cell">2</td>
-          <td className="phases-table__cell">3</td>
-          <td className="phases-table__cell">4</td>
-          <td className="phases-table__cell">5</td>
-          <td className="phases-table__cell">6</td>
-          <td className="phases-table__cell">7</td>
+          {phasesArray.map(() => {
+            let phaseNum = counter++;
+            return (
+              <td
+                className={`phases-table__cell 
+                phases-table__cell--${getTextColour(phaseNum)}`}
+              >
+                {phaseNum}
+              </td>
+            );
+          })}
         </tr>
+
         <tr className="phases-table__row">
           <th className="phases-table__header">Pulls</th>
-          <td className="phases-table__cell">{phasesArray[0]}</td>
-          <td className="phases-table__cell">{phasesArray[1]}</td>
-          <td className="phases-table__cell">{phasesArray[2]}</td>
-          <td className="phases-table__cell">{phasesArray[3]}</td>
-          <td className="phases-table__cell">{phasesArray[4]}</td>
-          <td className="phases-table__cell">{phasesArray[5]}</td>
-          <td className="phases-table__cell">{phasesArray[6]}</td>
+          {phasesArray.map((numberOfWipes) => {
+            return <td className="phases-table__cell">{numberOfWipes}</td>;
+          })}
         </tr>
       </tbody>
     </table>
