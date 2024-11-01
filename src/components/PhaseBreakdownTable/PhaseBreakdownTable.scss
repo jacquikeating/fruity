@@ -1,0 +1,15 @@
+.phases-table {
+   
+    &__cell--target {
+        color: green;
+    }
+    &__cell--cleanup {
+        color: yellow;
+    }
+    &__cell--old {
+        color: red;
+    }
+    &__cell--null {
+        color: skyblue;
+    }
+}
