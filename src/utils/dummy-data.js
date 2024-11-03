@@ -4,8 +4,8 @@ let cleanupMech = "Cleanup Mech";
 
 let dummyData = [
   {
-    sessionDate: "",
     sessionNum: 0,
+    sessionDate: "",
     fflogsLink: "",
     twitchLink: "",
     pulls: [

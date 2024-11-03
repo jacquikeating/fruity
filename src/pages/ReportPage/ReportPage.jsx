@@ -1,5 +1,6 @@
 import React from "react";
 import { session1 } from "../../utils/old-data";
+import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
@@ -42,38 +43,11 @@ const ReportPage = () => {
     return goldStars;
   }
 
-  function getPhaseBreakdown() {
-    let phasesReached = [];
-
-    session1.pulls.map((pull) => {
-      phasesReached.push(pull.phase);
-    });
-
-    let phaseBreakdown = phasesReached.reduce((accumulator, phase) => {
-      return (
-        accumulator[phase] ? ++accumulator[phase] : (accumulator[phase] = 1),
-        accumulator
-      );
-    }, {});
-
-    return phaseBreakdown;
-  }
-
-  const phaseBreakdown = getPhaseBreakdown();
-
-  let phasesArray = [
-    phaseBreakdown[1] ? phaseBreakdown[1] : 0,
-    phaseBreakdown[2] ? phaseBreakdown[2] : 0,
-    phaseBreakdown[3] ? phaseBreakdown[3] : 0,
-    phaseBreakdown[4] ? phaseBreakdown[4] : 0,
-    phaseBreakdown[5] ? phaseBreakdown[5] : 0,
-    phaseBreakdown[6] ? phaseBreakdown[6] : 0,
-    phaseBreakdown[7] ? phaseBreakdown[7] : 0,
-  ];
-
   return (
     <main className="report">
-      <h1 className="report__heading">Report: {session1.sessionDate}</h1>
+      <h1 className="report__heading">
+        Report: <span className="report__date">{session1.sessionDate}</span>
+      </h1>
       <p className="report__subtitle">
         Session {session1.sessionNum}
         <span className="report__divider"> • </span>
@@ -89,7 +63,10 @@ const ReportPage = () => {
       </p>
       <p className="report__gold-stars">Gold Stars: {findGoldStars()}</p>
 
+      <PhaseBreakdownTable sessionData={session1} />
+
       <h2 className="report__subheading">Pulls ({session1.pulls.length})</h2>
+
       <ul className="report__pulls-list">
         {session1.pulls.map((pull) => {
           return (

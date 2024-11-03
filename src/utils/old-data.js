@@ -13,6 +13,7 @@ export const session1 = {
   ],
   fflogsLink: "",
   twitchLink: "",
+  progPoint: 4,
   pulls: [
     {
       pullNumToday: 1,

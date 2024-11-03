@@ -1,0 +1,29 @@
+@use "/src/styles/__variables" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 90%;
+  margin: 1.5rem auto;
+  color: $text-light;
+}
+
+body {
+  background-color: $bg-dark;
+  font-weight: 300;
+  font-family: 'Hind', 'Arial', sans-serif;
+}
+
+h1, h2, h3, th {
+  font-family: 'Afacad Flux', 'Verdana', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  letter-spacing: 0.036em;
+}
