@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
-import "./App.scss";
+import "./styles/index.scss";
 
 function App() {
   return (
