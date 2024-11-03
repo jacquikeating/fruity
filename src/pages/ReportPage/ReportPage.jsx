@@ -76,9 +76,13 @@ const ReportPage = () => {
       <h1 className="report__heading">Report: {session1.sessionDate}</h1>
       <p className="report__subtitle">
         Session {session1.sessionNum}
+        <span className="report__divider"> • </span>
+        Phase {session1.progPoint} Prog
+        <span className="report__divider"> • </span>
         <a className="report__link" href={session1.fflogsLink}>
           Logs
         </a>
+        <span className="report__divider"> • </span>
         <a className="report__link" href={session1.twitchLink}>
           VoD
         </a>

@@ -1,10 +1,29 @@
-.report {    
-    &__link {
-        margin-left: 1rem;
+@use "/src/styles/__variables" as *;
+
+.report {   
+    &__heading {
+        font-size: 1.5em;
     }
 
-    &__subheading {
-        margin-top: 2rem;
+    &__date {
+        display: block;
+        margin-top: -0.2em;
+        font-size: 1.4em;
+    }
+    
+    &__subtitle {
+        font-family: 'Afacad Flux', 'Verdana', sans-serif;
+        font-weight: bold;
+    }
+
+    &__divider {
+        margin: 0 0.4rem;
+        color: $grey;
+    }
+    
+    &__gold-stars {
+        font-family: 'Afacad Flux', 'Verdana', sans-serif;
+        font-weight: bold;
     }
 
     &__pulls-list {
