@@ -42,6 +42,8 @@ const PhaseBreakdownTable = ({ sessionData }) => {
         return "cleanup";
       } else if (phase == targetMech) {
         return "target";
+      } else if (phase > targetMech) {
+        return "newphase";
       } else {
         return "null";
       }
@@ -49,6 +51,7 @@ const PhaseBreakdownTable = ({ sessionData }) => {
   }
 
   let counter = 1;
+  let counter2 = 1;
 
   return (
     <table className="phases-table">
@@ -70,8 +73,19 @@ const PhaseBreakdownTable = ({ sessionData }) => {
 
         <tr className="phases-table__row">
           <th className="phases-table__header">Pulls</th>
-          {phasesArray.map((numberOfWipes) => {
+          {/* {phasesArray.map((numberOfWipes) => {
             return <td className="phases-table__cell">{numberOfWipes}</td>;
+          })} */}
+          {phasesArray.map((numberOfWipes) => {
+            let phaseNum = counter2++;
+            return (
+              <td
+                className={`phases-table__cell 
+                phases-table__cell--${getTextColour(phaseNum)}`}
+              >
+                {numberOfWipes}
+              </td>
+            );
           })}
         </tr>
       </tbody>

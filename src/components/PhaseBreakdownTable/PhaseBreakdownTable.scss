@@ -1,6 +1,25 @@
 @use "/src/styles/__variables" as *;
 
 .phases-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 750px;
+    table-layout: fixed;
+    font-weight: 500;
+    margin: 1.5rem 0;
+
+    &__header {
+        border: 1px solid $bg-mid;
+        padding: 0.5rem 0;
+    }
+
+    &__cell {
+        border: 1px solid $bg-mid;
+        padding: 0.5rem 0;
+        width: 10%;
+        text-align: center;
+    }
+
     &__cell--old {
         color: $grey;
     }

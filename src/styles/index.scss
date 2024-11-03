@@ -1,6 +1,5 @@
 @use "/src/styles/__variables" as *;
 
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +18,7 @@ body {
   font-family: 'Hind', 'Arial', sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, th {
   font-family: 'Afacad Flux', 'Verdana', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.05em;
