@@ -1,15 +1,19 @@
+@use "/src/styles/__variables" as *;
+
 .phases-table {
-   
-    &__cell--target {
-        color: green;
+    &__cell--old {
+        color: $grey;
     }
     &__cell--cleanup {
-        color: yellow;
+        color: $green;
     }
-    &__cell--old {
-        color: red;
+    &__cell--target {
+        color: $blue;
+    }
+    &__cell--newphase {
+         color: $purple;
     }
     &__cell--null {
-        color: skyblue;
+        color: $grey;
     }
 }
