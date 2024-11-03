@@ -45,7 +45,9 @@ const ReportPage = () => {
 
   return (
     <main className="report">
-      <h1 className="report__heading">Report: {session1.sessionDate}</h1>
+      <h1 className="report__heading">
+        Report: <span className="report__date">{session1.sessionDate}</span>
+      </h1>
       <p className="report__subtitle">
         Session {session1.sessionNum}
         <a className="report__link" href={session1.fflogsLink}>

@@ -1,4 +1,15 @@
-.report {    
+.report {   
+    
+    &__heading {
+        font-size: 1.5em;
+    }
+
+    &__date {
+        display: block;
+        margin-top: -0.2em;
+        font-size: 1.4em;
+    }
+    
     &__link {
         margin-left: 1rem;
     }
