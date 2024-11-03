@@ -9,9 +9,9 @@ const ReportPage = () => {
     const last2Numerals = JSON.stringify(number).slice(-2);
     if (lastNumeral == 1 && last2Numerals != 11) {
       return "st";
-    } else if (lastNumeral == 2 && last2Numerals != 22) {
+    } else if (lastNumeral == 2 && last2Numerals != 12) {
       return "nd";
-    } else if (lastNumeral == 3 && last2Numerals != 33) {
+    } else if (lastNumeral == 3 && last2Numerals != 13) {
       return "rd";
     } else {
       return "th";
