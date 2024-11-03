@@ -73,9 +73,6 @@ const PhaseBreakdownTable = ({ sessionData }) => {
 
         <tr className="phases-table__row">
           <th className="phases-table__header">Pulls</th>
-          {/* {phasesArray.map((numberOfWipes) => {
-            return <td className="phases-table__cell">{numberOfWipes}</td>;
-          })} */}
           {phasesArray.map((numberOfWipes) => {
             let phaseNum = counter2++;
             return (
