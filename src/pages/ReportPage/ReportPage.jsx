@@ -49,7 +49,7 @@ const ReportPage = () => {
       },
       [null, 0]
     );
-    return highestCount[0];
+    return `${highestCount[0]} (${highestCount[1]})`;
   };
 
   const findStruggleMech = (arr) => {
@@ -71,7 +71,7 @@ const ReportPage = () => {
       },
       [null, 0]
     );
-    return highestCount[0];
+    return `${highestCount[0]} (${highestCount[1]})`;
   };
 
   return (
@@ -94,12 +94,15 @@ const ReportPage = () => {
       </p>
 
       <p className="report__extra-info">
-        Struggle Phase: P{findStrugglePhase(session1.pulls)}
+        <span className="report__extra-info--bold">Most Wipes:</span> P
+        {findStrugglePhase(session1.pulls)}
+        <span className="report__divider"> • </span>
+        {findStruggleMech(session1.pulls)}
       </p>
       <p className="report__extra-info">
-        Struggle Mech: {findStruggleMech(session1.pulls)}
+        <span className="report__extra-info--bold">Gold Stars:</span>{" "}
+        {findGoldStars()}
       </p>
-      <p className="report__extra-info">Gold Stars: {findGoldStars()}</p>
 
       <PhaseBreakdownTable sessionData={session1} />
 
