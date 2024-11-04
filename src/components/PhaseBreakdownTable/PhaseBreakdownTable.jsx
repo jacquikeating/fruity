@@ -54,39 +54,41 @@ const PhaseBreakdownTable = ({ sessionData }) => {
   let counter2 = 1;
 
   return (
-    <table className="phases-table">
-      <tbody>
-        <tr className="phases-table__row">
-          <th className="phases-table__header">Phase</th>
-          {phasesArray.map(() => {
-            let phaseNum = counter++;
-            return (
-              <td
-                className={`phases-table__cell 
+    <div className="phases-table">
+      <table className="phases-table__table">
+        <tbody>
+          <tr className="phases-table__row">
+            <th className="phases-table__header">Phase</th>
+            {phasesArray.map(() => {
+              let phaseNum = counter++;
+              return (
+                <td
+                  className={`phases-table__cell 
                 phases-table__cell--${getTextColour(phaseNum)}`}
-              >
-                {phaseNum}
-              </td>
-            );
-          })}
-        </tr>
+                >
+                  {phaseNum}
+                </td>
+              );
+            })}
+          </tr>
 
-        <tr className="phases-table__row">
-          <th className="phases-table__header">Pulls</th>
-          {phasesArray.map((numberOfWipes) => {
-            let phaseNum = counter2++;
-            return (
-              <td
-                className={`phases-table__cell 
+          <tr className="phases-table__row">
+            <th className="phases-table__header">Pulls</th>
+            {phasesArray.map((numberOfWipes) => {
+              let phaseNum = counter2++;
+              return (
+                <td
+                  className={`phases-table__cell 
                 phases-table__cell--${getTextColour(phaseNum)}`}
-              >
-                {numberOfWipes}
-              </td>
-            );
-          })}
-        </tr>
-      </tbody>
-    </table>
+                >
+                  {numberOfWipes}
+                </td>
+              );
+            })}
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
