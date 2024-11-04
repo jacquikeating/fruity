@@ -28,24 +28,7 @@
 
     &__pulls-list {
         list-style: none;
-    }
-
-}
-
-.pull {
-    margin: 1.5rem 0;
-
-    &__nums {
-        display: flex;
-        align-items: center;
-    }
-
-    &__num-today {
-        margin: 0;
-    }
-
-    &__num-total {
-        margin-left: 1rem;
-        font-style: italic;
+        margin-top: -0.5rem;
     }
 }
+
