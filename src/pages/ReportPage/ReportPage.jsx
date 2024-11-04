@@ -9,9 +9,9 @@ const ReportPage = () => {
     const last2Numerals = JSON.stringify(number).slice(-2);
     if (lastNumeral == 1 && last2Numerals != 11) {
       return "st";
-    } else if (lastNumeral == 2 && last2Numerals != 22) {
+    } else if (lastNumeral == 2 && last2Numerals != 12) {
       return "nd";
-    } else if (lastNumeral == 3 && last2Numerals != 33) {
+    } else if (lastNumeral == 3 && last2Numerals != 13) {
       return "rd";
     } else {
       return "th";
@@ -43,19 +43,76 @@ const ReportPage = () => {
     return goldStars;
   }
 
+  const findStrugglePhase = (arr) => {
+    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
+      accumulatedObject[thisPull.phase] =
+        (accumulatedObject[thisPull.phase] ?? 0) + 1;
+      return accumulatedObject;
+    }, {});
+
+    const tallyArray = Object.entries(tallyObject);
+
+    const highestCount = tallyArray.reduce(
+      (currentHighest, thisItem) => {
+        if (thisItem[1] >= currentHighest[1]) {
+          return thisItem;
+        } else {
+          return currentHighest;
+        }
+      },
+      [null, 0]
+    );
+    return highestCount[0];
+  };
+
+  const findStruggleMech = (arr) => {
+    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
+      accumulatedObject[thisPull.mech] =
+        (accumulatedObject[thisPull.mech] ?? 0) + 1;
+      return accumulatedObject;
+    }, {});
+
+    const tallyArray = Object.entries(tallyObject);
+
+    const highestCount = tallyArray.reduce(
+      (currentHighest, thisItem) => {
+        if (thisItem[1] >= currentHighest[1]) {
+          return thisItem;
+        } else {
+          return currentHighest;
+        }
+      },
+      [null, 0]
+    );
+    return highestCount[0];
+  };
+
   return (
     <main className="report">
-      <h1 className="report__heading">Report: {session1.sessionDate}</h1>
+      <h1 className="report__heading">
+        Report: <span className="report__date">{session1.sessionDate}</span>
+      </h1>
       <p className="report__subtitle">
         Session {session1.sessionNum}
+        <span className="report__divider"> • </span>
+        Phase {session1.progPoint} Prog
+        <span className="report__divider"> • </span>
         <a className="report__link" href={session1.fflogsLink}>
           Logs
         </a>
+        <span className="report__divider"> • </span>
         <a className="report__link" href={session1.twitchLink}>
           VoD
         </a>
       </p>
-      <p className="report__gold-stars">Gold Stars: {findGoldStars()}</p>
+
+      <p className="report__extra-info">
+        Struggle Phase: P{findStrugglePhase(session1.pulls)}
+      </p>
+      <p className="report__extra-info">
+        Struggle Mech: {findStruggleMech(session1.pulls)}
+      </p>
+      <p className="report__extra-info">Gold Stars: {findGoldStars()}</p>
 
       <PhaseBreakdownTable sessionData={session1} />
 
