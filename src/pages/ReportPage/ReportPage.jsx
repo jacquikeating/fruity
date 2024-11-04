@@ -43,6 +43,50 @@ const ReportPage = () => {
     return goldStars;
   }
 
+  const findStrugglePhase = (arr) => {
+    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
+      accumulatedObject[thisPull.phase] =
+        (accumulatedObject[thisPull.phase] ?? 0) + 1;
+      return accumulatedObject;
+    }, {});
+
+    const tallyArray = Object.entries(tallyObject);
+
+    const highestCount = tallyArray.reduce(
+      (currentHighest, thisItem) => {
+        if (thisItem[1] >= currentHighest[1]) {
+          return thisItem;
+        } else {
+          return currentHighest;
+        }
+      },
+      [null, 0]
+    );
+    return highestCount[0];
+  };
+
+  const findStruggleMech = (arr) => {
+    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
+      accumulatedObject[thisPull.mech] =
+        (accumulatedObject[thisPull.mech] ?? 0) + 1;
+      return accumulatedObject;
+    }, {});
+
+    const tallyArray = Object.entries(tallyObject);
+
+    const highestCount = tallyArray.reduce(
+      (currentHighest, thisItem) => {
+        if (thisItem[1] >= currentHighest[1]) {
+          return thisItem;
+        } else {
+          return currentHighest;
+        }
+      },
+      [null, 0]
+    );
+    return highestCount[0];
+  };
+
   return (
     <main className="report">
       <h1 className="report__heading">
@@ -61,7 +105,14 @@ const ReportPage = () => {
           VoD
         </a>
       </p>
-      <p className="report__gold-stars">Gold Stars: {findGoldStars()}</p>
+
+      <p className="report__extra-info">
+        Struggle Phase: P{findStrugglePhase(session1.pulls)}
+      </p>
+      <p className="report__extra-info">
+        Struggle Mech: {findStruggleMech(session1.pulls)}
+      </p>
+      <p className="report__extra-info">Gold Stars: {findGoldStars()}</p>
 
       <PhaseBreakdownTable sessionData={session1} />
 
