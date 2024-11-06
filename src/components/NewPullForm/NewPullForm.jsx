@@ -4,7 +4,7 @@ import "./NewPullForm.scss";
 const NewPullForm = () => {
   return (
     <form className="add-data__form">
-      <label className="add-data__label" for="phase">
+      <label className="add-data__label" htmlFor="phase">
         Phase
       </label>
       <select className="add-data__select" name="phase" id="phase">
@@ -31,7 +31,7 @@ const NewPullForm = () => {
         </option>
       </select>
 
-      <label className="add-data__label" for="mech">
+      <label className="add-data__label" htmlFor="mech">
         Mechanic
       </label>
       <select className="add-data__select" name="mech" id="mech">
@@ -46,7 +46,7 @@ const NewPullForm = () => {
         </option>
       </select>
 
-      <label className="add-data__label" for="cause">
+      <label className="add-data__label" htmlFor="cause">
         Cause of Wipe
       </label>
       <input
@@ -65,7 +65,7 @@ const NewPullForm = () => {
           name="Chro"
           id="Chro"
         />
-        <label className="add-data__label" for="Chro">
+        <label className="add-data__label" htmlFor="Chro">
           Chro
         </label>
 
@@ -75,7 +75,7 @@ const NewPullForm = () => {
           name="Sophia"
           id="Sophia"
         />
-        <label className="add-data__label" for="Sophia">
+        <label className="add-data__label" htmlFor="Sophia">
           Sophia
         </label>
 
@@ -85,7 +85,7 @@ const NewPullForm = () => {
           name="Ella"
           id="Ella"
         />
-        <label className="add-data__label" for="Ella">
+        <label className="add-data__label" htmlFor="Ella">
           Ella
         </label>
 
@@ -95,7 +95,7 @@ const NewPullForm = () => {
           name="Ruvien"
           id="Ruvien"
         />
-        <label className="add-data__label" for="Ruvien">
+        <label className="add-data__label" htmlFor="Ruvien">
           Ruvien
         </label>
 
@@ -105,7 +105,7 @@ const NewPullForm = () => {
           name="Quil"
           id="Quil"
         />
-        <label className="add-data__label" for="Quil">
+        <label className="add-data__label" htmlFor="Quil">
           Quil
         </label>
 
@@ -115,7 +115,7 @@ const NewPullForm = () => {
           name="Char"
           id="Char"
         />
-        <label className="add-data__label" for="Char">
+        <label className="add-data__label" htmlFor="Char">
           Char
         </label>
 
@@ -125,7 +125,7 @@ const NewPullForm = () => {
           name="Hypatia"
           id="Hypatia"
         />
-        <label className="add-data__label" for="Hypatia">
+        <label className="add-data__label" htmlFor="Hypatia">
           Hypatia
         </label>
 
@@ -135,7 +135,7 @@ const NewPullForm = () => {
           name="Laveera"
           id="Laveera"
         />
-        <label className="add-data__label" for="Laveera">
+        <label className="add-data__label" htmlFor="Laveera">
           Laveera
         </label>
       </fieldset>
