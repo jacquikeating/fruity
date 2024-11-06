@@ -1,4 +1,5 @@
 import React from "react";
+import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import "./AddDataPage.scss";
 
 const AddDataPage = () => {
