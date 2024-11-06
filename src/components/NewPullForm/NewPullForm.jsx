@@ -62,21 +62,21 @@ const NewPullForm = () => {
         <input
           className="add-data__checkbox"
           type="checkbox"
-          name="Sophia"
-          id="Sophia"
+          name="Chro"
+          id="Chro"
         />
-        <label className="add-data__label" for="Sophia">
-          Sophia
+        <label className="add-data__label" for="Chro">
+          Chro
         </label>
 
         <input
           className="add-data__checkbox"
           type="checkbox"
-          name="Higoo"
-          id="Higoo"
+          name="Sophia"
+          id="Sophia"
         />
-        <label className="add-data__label" for="Higoo">
-          Higoo
+        <label className="add-data__label" for="Sophia">
+          Sophia
         </label>
 
         <input
@@ -92,11 +92,11 @@ const NewPullForm = () => {
         <input
           className="add-data__checkbox"
           type="checkbox"
-          name="PureHealer"
-          id="PureHealer"
+          name="Ruvien"
+          id="Ruvien"
         />
-        <label className="add-data__label" for="PureHealer">
-          PureHealer
+        <label className="add-data__label" for="Ruvien">
+          Ruvien
         </label>
 
         <input
@@ -112,21 +112,21 @@ const NewPullForm = () => {
         <input
           className="add-data__checkbox"
           type="checkbox"
-          name="AnyDPS"
-          id="AnyDPS"
-        />
-        <label className="add-data__label" for="AnyDPS">
-          AnyDPS
-        </label>
-
-        <input
-          className="add-data__checkbox"
-          type="checkbox"
           name="Char"
           id="Char"
         />
         <label className="add-data__label" for="Char">
           Char
+        </label>
+
+        <input
+          className="add-data__checkbox"
+          type="checkbox"
+          name="Hypatia"
+          id="Hypatia"
+        />
+        <label className="add-data__label" for="Hypatia">
+          Hypatia
         </label>
 
         <input
