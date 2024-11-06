@@ -6,6 +6,7 @@ const AddDataPage = () => {
   return (
     <main className="add-data">
       <h1 className="add-data__heading">Add Data</h1>
+      <NewPullForm />
     </main>
   );
 };
