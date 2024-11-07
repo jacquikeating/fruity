@@ -22,176 +22,177 @@ const NewPullForm = () => {
   ];
 
   return (
-    <form className="add-data__form">
-      <label className="add-data__label" htmlFor="phase">
+    <form className="form">
+      <label className="form__label" htmlFor="phase">
         Phase
       </label>
 
-      <Picker
-        value={selectedPhase}
-        onChange={handlePhaseChange}
-        wheelMode="natural"
-      >
-        <Picker.Column key="phase" name="phase">
-          {phaseAndMechOptions.map((_phase, index) => {
-            return (
-              <Picker.Item key={index} value={index}>
-                {index}
+      <div className="form__pickers-container">
+        <Picker
+          value={selectedPhase}
+          onChange={handlePhaseChange}
+          wheelMode="natural"
+        >
+          <Picker.Column key="phase" name="phase">
+            {phaseAndMechOptions.map((_phase, index) => {
+              return (
+                <Picker.Item key={index} value={index}>
+                  {index}
+                </Picker.Item>
+              );
+            })}
+          </Picker.Column>
+        </Picker>
+
+        <Picker
+          value={selectedMech}
+          onChange={setSelectedMech}
+          wheelMode="natural"
+        >
+          <Picker.Column key="mech" name="mech">
+            {phaseAndMechOptions[selectedPhase].map((mech) => (
+              <Picker.Item key={mech} value={mech}>
+                {mech}
               </Picker.Item>
-            );
-          })}
-        </Picker.Column>
-      </Picker>
-
-      <Picker
-        value={selectedMech}
-        onChange={setSelectedMech}
-        wheelMode="natural"
-      >
-        <Picker.Column key="mech" name="mech">
-          {phaseAndMechOptions[selectedPhase].map((mech) => (
-            <Picker.Item key={mech} value={mech}>
-              {mech}
-            </Picker.Item>
-          ))}
-        </Picker.Column>
-      </Picker>
-
+            ))}
+          </Picker.Column>
+        </Picker>
+      </div>
       {/* 
-      <select className="add-data__select" name="phase" id="phase">
-        <option value="1" className="add-data__option">
+      <select className="form__select" name="phase" id="phase">
+        <option value="1" className="form__option">
           1
         </option>
-        <option value="2" className="add-data__option">
+        <option value="2" className="form__option">
           2
         </option>
-        <option value="3" className="add-data__option">
+        <option value="3" className="form__option">
           3
         </option>
-        <option value="4" className="add-data__option">
+        <option value="4" className="form__option">
           4
         </option>
-        <option value="5" className="add-data__option">
+        <option value="5" className="form__option">
           5
         </option>
-        <option value="6" className="add-data__option">
+        <option value="6" className="form__option">
           6
         </option>
-        <option value="7" className="add-data__option">
+        <option value="7" className="form__option">
           7
         </option>
       </select>
 
-      <label className="add-data__label" htmlFor="mech">
+      <label className="form__label" htmlFor="mech">
         Mechanic
       </label>
-      <select className="add-data__select" name="mech" id="mech">
-        <option value="A" className="add-data__option">
+      <select className="form__select" name="mech" id="mech">
+        <option value="A" className="form__option">
           A
         </option>
-        <option value="B" className="add-data__option">
+        <option value="B" className="form__option">
           B
         </option>
-        <option value="C" className="add-data__option">
+        <option value="C" className="form__option">
           C
         </option>
       </select> */}
 
-      <label className="add-data__label" htmlFor="cause">
+      <label className="form__label" htmlFor="cause">
         Cause of Wipe
       </label>
       <input
-        className="add-data__input add-data__input--text"
+        className="form__input form__input--text"
         type="text"
         name="cause"
         id="cause"
       />
 
-      <fieldset className="add-data__fieldset">
-        <legend className="add-data__label">Players Involved</legend>
+      <fieldset className="form__fieldset">
+        <legend className="form__label">Players Involved</legend>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Chro"
           id="Chro"
         />
-        <label className="add-data__label" htmlFor="Chro">
+        <label className="form__label" htmlFor="Chro">
           Chro
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Sophia"
           id="Sophia"
         />
-        <label className="add-data__label" htmlFor="Sophia">
+        <label className="form__label" htmlFor="Sophia">
           Sophia
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Ella"
           id="Ella"
         />
-        <label className="add-data__label" htmlFor="Ella">
+        <label className="form__label" htmlFor="Ella">
           Ella
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Ruvien"
           id="Ruvien"
         />
-        <label className="add-data__label" htmlFor="Ruvien">
+        <label className="form__label" htmlFor="Ruvien">
           Ruvien
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Quil"
           id="Quil"
         />
-        <label className="add-data__label" htmlFor="Quil">
+        <label className="form__label" htmlFor="Quil">
           Quil
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Char"
           id="Char"
         />
-        <label className="add-data__label" htmlFor="Char">
+        <label className="form__label" htmlFor="Char">
           Char
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Hypatia"
           id="Hypatia"
         />
-        <label className="add-data__label" htmlFor="Hypatia">
+        <label className="form__label" htmlFor="Hypatia">
           Hypatia
         </label>
 
         <input
-          className="add-data__checkbox"
+          className="form__checkbox"
           type="checkbox"
           name="Laveera"
           id="Laveera"
         />
-        <label className="add-data__label" htmlFor="Laveera">
+        <label className="form__label" htmlFor="Laveera">
           Laveera
         </label>
       </fieldset>
 
-      <button type="submit" className="add-data__button">
+      <button type="submit" className="form__button">
         Save
       </button>
     </form>
