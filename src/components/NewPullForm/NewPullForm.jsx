@@ -32,15 +32,16 @@ const NewPullForm = () => {
           value={selectedPhase}
           onChange={handlePhaseChange}
           wheelMode="natural"
+          height={100}
+          itemHeight={30}
+          className="form__picker"
         >
           <Picker.Column key="phase" name="phase">
-            {phaseAndMechOptions.map((_phase, index) => {
-              return (
-                <Picker.Item key={index} value={index}>
-                  {index}
-                </Picker.Item>
-              );
-            })}
+            {phaseAndMechOptions.map((_phase, index) => (
+              <Picker.Item key={index} value={index}>
+                {index}
+              </Picker.Item>
+            ))}
           </Picker.Column>
         </Picker>
 
@@ -48,8 +49,11 @@ const NewPullForm = () => {
           value={selectedMech}
           onChange={setSelectedMech}
           wheelMode="natural"
+          height={100}
+          itemHeight={30}
+          className="form__picker"
         >
-          <Picker.Column key="mech" name="mech">
+          <Picker.Column key="mech" name="mech" height={300}>
             {phaseAndMechOptions[selectedPhase].map((mech) => (
               <Picker.Item key={mech} value={mech}>
                 {mech}
