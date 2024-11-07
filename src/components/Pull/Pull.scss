@@ -1,0 +1,25 @@
+@use "/src/styles/__variables" as *;
+
+.pull {
+    margin: 1.2rem 0;
+    border: 1px solid $borders;
+    padding: 1rem;
+    background: $bg-mid;
+    border-radius: 2px;
+
+    &__nums {
+        display: flex;
+        align-items: center;
+    }
+
+    &__num-today {
+        margin-bottom: 5px;
+    }
+
+    &__num-total {
+        margin-left: 0.5rem;
+        font-style: italic;
+        font-size: 0.9em;
+        opacity: 0.7;
+    }
+}
