@@ -10,6 +10,10 @@ const NewPullForm = () => {
     setSelectedPhase(e.phase);
   }
 
+  function handleMechChange(e) {
+    setSelectedMech(e.mech);
+  }
+
   const phaseAndMechOptions = [
     ["N/A"],
     ["A", "B", "C"],
@@ -32,7 +36,7 @@ const NewPullForm = () => {
           value={selectedPhase}
           onChange={handlePhaseChange}
           wheelMode="natural"
-          height={100}
+          height={90}
           itemHeight={30}
           className="form__picker"
         >
@@ -42,6 +46,13 @@ const NewPullForm = () => {
                 key={index}
                 value={index}
                 className="form__picker-option"
+                style={
+                  selectedPhase == index
+                    ? {
+                        color: "#b38cff",
+                      }
+                    : {}
+                }
               >
                 {index}
               </Picker.Item>
@@ -51,18 +62,25 @@ const NewPullForm = () => {
 
         <Picker
           value={selectedMech}
-          onChange={setSelectedMech}
+          onChange={handleMechChange}
           wheelMode="natural"
-          height={100}
+          height={90}
           itemHeight={30}
           className="form__picker"
         >
-          <Picker.Column key="mech" name="mech" height={300}>
+          <Picker.Column key="mech" name="mech">
             {phaseAndMechOptions[selectedPhase].map((mech) => (
               <Picker.Item
                 key={mech}
                 value={mech}
                 className="form__picker-option"
+                style={
+                  selectedMech == mech
+                    ? {
+                        color: "#b38cff",
+                      }
+                    : {}
+                }
               >
                 {mech}
               </Picker.Item>

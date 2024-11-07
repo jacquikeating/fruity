@@ -1,13 +1,21 @@
+@use "/src/styles/__variables" as *;
+
 .form {
     &__pickers-container {
         display: flex;
         width: 80%;
         margin: auto;
-        border: 1px solid white;
+        border: 1px solid $borders;
         border-radius: 2px;
+        background-color: $bg-mid;
 
         & *div {
             width: 300px;
         }
     }
+
+    // &__picker-option {
+    //     border: 2px solid skyblue;
+    // }
+  
 }
