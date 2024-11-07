@@ -38,7 +38,11 @@ const NewPullForm = () => {
         >
           <Picker.Column key="phase" name="phase">
             {phaseAndMechOptions.map((_phase, index) => (
-              <Picker.Item key={index} value={index}>
+              <Picker.Item
+                key={index}
+                value={index}
+                className="form__picker-option"
+              >
                 {index}
               </Picker.Item>
             ))}
@@ -55,7 +59,11 @@ const NewPullForm = () => {
         >
           <Picker.Column key="mech" name="mech" height={300}>
             {phaseAndMechOptions[selectedPhase].map((mech) => (
-              <Picker.Item key={mech} value={mech}>
+              <Picker.Item
+                key={mech}
+                value={mech}
+                className="form__picker-option"
+              >
                 {mech}
               </Picker.Item>
             ))}
