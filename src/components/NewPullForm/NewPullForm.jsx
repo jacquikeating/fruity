@@ -4,12 +4,60 @@ import "./NewPullForm.scss";
 
 const NewPullForm = () => {
   const [selectedPhase, setSelectedPhase] = useState(1);
+  const [selectedMech, setSelectedMech] = useState("");
+
+  function handlePhaseChange(e) {
+    setSelectedPhase(e.phase);
+  }
+
+  const phaseAndMechOptions = [
+    ["N/A"],
+    ["A", "B", "C"],
+    ["Strength", "Sanctity", "Enrage"],
+    ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
+    ["Orbs", "Tethers", "Enrage"],
+    ["Wrath", "Death", "Enrage"],
+    ["A", "B", "Cauterize", "Enrage"],
+    ["Transition", "Exas", "Akh Morn", "Enrage"],
+  ];
 
   return (
     <form className="add-data__form">
       <label className="add-data__label" htmlFor="phase">
         Phase
       </label>
+
+      <Picker
+        value={selectedPhase}
+        onChange={handlePhaseChange}
+        wheelMode="natural"
+      >
+        <Picker.Column key="phase" name="phase">
+          {phaseAndMechOptions.map((_phase, index) => {
+            return (
+              <Picker.Item key={index} value={index}>
+                {index}
+              </Picker.Item>
+            );
+          })}
+        </Picker.Column>
+      </Picker>
+
+      <Picker
+        value={selectedMech}
+        onChange={setSelectedMech}
+        wheelMode="natural"
+      >
+        <Picker.Column key="mech" name="mech">
+          {phaseAndMechOptions[selectedPhase].map((mech) => (
+            <Picker.Item key={mech} value={mech}>
+              {mech}
+            </Picker.Item>
+          ))}
+        </Picker.Column>
+      </Picker>
+
+      {/* 
       <select className="add-data__select" name="phase" id="phase">
         <option value="1" className="add-data__option">
           1
@@ -47,7 +95,7 @@ const NewPullForm = () => {
         <option value="C" className="add-data__option">
           C
         </option>
-      </select>
+      </select> */}
 
       <label className="add-data__label" htmlFor="cause">
         Cause of Wipe
