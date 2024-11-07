@@ -1,7 +1,9 @@
-import React from "react";
+import { React, useState } from "react";
 import "./NewPullForm.scss";
 
 const NewPullForm = () => {
+  const [selectedPhase, setSelectedPhase] = useState(1);
+
   return (
     <form className="add-data__form">
       <label className="add-data__label" htmlFor="phase">
