@@ -2,9 +2,9 @@
 
 .pull {
     margin: 1.2rem 0;
-    border: 1px solid $bg-mid;
+    border: 1px solid $borders;
     padding: 1rem;
-    background: #0b0b0e;
+    background: $bg-mid;
     border-radius: 2px;
 
     &__nums {
