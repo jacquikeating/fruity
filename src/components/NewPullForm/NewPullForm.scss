@@ -4,7 +4,7 @@
     &__pickers-container {
         display: flex;
         width: 80%;
-        margin: auto;
+        margin: 1rem auto;
         border: 1px solid $borders;
         border-radius: 2px;
         background-color: $bg-mid;
@@ -13,9 +13,4 @@
             width: 300px;
         }
     }
-
-    // &__picker-option {
-    //     border: 2px solid skyblue;
-    // }
-  
 }

@@ -21,14 +21,14 @@ const NewPullForm = () => {
     ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
     ["Orbs", "Tethers", "Enrage"],
     ["Wrath", "Death", "Enrage"],
-    ["A", "B", "Cauterize", "Enrage"],
+    ["A", "Wrothflame", "Cauterize", "Enrage"],
     ["Transition", "Exas", "Akh Morn", "Enrage"],
   ];
 
   return (
     <form className="form">
       <label className="form__label" htmlFor="phase">
-        Phase
+        Phase & Mechanic
       </label>
 
       <div className="form__pickers-container">
