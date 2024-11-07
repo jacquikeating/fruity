@@ -141,85 +141,89 @@ const NewPullForm = () => {
       <fieldset className="form__fieldset">
         <legend className="form__label">Players Involved</legend>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Chro"
-          id="Chro"
-        />
-        <label className="form__label" htmlFor="Chro">
-          Chro
-        </label>
+        <div className="checkbox-group">
+          <label className="form__label" htmlFor="Chro">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Chro"
+              id="Chro"
+            />
+            Chro
+          </label>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Sophia"
-          id="Sophia"
-        />
-        <label className="form__label" htmlFor="Sophia">
-          Sophia
-        </label>
+          <label className="form__label" htmlFor="Sophia">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Sophia"
+              id="Sophia"
+            />
+            Sophia
+          </label>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Ella"
-          id="Ella"
-        />
-        <label className="form__label" htmlFor="Ella">
-          Ella
-        </label>
+          <label className="form__label" htmlFor="Ella">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Ella"
+              id="Ella"
+            />
+            Ella
+          </label>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Ruvien"
-          id="Ruvien"
-        />
-        <label className="form__label" htmlFor="Ruvien">
-          Ruvien
-        </label>
+          <label className="form__label" htmlFor="Ruvien">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Ruvien"
+              id="Ruvien"
+            />
+            Ruvien
+          </label>
+        </div>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Quil"
-          id="Quil"
-        />
-        <label className="form__label" htmlFor="Quil">
-          Quil
-        </label>
+        <div className="checkbox-group">
+          <label className="form__label" htmlFor="Quil">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Quil"
+              id="Quil"
+            />
+            Quil
+          </label>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Char"
-          id="Char"
-        />
-        <label className="form__label" htmlFor="Char">
-          Char
-        </label>
+          <label className="form__label" htmlFor="Char">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Char"
+              id="Char"
+            />
+            Char
+          </label>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Hypatia"
-          id="Hypatia"
-        />
-        <label className="form__label" htmlFor="Hypatia">
-          Hypatia
-        </label>
+          <label className="form__label" htmlFor="Hypatia">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Hypatia"
+              id="Hypatia"
+            />
+            Hypatia
+          </label>
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Laveera"
-          id="Laveera"
-        />
-        <label className="form__label" htmlFor="Laveera">
-          Laveera
-        </label>
+          <label className="form__label" htmlFor="Laveera">
+            <input
+              className="form__checkbox"
+              type="checkbox"
+              name="Laveera"
+              id="Laveera"
+            />
+            Laveera
+          </label>
+        </div>
       </fieldset>
 
       <button type="submit" className="form__button">

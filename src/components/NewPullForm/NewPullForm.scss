@@ -1,6 +1,11 @@
 @use "/src/styles/__variables" as *;
 
 .form {
+
+    &__label {
+        display: block;
+    }
+
     &__pickers-container {
         display: flex;
         width: 80%;
@@ -12,5 +17,16 @@
         & *div {
             width: 300px;
         }
+    }
+
+    &__fieldset {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    &__checkbox {
+        margin-right: 0.5rem;
     }
 }
