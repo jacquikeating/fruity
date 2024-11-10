@@ -7,5 +7,5 @@ export const up = function (knex) {
 };
 
 export const down = function (knex) {
-  return knex.schema.dropTable("sessions").dropTable("pulls");
+  return knex.schema.dropTable("player");
 };

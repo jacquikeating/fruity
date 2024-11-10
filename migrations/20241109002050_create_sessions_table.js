@@ -17,5 +17,5 @@ export const up = function (knex) {
 };
 
 export const down = function (knex) {
-  return knex.schema.dropTable("sessions");
+  return knex.schema.dropTable("session");
 };
