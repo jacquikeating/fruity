@@ -83,4 +83,6 @@ const router = express.Router();
 
 router.route("/").get(sessionController.index);
 
+router.route("/:sessionID/pulls").get(sessionController.sessionPulls);
+
 export default router;
