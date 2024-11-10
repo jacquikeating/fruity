@@ -1,6 +1,6 @@
 export default [
   {
-    session_id: 21,
+    session_id: 1,
     pull_num_today: 1,
     phase: 1,
     mech: "Playstation",
@@ -8,6 +8,6 @@ export default [
     cause: "Laveera chains",
     players_responsible: "Laveera",
     log_link: "",
-    twitch_link: "",
+    clip_link: "",
   },
 ];
