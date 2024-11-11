@@ -1,10 +1,19 @@
-import React from "react";
+import { React, useState } from "react";
 import "./PullsTable.scss";
 
 const PullsTable = ({ sessionData, pullsArray }) => {
+  const [pullNumType, setPullNumType] = useState("today");
+
+  function togglePullNumType() {
+    if (pullNumType === "today") {
+      setPullNumType("overall");
+    } else {
+      setPullNumType("today");
+    }
+  }
+
   const columns = [
-    "# Today",
-    "# Overall",
+    // "Pull #",
     "Phase",
     "Mechanic",
     "Cause",
@@ -17,6 +26,12 @@ const PullsTable = ({ sessionData, pullsArray }) => {
       <table className="pulls-table__table">
         <tbody>
           <tr className="pulls-table__row">
+            <th
+              className="pulls-table__header-cell"
+              onClick={togglePullNumType}
+            >
+              #
+            </th>
             {columns.map((column) => {
               return (
                 <th key={column} className="pulls-table__header-cell">
