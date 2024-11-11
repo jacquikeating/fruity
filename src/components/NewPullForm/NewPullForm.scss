@@ -1,0 +1,13 @@
+.form {
+    &__pickers-container {
+        display: flex;
+        width: 80%;
+        margin: auto;
+        border: 1px solid white;
+        border-radius: 2px;
+
+        & *div {
+            width: 300px;
+        }
+    }
+}

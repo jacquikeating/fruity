@@ -1,115 +1,111 @@
-import React from "react";
-import { session1 } from "../../utils/old-data";
+import { React, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {
+  createReadableDate,
+  findGoldStars,
+  findStrugglePhase,
+  findStruggleMech,
+} from "../../utils/shared-functions.js";
+import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import Pull from "../../components/Pull/Pull.jsx";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
-  function findGoldStars() {
-    let causedWipes = [];
-    let goldStars = [];
+  const [sessionData, setSessionData] = useState(null);
+  const [pullsArray, setPullsArray] = useState([]);
+  const { sessionID } = useParams();
 
-    session1.pulls.map((pull) => {
-      pull.playerNames.forEach((playerName) => {
-        if (!causedWipes.includes(playerName)) {
-          causedWipes.push(playerName);
-        }
-      });
-    });
-
-    session1.players.forEach((player) => {
-      if (!causedWipes.includes(player)) {
-        goldStars.push(player);
+  useEffect(() => {
+    async function getSessionData() {
+      try {
+        let result = await axios.get(
+          `http://localhost:5050/sessions/${sessionID}`
+        );
+        let data = result.data[0];
+        const rosterArray = (data.roster = data.roster.split(","));
+        data.roster = rosterArray;
+        setSessionData(data);
+        createReadableDate(data.date);
+      } catch (error) {
+        console.error(error);
       }
-    });
-
-    if (goldStars.length === 0) {
-      return "None";
     }
 
-    return goldStars;
-  }
+    async function getPullsData() {
+      try {
+        let result = await axios.get(
+          `http://localhost:5050/sessions/${sessionID}/pulls`
+        );
+        let data = result.data;
+        // const responsiblePlayersArray = data.players_responsible.split(",");
+        // data.players_responsible = responsiblePlayersArray;
+        setPullsArray(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-  const findStrugglePhase = (arr) => {
-    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
-      accumulatedObject[thisPull.phase] =
-        (accumulatedObject[thisPull.phase] ?? 0) + 1;
-      return accumulatedObject;
-    }, {});
-
-    const tallyArray = Object.entries(tallyObject);
-
-    const highestCount = tallyArray.reduce(
-      (currentHighest, thisItem) => {
-        if (thisItem[1] >= currentHighest[1]) {
-          return thisItem;
-        } else {
-          return currentHighest;
-        }
-      },
-      [null, 0]
-    );
-    return highestCount[0];
-  };
-
-  const findStruggleMech = (arr) => {
-    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
-      accumulatedObject[thisPull.mech] =
-        (accumulatedObject[thisPull.mech] ?? 0) + 1;
-      return accumulatedObject;
-    }, {});
-
-    const tallyArray = Object.entries(tallyObject);
-
-    const highestCount = tallyArray.reduce(
-      (currentHighest, thisItem) => {
-        if (thisItem[1] >= currentHighest[1]) {
-          return thisItem;
-        } else {
-          return currentHighest;
-        }
-      },
-      [null, 0]
-    );
-    return highestCount[0];
-  };
+    getSessionData();
+    getPullsData();
+  }, []);
 
   return (
     <main className="report">
-      <h1 className="report__heading">
-        Report: <span className="report__date">{session1.sessionDate}</span>
-      </h1>
-      <p className="report__subtitle">
-        Session {session1.sessionNum}
-        <span className="report__divider"> • </span>
-        Phase {session1.progPoint} Prog
-        <span className="report__divider"> • </span>
-        <a className="report__link" href={session1.fflogsLink}>
-          Logs
-        </a>
-        <span className="report__divider"> • </span>
-        <a className="report__link" href={session1.twitchLink}>
-          VoD
-        </a>
-      </p>
+      {sessionData ? (
+        <>
+          <section className="report__section">
+            <h1 className="report__heading">
+              Report:{" "}
+              <span className="report__date">
+                {createReadableDate(sessionData.date)}
+              </span>
+            </h1>
+            <p className="report__subtitle">
+              Session {sessionData.id}
+              <span className="report__divider"> • </span>
+              Phase {sessionData.prog_phase} Prog
+              <span className="report__divider"> • </span>
+              <a className="report__link" href={sessionData.fflogs_link}>
+                Logs
+              </a>
+              <span className="report__divider"> • </span>
+              <a className="report__link" href={sessionData.twitch_link}>
+                VoD
+              </a>
+            </p>
 
-      <p className="report__extra-info">
-        Struggle Phase: P{findStrugglePhase(session1.pulls)}
-      </p>
-      <p className="report__extra-info">
-        Struggle Mech: {findStruggleMech(session1.pulls)}
-      </p>
-      <p className="report__extra-info">Gold Stars: {findGoldStars()}</p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Most Wipes:</span> P
+              {findStrugglePhase(pullsArray)}
+              <span className="report__divider"> • </span>
+              {findStruggleMech(pullsArray)}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Gold Stars:</span>{" "}
+              {findGoldStars(pullsArray, sessionData.roster)}
+            </p>
+          </section>
 
-      <PhaseBreakdownTable sessionData={session1} />
-
-      <h2 className="report__subheading">Pulls ({session1.pulls.length})</h2>
-
-      <ul className="report__pulls-list">
-        {session1.pulls.map((pull) => {
-          return <Pull key={pull.pullNumTotal} pullData={pull} />;
-        })}
-      </ul>
+          <section className="report__section">
+            <PhaseBreakdownTable
+              sessionData={sessionData}
+              pullsArray={pullsArray}
+            />
+          </section>
+          <section className="report__section">
+            <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+            <ul className="report__pulls-list">
+              {pullsArray.map((pull) => {
+                return <Pull key={pull.id} pullData={pull} />;
+              })}
+            </ul>
+          </section>
+        </>
+      ) : (
+        <p>Could not retrieve data for session #{sessionID}</p>
+      )}
     </main>
   );
 };

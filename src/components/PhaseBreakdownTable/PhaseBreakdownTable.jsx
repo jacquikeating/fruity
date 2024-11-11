@@ -1,11 +1,12 @@
 import React from "react";
+import { getTextColour } from "../../utils/shared-functions";
 import "./PhaseBreakdownTable.scss";
 
-const PhaseBreakdownTable = ({ sessionData }) => {
+const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
   function getPhaseBreakdown() {
     let phasesReached = [];
 
-    sessionData.pulls.map((pull) => {
+    pullsArray.map((pull) => {
       phasesReached.push(pull.phase);
     });
 
@@ -31,25 +32,6 @@ const PhaseBreakdownTable = ({ sessionData }) => {
     phaseBreakdown[7] ? phaseBreakdown[7] : 0,
   ];
 
-  function getTextColour(phase) {
-    let targetMech = sessionData.progPoint;
-    let cleanupMech = sessionData.progPoint - 1;
-
-    if (phase > 0) {
-      if (phase < cleanupMech) {
-        return "old";
-      } else if (phase == cleanupMech) {
-        return "cleanup";
-      } else if (phase == targetMech) {
-        return "target";
-      } else if (phase > targetMech) {
-        return "newphase";
-      } else {
-        return "null";
-      }
-    }
-  }
-
   let counter = 1;
   let counter2 = 1;
 
@@ -64,7 +46,10 @@ const PhaseBreakdownTable = ({ sessionData }) => {
               return (
                 <td
                   className={`phases-table__cell 
-                phases-table__cell--${getTextColour(phaseNum)}`}
+                phases-table__cell--${getTextColour(
+                  sessionData.prog_phase,
+                  phaseNum
+                )}`}
                 >
                   {phaseNum}
                 </td>
@@ -79,7 +64,10 @@ const PhaseBreakdownTable = ({ sessionData }) => {
               return (
                 <td
                   className={`phases-table__cell 
-                phases-table__cell--${getTextColour(phaseNum)}`}
+                phases-table__cell--${getTextColour(
+                  sessionData.prog_phase,
+                  phaseNum
+                )}`}
                 >
                   {numberOfWipes}
                 </td>
