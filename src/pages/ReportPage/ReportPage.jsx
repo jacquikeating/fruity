@@ -19,10 +19,12 @@ const ReportPage = () => {
   useEffect(() => {
     async function getSessionData() {
       try {
-        let result = await axios.get(`http://localhost:5050/sessions`);
-        let data = result.data;
-        setSessionData(data[0]);
-        createReadableDate(data[0].date);
+        let result = await axios.get(
+          `http://localhost:5050/sessions/${sessionID}`
+        );
+        let data = result.data[0];
+        setSessionData(data);
+        createReadableDate(data.date);
       } catch (error) {
         console.error(error);
       }
