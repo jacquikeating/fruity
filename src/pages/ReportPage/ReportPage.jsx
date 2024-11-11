@@ -80,7 +80,7 @@ const ReportPage = () => {
               {findStruggleMech(pullsArray)}
             </p>
             <p className="report__extra-info">
-              <span className="report__extra-info--bold">Gold Stars:</span>{" "}
+              <span className="report__extra-info--bold">Gold Stars: </span>
               {findGoldStars(pullsArray, sessionData.roster)}
             </p>
           </section>

@@ -42,7 +42,7 @@ export const findStrugglePhase = (pullsArray) => {
     },
     [null, 0]
   );
-  return `${highestCount[0]} (${highestCount[1]})`;
+  return `${highestCount[0]} (${highestCount[1]} wipes)`;
 };
 
 export const findStruggleMech = (pullsArray) => {
@@ -64,7 +64,7 @@ export const findStruggleMech = (pullsArray) => {
     },
     [null, 0]
   );
-  return `${highestCount[0]} (${highestCount[1]})`;
+  return `${highestCount[0]} (${highestCount[1]} wipes)`;
 };
 
 export function findGoldStars(pullsArray, playersArray) {
