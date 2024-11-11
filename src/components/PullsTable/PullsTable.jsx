@@ -34,15 +34,31 @@ const PullsTable = ({ sessionData, pullsArray }) => {
             } = pull;
             return (
               <tr key={`${id}`} className="pulls-table__row">
-                <td key={`pull # ${id}-${pull_num_today}`}>{pull_num_today}</td>
-                <td key={`${id}`}>{id}</td>
-                <td key={`${id}-${phase}`}>{phase}</td>
-                <td key={`${id}-${mech}`}>{mech}</td>
-                <td key={`${id}-${cause}`}>{cause}</td>
-                <td key={`${id}-${players_responsible}`}>
+                <td
+                  key={`pull # ${id}-${pull_num_today}`}
+                  className="pulls-table__cell"
+                >
+                  {pull_num_today}
+                </td>
+                <td key={`${id}`} className="pulls-table__cell">
+                  {id}
+                </td>
+                <td key={`${id}-${phase}`} className="pulls-table__cell">
+                  {phase}
+                </td>
+                <td key={`${id}-${mech}`} className="pulls-table__cell">
+                  {mech}
+                </td>
+                <td key={`${id}-${cause}`} className="pulls-table__cell">
+                  {cause}
+                </td>
+                <td
+                  key={`${id}-${players_responsible}`}
+                  className="pulls-table__cell"
+                >
                   {players_responsible}
                 </td>
-                {/* <td key={`${id}-${notes}`}>{notes}</td> */}
+                {/* <td key={`${id}-${notes}`} className="pulls-table__cell">{notes}</td> */}
               </tr>
             );
           })}
