@@ -45,6 +45,7 @@ const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
               let phaseNum = counter++;
               return (
                 <td
+                  key={phaseNum}
                   className={`phases-table__cell 
                 phases-table__cell--${getTextColour(
                   sessionData.prog_phase,
@@ -63,6 +64,7 @@ const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
               let phaseNum = counter2++;
               return (
                 <td
+                  key={phaseNum}
                   className={`phases-table__cell 
                 phases-table__cell--${getTextColour(
                   sessionData.prog_phase,
