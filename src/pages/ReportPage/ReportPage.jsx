@@ -38,10 +38,7 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}/pulls`
         );
         let data = result.data;
-        // const responsiblePlayersArray = data.players_responsible.split(",");
-        // data.players_responsible = responsiblePlayersArray;
         setPullsArray(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
