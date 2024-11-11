@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { session1 } from "../../utils/old-data";
 import {
   createReadableDate,
   findGoldStars,
@@ -24,6 +23,8 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}`
         );
         let data = result.data[0];
+        const rosterArray = (data.roster = data.roster.split(","));
+        data.roster = rosterArray;
         setSessionData(data);
         createReadableDate(data.date);
       } catch (error) {
@@ -37,7 +38,10 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}/pulls`
         );
         let data = result.data;
+        // const responsiblePlayersArray = data.players_responsible.split(",");
+        // data.players_responsible = responsiblePlayersArray;
         setPullsArray(data);
+        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -50,52 +54,58 @@ const ReportPage = () => {
   return (
     <main className="report">
       {sessionData ? (
-        <section className="report__section">
-          <h1 className="report__heading">
-            Report:{" "}
-            <span className="report__date">
-              {createReadableDate(sessionData.date)}
-            </span>
-          </h1>
-          <p className="report__subtitle">
-            Session {sessionData.id}
-            <span className="report__divider"> • </span>
-            Phase {sessionData.prog_phase} Prog
-            <span className="report__divider"> • </span>
-            <a className="report__link" href={sessionData.fflogs_link}>
-              Logs
-            </a>
-            <span className="report__divider"> • </span>
-            <a className="report__link" href={sessionData.twitch_link}>
-              VoD
-            </a>
-          </p>
+        <>
+          <section className="report__section">
+            <h1 className="report__heading">
+              Report:{" "}
+              <span className="report__date">
+                {createReadableDate(sessionData.date)}
+              </span>
+            </h1>
+            <p className="report__subtitle">
+              Session {sessionData.id}
+              <span className="report__divider"> • </span>
+              Phase {sessionData.prog_phase} Prog
+              <span className="report__divider"> • </span>
+              <a className="report__link" href={sessionData.fflogs_link}>
+                Logs
+              </a>
+              <span className="report__divider"> • </span>
+              <a className="report__link" href={sessionData.twitch_link}>
+                VoD
+              </a>
+            </p>
 
-          <p className="report__extra-info">
-            <span className="report__extra-info--bold">Most Wipes:</span> P
-            {findStrugglePhase(session1.pulls)}
-            <span className="report__divider"> • </span>
-            {findStruggleMech(session1.pulls)}
-          </p>
-          <p className="report__extra-info">
-            <span className="report__extra-info--bold">Gold Stars:</span>{" "}
-            {findGoldStars(session1.pulls, session1.players)}
-          </p>
-        </section>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Most Wipes:</span> P
+              {findStrugglePhase(pullsArray)}
+              <span className="report__divider"> • </span>
+              {findStruggleMech(pullsArray)}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Gold Stars:</span>{" "}
+              {findGoldStars(pullsArray, sessionData.roster)}
+            </p>
+          </section>
+
+          <section className="report__section">
+            <PhaseBreakdownTable
+              sessionData={sessionData}
+              pullsArray={pullsArray}
+            />
+          </section>
+          <section className="report__section">
+            <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+            <ul className="report__pulls-list">
+              {pullsArray.map((pull) => {
+                return <Pull key={pull.id} pullData={pull} />;
+              })}
+            </ul>
+          </section>
+        </>
       ) : (
-        ""
+        <p>Could not retrieve data for session #{sessionID}</p>
       )}
-      <section className="report__section">
-        <PhaseBreakdownTable sessionData={session1} />
-      </section>
-      <section className="report__section">
-        <h2 className="report__subheading">Pulls ({session1.pulls.length})</h2>
-        <ul className="report__pulls-list">
-          {session1.pulls.map((pull) => {
-            return <Pull key={pull.pullNumTotal} pullData={pull} />;
-          })}
-        </ul>
-      </section>
     </main>
   );
 };
