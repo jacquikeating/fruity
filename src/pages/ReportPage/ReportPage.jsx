@@ -9,6 +9,7 @@ import {
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import Pull from "../../components/Pull/Pull.jsx";
+import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
@@ -123,6 +124,8 @@ const ReportPage = () => {
                 Show prog pulls only
               </label>
             </div>
+
+            <PullsTable sessionData={sessionData} pullsArray={pullsArray} />
 
             <ul className="report__pulls-list">
               {progPullsOnly
