@@ -1,19 +1,20 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import {
   createReadableDate,
   findGoldStars,
   findStrugglePhase,
   findStruggleMech,
 } from "../../utils/shared-functions.js";
-import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import Pull from "../../components/Pull/Pull.jsx";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
-  const [sessionData, setSessionData] = useState(null);
+  const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
+  const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
 
   useEffect(() => {
@@ -38,10 +39,17 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}/pulls`
         );
         let data = result.data;
-        // const responsiblePlayersArray = data.players_responsible.split(",");
-        // data.players_responsible = responsiblePlayersArray;
+
         setPullsArray(data);
-        console.log(data);
+        // setProgPullsOnly(
+        //   data.filter((pull) => pull.phase >= sessionData.prog_phase)
+        // );
+
+        // if (progPullsOnly) {
+        //   setPullsArray(
+        //     data.filter((pull) => pull.phase >= sessionData.prog_phase)
+        //   );
+        // } else {
       } catch (error) {
         console.error(error);
       }
@@ -51,6 +59,11 @@ const ReportPage = () => {
     getPullsData();
   }, []);
 
+  function getProgPulls() {
+    const filteredPullsArray = pullsArray.filter(
+      (pull) => pull.phase >= sessionData.prog_phase
+    );
+    setPullsArray(filteredPullsArray);
   return (
     <main className="report">
       {sessionData ? (
@@ -98,8 +111,13 @@ const ReportPage = () => {
             <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
             <ul className="report__pulls-list">
               {pullsArray.map((pull) => {
-                return <Pull key={pull.id} pullData={pull} />;
-              })}
+              {progPullsOnly
+                ? progPullsOnly.map((pull) => {
+                    return <Pull key={pull.id} pullData={pull} />;
+                  })
+                : pullsArray.map((pull) => {
+                    return <Pull key={pull.id} pullData={pull} />;
+                  })}
             </ul>
           </section>
         </>
