@@ -3,9 +3,9 @@ import "./Header.scss";
 
 const Header = () => {
   return (
-    <header>
-      <nav>
-        <ul></ul>
+    <header className="header">
+      <nav className="nav">
+        <ul className="nav__list"></ul>
       </nav>
     </header>
   );
