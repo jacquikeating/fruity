@@ -41,7 +41,6 @@ const ReportPage = () => {
         // const responsiblePlayersArray = data.players_responsible.split(",");
         // data.players_responsible = responsiblePlayersArray;
         setPullsArray(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
