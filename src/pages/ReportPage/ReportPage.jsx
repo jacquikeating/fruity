@@ -50,6 +50,8 @@ const ReportPage = () => {
         //     data.filter((pull) => pull.phase >= sessionData.prog_phase)
         //   );
         // } else {
+        //   setPullsArray(data);
+        // }
       } catch (error) {
         console.error(error);
       }
@@ -64,6 +66,8 @@ const ReportPage = () => {
       (pull) => pull.phase >= sessionData.prog_phase
     );
     setPullsArray(filteredPullsArray);
+  }
+
   return (
     <main className="report">
       {sessionData ? (
@@ -110,7 +114,6 @@ const ReportPage = () => {
           <section className="report__section">
             <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
             <ul className="report__pulls-list">
-              {pullsArray.map((pull) => {
               {progPullsOnly
                 ? progPullsOnly.map((pull) => {
                     return <Pull key={pull.id} pullData={pull} />;
