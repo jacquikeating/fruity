@@ -39,19 +39,7 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}/pulls`
         );
         let data = result.data;
-
         setPullsArray(data);
-        // setProgPullsOnly(
-        //   data.filter((pull) => pull.phase >= sessionData.prog_phase)
-        // );
-
-        // if (progPullsOnly) {
-        //   setPullsArray(
-        //     data.filter((pull) => pull.phase >= sessionData.prog_phase)
-        //   );
-        // } else {
-        //   setPullsArray(data);
-        // }
       } catch (error) {
         console.error(error);
       }
@@ -65,7 +53,15 @@ const ReportPage = () => {
     const filteredPullsArray = pullsArray.filter(
       (pull) => pull.phase >= sessionData.prog_phase
     );
-    setPullsArray(filteredPullsArray);
+    return filteredPullsArray;
+  }
+
+  function handleCheckbox() {
+    if (progPullsOnly) {
+      setProgPullsOnly(false);
+    } else {
+      setProgPullsOnly(true);
+    }
   }
 
   return (
@@ -100,7 +96,7 @@ const ReportPage = () => {
               {findStruggleMech(pullsArray)}
             </p>
             <p className="report__extra-info">
-              <span className="report__extra-info--bold">Gold Stars:</span>{" "}
+              <span className="report__extra-info--bold">Gold Stars:</span>
               {findGoldStars(pullsArray, sessionData.roster)}
             </p>
           </section>
@@ -112,10 +108,25 @@ const ReportPage = () => {
             />
           </section>
           <section className="report__section">
-            <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+            <div className="report__pulls-heading">
+              <h2 className="report__subheading">
+                Pulls ({pullsArray.length})
+              </h2>
+              <label className="report__checkbox-label">
+                <input
+                  type="checkbox"
+                  name="progOnlyCheckbox"
+                  className="report__prog-only-checkbox"
+                  value={progPullsOnly}
+                  onChange={handleCheckbox}
+                />
+                Show prog pulls only
+              </label>
+            </div>
+
             <ul className="report__pulls-list">
               {progPullsOnly
-                ? progPullsOnly.map((pull) => {
+                ? getProgPulls().map((pull) => {
                     return <Pull key={pull.id} pullData={pull} />;
                   })
                 : pullsArray.map((pull) => {
