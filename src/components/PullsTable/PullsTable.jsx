@@ -18,7 +18,11 @@ const PullsTable = ({ sessionData, pullsArray }) => {
         <tbody>
           <tr className="pulls-table__row">
             {columns.map((column) => {
-              return <th key={column}>{column}</th>;
+              return (
+                <th key={column} className="pulls-table__header-cell">
+                  {column}
+                </th>
+              );
             })}
           </tr>
           {pullsArray.map((pull) => {
@@ -33,16 +37,21 @@ const PullsTable = ({ sessionData, pullsArray }) => {
               clip_link,
             } = pull;
             return (
-              <tr key={`${id}`} className="pulls-table__row">
+              <tr key={`pull-${id}`} className="pulls-table__row">
                 <td
-                  key={`pull # ${id}-${pull_num_today}`}
-                  className="pulls-table__cell"
+                  key={`#${id}-${pull_num_today}`}
+                  className="pulls-table__cell pulls-table__cell--num-today"
                 >
-                  {pull_num_today}
+                  {pullNumType === "today" ? pull_num_today : id}
+                  {/* {pull_num_today}
+                  <span className="pulls-table__num-overall">{id}</span> */}
                 </td>
-                <td key={`${id}`} className="pulls-table__cell">
+                {/* <td
+                  key={`${id}`}
+                  className="pulls-table__cell pulls-table__cell--num-overall"
+                >
                   {id}
-                </td>
+                </td> */}
                 <td key={`${id}-${phase}`} className="pulls-table__cell">
                   {phase}
                 </td>
