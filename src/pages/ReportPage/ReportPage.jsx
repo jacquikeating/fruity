@@ -10,6 +10,7 @@ import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import Pull from "../../components/Pull/Pull.jsx";
 import "./ReportPage.scss";
+import session from "../../../seed_data/session.js";
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState(null);
@@ -98,7 +99,13 @@ const ReportPage = () => {
             <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
             <ul className="report__pulls-list">
               {pullsArray.map((pull) => {
-                return <Pull key={pull.id} pullData={pull} />;
+                return (
+                  <Pull
+                    key={pull.id}
+                    pullData={pull}
+                    progPhase={sessionData.prog_phase}
+                  />
+                );
               })}
             </ul>
           </section>

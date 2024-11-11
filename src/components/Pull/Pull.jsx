@@ -1,15 +1,23 @@
 import React from "react";
-import { numSuffix } from "../../utils/shared-functions";
+import { numSuffix, getTextColour } from "../../utils/shared-functions";
 import "./Pull.scss";
 
-const Pull = ({ pullData }) => {
+const Pull = ({ pullData, progPhase }) => {
   let responsiblePlayersArray = pullData.players_responsible.split(",");
   let responsiblePlayersString = responsiblePlayersArray.join(", ");
 
   return (
     <li className="pull">
       <div className="pull__nums">
-        <h3 className="pull__num-today">Pull {pullData.pull_num_today}</h3>
+        <h3
+          className={`pull__num-today
+                phases-table__cell--${getTextColour(
+                  progPhase,
+                  pullData.phase
+                )}`}
+        >
+          Pull {pullData.pull_num_today}
+        </h3>
         <p className="pull__num-total">
           {pullData.id}
           {numSuffix(pullData.id)} Overall
