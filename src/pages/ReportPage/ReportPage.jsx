@@ -1,19 +1,20 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import {
   createReadableDate,
   findGoldStars,
   findStrugglePhase,
   findStruggleMech,
 } from "../../utils/shared-functions.js";
-import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import Pull from "../../components/Pull/Pull.jsx";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
-  const [sessionData, setSessionData] = useState(null);
+  const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
+  const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
 
   useEffect(() => {
@@ -47,6 +48,21 @@ const ReportPage = () => {
     getSessionData();
     getPullsData();
   }, []);
+
+  function getProgPulls() {
+    const filteredPullsArray = pullsArray.filter(
+      (pull) => pull.phase >= sessionData.prog_phase
+    );
+    return filteredPullsArray;
+  }
+
+  function handleCheckbox() {
+    if (progPullsOnly) {
+      setProgPullsOnly(false);
+    } else {
+      setProgPullsOnly(true);
+    }
+  }
 
   return (
     <main className="report">
@@ -92,11 +108,30 @@ const ReportPage = () => {
             />
           </section>
           <section className="report__section">
-            <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+            <div className="report__pulls-heading">
+              <h2 className="report__subheading">
+                Pulls ({pullsArray.length})
+              </h2>
+              <label className="report__checkbox-label">
+                <input
+                  type="checkbox"
+                  name="progOnlyCheckbox"
+                  className="report__prog-only-checkbox"
+                  value={progPullsOnly}
+                  onChange={handleCheckbox}
+                />
+                Show prog pulls only
+              </label>
+            </div>
+
             <ul className="report__pulls-list">
-              {pullsArray.map((pull) => {
-                return <Pull key={pull.id} pullData={pull} />;
-              })}
+              {progPullsOnly
+                ? getProgPulls().map((pull) => {
+                    return <Pull key={pull.id} pullData={pull} />;
+                  })
+                : pullsArray.map((pull) => {
+                    return <Pull key={pull.id} pullData={pull} />;
+                  })}
             </ul>
           </section>
         </>
