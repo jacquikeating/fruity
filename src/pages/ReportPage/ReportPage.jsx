@@ -14,6 +14,7 @@ import "./ReportPage.scss";
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState(null);
+  const [pullsArray, setPullsArray] = useState([]);
   const { sessionID } = useParams();
 
   useEffect(() => {
@@ -29,7 +30,21 @@ const ReportPage = () => {
         console.error(error);
       }
     }
+
+    async function getPullsData() {
+      try {
+        let result = await axios.get(
+          `http://localhost:5050/sessions/${sessionID}/pulls`
+        );
+        let data = result.data;
+        setPullsArray(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     getSessionData();
+    getPullsData();
   }, []);
 
   return (
