@@ -136,15 +136,9 @@ const ReportPage = () => {
             </ul>
 
             {progPullsOnly ? (
-              <PullsTable
-                progPoint={sessionData.prog_phase}
-                pullsArray={getProgPulls()}
-              />
+              <PullsTable pullsArray={getProgPulls()} />
             ) : (
-              <PullsTable
-                progPoint={sessionData.prog_phase}
-                pullsArray={pullsArray}
-              />
+              <PullsTable pullsArray={pullsArray} />
             )}
           </section>
         </>

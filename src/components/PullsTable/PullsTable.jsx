@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./PullsTable.scss";
 
-const PullsTable = ({ progPoint, pullsArray }) => {
+const PullsTable = ({ pullsArray }) => {
   const [pullNumType, setPullNumType] = useState("today");
 
   function togglePullNumType() {
