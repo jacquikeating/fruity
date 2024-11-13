@@ -125,7 +125,10 @@ const ReportPage = () => {
               </label>
             </div>
 
-            <PullsTable sessionData={sessionData} pullsArray={pullsArray} />
+            <PullsTable
+              progPoint={sessionData.prog_phase}
+              pullsArray={pullsArray}
+            />
 
             <ul className="report__pulls-list">
               {progPullsOnly
