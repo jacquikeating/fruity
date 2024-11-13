@@ -125,11 +125,6 @@ const ReportPage = () => {
               </label>
             </div>
 
-            <PullsTable
-              progPoint={sessionData.prog_phase}
-              pullsArray={pullsArray}
-            />
-
             <ul className="report__pulls-list">
               {progPullsOnly
                 ? getProgPulls().map((pull) => {
@@ -139,6 +134,18 @@ const ReportPage = () => {
                     return <Pull key={pull.id} pullData={pull} />;
                   })}
             </ul>
+
+            {progPullsOnly ? (
+              <PullsTable
+                progPoint={sessionData.prog_phase}
+                pullsArray={getProgPulls()}
+              />
+            ) : (
+              <PullsTable
+                progPoint={sessionData.prog_phase}
+                pullsArray={pullsArray}
+              />
+            )}
           </section>
         </>
       ) : (
