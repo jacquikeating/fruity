@@ -75,17 +75,34 @@ const ReportPage = () => {
                 {createReadableDate(sessionData.date)}
               </span>
             </h1>
+            {/* <p className="report__subtitle">
+              Session {sessionData.id}
+              <span className="report__divider"> • </span>
+              Phase {sessionData.prog_phase} Prog
+            </p>
+            <p className="report__subtitle">
+              <a className="report__link" href={sessionData.twitch_link}>
+                <img src="/src/assets/25_twitch.png" className="report__icon" />
+                Twitch
+              </a>
+              <a className="report__link" href={sessionData.fflogs_link}>
+                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                FFLogs
+              </a>
+            </p> */}
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
               Phase {sessionData.prog_phase} Prog
               <span className="report__divider"> • </span>
               <a className="report__link" href={sessionData.fflogs_link}>
-                Logs
+                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                FFLogs
               </a>
               <span className="report__divider"> • </span>
               <a className="report__link" href={sessionData.twitch_link}>
-                VoD
+                <img src="/src/assets/25_twitch.png" className="report__icon" />
+                Twitch
               </a>
             </p>
 
