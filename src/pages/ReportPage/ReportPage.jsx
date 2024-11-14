@@ -95,12 +95,12 @@ const ReportPage = () => {
               Session {sessionData.id}
               <span className="report__divider"> • </span>
               Phase {sessionData.prog_phase} Prog
-              {/* <span className="report__divider"> • </span> */}
+              <span className="report__divider"> • </span>
               <a className="report__link" href={sessionData.fflogs_link}>
                 <img src="/src/assets/25_fflogs.png" className="report__icon" />
                 FFLogs
               </a>
-              {/* <span className="report__divider"> • </span> */}
+              <span className="report__divider"> • </span>
               <a className="report__link" href={sessionData.twitch_link}>
                 <img src="/src/assets/25_twitch.png" className="report__icon" />
                 Twitch
