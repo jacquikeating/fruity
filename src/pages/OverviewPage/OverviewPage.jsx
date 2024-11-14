@@ -36,6 +36,8 @@ const OverviewPage = () => {
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
       <section className="overview-page__sessions-list-section">
+        {sessionsArray.length && pullsArray.length ? (
+          <div className="overview-page__stats">
             <p className="overview-page__info">
               Total sessions: {sessionsArray.length}
             </p>
@@ -45,9 +47,17 @@ const OverviewPage = () => {
             <p className="overview-page__info">
               Current prog point: {sessionsArray[0]?.prog_phase}
             </p>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
       </section>
       <section className="overview-page__sessions-list-section">
+        {sessionsArray.length ? (
           <SessionsList sessionsArray={sessionsArray} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </section>
     </main>
   );
