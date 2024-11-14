@@ -6,20 +6,26 @@
     padding: 1rem;
     background: #0b0b0e;
     border-radius: 2px;
+    color: $text-light;
 
-    &__nums {
+    &__header {
         display: flex;
         align-items: center;
     }
 
-    &__num-today {
+    &__title {
         margin-bottom: 5px;
+        font-size: 1.4em;
     }
 
-    &__num-total {
+    &__date {
         margin-left: 0.5rem;
         font-style: italic;
         font-size: 0.9em;
         opacity: 0.7;
+    }
+
+    &__category {
+        font-weight: 500;
     }
 }
