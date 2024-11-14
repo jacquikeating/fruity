@@ -11,7 +11,6 @@ const SessionsList = () => {
       try {
         let result = await axios.get(`http://localhost:5050/sessions/`);
         let data = result.data;
-        console.log(data);
         setSessionsArray(data);
       } catch (error) {
         console.error(error);
