@@ -1,0 +1,45 @@
+@use "/src/styles/__variables" as *;
+.pulls-table {
+    border: 1px solid $bg-mid;
+    border-radius: 3px;
+    margin: 1.5rem 0;
+    background: #0b0b0f;
+
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    &__row {
+        border-bottom: 1px solid $bg-mid;
+    }
+
+    &__header-cell {
+        border: 1px solid $bg-mid;
+        text-align: left;
+        padding: 0.5rem;
+    }
+
+    &__cell {
+        border: 1px solid $bg-mid;
+        padding: 0.3rem 0.5rem;
+
+        &--num-today {
+            padding-left: 1rem;
+        }
+        &--num-overall {
+            opacity: 0.7;
+            // font-size: 0.9em;
+            font-style: italic;
+        }
+    }
+
+    &__num-overall {
+        opacity: 0.7;
+        font-size: 0.9em;
+        font-style: italic;
+    margin-left: 1rem;  
+margin-right: -1rem;  }
+
+}
