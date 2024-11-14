@@ -1,25 +1,8 @@
-import { React, useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import Session from "../Session/Session";
 import "./SessionsList.scss";
 
-const SessionsList = () => {
-  const [sessionsArray, setSessionsArray] = useState([]);
-
-  useEffect(() => {
-    async function getSessionsData() {
-      try {
-        let result = await axios.get(`http://localhost:5050/sessions/`);
-        let data = result.data;
-        setSessionsArray(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    getSessionsData();
-  }, []);
-
+const SessionsList = ({ sessionsArray }) => {
   return (
     <ul className="sessions-list">
       {sessionsArray.map((session) => {
