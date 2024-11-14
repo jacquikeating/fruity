@@ -28,4 +28,22 @@
     &__category {
         font-weight: 500;
     }
+
+    &__links-container {
+        font-weight: bold;
+        display: flex;
+        gap: 0.3em;
+        margin-bottom: 0.1em;
+    }
+
+    &__link {
+        display: flex;
+        gap: 0.4em;
+    }
+
+    &__icon {
+        margin: auto;
+        display: block;
+        transform: scale(0.75);
+    }
 }

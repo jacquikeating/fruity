@@ -21,11 +21,13 @@ const Session = ({ sessionData }) => {
         <span className="session__category">Roster: </span>
         {roster}
       </p>
-      <p className="session__body-text">
-        <a className="session__link" href={fflogs_link}>
+      <p className="session__links-container">
+        <a className="session__link" href={sessionData.fflogs_link}>
+          <img src="/src/assets/25_fflogs.png" className="session__icon" />
           FFLogs
         </a>
-        <a className="session__link" href={twitch_link}>
+        <a className="session__link" href={sessionData.twitch_link}>
+          <img src="/src/assets/25_twitch.png" className="session__icon" />
           Twitch
         </a>
       </p>
