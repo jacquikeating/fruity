@@ -45,7 +45,9 @@ const OverviewPage = () => {
               Total pulls: {pullsArray.length}
             </p>
             <p className="overview-page__info">
-              Current prog point: {sessionsArray[0]?.prog_phase}
+              {`Current prog point:
+              Phase ${sessionsArray[0]?.prog_phase}, 
+              ${sessionsArray[0]?.prog_mech}`}
             </p>
           </div>
         ) : (
