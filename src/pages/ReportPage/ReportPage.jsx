@@ -8,7 +8,6 @@ import {
   findStruggleMech,
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
-import Pull from "../../components/Pull/Pull.jsx";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
@@ -108,6 +107,7 @@ const ReportPage = () => {
               pullsArray={pullsArray}
             />
           </section>
+
           <section className="report__section">
             <div className="report__pulls-heading">
               <h2 className="report__subheading">
@@ -124,16 +124,6 @@ const ReportPage = () => {
                 Show prog pulls only
               </label>
             </div>
-
-            <ul className="report__pulls-list">
-              {progPullsOnly
-                ? getProgPulls().map((pull) => {
-                    return <Pull key={pull.id} pullData={pull} />;
-                  })
-                : pullsArray.map((pull) => {
-                    return <Pull key={pull.id} pullData={pull} />;
-                  })}
-            </ul>
 
             {progPullsOnly ? (
               <PullsTable pullsArray={getProgPulls()} />
