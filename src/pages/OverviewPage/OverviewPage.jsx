@@ -35,11 +35,20 @@ const OverviewPage = () => {
   return (
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
-      <p className="overview-page__info">
-        Total sessions: {sessionsArray.length}
-      </p>
-      <p className="overview-page__info">Total pulls: {pullsArray.length}</p>
-      <SessionsList sessionsArray={sessionsArray} />
+      <section className="overview-page__sessions-list-section">
+            <p className="overview-page__info">
+              Total sessions: {sessionsArray.length}
+            </p>
+            <p className="overview-page__info">
+              Total pulls: {pullsArray.length}
+            </p>
+            <p className="overview-page__info">
+              Current prog point: {sessionsArray[0]?.prog_phase}
+            </p>
+      </section>
+      <section className="overview-page__sessions-list-section">
+          <SessionsList sessionsArray={sessionsArray} />
+      </section>
     </main>
   );
 };
