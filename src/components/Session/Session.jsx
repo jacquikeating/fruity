@@ -1,5 +1,5 @@
 import React from "react";
-import { numSuffix } from "../../utils/shared-functions";
+import { numSuffix, createReadableDate } from "../../utils/shared-functions.js";
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {
@@ -11,7 +11,7 @@ const Session = ({ sessionData }) => {
     <li className="session">
       <div className="session__header">
         <h3 className="session__title">Session {id}</h3>
-        <p className="session__date">{date}</p>
+        <p className="session__date">{createReadableDate(date)}</p>
       </div>
       <p className="session__body-text">
         <span className="session__category">Prog Point: </span>
