@@ -35,6 +35,10 @@ const OverviewPage = () => {
   return (
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
+      <p className="overview-page__info">
+        Total sessions: {sessionsArray.length}
+      </p>
+      <p className="overview-page__info">Total pulls: {pullsArray.length}</p>
       <SessionsList sessionsArray={sessionsArray} />
     </main>
   );
