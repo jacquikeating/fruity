@@ -1,8 +1,8 @@
 import React from "react";
 import { numSuffix } from "../../utils/shared-functions";
-import "./Pull.scss";
+import "./Session.scss";
 
-const Pull = ({ pullData }) => {
+const Session = ({ pullData }) => {
   let responsiblePlayersArray = pullData.players_responsible.split(",");
   let responsiblePlayersString = responsiblePlayersArray.join(", ");
 
@@ -30,4 +30,4 @@ const Pull = ({ pullData }) => {
   );
 };
 
-export default Pull;
+export default Session;
