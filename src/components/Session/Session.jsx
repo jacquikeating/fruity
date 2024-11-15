@@ -5,7 +5,6 @@ import "./Session.scss";
 const Session = ({ sessionData }) => {
   const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_link } =
     sessionData;
-  console.log(sessionData);
 
   return (
     <li className="session">
