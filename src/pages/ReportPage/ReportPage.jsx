@@ -1,123 +1,157 @@
-import React from "react";
-import { session1 } from "../../utils/old-data";
+import { React, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import {
+  createReadableDate,
+  findGoldStars,
+  findStrugglePhase,
+  findStruggleMech,
+} from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
-import Pull from "../../components/Pull/Pull.jsx";
+import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
-  function findGoldStars() {
-    let causedWipes = [];
-    let goldStars = [];
+  const [sessionData, setSessionData] = useState();
+  const [pullsArray, setPullsArray] = useState([]);
+  const [progPullsOnly, setProgPullsOnly] = useState(false);
+  const { sessionID } = useParams();
 
-    session1.pulls.map((pull) => {
-      pull.playerNames.forEach((playerName) => {
-        if (!causedWipes.includes(playerName)) {
-          causedWipes.push(playerName);
-        }
-      });
-    });
-
-    session1.players.forEach((player) => {
-      if (!causedWipes.includes(player)) {
-        goldStars.push(player);
+  useEffect(() => {
+    async function getSessionData() {
+      try {
+        let result = await axios.get(
+          `http://localhost:5050/sessions/${sessionID}`
+        );
+        let data = result.data[0];
+        const rosterArray = (data.roster = data.roster.split(","));
+        data.roster = rosterArray;
+        setSessionData(data);
+        createReadableDate(data.date);
+      } catch (error) {
+        console.error(error);
       }
-    });
-
-    if (goldStars.length === 0) {
-      return "None";
     }
 
-    return goldStars;
+    async function getPullsData() {
+      try {
+        let result = await axios.get(
+          `http://localhost:5050/sessions/${sessionID}/pulls`
+        );
+        let data = result.data;
+        setPullsArray(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getSessionData();
+    getPullsData();
+  }, []);
+
+  function getProgPulls() {
+    const filteredPullsArray = pullsArray.filter(
+      (pull) => pull.phase >= sessionData.prog_phase
+    );
+    return filteredPullsArray;
   }
 
-  const findStrugglePhase = (arr) => {
-    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
-      accumulatedObject[thisPull.phase] =
-        (accumulatedObject[thisPull.phase] ?? 0) + 1;
-      return accumulatedObject;
-    }, {});
-
-    const tallyArray = Object.entries(tallyObject);
-
-    const highestCount = tallyArray.reduce(
-      (currentHighest, thisItem) => {
-        if (thisItem[1] >= currentHighest[1]) {
-          return thisItem;
-        } else {
-          return currentHighest;
-        }
-      },
-      [null, 0]
-    );
-    return `${highestCount[0]} (${highestCount[1]})`;
-  };
-
-  const findStruggleMech = (arr) => {
-    const tallyObject = arr.reduce((accumulatedObject, thisPull) => {
-      accumulatedObject[thisPull.mech] =
-        (accumulatedObject[thisPull.mech] ?? 0) + 1;
-      return accumulatedObject;
-    }, {});
-
-    const tallyArray = Object.entries(tallyObject);
-
-    const highestCount = tallyArray.reduce(
-      (currentHighest, thisItem) => {
-        if (thisItem[1] >= currentHighest[1]) {
-          return thisItem;
-        } else {
-          return currentHighest;
-        }
-      },
-      [null, 0]
-    );
-    return `${highestCount[0]} (${highestCount[1]})`;
-  };
+  function handleCheckbox() {
+    if (progPullsOnly) {
+      setProgPullsOnly(false);
+    } else {
+      setProgPullsOnly(true);
+    }
+  }
 
   return (
     <main className="report">
-      <section className="report__section">
-        <h1 className="report__heading">
-          Report: <span className="report__date">{session1.sessionDate}</span>
-        </h1>
-        <p className="report__subtitle">
-          Session {session1.sessionNum}
-          <span className="report__divider"> • </span>
-          Phase {session1.progPoint} Prog
-          <span className="report__divider"> • </span>
-          <a className="report__link" href={session1.fflogsLink}>
-            Logs
-          </a>
-          <span className="report__divider"> • </span>
-          <a className="report__link" href={session1.twitchLink}>
-            VoD
-          </a>
-        </p>
+      {sessionData ? (
+        <>
+          <section className="report__section">
+            <h1 className="report__heading">
+              Report:{" "}
+              <span className="report__date">
+                {createReadableDate(sessionData.date)}
+              </span>
+            </h1>
+            {/* <p className="report__subtitle">
+              Session {sessionData.id}
+              <span className="report__divider"> • </span>
+              Phase {sessionData.prog_phase} Prog
+            </p>
+            <p className="report__subtitle">
+              <a className="report__link" href={sessionData.twitch_link}>
+                <img src="/src/assets/25_twitch.png" className="report__icon" />
+                Twitch
+              </a>
+              <a className="report__link" href={sessionData.fflogs_link}>
+                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                FFLogs
+              </a>
+            </p> */}
+            <p className="report__subtitle">
+              Session {sessionData.id}
+              <span className="report__divider"> • </span>
+              Phase {sessionData.prog_phase} Prog
+              <span className="report__divider"> • </span>
+              <a className="report__link" href={sessionData.fflogs_link}>
+                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                FFLogs
+              </a>
+              <span className="report__divider"> • </span>
+              <a className="report__link" href={sessionData.twitch_link}>
+                <img src="/src/assets/25_twitch.png" className="report__icon" />
+                Twitch
+              </a>
+            </p>
 
-        <p className="report__extra-info">
-          <span className="report__extra-info--bold">Most Wipes:</span> P
-          {findStrugglePhase(session1.pulls)}
-          <span className="report__divider"> • </span>
-          {findStruggleMech(session1.pulls)}
-        </p>
-        <p className="report__extra-info">
-          <span className="report__extra-info--bold">Gold Stars:</span>{" "}
-          {findGoldStars()}
-        </p>
-      </section>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Most Wipes:</span> P
+              {findStrugglePhase(pullsArray)}
+              <span className="report__divider"> • </span>
+              {findStruggleMech(pullsArray)}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Gold Stars: </span>
+              {findGoldStars(pullsArray, sessionData.roster)}
+            </p>
+          </section>
 
-      <section className="report__section">
-        <PhaseBreakdownTable sessionData={session1} />
-      </section>
+          <section className="report__section">
+            <PhaseBreakdownTable
+              sessionData={sessionData}
+              pullsArray={pullsArray}
+            />
+          </section>
 
-      <section className="report__section">
-        <h2 className="report__subheading">Pulls ({session1.pulls.length})</h2>
-        <ul className="report__pulls-list">
-          {session1.pulls.map((pull) => {
-            return <Pull key={pull.pullNumTotal} pullData={pull} />;
-          })}
-        </ul>
-      </section>
+          <section className="report__section">
+            <div className="report__pulls-heading">
+              <h2 className="report__subheading">
+                Pulls ({pullsArray.length})
+              </h2>
+              <label className="report__checkbox-label">
+                <input
+                  type="checkbox"
+                  name="progOnlyCheckbox"
+                  className="report__prog-only-checkbox"
+                  value={progPullsOnly}
+                  onChange={handleCheckbox}
+                />
+                Show prog pulls only
+              </label>
+            </div>
+
+            {progPullsOnly ? (
+              <PullsTable pullsArray={getProgPulls()} />
+            ) : (
+              <PullsTable pullsArray={pullsArray} />
+            )}
+          </section>
+        </>
+      ) : (
+        <p>Could not retrieve data for session #{sessionID}</p>
+      )}
     </main>
   );
 };

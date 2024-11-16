@@ -4,11 +4,11 @@
     border: 1px solid $borders;
     border-radius: 3px;
     margin: 1.5rem 0;
+    max-width: 750px;
 
     &__table {
         border-collapse: collapse;
         width: 100%;
-        max-width: 750px;
         font-weight: 500;
         background: $bg-mid;
         font-size: 17px;
