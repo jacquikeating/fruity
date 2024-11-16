@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
 
@@ -35,7 +36,7 @@ const OverviewPage = () => {
   return (
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
-      <section className="overview-page__sessions-list-section">
+      <section className="overview-page__section">
         {sessionsArray.length && pullsArray.length ? (
           <div className="overview-page__stats">
             <p className="overview-page__info">
@@ -49,12 +50,17 @@ const OverviewPage = () => {
               Phase ${sessionsArray[0]?.prog_phase}, 
               ${sessionsArray[0]?.prog_mech}`}
             </p>
+            <PhaseBreakdownTable
+              sessionData={sessionsArray[0]}
+              pullsArray={pullsArray}
+            />
           </div>
         ) : (
           <p>Loading...</p>
         )}
       </section>
-      <section className="overview-page__sessions-list-section">
+
+      <section className="overview-page__section">
         {sessionsArray.length ? (
           <SessionsList sessionsArray={sessionsArray} />
         ) : (
