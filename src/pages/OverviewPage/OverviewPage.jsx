@@ -35,7 +35,7 @@ const OverviewPage = () => {
   return (
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
-      <section className="overview-page__sessions-list-section">
+      <section className="overview-page__section">
         {sessionsArray.length && pullsArray.length ? (
           <div className="overview-page__stats">
             <p className="overview-page__info">
@@ -54,7 +54,7 @@ const OverviewPage = () => {
           <p>Loading...</p>
         )}
       </section>
-      <section className="overview-page__sessions-list-section">
+      <section className="overview-page__section">
         {sessionsArray.length ? (
           <SessionsList sessionsArray={sessionsArray} />
         ) : (
