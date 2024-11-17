@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
@@ -10,8 +11,8 @@ const AddDataPage = () => {
   const [sessionData, setSessionData] = useState({});
 
   function handleSessionFormData(data) {
-    console.log(data);
     setSessionData(data);
+    setSessionInProgress(true);
   }
 
   return (
@@ -26,6 +27,12 @@ const AddDataPage = () => {
         <>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Session Info</h2>
+            <p>Session: {sessionData.num}</p>
+            <p>Date: {createReadableDate(sessionData.date)}</p>
+            <p>Roster: {sessionData.roster}</p>
+            <p>
+              Prog Point: Phase {sessionData.progPhase}, {sessionData.progMech}
+            </p>
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Add a Pull</h2>
