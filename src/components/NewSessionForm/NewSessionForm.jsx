@@ -10,7 +10,7 @@ const NewSessionForm = ({ handleSessionFormData }) => {
   function handleSubmit() {
     handleSessionFormData({
       num: num,
-      date: new Date(),
+      date: new Date().toISOString().split("T")[0],
       roster: roster,
       progPhase: progPhase,
       progMech: progMech,
