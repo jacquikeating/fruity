@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
@@ -13,6 +14,7 @@ const AddDataPage = () => {
       {!sessionInProgress ? (
         <section className="add-data__section">
           <h2 className="add-data__section-heading">New Session</h2>
+          <NewSessionForm />
         </section>
       ) : (
         <>
