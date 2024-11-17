@@ -1,14 +1,24 @@
 import { React, useState } from "react";
 import "./NewSessionForm.scss";
 
-const NewSessionForm = () => {
+const NewSessionForm = ({ handleSessionFormData }) => {
   const [num, setNum] = useState("");
   const [roster, setRoster] = useState("");
   const [progPhase, setProgPhase] = useState("");
   const [progMech, setProgMech] = useState("");
 
+  function handleSubmit() {
+    handleSessionFormData({
+      num: num,
+      date: new Date(),
+      roster: roster,
+      progPhase: progPhase,
+      progMech: progMech,
+    });
+  }
+
   return (
-      <button type="submit">Submit</button>
+    <>
       <form>
         <label className="form__label" htmlFor="session-num">
           Session #
@@ -55,6 +65,8 @@ const NewSessionForm = () => {
           />
         </label>
       </form>
+      <button onClick={handleSubmit}>Start</button>
+    </>
   );
 };
 
