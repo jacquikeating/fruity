@@ -7,6 +7,12 @@ import "./AddDataPage.scss";
 const AddDataPage = () => {
   const [pullsArray, setPullsArray] = useState([]);
   const [sessionInProgress, setSessionInProgress] = useState(false);
+  const [sessionData, setSessionData] = useState({});
+
+  function handleSessionFormData(data) {
+    console.log(data);
+    setSessionData(data);
+  }
 
   return (
     <main className="add-data">
@@ -14,7 +20,7 @@ const AddDataPage = () => {
       {!sessionInProgress ? (
         <section className="add-data__section">
           <h2 className="add-data__section-heading">New Session</h2>
-          <NewSessionForm />
+          <NewSessionForm handleSessionFormData={handleSessionFormData} />
         </section>
       ) : (
         <>
