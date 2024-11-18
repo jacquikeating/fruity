@@ -18,55 +18,53 @@ const NewSessionForm = ({ handleSessionFormData }) => {
   }
 
   return (
-    <>
-      <form>
-        <label className="form__label" htmlFor="session-num">
-          Session #
-          <input
-            className="form__input form__input--number"
-            type="number"
-            name="session-num"
-            id="session-num"
-            value={num}
-            onChange={(e) => setNum(e.target.value)}
-          />
-        </label>
-        <label className="form__label" htmlFor="roster">
-          Roster
-          <input
-            className="form__input form__input--text"
-            type="text"
-            name="roster"
-            id="roster"
-            value={roster}
-            onChange={(e) => setRoster(e.target.value)}
-          />
-        </label>
-        <label className="form__label" htmlFor="prog-phase">
-          Prog Phase
-          <input
-            className="form__input form__input--number"
-            type="number"
-            name="prog-phase"
-            id="prog-phase"
-            value={progPhase}
-            onChange={(e) => setProgPhase(e.target.value)}
-          />
-        </label>
-        <label className="form__label" htmlFor="prog-mech">
-          Prog Mech
-          <input
-            className="form__input form__input--text"
-            type="text"
-            name="prog-mech"
-            id="prog-mech"
-            value={progMech}
-            onChange={(e) => setProgMech(e.target.value)}
-          />
-        </label>
-      </form>
+    <div className="session-form">
+      <label className="session-form__label" htmlFor="session-num">
+        Session #
+        <input
+          className="session-form__input session-form__input--number"
+          type="number"
+          name="session-num"
+          id="session-num"
+          value={num}
+          onChange={(e) => setNum(e.target.value)}
+        />
+      </label>
+      <label className="session-form__label" htmlFor="roster">
+        Roster
+        <input
+          className="session-form__input form__input--text"
+          type="text"
+          name="roster"
+          id="roster"
+          value={roster}
+          onChange={(e) => setRoster(e.target.value)}
+        />
+      </label>
+      <label className="session-form__label" htmlFor="prog-phase">
+        Prog Phase
+        <input
+          className="session-form__input form__input--number"
+          type="number"
+          name="prog-phase"
+          id="prog-phase"
+          value={progPhase}
+          onChange={(e) => setProgPhase(e.target.value)}
+        />
+      </label>
+      <label className="session-form__label" htmlFor="prog-mech">
+        Prog Mech
+        <input
+          className="session-form__input session-form__input--text"
+          type="text"
+          name="prog-mech"
+          id="prog-mech"
+          value={progMech}
+          onChange={(e) => setProgMech(e.target.value)}
+        />
+      </label>
       <button onClick={handleSubmit}>Start</button>
-    </>
+    </div>
   );
 };
 
