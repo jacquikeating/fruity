@@ -1,5 +1,5 @@
 export function createReadableDate(sqlDate) {
-  const readableDate = new Date(sqlDate).toLocaleString(undefined, {
+  const readableDate = new Date(sqlDate).toLocaleString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
