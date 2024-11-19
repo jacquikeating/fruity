@@ -8,7 +8,7 @@ const NewSessionForm = ({ handleSessionFormData }) => {
   const [progMech, setProgMech] = useState("");
 
   function handleSubmit() {
-    handleSessionFormData({
+    const sessionObj = {
       num: num,
       date: new Date().toISOString(),
       roster: roster,
