@@ -5,7 +5,7 @@ import "./NewPullForm.scss";
 const NewPullForm = ({ roster }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
-  const [rosterArray, setRosterArray] = useState(roster.split(","));
+  const [rosterArray, setRosterArray] = useState(roster.split(", "));
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
