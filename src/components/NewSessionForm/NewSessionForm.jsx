@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import axios from "axios";
 import "./NewSessionForm.scss";
 
 const NewSessionForm = ({ handleSessionFormData }) => {
@@ -14,7 +15,22 @@ const NewSessionForm = ({ handleSessionFormData }) => {
       roster: roster,
       progPhase: progPhase,
       progMech: progMech,
-    });
+    };
+    handleSessionFormData(sessionObj);
+    addNewSession(sessionObj);
+  }
+
+  async function addNewSession(sessionObj) {
+    try {
+      const res = await axios.post(
+        `http://localhost:5050/sessions/`,
+        sessionObj
+      );
+      let data = result.data;
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
