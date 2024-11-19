@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import axios from "axios";
+import { convertObjectToJson } from "../../utils/shared-functions";
 import "./NewSessionForm.scss";
 
 const NewSessionForm = ({ handleSessionFormData }) => {
@@ -17,17 +18,17 @@ const NewSessionForm = ({ handleSessionFormData }) => {
       progMech: progMech,
     };
     handleSessionFormData(sessionObj);
-    addNewSession(sessionObj);
+    let sessionObjToPost = { ...sessionObj };
+    delete sessionObjToPost.num;
+    addNewSession(sessionObjToPost);
   }
 
-  async function addNewSession(sessionObj) {
+  async function addNewSession(sessionObjToPost) {
     try {
-      const res = await axios.post(
+      await axios.post(
         `http://localhost:5050/sessions/`,
-        sessionObj
+        convertObjectToJson(sessionObjToPost)
       );
-      let data = result.data;
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
