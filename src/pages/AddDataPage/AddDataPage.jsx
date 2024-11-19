@@ -36,7 +36,7 @@ const AddDataPage = () => {
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Add a Pull</h2>
-            <NewPullForm />
+            <NewPullForm roster={sessionData.roster} />
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Pulls</h2>
