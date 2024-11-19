@@ -36,3 +36,14 @@ export const sessionPulls = async (req, res) => {
       );
   }
 };
+
+export const addSession = async (req, res) => {
+  try {
+    const data = await knex("session").insert(req.body);
+    console.log(data);
+    const newSessionURL = `/report/${data[0]}`;
+    res.status(201).location(newSessionURL).end(newSessionURL);
+  } catch (err) {
+    res.status(400).send(`Error creating Warehouse: ${err}`);
+  }
+};
