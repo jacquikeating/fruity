@@ -5,6 +5,7 @@ import "./NewPullForm.scss";
 const NewPullForm = ({ roster }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
+  const [rosterArray, setRosterArray] = useState(roster.split(","));
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -138,93 +139,26 @@ const NewPullForm = ({ roster }) => {
         id="cause"
       />
 
-      <fieldset className="form__fieldset">
-        <legend className="form__label">Players Involved</legend>
-
-        <div className="checkbox-group">
-          <label className="form__label" htmlFor="Chro">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Chro"
-              id="Chro"
-            />
-            Chro
-          </label>
-
-          <label className="form__label" htmlFor="Sophia">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Sophia"
-              id="Sophia"
-            />
-            Sophia
-          </label>
-
-          <label className="form__label" htmlFor="Ella">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Ella"
-              id="Ella"
-            />
-            Ella
-          </label>
-
-          <label className="form__label" htmlFor="Ruvien">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Ruvien"
-              id="Ruvien"
-            />
-            Ruvien
-          </label>
-        </div>
-
-        <div className="checkbox-group">
-          <label className="form__label" htmlFor="Quil">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Quil"
-              id="Quil"
-            />
-            Quil
-          </label>
-
-          <label className="form__label" htmlFor="Char">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Char"
-              id="Char"
-            />
-            Char
-          </label>
-
-          <label className="form__label" htmlFor="Hypatia">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Hypatia"
-              id="Hypatia"
-            />
-            Hypatia
-          </label>
-
-          <label className="form__label" htmlFor="Laveera">
-            <input
-              className="form__checkbox"
-              type="checkbox"
-              name="Laveera"
-              id="Laveera"
-            />
-            Laveera
-          </label>
-        </div>
-      </fieldset>
+      {rosterArray.length ? (
+        <fieldset className="form__fieldset">
+          <legend className="form__label">Players Involved</legend>
+          {rosterArray.map((player) => {
+            return (
+              <label className="form__label" htmlFor={player}>
+                <input
+                  className="form__checkbox"
+                  type="checkbox"
+                  name={player}
+                  id={player}
+                />
+                {player}
+              </label>
+            );
+          })}
+        </fieldset>
+      ) : (
+        "Loading..."
+      )}
 
       <button type="submit" className="form__button">
         Save
