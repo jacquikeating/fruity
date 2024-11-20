@@ -26,6 +26,32 @@ const NewPullForm = ({ roster }) => {
     ["Transition", "Exas", "Akh Morn", "Enrage"],
   ];
 
+  function handleSubmit() {
+    const pullObj = {
+      // num: num,
+      // date: new Date().toISOString(),
+      // roster: roster,
+      // prog_phase: progPhase,
+      // prog_mech: progMech,
+      // fflogs_link: ffLogsLink,
+      // twitch_link: twitchLink,
+    };
+
+    handlePullFormData(pullObj);
+
+    let pullObjToPost = { ...pullObj };
+    delete pullObjToPost.num;
+    addNewPull(pullObjToPost);
+  }
+
+  async function addNewPull(pullObjToPost) {
+    try {
+      await axios.post(`http://localhost:5050/pulls/`, pullObjToPost);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <form className="form">
       <label className="form__label" htmlFor="phase">
