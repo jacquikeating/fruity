@@ -112,22 +112,3 @@ export function getTextColour(progPoint, phase) {
     }
   }
 }
-
-export function convertObjectToJson(object) {
-  const stringifiedKeys = {
-    date: "date",
-    roster: "roster",
-    progPhase: "prog_phase",
-    progMech: "prog_mech",
-    ffLogsLink: "fflogs_link",
-    twitchLink: "twitch_link",
-  };
-
-  let modifiedObject = {};
-
-  for (let key of Object.keys(object)) {
-    modifiedObject[stringifiedKeys[key]] = object[key];
-  }
-
-  return modifiedObject;
-}
