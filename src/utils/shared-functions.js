@@ -119,6 +119,8 @@ export function convertObjectToJson(object) {
     roster: "roster",
     progPhase: "prog_phase",
     progMech: "prog_mech",
+    ffLogsLink: "fflogs_link",
+    twitchLink: "twitch_link",
   };
 
   let modifiedObject = {};

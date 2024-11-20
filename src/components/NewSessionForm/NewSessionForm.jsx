@@ -8,6 +8,8 @@ const NewSessionForm = ({ handleSessionFormData }) => {
   const [roster, setRoster] = useState("");
   const [progPhase, setProgPhase] = useState("");
   const [progMech, setProgMech] = useState("");
+  const [ffLogsLink, setFFLogsLink] = useState("");
+  const [twitchLink, setTwitchLink] = useState("");
 
   function handleSubmit() {
     const sessionObj = {
@@ -16,6 +18,8 @@ const NewSessionForm = ({ handleSessionFormData }) => {
       roster: roster,
       progPhase: progPhase,
       progMech: progMech,
+      ffLogsLink: ffLogsLink,
+      twitchLink: twitchLink,
     };
     handleSessionFormData(sessionObj);
     let sessionObjToPost = { ...sessionObj };
@@ -78,6 +82,28 @@ const NewSessionForm = ({ handleSessionFormData }) => {
           id="prog-mech"
           value={progMech}
           onChange={(e) => setProgMech(e.target.value)}
+        />
+      </label>
+      <label className="session-form__label" htmlFor="fflogs-link">
+        FFLogs Link
+        <input
+          className="session-form__input session-form__input--text"
+          type="text"
+          name="fflogs-link"
+          id="fflogs-link"
+          value={ffLogsLink}
+          onChange={(e) => setFFLogsLink(e.target.value)}
+        />
+      </label>
+      <label className="session-form__label" htmlFor="twitch-link">
+        Twitch Link
+        <input
+          className="session-form__input session-form__input--text"
+          type="text"
+          name="twitch-link"
+          id="twitch-link"
+          value={twitchLink}
+          onChange={(e) => setTwitchLink(e.target.value)}
         />
       </label>
       <button onClick={handleSubmit}>Start</button>
