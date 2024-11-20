@@ -15,6 +15,10 @@ const AddDataPage = () => {
     setSessionInProgress(true);
   }
 
+  function handlePullFormData(data) {
+    setPullsArray(data);
+  }
+
   return (
     <main className="add-data">
       <h1 className="add-data__heading">Add Data</h1>
@@ -40,7 +44,10 @@ const AddDataPage = () => {
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Pulls</h2>
-            <PullsTable pullsArray={pullsArray} />
+            <PullsTable
+              pullsArray={pullsArray}
+              handlePullFormData={handlePullFormData}
+            />
           </section>
         </>
       )}

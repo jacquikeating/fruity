@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import Picker from "react-mobile-picker";
 import "./NewPullForm.scss";
 
-const NewPullForm = ({ roster }) => {
+const NewPullForm = ({ roster, handlePullFormData }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
   const [rosterArray, setRosterArray] = useState(roster.split(", "));
