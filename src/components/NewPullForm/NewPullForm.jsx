@@ -2,10 +2,12 @@ import { React, useState } from "react";
 import Picker from "react-mobile-picker";
 import "./NewPullForm.scss";
 
-const NewPullForm = ({ roster, handlePullFormData }) => {
+const NewPullForm = ({ sessionData, handlePullFormData }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
-  const [rosterArray, setRosterArray] = useState(roster.split(", "));
+  const [rosterArray, setRosterArray] = useState(
+    sessionData.roster.split(", ")
+  );
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
