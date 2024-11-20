@@ -20,7 +20,9 @@ const NewSessionForm = ({ handleSessionFormData }) => {
       fflogs_link: ffLogsLink,
       twitch_link: twitchLink,
     };
+
     handleSessionFormData(sessionObj);
+
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
     addNewSession(sessionObjToPost);
