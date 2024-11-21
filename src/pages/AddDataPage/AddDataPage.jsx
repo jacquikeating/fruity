@@ -40,14 +40,15 @@ const AddDataPage = () => {
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Add a Pull</h2>
-            <NewPullForm sessionData={sessionData} />
-          </section>
-          <section className="add-data__section">
-            <h2 className="add-data__section-heading">Pulls</h2>
-            <PullsTable
+            <NewPullForm
+              sessionData={sessionData}
               pullsArray={pullsArray}
               handlePullFormData={handlePullFormData}
             />
+          </section>
+          <section className="add-data__section">
+            <h2 className="add-data__section-heading">Pulls</h2>
+            <PullsTable pullsArray={pullsArray} />
           </section>
         </>
       )}
