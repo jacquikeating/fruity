@@ -2,12 +2,15 @@ import { React, useState } from "react";
 import Picker from "react-mobile-picker";
 import "./NewPullForm.scss";
 
-const NewPullForm = ({ sessionData, handlePullFormData }) => {
+const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
   const [rosterArray, setRosterArray] = useState(
     sessionData.roster.split(", ")
   );
+  const [cause, setCause] = useState("");
+  const [logLink, setLogLink] = useState("");
+  const [clipLink, setClipLink] = useState("");
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -28,22 +31,21 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     ["Transition", "Exas", "Akh Morn", "Enrage"],
   ];
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     const pullObj = {
-      // num: num,
-      // date: new Date().toISOString(),
-      // roster: roster,
-      // prog_phase: progPhase,
-      // prog_mech: progMech,
-      // fflogs_link: ffLogsLink,
-      // twitch_link: twitchLink,
+      session_id: sessionData.num,
+      pull_num_today: pullsArray.length + 1,
+      phase: selectedPhase,
+      mech: selectedMech,
+      // prog_point_reached: checkProgPoint(),
+      cause: cause,
+      log_link: logLink,
+      clip_link: clipLink,
     };
-
-    handlePullFormData(pullObj);
-
-    let pullObjToPost = { ...pullObj };
-    delete pullObjToPost.num;
-    addNewPull(pullObjToPost);
+    console.log(pullObj);
+    // handlePullFormData(pullObj);
+    // addNewPull(pullObj);
   }
 
   async function addNewPull(pullObjToPost) {
@@ -165,6 +167,10 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         type="text"
         name="cause"
         id="cause"
+        value={cause}
+        onChange={(e) => {
+          setCause(e.target.value);
+        }}
       />
 
       {rosterArray.length ? (
@@ -178,6 +184,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                   type="checkbox"
                   name={player}
                   id={player}
+                  value={player}
                 />
                 {player}
               </label>
@@ -188,7 +195,35 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         "Loading..."
       )}
 
-      <button type="submit" className="form__button">
+      <label className="form__label" htmlFor="log-link">
+        Log
+      </label>
+      <input
+        className="form__input form__input--text"
+        type="text"
+        name="log-link"
+        id="log-link"
+        value={logLink}
+        onChange={(e) => {
+          setLogLink(e.target.value);
+        }}
+      />
+
+      <label className="form__label" htmlFor="clip-link">
+        Clip
+      </label>
+      <input
+        className="form__input form__input--text"
+        type="text"
+        name="clip-link"
+        id="clip-link"
+        value={clipLink}
+        onChange={(e) => {
+          setClipLink(e.target.value);
+        }}
+      />
+
+      <button type="submit" className="form__button" onClick={handleSubmit}>
         Save
       </button>
     </form>
