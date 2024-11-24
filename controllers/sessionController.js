@@ -19,7 +19,7 @@ export const singleSession = async (req, res) => {
     res
       .status(400)
       .send(
-        `Error retrieving inventories for Warehouse ${req.params.sessionID}: ${err}`
+        `Error retrieving data for session ${req.params.sessionID}: ${err}`
       );
   }
 };
@@ -32,7 +32,7 @@ export const sessionPulls = async (req, res) => {
     res
       .status(400)
       .send(
-        `Error retrieving inventories for Warehouse ${req.params.sessionID}: ${err}`
+        `Error retrieving pulls data for session ${req.params.sessionID}: ${err}`
       );
   }
 };
@@ -44,6 +44,6 @@ export const addSession = async (req, res) => {
     const newSessionURL = `/report/${data[0]}`;
     res.status(201).location(newSessionURL).end(newSessionURL);
   } catch (err) {
-    res.status(400).send(`Error creating Warehouse: ${err}`);
+    res.status(400).send(`Error creating session: ${err}`);
   }
 };
