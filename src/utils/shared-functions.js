@@ -112,3 +112,19 @@ export function getTextColour(progPoint, phase) {
     }
   }
 }
+
+export function checkIfProgPointReached(progPhase, wipePhase) {
+  let cleanupPhase = progPhase - 1;
+
+  if (wipePhase < cleanupPhase) {
+    return "old";
+  } else if (wipePhase == cleanupPhase) {
+    return "cleanup";
+  } else if (wipePhase == progPhase) {
+    return "target";
+  } else if (wipePhase > progPhase) {
+    return "newphase";
+  } else {
+    return null;
+  }
+}
