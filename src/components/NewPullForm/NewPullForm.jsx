@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import Picker from "react-mobile-picker";
+import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
@@ -52,11 +53,15 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   function handleSubmit(e) {
     e.preventDefault();
     const pullObj = {
-      session_id: sessionData.num,
+      session_id: Number(sessionData.num),
       pull_num_today: pullsArray.length + 1,
       phase: selectedPhase,
       mech: selectedMech,
-      // prog_point_reached: checkProgPoint(),
+      prog_point_reached: checkIfProgPointReached(
+        sessionData.prog_phase,
+        selectedPhase
+      ),
+      players_responsible: responsiblePlayersArray,
       cause: cause,
       log_link: logLink,
       clip_link: clipLink,
