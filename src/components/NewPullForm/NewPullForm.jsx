@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import Picker from "react-mobile-picker";
+import axios from "axios";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
@@ -66,9 +67,8 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
       log_link: logLink,
       clip_link: clipLink,
     };
-    console.log(pullObj);
-    // handlePullFormData(pullObj);
-    // addNewPull(pullObj);
+    handlePullFormData(pullObj);
+    addNewPull(pullObj);
   }
 
   async function addNewPull(pullObjToPost) {
