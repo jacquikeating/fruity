@@ -35,7 +35,8 @@ const AddDataPage = () => {
             <p>Date: {createReadableDate(sessionData.date)}</p>
             <p>Roster: {sessionData.roster}</p>
             <p>
-              Prog Point: Phase {sessionData.progPhase}, {sessionData.progMech}
+              Prog Point: Phase {sessionData.prog_phase},{" "}
+              {sessionData.prog_mech}
             </p>
           </section>
           <section className="add-data__section">
