@@ -13,7 +13,7 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`http://localhost:5050/sessions/`);
         let data = result.data;
-        setSessionsArray(data);
+        setSessionsArray(data.reverse());
       } catch (error) {
         console.error(error);
       }

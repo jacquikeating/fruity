@@ -10,8 +10,8 @@ export function createReadableDate(sqlDate) {
 }
 
 export function numSuffix(number) {
-  const lastNumeral = JSON.stringify(number).slice(-1);
-  const last2Numerals = JSON.stringify(number).slice(-2);
+  const lastNumeral = number.slice(-1);
+  const last2Numerals = number.slice(-2);
   if (lastNumeral == 1 && last2Numerals != 11) {
     return "st";
   } else if (lastNumeral == 2 && last2Numerals != 12) {
