@@ -1,19 +1,20 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import {
   createReadableDate,
   findGoldStars,
   findStrugglePhase,
   findStruggleMech,
 } from "../../utils/shared-functions.js";
-import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
-import Pull from "../../components/Pull/Pull.jsx";
+import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
 const ReportPage = () => {
-  const [sessionData, setSessionData] = useState(null);
+  const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
+  const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
 
   useEffect(() => {
@@ -38,8 +39,6 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}/pulls`
         );
         let data = result.data;
-        // const responsiblePlayersArray = data.players_responsible.split(",");
-        // data.players_responsible = responsiblePlayersArray;
         setPullsArray(data);
       } catch (error) {
         console.error(error);
@@ -49,6 +48,21 @@ const ReportPage = () => {
     getSessionData();
     getPullsData();
   }, []);
+
+  function getProgPulls() {
+    const filteredPullsArray = pullsArray.filter(
+      (pull) => pull.phase >= sessionData.prog_phase
+    );
+    return filteredPullsArray;
+  }
+
+  function handleCheckbox() {
+    if (progPullsOnly) {
+      setProgPullsOnly(false);
+    } else {
+      setProgPullsOnly(true);
+    }
+  }
 
   return (
     <main className="report">
@@ -61,17 +75,34 @@ const ReportPage = () => {
                 {createReadableDate(sessionData.date)}
               </span>
             </h1>
+            {/* <p className="report__subtitle">
+              Session {sessionData.id}
+              <span className="report__divider"> • </span>
+              Phase {sessionData.prog_phase} Prog
+            </p>
+            <p className="report__subtitle">
+              <a className="report__link" href={sessionData.twitch_link}>
+                <img src="/src/assets/25_twitch.png" className="report__icon" />
+                Twitch
+              </a>
+              <a className="report__link" href={sessionData.fflogs_link}>
+                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                FFLogs
+              </a>
+            </p> */}
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
               Phase {sessionData.prog_phase} Prog
               <span className="report__divider"> • </span>
               <a className="report__link" href={sessionData.fflogs_link}>
-                Logs
+                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                FFLogs
               </a>
               <span className="report__divider"> • </span>
               <a className="report__link" href={sessionData.twitch_link}>
-                VoD
+                <img src="/src/assets/25_twitch.png" className="report__icon" />
+                Twitch
               </a>
             </p>
 
@@ -82,7 +113,7 @@ const ReportPage = () => {
               {findStruggleMech(pullsArray)}
             </p>
             <p className="report__extra-info">
-              <span className="report__extra-info--bold">Gold Stars:</span>{" "}
+              <span className="report__extra-info--bold">Gold Stars: </span>
               {findGoldStars(pullsArray, sessionData.roster)}
             </p>
           </section>
@@ -93,13 +124,29 @@ const ReportPage = () => {
               pullsArray={pullsArray}
             />
           </section>
+
           <section className="report__section">
-            <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
-            <ul className="report__pulls-list">
-              {pullsArray.map((pull) => {
-                return <Pull key={pull.id} pullData={pull} />;
-              })}
-            </ul>
+            <div className="report__pulls-heading">
+              <h2 className="report__subheading">
+                Pulls ({pullsArray.length})
+              </h2>
+              <label className="report__checkbox-label">
+                <input
+                  type="checkbox"
+                  name="progOnlyCheckbox"
+                  className="report__prog-only-checkbox"
+                  value={progPullsOnly}
+                  onChange={handleCheckbox}
+                />
+                Show prog pulls only
+              </label>
+            </div>
+
+            {progPullsOnly ? (
+              <PullsTable pullsArray={getProgPulls()} />
+            ) : (
+              <PullsTable pullsArray={pullsArray} />
+            )}
           </section>
         </>
       ) : (

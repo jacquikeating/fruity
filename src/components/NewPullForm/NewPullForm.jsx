@@ -1,13 +1,29 @@
 import { React, useState } from "react";
 import Picker from "react-mobile-picker";
+import axios from "axios";
+import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
-const NewPullForm = () => {
+const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
+  const [rosterArray, setRosterArray] = useState(
+    sessionData.roster.split(", ")
+  );
+  const [cause, setCause] = useState("");
+  const [logLink, setLogLink] = useState("");
+  const [clipLink, setClipLink] = useState("");
+  const [checkedState, setCheckedState] = useState(
+    new Array(rosterArray.length).fill(false)
+  );
+  const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
+  }
+
+  function handleMechChange(e) {
+    setSelectedMech(e.mech);
   }
 
   const phaseAndMechOptions = [
@@ -17,14 +33,56 @@ const NewPullForm = () => {
     ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
     ["Orbs", "Tethers", "Enrage"],
     ["Wrath", "Death", "Enrage"],
-    ["A", "B", "Cauterize", "Enrage"],
+    ["A", "Wrothflame", "Cauterize", "Enrage"],
     ["Transition", "Exas", "Akh Morn", "Enrage"],
   ];
+
+  const handleCheckboxChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+    let responsiblePlayers = [];
+    for (let i = 0; i < rosterArray.length; i++) {
+      if (updatedCheckedState[i] === true) {
+        responsiblePlayers.push(rosterArray[i]);
+      }
+    }
+    setResponsiblePlayersArray(responsiblePlayers);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const pullObj = {
+      session_id: Number(sessionData.num),
+      pull_num_today: pullsArray.length + 1,
+      phase: selectedPhase,
+      mech: selectedMech,
+      prog_point_reached: checkIfProgPointReached(
+        sessionData.prog_phase,
+        selectedPhase
+      ),
+      players_responsible: responsiblePlayersArray,
+      cause: cause,
+      log_link: logLink,
+      clip_link: clipLink,
+    };
+    handlePullFormData(pullObj);
+    addNewPull(pullObj);
+  }
+
+  async function addNewPull(pullObjToPost) {
+    try {
+      await axios.post(`http://localhost:5050/pulls/`, pullObjToPost);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <form className="form">
       <label className="form__label" htmlFor="phase">
-        Phase
+        Phase & Mechanic
       </label>
 
       <div className="form__pickers-container">
@@ -32,13 +90,24 @@ const NewPullForm = () => {
           value={selectedPhase}
           onChange={handlePhaseChange}
           wheelMode="natural"
-          height={100}
+          height={90}
           itemHeight={30}
           className="form__picker"
         >
           <Picker.Column key="phase" name="phase">
             {phaseAndMechOptions.map((_phase, index) => (
-              <Picker.Item key={index} value={index}>
+              <Picker.Item
+                key={index}
+                value={index}
+                className="form__picker-option"
+                style={
+                  selectedPhase == index
+                    ? {
+                        color: "#b38cff",
+                      }
+                    : {}
+                }
+              >
                 {index}
               </Picker.Item>
             ))}
@@ -47,15 +116,26 @@ const NewPullForm = () => {
 
         <Picker
           value={selectedMech}
-          onChange={setSelectedMech}
+          onChange={handleMechChange}
           wheelMode="natural"
-          height={100}
+          height={90}
           itemHeight={30}
           className="form__picker"
         >
-          <Picker.Column key="mech" name="mech" height={300}>
+          <Picker.Column key="mech" name="mech">
             {phaseAndMechOptions[selectedPhase].map((mech) => (
-              <Picker.Item key={mech} value={mech}>
+              <Picker.Item
+                key={mech}
+                value={mech}
+                className="form__picker-option"
+                style={
+                  selectedMech == mech
+                    ? {
+                        color: "#b38cff",
+                      }
+                    : {}
+                }
+              >
                 {mech}
               </Picker.Item>
             ))}
@@ -110,93 +190,65 @@ const NewPullForm = () => {
         type="text"
         name="cause"
         id="cause"
+        value={cause}
+        onChange={(e) => {
+          setCause(e.target.value);
+        }}
       />
 
-      <fieldset className="form__fieldset">
-        <legend className="form__label">Players Involved</legend>
+      {rosterArray.length ? (
+        <fieldset className="form__fieldset">
+          <legend className="form__label">Players Involved</legend>
+          {rosterArray.map((player, index) => {
+            return (
+              <label className="form__label" htmlFor={player} key={index}>
+                <input
+                  className="form__checkbox"
+                  type="checkbox"
+                  name={player}
+                  id={player}
+                  value={player}
+                  checked={checkedState[index]}
+                  onChange={() => handleCheckboxChange(index)}
+                />
+                {player}
+              </label>
+            );
+          })}
+        </fieldset>
+      ) : (
+        "Loading..."
+      )}
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Chro"
-          id="Chro"
-        />
-        <label className="form__label" htmlFor="Chro">
-          Chro
-        </label>
+      <label className="form__label" htmlFor="log-link">
+        Log
+      </label>
+      <input
+        className="form__input form__input--text"
+        type="text"
+        name="log-link"
+        id="log-link"
+        value={logLink}
+        onChange={(e) => {
+          setLogLink(e.target.value);
+        }}
+      />
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Sophia"
-          id="Sophia"
-        />
-        <label className="form__label" htmlFor="Sophia">
-          Sophia
-        </label>
+      <label className="form__label" htmlFor="clip-link">
+        Clip
+      </label>
+      <input
+        className="form__input form__input--text"
+        type="text"
+        name="clip-link"
+        id="clip-link"
+        value={clipLink}
+        onChange={(e) => {
+          setClipLink(e.target.value);
+        }}
+      />
 
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Ella"
-          id="Ella"
-        />
-        <label className="form__label" htmlFor="Ella">
-          Ella
-        </label>
-
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Ruvien"
-          id="Ruvien"
-        />
-        <label className="form__label" htmlFor="Ruvien">
-          Ruvien
-        </label>
-
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Quil"
-          id="Quil"
-        />
-        <label className="form__label" htmlFor="Quil">
-          Quil
-        </label>
-
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Char"
-          id="Char"
-        />
-        <label className="form__label" htmlFor="Char">
-          Char
-        </label>
-
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Hypatia"
-          id="Hypatia"
-        />
-        <label className="form__label" htmlFor="Hypatia">
-          Hypatia
-        </label>
-
-        <input
-          className="form__checkbox"
-          type="checkbox"
-          name="Laveera"
-          id="Laveera"
-        />
-        <label className="form__label" htmlFor="Laveera">
-          Laveera
-        </label>
-      </fieldset>
-
-      <button type="submit" className="form__button">
+      <button type="submit" className="form__button" onClick={handleSubmit}>
         Save
       </button>
     </form>

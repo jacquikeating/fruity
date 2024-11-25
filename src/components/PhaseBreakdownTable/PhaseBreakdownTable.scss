@@ -1,7 +1,7 @@
 @use "/src/styles/__variables" as *;
 
 .phases-table {
-    border: 1px solid $bg-mid;
+    border: 1px solid $borders;
     border-radius: 3px;
     margin: 1.5rem 0;
     max-width: 750px;
@@ -10,22 +10,22 @@
         border-collapse: collapse;
         width: 100%;
         font-weight: 500;
-        background: #0b0b0f;
+        background: $bg-mid;
         font-size: 17px;
     }
 
     &__row:nth-of-type(1) {
-        border-bottom: 1px solid $bg-mid;
+        border-bottom: 1px solid $borders;
     }
     
     &__header {
-        border-right: 1px solid $bg-mid;
+        border-right: 1px solid $borders;
         padding: 0.5rem 0 0.3rem;
         vertical-align: top;
     }
 
     &__cell {
-        // border-left: 1px solid $bg-mid;
+        // border-left: 1px solid $borders;
         padding: 0.5rem 0 0.3rem;
         width: 10%;
         text-align: center;

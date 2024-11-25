@@ -1,5 +1,5 @@
 export function createReadableDate(sqlDate) {
-  const readableDate = new Date(sqlDate).toLocaleString(undefined, {
+  const readableDate = new Date(sqlDate).toLocaleString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -10,8 +10,8 @@ export function createReadableDate(sqlDate) {
 }
 
 export function numSuffix(number) {
-  const lastNumeral = JSON.stringify(number).slice(-1);
-  const last2Numerals = JSON.stringify(number).slice(-2);
+  const lastNumeral = number.slice(-1);
+  const last2Numerals = number.slice(-2);
   if (lastNumeral == 1 && last2Numerals != 11) {
     return "st";
   } else if (lastNumeral == 2 && last2Numerals != 12) {
@@ -42,7 +42,7 @@ export const findStrugglePhase = (pullsArray) => {
     },
     [null, 0]
   );
-  return `${highestCount[0]} (${highestCount[1]})`;
+  return `${highestCount[0]} (${highestCount[1]} wipes)`;
 };
 
 export const findStruggleMech = (pullsArray) => {
@@ -64,7 +64,7 @@ export const findStruggleMech = (pullsArray) => {
     },
     [null, 0]
   );
-  return `${highestCount[0]} (${highestCount[1]})`;
+  return `${highestCount[0]} (${highestCount[1]} wipes)`;
 };
 
 export function findGoldStars(pullsArray, playersArray) {
@@ -110,5 +110,21 @@ export function getTextColour(progPoint, phase) {
     } else {
       return "null";
     }
+  }
+}
+
+export function checkIfProgPointReached(progPhase, wipePhase) {
+  let cleanupPhase = progPhase - 1;
+
+  if (wipePhase < cleanupPhase) {
+    return "old";
+  } else if (wipePhase == cleanupPhase) {
+    return "cleanup";
+  } else if (wipePhase == progPhase) {
+    return "target";
+  } else if (wipePhase > progPhase) {
+    return "newphase";
+  } else {
+    return null;
   }
 }
