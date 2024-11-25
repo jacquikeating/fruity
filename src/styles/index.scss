@@ -27,3 +27,11 @@ h1, h2, h3, th {
 p {
   letter-spacing: 0.036em;
 }
+
+a {
+  color: $blue;
+}
+
+a:visited {
+  color: $purple;
+}
