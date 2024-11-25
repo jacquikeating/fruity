@@ -3,6 +3,6 @@ import * as pullController from "../controllers/pullController.js";
 
 const router = express.Router();
 
-router.route("/").get(pullController.index);
+router.route("/").get(pullController.index).post(pullController.addPull);
 
 export default router;
