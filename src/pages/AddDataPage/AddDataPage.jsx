@@ -16,7 +16,9 @@ const AddDataPage = () => {
   }
 
   function handlePullFormData(data) {
-    setPullsArray(data);
+    let copyOfPullsArray = [...pullsArray];
+    copyOfPullsArray.push(data);
+    setPullsArray(copyOfPullsArray);
   }
 
   return (
