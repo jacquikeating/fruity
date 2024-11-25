@@ -2,16 +2,33 @@
 
 .header {
     width: 100vw;
-    height: 40px;
+    // height: 40px;
     background-color: $bg-mid;
 }
 
 .nav {
-    width: 100%;
+    margin: auto;
+    padding: 0.7rem 0;
+    width: 90%;
     display: flex;
 
     &__list {
         list-style: none;
         display: flex;
+        gap: 1rem;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $text-light!important;
+        opacity: 0.4;
+        font-family: $font-display;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-weight: 400;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }
