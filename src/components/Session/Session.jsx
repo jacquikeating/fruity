@@ -9,10 +9,12 @@ const Session = ({ sessionData }) => {
 
   return (
     <li className="session">
-      <Link to={`/report/${id}`} className="session__header">
-        <h3 className="session__title">Session {id}</h3>
+      <div className="session__header">
+        <Link to={`/report/${id}`} className="session__title">
+          <h3>Session {id}</h3>
+        </Link>
         <p className="session__date">{createReadableDate(date)}</p>
-      </Link>
+      </div>
       <p className="session__body-text">
         <span className="session__category">Prog Point: </span>
         Phase {prog_phase}, {prog_mech}
