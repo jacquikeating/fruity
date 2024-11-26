@@ -1,45 +1,58 @@
 @use "/src/styles/__variables" as *;
+
 .pulls-table {
-    border: 1px solid $bg-mid;
+    border: 1px solid $borders;
     border-radius: 3px;
     margin: 1.5rem 0;
     background: #0b0b0f;
 
-
     &__table {
         border-collapse: collapse;
         width: 100%;
+        table-layout: fixed;
     }
 
     &__row {
-        border-bottom: 1px solid $bg-mid;
+        border-top: 1px solid $borders;
     }
 
     &__header-cell {
-        border: 1px solid $bg-mid;
+        border-left: 1px solid $borders;
         text-align: left;
-        padding: 0.5rem;
+        padding: 0.7rem;
+
+        &:first-of-type {
+            border-left: none;
+            width: 4em;
+        }
+
+        &--phase {
+            width: 4.3em;
+        }
+
+        &--mechanic {
+            width: 10em;
+        }
+
+        &--players {
+            width: 10em;
+        }
+
+        &--notes {
+            width: 20em;
+        }
+
     }
 
     &__cell {
-        border: 1px solid $bg-mid;
-        padding: 0.3rem 0.5rem;
+        border-left: 1px solid $borders;
+        padding: 0.3rem 0.7rem;
 
-        &--num-today {
-            padding-left: 1rem;
+        &:first-of-type {
+            border-left: none;
         }
-        &--num-overall {
-            opacity: 0.7;
-            // font-size: 0.9em;
-            font-style: italic;
+        &:last-of-type {
+            overflow-x: auto;
         }
     }
-
-    &__num-overall {
-        opacity: 0.7;
-        font-size: 0.9em;
-        font-style: italic;
-    margin-left: 1rem;  
-margin-right: -1rem;  }
-
 }
