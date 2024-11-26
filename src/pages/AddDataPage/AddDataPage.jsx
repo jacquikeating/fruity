@@ -35,7 +35,7 @@ const AddDataPage = () => {
             <h2 className="add-data__section-heading">Session Info</h2>
             <p>Session: {sessionData.num}</p>
             <p>Date: {createReadableDate(sessionData.date)}</p>
-            <p>Roster: {sessionData.roster}</p>
+            <p>Roster: {sessionData.roster.join(", ")}</p>
             <p>
               Prog Point: Phase {sessionData.prog_phase},{" "}
               {sessionData.prog_mech}

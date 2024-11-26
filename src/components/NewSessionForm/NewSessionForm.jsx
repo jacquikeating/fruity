@@ -14,20 +14,20 @@ const NewSessionForm = ({ handleSessionFormData }) => {
     const sessionObj = {
       num: num,
       date: new Date().toISOString(),
-      roster: roster,
       prog_phase: progPhase,
       prog_mech: progMech,
       fflogs_link: ffLogsLink,
       twitch_link: twitchLink,
+      roster: roster.split(", "),
     };
 
     handleSessionFormData(sessionObj);
 
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
+    sessionObjToPost.roster = JSON.stringify(roster.split(", "));
     addNewSession(sessionObjToPost);
   }
-
   async function addNewSession(sessionObjToPost) {
     try {
       await axios.post(`http://localhost:5050/sessions/`, sessionObjToPost);

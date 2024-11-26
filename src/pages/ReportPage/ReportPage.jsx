@@ -6,6 +6,7 @@ import {
   findGoldStars,
   findStrugglePhase,
   findStruggleMech,
+  checkIfEmptyLink,
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
@@ -24,8 +25,6 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}`
         );
         let data = result.data[0];
-        const rosterArray = (data.roster = data.roster.split(","));
-        data.roster = rosterArray;
         setSessionData(data);
         createReadableDate(data.date);
       } catch (error) {
@@ -95,19 +94,32 @@ const ReportPage = () => {
               <span className="report__divider"> • </span>
               Phase {sessionData.prog_phase} Prog
               <span className="report__divider"> • </span>
-              <a className="report__link" href={sessionData.fflogs_link}>
+              <a
+                className={`report__link ${checkIfEmptyLink(
+                  sessionData.fflogs_link
+                )}`}
+                href={sessionData.fflogs_link}
+              >
                 <img src="/src/assets/25_fflogs.png" className="report__icon" />
                 FFLogs
               </a>
               <span className="report__divider"> • </span>
-              <a className="report__link" href={sessionData.twitch_link}>
+              <a
+                className={`report__link ${checkIfEmptyLink(
+                  sessionData.twitch_link
+                )}`}
+                href={sessionData.twitch_link}
+              >
                 <img src="/src/assets/25_twitch.png" className="report__icon" />
                 Twitch
               </a>
             </p>
-
             <p className="report__extra-info">
-              <span className="report__extra-info--bold">Most Wipes:</span> P
+              <span className="report__extra-info--bold">Roster: </span>
+              {sessionData.roster.join(", ")}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Most Wipes: </span>P
               {findStrugglePhase(pullsArray)}
               <span className="report__divider"> • </span>
               {findStruggleMech(pullsArray)}

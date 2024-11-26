@@ -13,7 +13,6 @@ const PullsTable = ({ pullsArray }) => {
   }
 
   const columns = [
-    // "Pull #",
     "Phase",
     "Mechanic",
     "Cause",
@@ -50,7 +49,9 @@ const PullsTable = ({ pullsArray }) => {
               players_responsible,
               log_link,
               clip_link,
+              notes,
             } = pull;
+
             return (
               <tr key={`pull-${id}`} className="pulls-table__row">
                 <td
@@ -80,9 +81,11 @@ const PullsTable = ({ pullsArray }) => {
                   key={`${id}-${players_responsible}`}
                   className="pulls-table__cell"
                 >
-                  {players_responsible}
+                  {players_responsible?.join(", ")}
                 </td>
-                {/* <td key={`${id}-${notes}`} className="pulls-table__cell">{notes}</td> */}
+                <td key={`${id}-${notes}`} className="pulls-table__cell">
+                  {notes}
+                </td>
               </tr>
             );
           })}
