@@ -25,8 +25,6 @@ const ReportPage = () => {
           `http://localhost:5050/sessions/${sessionID}`
         );
         let data = result.data[0];
-        const rosterArray = (data.roster = data.roster.split(","));
-        data.roster = rosterArray;
         setSessionData(data);
         createReadableDate(data.date);
       } catch (error) {
@@ -116,9 +114,12 @@ const ReportPage = () => {
                 Twitch
               </a>
             </p>
-
             <p className="report__extra-info">
-              <span className="report__extra-info--bold">Most Wipes:</span> P
+              <span className="report__extra-info--bold">Roster: </span>
+              {sessionData.roster.join(", ")}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Most Wipes: </span>P
               {findStrugglePhase(pullsArray)}
               <span className="report__divider"> • </span>
               {findStruggleMech(pullsArray)}

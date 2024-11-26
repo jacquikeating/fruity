@@ -72,12 +72,13 @@ export function findGoldStars(pullsArray, playersArray) {
   let goldStars = [];
 
   pullsArray.map((pull) => {
-    const responsiblePlayersArray = pull.players_responsible.split(",");
-    responsiblePlayersArray.forEach((playerName) => {
-      if (!causedWipes.includes(playerName)) {
-        causedWipes.push(playerName);
-      }
-    });
+    if (pull.players_responsible) {
+      pull.players_responsible.forEach((playerName) => {
+        if (!causedWipes.includes(playerName)) {
+          causedWipes.push(playerName);
+        }
+      });
+    }
   });
 
   playersArray.forEach((player) => {

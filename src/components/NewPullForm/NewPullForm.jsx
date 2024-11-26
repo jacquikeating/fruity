@@ -7,9 +7,7 @@ import "./NewPullForm.scss";
 const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
-  const [rosterArray, setRosterArray] = useState(
-    sessionData.roster.split(", ")
-  );
+  const [rosterArray, setRosterArray] = useState(sessionData.roster);
   const [cause, setCause] = useState("");
   const [logLink, setLogLink] = useState("");
   const [clipLink, setClipLink] = useState("");
@@ -27,6 +25,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   }
 
   const phaseAndMechOptions = [
+    /* DSR: 
     ["N/A"],
     ["A", "B", "C"],
     ["Strength", "Sanctity", "Enrage"],
@@ -35,6 +34,16 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     ["Wrath", "Death", "Enrage"],
     ["A", "Wrothflame", "Cauterize", "Enrage"],
     ["Transition", "Exas", "Akh Morn", "Enrage"],
+    */
+
+    ["N/A"],
+    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Mech 1", "Mech 2", "Mech 3"],
   ];
 
   const handleCheckboxChange = (position) => {
@@ -67,8 +76,12 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
       log_link: logLink,
       clip_link: clipLink,
     };
+
     handlePullFormData(pullObj);
-    addNewPull(pullObj);
+
+    let pullObjToPost = { ...pullObj };
+    pullObjToPost.players_responsible = JSON.stringify(responsiblePlayersArray);
+    addNewPull(pullObjToPost);
   }
 
   async function addNewPull(pullObjToPost) {
@@ -142,45 +155,45 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
           </Picker.Column>
         </Picker>
       </div>
-      {/* 
-      <select className="form__select" name="phase" id="phase">
-        <option value="1" className="form__option">
-          1
-        </option>
-        <option value="2" className="form__option">
-          2
-        </option>
-        <option value="3" className="form__option">
-          3
-        </option>
-        <option value="4" className="form__option">
-          4
-        </option>
-        <option value="5" className="form__option">
-          5
-        </option>
-        <option value="6" className="form__option">
-          6
-        </option>
-        <option value="7" className="form__option">
-          7
-        </option>
-      </select>
+      {/*
+        <select className="form__select" name="phase" id="phase">
+          <option value="1" className="form__option">
+            1
+          </option>
+          <option value="2" className="form__option">
+            2
+          </option>
+          <option value="3" className="form__option">
+            3
+          </option>
+          <option value="4" className="form__option">
+            4
+          </option>
+          <option value="5" className="form__option">
+            5
+          </option>
+          <option value="6" className="form__option">
+            6
+          </option>
+          <option value="7" className="form__option">
+            7
+          </option>
+        </select>
 
-      <label className="form__label" htmlFor="mech">
-        Mechanic
-      </label>
-      <select className="form__select" name="mech" id="mech">
-        <option value="A" className="form__option">
-          A
-        </option>
-        <option value="B" className="form__option">
-          B
-        </option>
-        <option value="C" className="form__option">
-          C
-        </option>
-      </select> */}
+        <label className="form__label" htmlFor="mech">
+          Mechanic
+        </label>
+        <select className="form__select" name="mech" id="mech">
+          <option value="A" className="form__option">
+            A
+          </option>
+          <option value="B" className="form__option">
+            B
+          </option>
+          <option value="C" className="form__option">
+            C
+          </option>
+        </select> */}
 
       <label className="form__label" htmlFor="cause">
         Cause of Wipe

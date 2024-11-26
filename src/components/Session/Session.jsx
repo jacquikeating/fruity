@@ -24,7 +24,7 @@ const Session = ({ sessionData }) => {
       </p>
       <p className="session__body-text">
         <span className="session__category">Roster: </span>
-        {roster}
+        {roster.join(", ")}
       </p>
       <p className="session__links-container">
         <a
