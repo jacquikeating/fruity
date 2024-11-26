@@ -128,3 +128,9 @@ export function checkIfProgPointReached(progPhase, wipePhase) {
     return null;
   }
 }
+
+export function checkIfEmptyLink(link) {
+  if (!link) {
+    return "empty-link";
+  }
+}
