@@ -15,6 +15,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     new Array(rosterArray.length).fill(false)
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
+  const [notes, setNotes] = useState("");
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -82,6 +83,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
       cause: cause,
       log_link: logLink,
       clip_link: clipLink,
+      notes: notes,
     };
 
     handlePullFormData(pullObj);
@@ -92,6 +94,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     setCause("");
     setCheckedState(new Array(rosterArray.length).fill(false));
     setResponsiblePlayersArray([]);
+    setNotes("");
   }
 
   async function addNewPull(pullObjToPost) {
@@ -268,6 +271,20 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
         value={clipLink}
         onChange={(e) => {
           setClipLink(e.target.value);
+        }}
+      />
+
+      <label className="form__label" htmlFor="notes">
+        Notes
+      </label>
+      <input
+        className="form__input form__input--text"
+        type="text"
+        name="notes"
+        id="notes"
+        value={notes}
+        onChange={(e) => {
+          setNotes(e.target.value);
         }}
       />
 
