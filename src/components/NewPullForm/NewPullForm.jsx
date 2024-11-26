@@ -26,19 +26,26 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
 
   const phaseAndMechOptions = [
     /* DSR: 
-    ["N/A"],
-    ["A", "B", "C"],
-    ["Strength", "Sanctity", "Enrage"],
-    ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
-    ["Orbs", "Tethers", "Enrage"],
-    ["Wrath", "Death", "Enrage"],
-    ["A", "Wrothflame", "Cauterize", "Enrage"],
-    ["Transition", "Exas", "Akh Morn", "Enrage"],
+      ["N/A"],
+      ["A", "B", "C"],
+      ["Strength", "Sanctity", "Enrage"],
+      ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
+      ["Orbs", "Tethers", "Enrage"],
+      ["Wrath", "Death", "Enrage"],
+      ["A", "Wrothflame", "Cauterize", "Enrage"],
+      ["Transition", "Exas", "Akh Morn", "Enrage"],
     */
 
     ["N/A"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
+    [
+      "Diamond Dust",
+      "Swappies",
+      "Mirrors",
+      "Light Rampant",
+      "Enrage",
+      "Intermission",
+    ],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
@@ -82,6 +89,9 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     let pullObjToPost = { ...pullObj };
     pullObjToPost.players_responsible = JSON.stringify(responsiblePlayersArray);
     addNewPull(pullObjToPost);
+    setCause("");
+    setCheckedState(new Array(rosterArray.length).fill(false));
+    setResponsiblePlayersArray([]);
   }
 
   async function addNewPull(pullObjToPost) {
