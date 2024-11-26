@@ -86,7 +86,13 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
       clip_link: clipLink,
     };
     handlePullFormData(pullObj);
-    addNewPull(pullObj);
+
+    let pullObjToPost = { ...pullObj };
+    pullObjToPost.players_responsible = JSON.stringify(responsiblePlayersArray);
+    addNewPull(pullObjToPost);
+    setCause("");
+    setCheckedState(new Array(rosterArray.length).fill(false));
+    setResponsiblePlayersArray([]);
   }
 
   async function addNewPull(pullObjToPost) {
