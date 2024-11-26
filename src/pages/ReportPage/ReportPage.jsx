@@ -6,6 +6,7 @@ import {
   findGoldStars,
   findStrugglePhase,
   findStruggleMech,
+  checkIfEmptyLink,
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
@@ -95,12 +96,22 @@ const ReportPage = () => {
               <span className="report__divider"> • </span>
               Phase {sessionData.prog_phase} Prog
               <span className="report__divider"> • </span>
-              <a className="report__link" href={sessionData.fflogs_link}>
+              <a
+                className={`report__link ${checkIfEmptyLink(
+                  sessionData.fflogs_link
+                )}`}
+                href={sessionData.fflogs_link}
+              >
                 <img src="/src/assets/25_fflogs.png" className="report__icon" />
                 FFLogs
               </a>
               <span className="report__divider"> • </span>
-              <a className="report__link" href={sessionData.twitch_link}>
+              <a
+                className={`report__link ${checkIfEmptyLink(
+                  sessionData.twitch_link
+                )}`}
+                href={sessionData.twitch_link}
+              >
                 <img src="/src/assets/25_twitch.png" className="report__icon" />
                 Twitch
               </a>
