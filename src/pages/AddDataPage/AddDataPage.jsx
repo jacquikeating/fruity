@@ -57,7 +57,7 @@ const AddDataPage = () => {
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Pulls</h2>
-            <PullsTable pullsArray={pullsArray} />
+            <PullsTable pullsArray={pullsArray} showEdit={true} />
           </section>
         </>
       )}

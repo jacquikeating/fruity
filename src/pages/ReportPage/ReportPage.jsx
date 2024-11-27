@@ -155,9 +155,9 @@ const ReportPage = () => {
             </div>
 
             {progPullsOnly ? (
-              <PullsTable pullsArray={getProgPulls()} />
+              <PullsTable pullsArray={getProgPulls()} showEdit={false} />
             ) : (
-              <PullsTable pullsArray={pullsArray} />
+              <PullsTable pullsArray={pullsArray} showEdit={false} />
             )}
           </section>
         </>

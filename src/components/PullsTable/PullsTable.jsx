@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./PullsTable.scss";
 
-const PullsTable = ({ pullsArray }) => {
+const PullsTable = ({ pullsArray, showEdit }) => {
   const [pullNumType, setPullNumType] = useState("today");
 
   function togglePullNumType() {
@@ -35,6 +35,13 @@ const PullsTable = ({ pullsArray }) => {
                 </th>
               );
             })}
+            {showEdit ? (
+              <th className="pulls-table__header-cell pulls-table__header-cell--actions">
+                Actions
+              </th>
+            ) : (
+              ""
+            )}
           </tr>
           {pullsArray.map((pull, index) => {
             const {
@@ -83,6 +90,14 @@ const PullsTable = ({ pullsArray }) => {
                 <td key={`${id}-${notes}`} className="pulls-table__cell">
                   {notes}
                 </td>
+                {showEdit ? (
+                  <td key={`${id}-actions`} className="pulls-table__cell">
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                ) : (
+                  ""
+                )}
               </tr>
             );
           })}
