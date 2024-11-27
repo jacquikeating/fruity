@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./Pull.scss";
 
-const Pull = ({ pullData, pullNumType, showEdit }) => {
+const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
   const [editMode, setEditMode] = useState(false);
 
   const {
@@ -20,8 +20,6 @@ const Pull = ({ pullData, pullNumType, showEdit }) => {
   function editRow() {
     setEditMode(true);
   }
-
-  function deleteRow() {}
 
   if (!editMode) {
     return (
@@ -50,7 +48,13 @@ const Pull = ({ pullData, pullNumType, showEdit }) => {
         {showEdit ? (
           <td key={`${id}-actions`} className="pulls-table__cell">
             <button onClick={editRow}>Edit</button>
-            <button>Delete</button>
+            <button
+              onClick={() => {
+                deletePull(index);
+              }}
+            >
+              Delete
+            </button>
           </td>
         ) : (
           ""
@@ -84,7 +88,13 @@ const Pull = ({ pullData, pullNumType, showEdit }) => {
         {showEdit ? (
           <td key={`${id}-actions`} className="pulls-table__cell">
             <button onClick={editRow}>Edit</button>
-            <button onClick={deleteRow}>Delete</button>
+            <button
+              onClick={() => {
+                deletePull(index);
+              }}
+            >
+              Delete
+            </button>
           </td>
         ) : (
           ""

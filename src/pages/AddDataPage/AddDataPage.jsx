@@ -23,8 +23,16 @@ const AddDataPage = () => {
       "pullsFromNewSession",
       JSON.stringify(copyOfPullsArray)
     );
-    let pulls = JSON.parse(localStorage.getItem("pullsFromNewSession"));
-    console.log(pulls);
+  }
+
+  function deletePull(pullIndex) {
+    let copyOfPullsArray = [...pullsArray];
+    copyOfPullsArray.splice(pullIndex, 1);
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
+    setPullsArray(copyOfPullsArray);
   }
 
   return (
@@ -57,7 +65,11 @@ const AddDataPage = () => {
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Pulls</h2>
-            <PullsTable pullsArray={pullsArray} showEdit={true} />
+            <PullsTable
+              pullsArray={pullsArray}
+              showEdit={true}
+              deletePull={deletePull}
+            />
           </section>
         </>
       )}

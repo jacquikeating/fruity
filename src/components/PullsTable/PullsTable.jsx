@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import Pull from "../Pull/Pull";
 import "./PullsTable.scss";
 
-const PullsTable = ({ pullsArray, showEdit }) => {
+const PullsTable = ({ pullsArray, showEdit, deletePull }) => {
   const [pullNumType, setPullNumType] = useState("today");
 
   function togglePullNumType() {
@@ -62,6 +62,7 @@ const PullsTable = ({ pullsArray, showEdit }) => {
                 pullData={{ ...pull, index: index }}
                 pullNumType={pullNumType}
                 showEdit={showEdit}
+                deletePull={deletePull}
               />
               // <tr key={`pull-${id}`} className="pulls-table__row">
               //   <td
