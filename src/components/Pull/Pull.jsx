@@ -18,7 +18,7 @@ const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
   } = pullData;
 
   function editRow() {
-    setEditMode(true);
+    editMode ? setEditMode(false) : setEditMode(true);
   }
 
   if (!editMode) {
