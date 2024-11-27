@@ -1,7 +1,7 @@
 import React from "react";
 import "./Pull.scss";
 
-const Pull = (pullData) => {
+const Pull = ({ pullData, pullNumType, showEdit }) => {
   const {
     id,
     pull_num_today,
@@ -12,6 +12,7 @@ const Pull = (pullData) => {
     log_link,
     clip_link,
     notes,
+    index,
   } = pullData;
 
   return (
