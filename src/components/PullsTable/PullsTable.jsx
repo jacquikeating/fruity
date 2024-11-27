@@ -36,7 +36,7 @@ const PullsTable = ({ pullsArray }) => {
               );
             })}
           </tr>
-          {pullsArray.map((pull) => {
+          {pullsArray.map((pull, index) => {
             const {
               id,
               pull_num_today,
@@ -55,7 +55,7 @@ const PullsTable = ({ pullsArray }) => {
                   key={`#${id}-${pull_num_today}`}
                   className="pulls-table__cell pulls-table__cell--num-today"
                 >
-                  {pullNumType === "today" ? pull_num_today : id}
+                  {pullNumType === "today" ? index + 1 : id}
                   {/* {pull_num_today}
                   <span className="pulls-table__num-overall">{id}</span> */}
                 </td>

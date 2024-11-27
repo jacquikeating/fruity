@@ -72,7 +72,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     e.preventDefault();
     const pullObj = {
       session_id: Number(sessionData.num),
-      pull_num_today: pullsArray.length + 1,
+      // pull_num_today: pullsArray.length + 1,
       phase: selectedPhase,
       mech: selectedMech,
       prog_point_reached: checkIfProgPointReached(
