@@ -19,8 +19,9 @@ const Pull = ({ pullData, pullNumType, showEdit }) => {
 
   function editRow() {
     setEditMode(true);
-    console.log("Editing enabled.");
   }
+
+  function deleteRow() {}
 
   if (!editMode) {
     return (
@@ -83,7 +84,7 @@ const Pull = ({ pullData, pullNumType, showEdit }) => {
         {showEdit ? (
           <td key={`${id}-actions`} className="pulls-table__cell">
             <button onClick={editRow}>Edit</button>
-            <button>Delete</button>
+            <button onClick={deleteRow}>Delete</button>
           </td>
         ) : (
           ""
