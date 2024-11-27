@@ -12,19 +12,13 @@ const PullsTable = ({ pullsArray }) => {
     }
   }
 
-  const columns = [
-    "Phase",
-    "Mechanic",
-    "Cause",
-    "Players Responsible",
-    "Notes",
-  ];
+  const columns = ["phase", "mechanic", "cause", "players", "notes"];
 
   return (
     <div className="pulls-table">
       <table className="pulls-table__table">
         <tbody>
-          <tr className="pulls-table__row">
+          <tr className="pulls-table__header-row">
             <th
               className="pulls-table__header-cell"
               onClick={togglePullNumType}
@@ -33,7 +27,10 @@ const PullsTable = ({ pullsArray }) => {
             </th>
             {columns.map((column) => {
               return (
-                <th key={column} className="pulls-table__header-cell">
+                <th
+                  key={column}
+                  className={`pulls-table__header-cell pulls-table__header-cell--${column}`}
+                >
                   {column}
                 </th>
               );
