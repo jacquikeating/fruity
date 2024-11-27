@@ -19,6 +19,12 @@ const AddDataPage = () => {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray.push(data);
     setPullsArray(copyOfPullsArray);
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
+    let pulls = JSON.parse(localStorage.getItem("pullsFromNewSession"));
+    console.log(pulls);
   }
 
   return (

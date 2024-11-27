@@ -90,7 +90,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
 
     let pullObjToPost = { ...pullObj };
     pullObjToPost.players_responsible = JSON.stringify(responsiblePlayersArray);
-    addNewPull(pullObjToPost);
+    // addNewPull(pullObjToPost);
     setCause("");
     setCheckedState(new Array(rosterArray.length).fill(false));
     setResponsiblePlayersArray([]);
