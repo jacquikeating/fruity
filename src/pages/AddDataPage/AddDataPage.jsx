@@ -25,6 +25,16 @@ const AddDataPage = () => {
     );
   }
 
+  function updatePull(pullData) {
+    let copyOfPullsArray = [...pullsArray];
+    copyOfPullsArray[pullData.index] = pullData;
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
+    setPullsArray(copyOfPullsArray);
+  }
+
   function deletePull(pullIndex) {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray.splice(pullIndex, 1);
@@ -69,6 +79,8 @@ const AddDataPage = () => {
               pullsArray={pullsArray}
               showEdit={true}
               deletePull={deletePull}
+              updatePull={updatePull}
+              progPhase={sessionData.prog_phase}
             />
           </section>
         </>

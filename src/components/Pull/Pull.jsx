@@ -1,7 +1,15 @@
 import { React, useState } from "react";
+import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./Pull.scss";
 
-const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
+const Pull = ({
+  pullData,
+  pullNumType,
+  showEdit,
+  updatePull,
+  deletePull,
+  progPhase,
+}) => {
   const [editMode, setEditMode] = useState(false);
   const [phase, setPhase] = useState(pullData.phase);
   const [mech, setMech] = useState(pullData.mech);
@@ -16,7 +24,23 @@ const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
   const index = pullData.index;
 
   function editRow() {
-    editMode ? setEditMode(false) : setEditMode(true);
+    if (editMode === false) {
+      setEditMode(true);
+    } else if (editMode === true) {
+      setEditMode(false);
+      updatePull({
+        session_id: pullData.session_id,
+        phase: phase,
+        mech: mech,
+        prog_point_reached: checkIfProgPointReached(progPhase, phase),
+        cause: cause,
+        players_responsible: playersResponsible,
+        log_link: logLink,
+        clip_link: clipLink,
+        notes: notes,
+        index: index,
+      });
+    }
   }
 
   return (
