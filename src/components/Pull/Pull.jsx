@@ -3,19 +3,17 @@ import "./Pull.scss";
 
 const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
   const [editMode, setEditMode] = useState(false);
+  const [phase, setPhase] = useState(pullData.phase);
+  const [mech, setMech] = useState(pullData.mech);
+  const [cause, setCause] = useState(pullData.cause);
+  const [playersResponsible, setPlayersResponsible] = useState(
+    pullData.players_responsible.join(", ")
+  );
+  const [logLink, setLogLink] = useState(pullData.log_link);
+  const [clipLink, setClipLink] = useState(pullData.clip_link);
+  const [notes, setNotes] = useState(pullData.notes);
 
-  const {
-    id,
-    pull_num_today,
-    phase,
-    mech,
-    cause,
-    players_responsible,
-    log_link,
-    clip_link,
-    notes,
-    index,
-  } = pullData;
+  const index = pullData.index;
 
   function editRow() {
     editMode ? setEditMode(false) : setEditMode(true);
@@ -57,7 +55,13 @@ const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
             </button>
           </td>
         ) : (
-          ""
+          <input
+            type="number"
+            value={phase}
+            onChange={(e) => {
+              setPhase(e.target.value);
+            }}
+          />
         )}
       </tr>
     );
