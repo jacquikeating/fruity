@@ -19,41 +19,17 @@ const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
     editMode ? setEditMode(false) : setEditMode(true);
   }
 
-  if (!editMode) {
-    return (
-      <tr key={`pull-${id}`} className="pulls-table__row">
-        <td
-          key={`#${id}-${pull_num_today}`}
-          className="pulls-table__cell pulls-table__cell--num-today"
-        >
-          {pullNumType === "today" ? index + 1 : id}
-        </td>
-        <td key={`${id}-${phase}`} className="pulls-table__cell">
-          {phase}
-        </td>
-        <td key={`${id}-${mech}`} className="pulls-table__cell">
-          {mech}
-        </td>
-        <td key={`${id}-${cause}`} className="pulls-table__cell">
-          {cause}
-        </td>
-        <td key={`${id}-${players_responsible}`} className="pulls-table__cell">
-          {players_responsible?.join(", ")}
-        </td>
-        <td key={`${id}-${notes}`} className="pulls-table__cell">
-          {notes}
-        </td>
-        {showEdit ? (
-          <td key={`${id}-actions`} className="pulls-table__cell">
-            <button onClick={editRow}>Edit</button>
-            <button
-              onClick={() => {
-                deletePull(index);
-              }}
-            >
-              Delete
-            </button>
-          </td>
+  return (
+    <tr key={`pull-${index}`} className="pulls-table__row">
+      <td
+        key={`#${index}`}
+        className="pulls-table__cell pulls-table__cell--num-today"
+      >
+        {pullNumType === "today" ? index + 1 : id}
+      </td>
+      <td key={`${index}-phase`} className="pulls-table__cell">
+        {!editMode ? (
+          phase
         ) : (
           <input
             type="number"
@@ -63,49 +39,75 @@ const Pull = ({ pullData, pullNumType, showEdit, deletePull }) => {
             }}
           />
         )}
-      </tr>
-    );
-  } else {
-    return (
-      <tr key={`pull-${id}`} className="pulls-table__row">
-        <td
-          key={`#${id}-${pull_num_today}`}
-          className="pulls-table__cell pulls-table__cell--num-today"
-        >
-          EDIT MODE
-        </td>
-        <td key={`${id}-${phase}`} className="pulls-table__cell">
-          EDIT MODE
-        </td>
-        <td key={`${id}-${mech}`} className="pulls-table__cell">
-          EDIT MODE
-        </td>
-        <td key={`${id}-${cause}`} className="pulls-table__cell">
-          EDIT MODE
-        </td>
-        <td key={`${id}-${players_responsible}`} className="pulls-table__cell">
-          EDIT MODE
-        </td>
-        <td key={`${id}-${notes}`} className="pulls-table__cell">
-          EDIT MODE
-        </td>
-        {showEdit ? (
-          <td key={`${id}-actions`} className="pulls-table__cell">
-            <button onClick={editRow}>Edit</button>
-            <button
-              onClick={() => {
-                deletePull(index);
-              }}
-            >
-              Delete
-            </button>
-          </td>
+      </td>
+      <td key={`${index}-mech`} className="pulls-table__cell">
+        {!editMode ? (
+          mech
         ) : (
-          ""
+          <input
+            type="text"
+            value={mech}
+            onChange={(e) => {
+              setMech(e.target.value);
+            }}
+          />
         )}
-      </tr>
-    );
-  }
+      </td>
+      <td key={`${index}-cause`} className="pulls-table__cell">
+        {!editMode ? (
+          cause
+        ) : (
+          <input
+            type="text"
+            value={cause}
+            onChange={(e) => {
+              setCause(e.target.value);
+            }}
+          />
+        )}
+      </td>
+      <td key={`${index}-players_responsible`} className="pulls-table__cell">
+        {!editMode ? (
+          playersResponsible
+        ) : (
+          <input
+            type="text"
+            value={playersResponsible}
+            onChange={(e) => {
+              setPlayersResponsible(e.target.value);
+            }}
+          />
+        )}
+      </td>
+      <td key={`${index}-notes`} className="pulls-table__cell">
+        {!editMode ? (
+          notes
+        ) : (
+          <input
+            type="text"
+            value={notes}
+            onChange={(e) => {
+              setNotes(e.target.value);
+            }}
+          />
+        )}
+      </td>
+      {showEdit ? (
+        <td key={`${index}-actions`} className="pulls-table__cell">
+          <button onClick={editRow}>{!editMode ? "Edit" : "Save"}</button>
+          <button
+            onClick={() => {
+              deletePull(index);
+            }}
+          >
+            Delete
+          </button>
+        </td>
+      ) : (
+        ""
+      )}
+    </tr>
+  );
 };
 
 export default Pull;
