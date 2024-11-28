@@ -1,0 +1,17 @@
+@use "/src/styles/__variables" as *;
+
+.pull {
+    border-top: 1px solid $borders;
+    
+    &__cell {
+        border-left: 1px solid $borders;
+        padding: 0.3rem 0.7rem;
+
+        &:first-of-type {
+            border-left: none;
+        }
+        &:last-of-type {
+            overflow-x: auto;
+        }
+    }
+}

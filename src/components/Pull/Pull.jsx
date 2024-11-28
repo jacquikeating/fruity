@@ -44,18 +44,16 @@ const Pull = ({
   }
 
   return (
-    <tr key={`pull-${index}`} className="pulls-table__row">
-      <td
-        key={`#${index}`}
-        className="pulls-table__cell pulls-table__cell--num-today"
-      >
+    <tr key={`pull-${index}`} className="pull">
+      <td key={`#${index}`} className="pull__cell pull__cell--num-today">
         {pullNumType === "today" ? index + 1 : id}
       </td>
-      <td key={`${index}-phase`} className="pulls-table__cell">
+      <td key={`${index}-phase`} className="pull__cell">
         {!editMode ? (
           phase
         ) : (
           <input
+            className="pull__input pull_input--number"
             type="number"
             value={phase}
             onChange={(e) => {
@@ -64,11 +62,12 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-mech`} className="pulls-table__cell">
+      <td key={`${index}-mech`} className="pull__cell">
         {!editMode ? (
           mech
         ) : (
           <input
+            className="pull__input"
             type="text"
             value={mech}
             onChange={(e) => {
@@ -77,11 +76,12 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-cause`} className="pulls-table__cell">
+      <td key={`${index}-cause`} className="pull__cell">
         {!editMode ? (
           cause
         ) : (
           <input
+            className="pull__input"
             type="text"
             value={cause}
             onChange={(e) => {
@@ -90,11 +90,12 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-players_responsible`} className="pulls-table__cell">
+      <td key={`${index}-players_responsible`} className="pull__cell">
         {!editMode ? (
           playersResponsible
         ) : (
           <input
+            className="pull__input"
             type="text"
             value={playersResponsible}
             onChange={(e) => {
@@ -103,11 +104,12 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-notes`} className="pulls-table__cell">
+      <td key={`${index}-notes`} className="pull__cell">
         {!editMode ? (
           notes
         ) : (
           <input
+            className="pull__input"
             type="text"
             value={notes}
             onChange={(e) => {
@@ -117,9 +119,12 @@ const Pull = ({
         )}
       </td>
       {showEdit ? (
-        <td key={`${index}-actions`} className="pulls-table__cell">
-          <button onClick={editRow}>{!editMode ? "Edit" : "Save"}</button>
+        <td key={`${index}-actions`} className="pull__cell">
+          <button className="pull__button" onClick={editRow}>
+            {!editMode ? "Edit" : "Save"}
+          </button>
           <button
+            className="pull__button"
             onClick={() => {
               deletePull(index);
             }}

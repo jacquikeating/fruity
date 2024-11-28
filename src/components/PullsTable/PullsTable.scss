@@ -12,10 +12,6 @@
         table-layout: fixed;
     }
 
-    &__row {
-        border-top: 1px solid $borders;
-    }
-
     &__header-cell {
         border-left: 1px solid $borders;
         text-align: left;
@@ -40,19 +36,6 @@
 
         &--notes {
             width: 20em;
-        }
-
-    }
-
-    &__cell {
-        border-left: 1px solid $borders;
-        padding: 0.3rem 0.7rem;
-
-        &:first-of-type {
-            border-left: none;
-        }
-        &:last-of-type {
-            overflow-x: auto;
         }
     }
 }
