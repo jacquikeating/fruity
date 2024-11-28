@@ -83,6 +83,9 @@ const AddDataPage = () => {
               progPhase={sessionData.prog_phase}
             />
           </section>
+          <section className="add-data__section">
+            <button className="add-data__button">Complete Session</button>
+          </section>
         </>
       )}
     </main>
