@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import axios from "axios";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
@@ -19,30 +20,43 @@ const AddDataPage = () => {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray.push(data);
     setPullsArray(copyOfPullsArray);
-    localStorage.setItem(
-      "pullsFromNewSession",
-      JSON.stringify(copyOfPullsArray)
-    );
+    // localStorage.setItem(
+    //   "pullsFromNewSession",
+    //   JSON.stringify(copyOfPullsArray)
+    // );
   }
 
   function updatePull(pullData) {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray[pullData.index] = pullData;
-    localStorage.setItem(
-      "pullsFromNewSession",
-      JSON.stringify(copyOfPullsArray)
-    );
+    // localStorage.setItem(
+    //   "pullsFromNewSession",
+    //   JSON.stringify(copyOfPullsArray)
+    // );
     setPullsArray(copyOfPullsArray);
   }
 
   function deletePull(pullIndex) {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray.splice(pullIndex, 1);
-    localStorage.setItem(
-      "pullsFromNewSession",
-      JSON.stringify(copyOfPullsArray)
-    );
+    // localStorage.setItem(
+    //   "pullsFromNewSession",
+    //   JSON.stringify(copyOfPullsArray)
+    // );
     setPullsArray(copyOfPullsArray);
+  }
+
+  async function handleSubmit() {
+    pullsArray.map(async (pull, index) => {
+      pull.pull_num_today = index + 1;
+      pull.players_responsible = JSON.stringify(pull.players_responsible);
+
+      try {
+        await axios.post(`http://localhost:5050/pulls/`, pull);
+      } catch (error) {
+        console.error(error);
+      }
+    });
   }
 
   return (
@@ -84,7 +98,9 @@ const AddDataPage = () => {
             />
           </section>
           <section className="add-data__section">
-            <button className="add-data__button">Complete Session</button>
+            <button className="add-data__button" onClick={handleSubmit}>
+              Complete Session
+            </button>
           </section>
         </>
       )}

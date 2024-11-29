@@ -15,7 +15,7 @@ const Pull = ({
   const [mech, setMech] = useState(pullData.mech);
   const [cause, setCause] = useState(pullData.cause);
   const [playersResponsible, setPlayersResponsible] = useState(
-    pullData.players_responsible.join(", ")
+    pullData.players_responsible
   );
   const [logLink, setLogLink] = useState(pullData.log_link);
   const [clipLink, setClipLink] = useState(pullData.clip_link);
@@ -34,7 +34,7 @@ const Pull = ({
         mech: mech,
         prog_point_reached: checkIfProgPointReached(progPhase, phase),
         cause: cause,
-        players_responsible: playersResponsible,
+        players_responsible: playersResponsible.split(", "),
         log_link: logLink,
         clip_link: clipLink,
         notes: notes,

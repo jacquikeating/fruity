@@ -79,8 +79,8 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
         sessionData.prog_phase,
         selectedPhase
       ),
-      players_responsible: responsiblePlayersArray,
       cause: cause,
+      players_responsible: responsiblePlayersArray,
       log_link: logLink,
       clip_link: clipLink,
       notes: notes,
