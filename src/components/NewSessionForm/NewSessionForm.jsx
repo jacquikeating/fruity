@@ -22,12 +22,14 @@ const NewSessionForm = ({ handleSessionFormData }) => {
     };
 
     handleSessionFormData(sessionObj);
+    localStorage.setItem("sessionInProgress", JSON.stringify(sessionObj));
 
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
     sessionObjToPost.roster = JSON.stringify(roster.split(", "));
     addNewSession(sessionObjToPost);
   }
+
   async function addNewSession(sessionObjToPost) {
     try {
       await axios.post(`http://localhost:5050/sessions/`, sessionObjToPost);

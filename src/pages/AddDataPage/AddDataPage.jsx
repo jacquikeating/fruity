@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
@@ -7,10 +7,19 @@ import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
 
 const AddDataPage = () => {
-  const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
-  const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
+  const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
+  const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
+
+  useEffect(() => {
+    const lsSessionData = JSON.parse(localStorage.getItem("sessionInProgress"));
+    if (lsSessionData) {
+      setSessionData(lsSessionData);
+      setSessionInProgress(true);
+    }
+  }, []);
+
   function handleSessionFormData(data) {
     setSessionData(data);
     setSessionInProgress(true);
@@ -59,6 +68,7 @@ const AddDataPage = () => {
     });
 
     localStorage.removeItem("pullsFromNewSession");
+    localStorage.removeItem("sessionInProgress");
   }
 
   return (
