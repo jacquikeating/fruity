@@ -63,8 +63,17 @@ const ReportPage = () => {
     }
   }
 
-  async function deletePull(pull) {
-    console.log(pull);
+  async function deletePull(pullToDelete) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5050/pulls/${pullToDelete.id}`
+      );
+      if (response.status === 204) {
+        setPullsArray(pullsArray.filter((pull) => pull.id !== pullToDelete.id));
+      }
+    } catch (err) {
+      console.error("Error deleting pull:", err);
+    }
   }
 
   return (
