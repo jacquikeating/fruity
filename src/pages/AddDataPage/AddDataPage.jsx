@@ -45,9 +45,9 @@ const AddDataPage = () => {
     setPullsArray(copyOfPullsArray);
   }
 
-  function deletePull(pullIndex) {
+  function deletePull(pullData) {
     let copyOfPullsArray = [...pullsArray];
-    copyOfPullsArray.splice(pullIndex, 1);
+    copyOfPullsArray.splice(pullData.index, 1);
     localStorage.setItem(
       "pullsFromNewSession",
       JSON.stringify(copyOfPullsArray)

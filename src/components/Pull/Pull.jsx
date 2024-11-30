@@ -46,7 +46,7 @@ const Pull = ({
   return (
     <tr key={`pull-${index}`} className="pull">
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
-        {pullNumType === "today" ? index + 1 : id}
+        {pullNumType === "today" ? index + 1 : pullData.id}
       </td>
       <td key={`${index}-phase`} className="pull__cell">
         {!editMode ? (
@@ -126,7 +126,7 @@ const Pull = ({
           <button
             className="pull__button"
             onClick={() => {
-              deletePull(index);
+              deletePull(pullData);
             }}
           >
             Delete

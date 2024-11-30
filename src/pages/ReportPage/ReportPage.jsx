@@ -63,6 +63,10 @@ const ReportPage = () => {
     }
   }
 
+  async function deletePull(pull) {
+    console.log(pull);
+  }
+
   return (
     <main className="report">
       {sessionData ? (
@@ -155,9 +159,17 @@ const ReportPage = () => {
             </div>
 
             {progPullsOnly ? (
-              <PullsTable pullsArray={getProgPulls()} showEdit={false} />
+              <PullsTable
+                pullsArray={getProgPulls()}
+                showEdit={true}
+                deletePull={deletePull}
+              />
             ) : (
-              <PullsTable pullsArray={pullsArray} showEdit={false} />
+              <PullsTable
+                pullsArray={pullsArray}
+                showEdit={true}
+                deletePull={deletePull}
+              />
             )}
           </section>
         </>
