@@ -7,10 +7,10 @@ import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
 
 const AddDataPage = () => {
-  const [pullsArray, setPullsArray] = useState([]);
+  const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
+  const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
-
   function handleSessionFormData(data) {
     setSessionData(data);
     setSessionInProgress(true);
@@ -20,29 +20,29 @@ const AddDataPage = () => {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray.push(data);
     setPullsArray(copyOfPullsArray);
-    // localStorage.setItem(
-    //   "pullsFromNewSession",
-    //   JSON.stringify(copyOfPullsArray)
-    // );
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
   }
 
   function updatePull(pullData) {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray[pullData.index] = pullData;
-    // localStorage.setItem(
-    //   "pullsFromNewSession",
-    //   JSON.stringify(copyOfPullsArray)
-    // );
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
     setPullsArray(copyOfPullsArray);
   }
 
   function deletePull(pullIndex) {
     let copyOfPullsArray = [...pullsArray];
     copyOfPullsArray.splice(pullIndex, 1);
-    // localStorage.setItem(
-    //   "pullsFromNewSession",
-    //   JSON.stringify(copyOfPullsArray)
-    // );
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
     setPullsArray(copyOfPullsArray);
   }
 
@@ -57,6 +57,8 @@ const AddDataPage = () => {
         console.error(error);
       }
     });
+
+    localStorage.removeItem("pullsFromNewSession");
   }
 
   return (
