@@ -1,10 +1,9 @@
 import { React, useState } from "react";
 import Picker from "react-mobile-picker";
-import axios from "axios";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
-const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
+const NewPullForm = ({ sessionData, handlePullFormData }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
   const [rosterArray, setRosterArray] = useState(sessionData.roster);
@@ -26,17 +25,6 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   }
 
   const phaseAndMechOptions = [
-    /* DSR: 
-      ["N/A"],
-      ["A", "B", "C"],
-      ["Strength", "Sanctity", "Enrage"],
-      ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
-      ["Orbs", "Tethers", "Enrage"],
-      ["Wrath", "Death", "Enrage"],
-      ["A", "Wrothflame", "Cauterize", "Enrage"],
-      ["Transition", "Exas", "Akh Morn", "Enrage"],
-    */
-
     ["N/A"],
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
     [
@@ -72,7 +60,6 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     e.preventDefault();
     const pullObj = {
       session_id: Number(sessionData.num),
-      // pull_num_today: pullsArray.length + 1,
       phase: selectedPhase,
       mech: selectedMech,
       prog_point_reached: checkIfProgPointReached(
@@ -88,21 +75,10 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
 
     handlePullFormData(pullObj);
 
-    let pullObjToPost = { ...pullObj };
-    pullObjToPost.players_responsible = JSON.stringify(responsiblePlayersArray);
-    // addNewPull(pullObjToPost);
     setCause("");
     setCheckedState(new Array(rosterArray.length).fill(false));
     setResponsiblePlayersArray([]);
     setNotes("");
-  }
-
-  async function addNewPull(pullObjToPost) {
-    try {
-      await axios.post(`http://localhost:5050/pulls/`, pullObjToPost);
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   return (
