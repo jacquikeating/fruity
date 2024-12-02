@@ -58,8 +58,8 @@ const AddDataPage = () => {
   async function handleSubmit() {
     pullsArray.map(async (pull, index) => {
       pull.pull_num_today = index + 1;
+      delete pull.index;
       pull.players_responsible = JSON.stringify(pull.players_responsible);
-
       try {
         await axios.post(`http://localhost:5050/pulls/`, pull);
       } catch (error) {
