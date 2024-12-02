@@ -5,5 +5,9 @@ const router = express.Router();
 
 router.route("/").get(pullController.index).post(pullController.addPull);
 
-router.route("/:pullID").delete(pullController.deletePull);
+router
+  .route("/:pullID")
+  .delete(pullController.deletePull)
+  .update(pullController.updatePull);
+
 export default router;
