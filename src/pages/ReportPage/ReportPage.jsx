@@ -76,6 +76,17 @@ const ReportPage = () => {
     }
   }
 
+  async function updatePull(pullToUpdate) {
+    try {
+      await axios.update(
+        `http://localhost:5050/pulls/${pullToUpdate.id}`,
+        pullToUpdate
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <main className="report">
       {sessionData ? (
@@ -171,12 +182,14 @@ const ReportPage = () => {
               <PullsTable
                 pullsArray={getProgPulls()}
                 showEdit={true}
+                updatePull={updatePull}
                 deletePull={deletePull}
               />
             ) : (
               <PullsTable
                 pullsArray={pullsArray}
                 showEdit={true}
+                updatePull={updatePull}
                 deletePull={deletePull}
               />
             )}

@@ -8,6 +8,6 @@ router.route("/").get(pullController.index).post(pullController.addPull);
 router
   .route("/:pullID")
   .delete(pullController.deletePull)
-  .update(pullController.updatePull);
+  .put(pullController.updatePull);
 
 export default router;
