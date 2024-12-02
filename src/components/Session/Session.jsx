@@ -30,6 +30,8 @@ const Session = ({ sessionData }) => {
         <a
           className={`session__link ${checkIfEmptyLink(fflogs_link)}`}
           href={fflogs_link}
+          target="_blank"
+          rel="noreferrer"
         >
           <img src="/src/assets/25_fflogs.png" className="session__icon" />
           FFLogs
@@ -37,6 +39,8 @@ const Session = ({ sessionData }) => {
         <a
           className={`session__link ${checkIfEmptyLink(twitch_link)}`}
           href={twitch_link}
+          target="_blank"
+          rel="noreferrer"
         >
           <img src="/src/assets/25_twitch.png" className="session__icon" />
           Twitch

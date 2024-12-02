@@ -125,6 +125,8 @@ const ReportPage = () => {
                   sessionData.fflogs_link
                 )}`}
                 href={sessionData.fflogs_link}
+                target="_blank"
+                rel="noreferrer"
               >
                 <img src="/src/assets/25_fflogs.png" className="report__icon" />
                 FFLogs
@@ -135,6 +137,8 @@ const ReportPage = () => {
                   sessionData.twitch_link
                 )}`}
                 href={sessionData.twitch_link}
+                target="_blank"
+                rel="noreferrer"
               >
                 <img src="/src/assets/25_twitch.png" className="report__icon" />
                 Twitch
