@@ -77,8 +77,10 @@ const ReportPage = () => {
   }
 
   async function updatePull(pullToUpdate) {
+    delete pullToUpdate.index;
+
     try {
-      await axios.update(
+      await axios.put(
         `http://localhost:5050/pulls/${pullToUpdate.id}`,
         pullToUpdate
       );

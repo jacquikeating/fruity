@@ -29,12 +29,13 @@ const Pull = ({
     } else if (editMode === true) {
       setEditMode(false);
       updatePull({
+        id: pullData.id,
         session_id: pullData.session_id,
         phase: phase,
         mech: mech,
         prog_point_reached: checkIfProgPointReached(progPhase, phase),
         cause: cause,
-        players_responsible: playersResponsible.split(", "),
+        players_responsible: JSON.stringify(playersResponsible),
         log_link: logLink,
         clip_link: clipLink,
         notes: notes,
