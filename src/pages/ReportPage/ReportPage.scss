@@ -45,6 +45,10 @@
         transform: scale(0.75);
     }
 
+    &__list {
+        margin-left: 3ch;
+    }
+
     &__pulls-heading {
         display: flex;
         align-items: end;
