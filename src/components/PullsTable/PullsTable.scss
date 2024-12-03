@@ -30,12 +30,20 @@
             width: 10em;
         }
 
+        &--cause {
+            width: 20em;
+        }
+
         &--players {
             width: 10em;
         }
 
         &--notes {
             width: 20em;
+        }
+
+        &--actions {
+            width: 8em;
         }
     }
 }
