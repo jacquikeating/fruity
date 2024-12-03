@@ -49,6 +49,7 @@ const Pull = ({
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
         {pullNumType === "today" ? index + 1 : pullData.id}
       </td>
+
       <td key={`${index}-phase`} className="pull__cell">
         {!editMode ? (
           phase
@@ -63,6 +64,7 @@ const Pull = ({
           />
         )}
       </td>
+
       <td key={`${index}-mech`} className="pull__cell">
         {!editMode ? (
           mech
@@ -77,6 +79,7 @@ const Pull = ({
           />
         )}
       </td>
+
       <td key={`${index}-cause`} className="pull__cell">
         {!editMode ? (
           cause
@@ -91,6 +94,7 @@ const Pull = ({
           />
         )}
       </td>
+
       <td key={`${index}-players_responsible`} className="pull__cell">
         {!editMode ? (
           playersResponsible.join(", ")
@@ -105,6 +109,7 @@ const Pull = ({
           />
         )}
       </td>
+
       <td key={`${index}-notes`} className="pull__cell">
         {!editMode ? (
           notes
@@ -119,6 +124,7 @@ const Pull = ({
           />
         )}
       </td>
+
       {showEdit ? (
         <td key={`${index}-actions`} className="pull__cell">
           <button className="pull__button" onClick={editRow}>
