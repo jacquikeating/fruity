@@ -14,7 +14,7 @@
     
     &__subtitle {
         border-bottom: 1px solid $borders;
-        padding-bottom: 1em;
+        padding-bottom: 1.5em;
         display: flex;
         gap: 0.3em;
         font-size: 1.1em;
@@ -28,7 +28,7 @@
     }
 
     &__extra-info-container {
-        padding: 1em 0;
+        padding: 1.5em 0;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -63,7 +63,7 @@
 
     &__pulls-heading {
         border-top: 1px solid $borders;
-        padding-top: 1em;
+        padding-top: 1.5em;
         display: flex;
         align-items: end;
         gap: 0.5em;
