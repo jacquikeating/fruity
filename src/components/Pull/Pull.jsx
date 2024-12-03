@@ -35,7 +35,7 @@ const Pull = ({
         mech: mech,
         prog_point_reached: checkIfProgPointReached(progPhase, phase),
         cause: cause,
-        players_responsible: JSON.stringify(playersResponsible),
+        players_responsible: playersResponsible,
         log_link: logLink,
         clip_link: clipLink,
         notes: notes,
@@ -98,9 +98,9 @@ const Pull = ({
           <input
             className="pull__input"
             type="text"
-            value={playersResponsible}
+            value={playersResponsible.join(", ")}
             onChange={(e) => {
-              setPlayersResponsible(e.target.value);
+              setPlayersResponsible(e.target.value.split(", "));
             }}
           />
         )}

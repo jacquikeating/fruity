@@ -26,7 +26,6 @@ const ReportPage = () => {
         );
         let data = result.data[0];
         setSessionData(data);
-        createReadableDate(data.date);
       } catch (error) {
         console.error(error);
       }
@@ -78,6 +77,9 @@ const ReportPage = () => {
 
   async function updatePull(pullToUpdate) {
     delete pullToUpdate.index;
+    pullToUpdate.players_responsible = JSON.stringify(
+      pullToUpdate.players_responsible
+    );
 
     try {
       await axios.put(
@@ -190,6 +192,7 @@ const ReportPage = () => {
                 showEdit={true}
                 updatePull={updatePull}
                 deletePull={deletePull}
+                progPhase={sessionData.prog_phase}
               />
             ) : (
               <PullsTable
@@ -197,6 +200,7 @@ const ReportPage = () => {
                 showEdit={true}
                 updatePull={updatePull}
                 deletePull={deletePull}
+                progPhase={sessionData.prog_phase}
               />
             )}
           </section>
