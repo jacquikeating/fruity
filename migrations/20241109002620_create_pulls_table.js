@@ -10,12 +10,12 @@ export const up = function (knex) {
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
     table.integer("pull_num_today").notNullable();
-    table.string("phase").notNullable();
-    table.string("mech").notNullable();
+    table.integer("pull_num_overall").notNullable();
+    table.string("phase");
+    table.string("mech");
     table.string("prog_point_reached");
-    table.string("cause").notNullable();
+    table.string("cause");
     table.JSON("players_responsible");
-    table.timestamp("ended_at").defaultTo(knex.fn.now());
     table.string("log_link");
     table.string("clip_link");
     table.string("notes");

@@ -5,10 +5,10 @@ export const up = function (knex) {
     table.integer("prog_phase").notNullable();
     table.string("prog_mech").notNullable();
     table.string("fflogs_link");
-    table.string("twitch_link");
+    table.JSON("twitch_links");
     table.JSON("roster").notNullable();
-    // alternate: store as 8 fields, like mainTank, offTank, regenHealer, etc.
-    // This may be needed for tracking # of gold stars?
+    table.string("goal");
+    table.JSON("notes");
   });
 };
 
