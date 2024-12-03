@@ -9,9 +9,15 @@
 
         &:first-of-type {
             border-left: none;
+            text-align: center;
         }
-        &:last-of-type {
-            overflow-x: auto;
+
+        &:nth-of-type(2) {
+            text-align: center;
+        }
+
+        &:nth-of-type(3) {
+            text-align: center;
         }
     }
 
