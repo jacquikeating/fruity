@@ -19,31 +19,27 @@
 
         &:first-of-type {
             border-left: none;
-            width: 4em;
+            width: 3.5em;
         }
 
-        &--phase {
-            width: 4.3em;
+        &--p {
+            width: 3.6em;
         }
 
         &--mechanic {
-            width: 10em;
+            width: 9em;
         }
 
         &--cause {
-            width: 20em;
+            width: 30em;
         }
 
         &--players {
-            width: 10em;
-        }
-
-        &--notes {
-            width: 20em;
+            width: 15em;
         }
 
         &--actions {
-            width: 8em;
+            width: 10em;
         }
     }
 }
