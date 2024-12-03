@@ -102,21 +102,7 @@ const ReportPage = () => {
                 {createReadableDate(sessionData.date)}
               </span>
             </h1>
-            {/* <p className="report__subtitle">
-              Session {sessionData.id}
-              <span className="report__divider"> • </span>
-              Phase {sessionData.prog_phase} Prog
-            </p>
-            <p className="report__subtitle">
-              <a className="report__link" href={sessionData.twitch_link}>
-                <img src="/src/assets/25_twitch.png" className="report__icon" />
-                Twitch
-              </a>
-              <a className="report__link" href={sessionData.fflogs_link}>
-                <img src="/src/assets/25_fflogs.png" className="report__icon" />
-                FFLogs
-              </a>
-            </p> */}
+
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
@@ -131,34 +117,63 @@ const ReportPage = () => {
                 rel="noreferrer"
               >
                 <img src="/src/assets/25_fflogs.png" className="report__icon" />
-                FFLogs
+                Logs
               </a>
-              <span className="report__divider"> • </span>
-              <a
-                className={`report__link ${checkIfEmptyLink(
-                  sessionData.twitch_link
-                )}`}
-                href={sessionData.twitch_link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src="/src/assets/25_twitch.png" className="report__icon" />
-                Twitch
-              </a>
+              {sessionData.twitch_links.length ? (
+                sessionData.twitch_links.map((vod) => {
+                  return (
+                    <>
+                      <span className="report__divider"> • </span>
+                      <a
+                        className={`report__link`}
+                        href={vod.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          src="/src/assets/25_twitch.png"
+                          className="report__icon"
+                        />
+                        {vod.name} VOD
+                      </a>
+                    </>
+                  );
+                })
+              ) : (
+                <p className={`report__link--empty_link`}>
+                  <img
+                    src="/src/assets/25_twitch.png"
+                    className="report__icon"
+                  />
+                  None
+                </p>
+              )}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Goal: </span>
+              {sessionData.goal}
             </p>
             <p className="report__extra-info">
               <span className="report__extra-info--bold">Roster: </span>
               {sessionData.roster.join(", ")}
             </p>
             <p className="report__extra-info">
-              <span className="report__extra-info--bold">Most Wipes: </span>P
-              {findStrugglePhase(pullsArray)}
+              <span className="report__extra-info--bold">Most Wipes: </span>
+              Phase {findStrugglePhase(pullsArray)}
               <span className="report__divider"> • </span>
               {findStruggleMech(pullsArray)}
             </p>
             <p className="report__extra-info">
               <span className="report__extra-info--bold">Gold Stars: </span>
               {findGoldStars(pullsArray, sessionData.roster)}
+            </p>
+            <p className="report__extra-info">
+              <span className="report__extra-info--bold">Notes: </span>
+              <ul className="report__list">
+                {sessionData.notes.map((note) => {
+                  return <li>{note}</li>;
+                })}
+              </ul>
             </p>
           </section>
 
