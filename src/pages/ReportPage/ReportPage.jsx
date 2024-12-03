@@ -149,50 +149,66 @@ const ReportPage = () => {
                 </p>
               )}
             </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Goal: </span>
-              {sessionData.goal}
-            </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Roster: </span>
-              {sessionData.roster.join(", ")}
-            </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Most Wipes: </span>
-              Phase {findStrugglePhase(pullsArray)}
-              <span className="report__divider"> • </span>
-              {findStruggleMech(pullsArray)}
-            </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Gold Stars: </span>
-              {findGoldStars(pullsArray, sessionData.roster)}
-            </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Notes: </span>
-              <ul className="report__list">
-                {sessionData.notes.map((note) => {
-                  return <li>{note}</li>;
-                })}
-              </ul>
-            </p>
+
+            <div className="report__extra-info-container">
+              <div className="report__extra-info-left">
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Goal: </span>
+                  {sessionData.goal}
+                </p>
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Roster: </span>
+                  {sessionData.roster.join(", ")}
+                </p>
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Most Wipes: </span>
+                  Phase {findStrugglePhase(pullsArray)}
+                  <span className="report__divider"> • </span>
+                  {findStruggleMech(pullsArray)}
+                </p>
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Gold Stars: </span>
+                  {findGoldStars(pullsArray, sessionData.roster)}
+                </p>
+              </div>
+              <div className="report__extra-info-right">
+                {" "}
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Notes: </span>
+                  <ul className="report__list">
+                    {sessionData.notes.map((note) => {
+                      return <li className="report__note">{note}</li>;
+                    })}
+                  </ul>
+                </p>
+              </div>
+              <PhaseBreakdownTable
+                sessionData={sessionData}
+                pullsArray={pullsArray}
+              />
+            </div>
           </section>
 
-          <section className="report__section">
+          {/* <section className="report__section">
             <PhaseBreakdownTable
               sessionData={sessionData}
               pullsArray={pullsArray}
             />
-          </section>
+          </section> */}
 
           <section className="report__section">
             <div className="report__pulls-heading">
               <h2 className="report__subheading">
                 Pulls ({pullsArray.length})
               </h2>
-              <label className="report__checkbox-label">
+              <label
+                className="report__checkbox-label"
+                htmlFor="progOnlyCheckbox"
+              >
                 <input
                   type="checkbox"
                   name="progOnlyCheckbox"
+                  id="progOnlyCheckbox"
                   className="report__prog-only-checkbox"
                   value={progPullsOnly}
                   onChange={handleCheckbox}
