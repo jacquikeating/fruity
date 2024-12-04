@@ -19,6 +19,7 @@ const OverviewPage = () => {
         if (typeOfRoster === "string") {
           data.forEach((session) => {
             session.roster = session.roster.split(",");
+            session.twitch_links = JSON.parse(session.twitch_links);
           });
         }
         setSessionsArray(data.reverse());
