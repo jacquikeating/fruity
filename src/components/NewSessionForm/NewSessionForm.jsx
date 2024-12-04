@@ -2,11 +2,11 @@ import { React, useState } from "react";
 import axios from "axios";
 import "./NewSessionForm.scss";
 
-const NewSessionForm = ({ handleSessionFormData }) => {
-  const [num, setNum] = useState("");
-  const [roster, setRoster] = useState("");
-  const [progPhase, setProgPhase] = useState("");
-  const [progMech, setProgMech] = useState("");
+const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
+  const [num, setNum] = useState(lastSession.id + 1);
+  const [roster, setRoster] = useState(lastSession.roster.join(", "));
+  const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
+  const [progMech, setProgMech] = useState(lastSession.prog_mech);
   const [ffLogsLink, setFFLogsLink] = useState("");
   const [twitchLink, setTwitchLink] = useState("");
 

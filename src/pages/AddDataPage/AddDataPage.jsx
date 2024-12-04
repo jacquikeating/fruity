@@ -9,6 +9,7 @@ import "./AddDataPage.scss";
 const AddDataPage = () => {
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
+  const [lastSession, setLastSession] = useState({});
   const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
   const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
 
@@ -17,6 +18,16 @@ const AddDataPage = () => {
     if (lsSessionData) {
       setSessionData(lsSessionData);
       setSessionInProgress(true);
+    } else {
+      async function getLastSessionData() {
+        try {
+          let result = await axios.get(`http://localhost:5050/sessions/`);
+          setLastSession(result.data.reverse()[0]);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      getLastSessionData();
     }
   }, []);
 
@@ -77,7 +88,14 @@ const AddDataPage = () => {
       {!sessionInProgress ? (
         <section className="add-data__section">
           <h2 className="add-data__section-heading">New Session</h2>
-          <NewSessionForm handleSessionFormData={handleSessionFormData} />
+          {lastSession.id > 0 ? (
+            <NewSessionForm
+              lastSession={lastSession}
+              handleSessionFormData={handleSessionFormData}
+            />
+          ) : (
+            ""
+          )}
         </section>
       ) : (
         <>
