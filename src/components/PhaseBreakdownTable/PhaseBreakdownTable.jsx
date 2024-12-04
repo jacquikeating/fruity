@@ -28,8 +28,6 @@ const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
     phaseBreakdown[3] ? phaseBreakdown[3] : 0,
     phaseBreakdown[4] ? phaseBreakdown[4] : 0,
     phaseBreakdown[5] ? phaseBreakdown[5] : 0,
-    phaseBreakdown[6] ? phaseBreakdown[6] : 0,
-    phaseBreakdown[7] ? phaseBreakdown[7] : 0,
   ];
 
   let counter = 1;
