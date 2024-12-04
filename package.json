@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "node --watch src/server.js",
-    "seed": "npx knex migrate:latest"
+    "migrate": "npx knex migrate:latest"
   },
   "dependencies": {
     "axios": "^1.7.8",
