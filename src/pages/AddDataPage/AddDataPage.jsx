@@ -24,7 +24,16 @@ const AddDataPage = () => {
       async function getLastSessionData() {
         try {
           let result = await axios.get(`${API_URL}/sessions/`);
-          setLastSession(result.data.reverse()[0]);
+          let mostRecentSession = result.data.reverse()[0];
+          const typeOfRoster = typeof mostRecentSession.roster;
+          if (typeOfRoster === "string") {
+            mostRecentSession.roster = JSON.parse(mostRecentSession.roster);
+            mostRecentSession.twitch_links = JSON.parse(
+              mostRecentSession.twitch_links
+            );
+            mostRecentSession.notes = JSON.parse(mostRecentSession.notes);
+          }
+          setLastSession(mostRecentSession);
         } catch (error) {
           console.error(error);
         }
