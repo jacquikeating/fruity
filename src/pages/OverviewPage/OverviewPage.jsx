@@ -13,7 +13,7 @@ const OverviewPage = () => {
   useEffect(() => {
     async function getSessionsData() {
       try {
-        let result = await axios.get(`${API_URL}sessions`);
+        let result = await axios.get(`${API_URL}/sessions`);
         let data = result.data;
         setSessionsArray(data.reverse());
       } catch (error) {
@@ -23,7 +23,7 @@ const OverviewPage = () => {
 
     async function getPullsData() {
       try {
-        let result = await axios.get(`${API_URL}pulls`);
+        let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
         setPullsArray(data);
       } catch (error) {
