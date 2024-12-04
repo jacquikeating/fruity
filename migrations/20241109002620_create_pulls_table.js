@@ -15,7 +15,7 @@ export const up = function (knex) {
     table.string("mech");
     table.string("prog_point_reached");
     table.string("cause");
-    table.JSON("players_responsible");
+    table.string("players_responsible");
     table.string("log_link");
     table.string("clip_link");
     table.string("notes");

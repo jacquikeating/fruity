@@ -5,10 +5,10 @@ export const up = function (knex) {
     table.integer("prog_phase").notNullable();
     table.string("prog_mech").notNullable();
     table.string("fflogs_link");
-    table.JSON("twitch_links");
-    table.JSON("roster").notNullable();
+    table.string("twitch_links");
+    table.string("roster").notNullable();
     table.string("goal");
-    table.JSON("notes");
+    table.string("notes");
   });
 };
 
