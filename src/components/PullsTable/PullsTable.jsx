@@ -19,7 +19,7 @@ const PullsTable = ({
     }
   }
 
-  const columns = ["phase", "mechanic", "cause", "players", "notes"];
+  const columns = ["p", "mechanic", "cause", "players", "notes"];
 
   return (
     <div className="pulls-table">
