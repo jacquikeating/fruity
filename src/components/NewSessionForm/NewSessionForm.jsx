@@ -40,73 +40,82 @@ const NewSessionForm = ({ handleSessionFormData }) => {
 
   return (
     <div className="session-form">
-      <label className="session-form__label" htmlFor="session-num">
-        Session #
-        <input
-          className="session-form__input session-form__input--number"
-          type="number"
-          name="session-num"
-          id="session-num"
-          value={num}
-          onChange={(e) => setNum(e.target.value)}
-        />
-      </label>
-      <label className="session-form__label" htmlFor="roster">
-        Roster
-        <input
-          className="session-form__input form__input--text"
-          type="text"
-          name="roster"
-          id="roster"
-          value={roster}
-          onChange={(e) => setRoster(e.target.value)}
-        />
-      </label>
-      <label className="session-form__label" htmlFor="prog-phase">
-        Prog Phase
-        <input
-          className="session-form__input form__input--number"
-          type="number"
-          name="prog-phase"
-          id="prog-phase"
-          value={progPhase}
-          onChange={(e) => setProgPhase(e.target.value)}
-        />
-      </label>
-      <label className="session-form__label" htmlFor="prog-mech">
-        Prog Mech
-        <input
-          className="session-form__input session-form__input--text"
-          type="text"
-          name="prog-mech"
-          id="prog-mech"
-          value={progMech}
-          onChange={(e) => setProgMech(e.target.value)}
-        />
-      </label>
-      <label className="session-form__label" htmlFor="fflogs-link">
-        FFLogs Link
-        <input
-          className="session-form__input session-form__input--text"
-          type="text"
-          name="fflogs-link"
-          id="fflogs-link"
-          value={ffLogsLink}
-          onChange={(e) => setFFLogsLink(e.target.value)}
-        />
-      </label>
-      <label className="session-form__label" htmlFor="twitch-link">
-        Twitch Link
-        <input
-          className="session-form__input session-form__input--text"
-          type="text"
-          name="twitch-link"
-          id="twitch-link"
-          value={twitchLink}
-          onChange={(e) => setTwitchLink(e.target.value)}
-        />
-      </label>
-      <button onClick={handleSubmit}>Start</button>
+      <div className="session-form__container">
+        <div className="session-form__labels-column">
+          <label className="session-form__label" htmlFor="session-num">
+            Session #
+          </label>
+          <label className="session-form__label" htmlFor="roster">
+            Roster
+          </label>
+          <label className="session-form__label" htmlFor="prog-phase">
+            Prog Phase
+          </label>
+          <label className="session-form__label" htmlFor="prog-mech">
+            Prog Mech
+          </label>
+          <label className="session-form__label" htmlFor="fflogs-link">
+            FFLogs Link
+          </label>
+          <label className="session-form__label" htmlFor="twitch-link">
+            Twitch Link
+          </label>
+        </div>
+        <div className="session-form__inputs-column">
+          <input
+            className="session-form__input session-form__input--number"
+            type="number"
+            name="session-num"
+            id="session-num"
+            value={num}
+            onChange={(e) => setNum(e.target.value)}
+          />
+          <input
+            className="session-form__input form__input--text"
+            type="text"
+            name="roster"
+            id="roster"
+            value={roster}
+            onChange={(e) => setRoster(e.target.value)}
+          />
+          <input
+            className="session-form__input form__input--number"
+            type="number"
+            name="prog-phase"
+            id="prog-phase"
+            value={progPhase}
+            onChange={(e) => setProgPhase(e.target.value)}
+          />
+          <input
+            className="session-form__input session-form__input--text"
+            type="text"
+            name="prog-mech"
+            id="prog-mech"
+            value={progMech}
+            onChange={(e) => setProgMech(e.target.value)}
+          />
+          <input
+            className="session-form__input session-form__input--text"
+            type="text"
+            name="fflogs-link"
+            id="fflogs-link"
+            value={ffLogsLink}
+            onChange={(e) => setFFLogsLink(e.target.value)}
+          />
+          <input
+            className="session-form__input session-form__input--text"
+            type="text"
+            name="twitch-link"
+            id="twitch-link"
+            value={twitchLink}
+            onChange={(e) => setTwitchLink(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <button className="session-form__button" onClick={handleSubmit}>
+        Start
+      </button>
     </div>
   );
 };
