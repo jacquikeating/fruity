@@ -171,6 +171,10 @@ const ReportPage = () => {
                   {findGoldStars(pullsArray, sessionData.roster)}
                 </p>
               </div>
+              <PhaseBreakdownTable
+                sessionData={sessionData}
+                pullsArray={pullsArray}
+              />
               <div className="report__extra-info-right">
                 {" "}
                 <p className="report__extra-info">
@@ -182,10 +186,6 @@ const ReportPage = () => {
                   </ul>
                 </p>
               </div>
-              <PhaseBreakdownTable
-                sessionData={sessionData}
-                pullsArray={pullsArray}
-              />
             </div>
           </section>
 
