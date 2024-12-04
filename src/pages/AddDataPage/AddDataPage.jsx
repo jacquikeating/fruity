@@ -6,6 +6,8 @@ import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AddDataPage = () => {
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
@@ -21,7 +23,7 @@ const AddDataPage = () => {
     } else {
       async function getLastSessionData() {
         try {
-          let result = await axios.get(`http://localhost:5050/sessions/`);
+          let result = await axios.get(`${API_URL}/sessions/`);
           setLastSession(result.data.reverse()[0]);
         } catch (error) {
           console.error(error);
@@ -72,7 +74,7 @@ const AddDataPage = () => {
       delete pull.index;
       pull.players_responsible = JSON.stringify(pull.players_responsible);
       try {
-        await axios.post(`http://localhost:5050/pulls/`, pull);
+        await axios.post(`${API_URL}/pulls/`, pull);
       } catch (error) {
         console.error(error);
       }

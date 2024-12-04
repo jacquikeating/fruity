@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import axios from "axios";
 import "./NewSessionForm.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [num, setNum] = useState(lastSession.id + 1);
   const [roster, setRoster] = useState(lastSession.roster.join(", "));
@@ -32,7 +34,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
 
   async function addNewSession(sessionObjToPost) {
     try {
-      await axios.post(`http://localhost:5050/sessions/`, sessionObjToPost);
+      await axios.post(`${API_URL}/sessions/`, sessionObjToPost);
     } catch (error) {
       console.error(error);
     }

@@ -12,6 +12,8 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
@@ -21,9 +23,7 @@ const ReportPage = () => {
   useEffect(() => {
     async function getSessionData() {
       try {
-        let result = await axios.get(
-          `http://localhost:5050/sessions/${sessionID}`
-        );
+        let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let data = result.data[0];
         setSessionData(data);
       } catch (error) {
@@ -33,9 +33,7 @@ const ReportPage = () => {
 
     async function getPullsData() {
       try {
-        let result = await axios.get(
-          `http://localhost:5050/sessions/${sessionID}/pulls`
-        );
+        let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         let data = result.data;
         setPullsArray(data);
       } catch (error) {
@@ -65,7 +63,7 @@ const ReportPage = () => {
   async function deletePull(pullToDelete) {
     try {
       const response = await axios.delete(
-        `http://localhost:5050/pulls/${pullToDelete.id}`
+        `http://${API_URL}:5050/pulls/${pullToDelete.id}`
       );
       if (response.status === 204) {
         setPullsArray(pullsArray.filter((pull) => pull.id !== pullToDelete.id));
@@ -83,7 +81,7 @@ const ReportPage = () => {
 
     try {
       await axios.put(
-        `http://localhost:5050/pulls/${pullToUpdate.id}`,
+        `http://${API_URL}:5050/pulls/${pullToUpdate.id}`,
         pullToUpdate
       );
     } catch (error) {

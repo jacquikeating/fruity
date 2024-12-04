@@ -4,6 +4,8 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const OverviewPage = () => {
   const [sessionsArray, setSessionsArray] = useState([]);
   const [pullsArray, setPullsArray] = useState([]);
@@ -11,7 +13,7 @@ const OverviewPage = () => {
   useEffect(() => {
     async function getSessionsData() {
       try {
-        let result = await axios.get(`http://localhost:5050/sessions/`);
+        let result = await axios.get(`${API_URL}/sessions/`);
         let data = result.data;
         setSessionsArray(data.reverse());
       } catch (error) {
@@ -21,7 +23,7 @@ const OverviewPage = () => {
 
     async function getPullsData() {
       try {
-        let result = await axios.get(`http://localhost:5050/pulls`);
+        let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
         setPullsArray(data);
       } catch (error) {
