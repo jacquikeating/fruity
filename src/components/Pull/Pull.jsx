@@ -46,8 +46,8 @@ const Pull = ({
     }
   }
 
-  function editLink() {
-    setShowModal(true);
+  function toggleLinkModal() {
+    setShowModal(!showModal);
   }
 
   return (
@@ -133,7 +133,7 @@ const Pull = ({
         {!editMode ? (
           ""
         ) : (
-          <button className="pull__add-link-btn" onClick={editLink}>
+          <button className="pull__add-link-btn" onClick={toggleLinkModal}>
             +
           </button>
         )}
