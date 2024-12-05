@@ -27,14 +27,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
   const phaseAndMechOptions = [
     ["N/A"],
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
-    [
-      "Diamond Dust",
-      "Swappies",
-      "Mirrors",
-      "Light Rampant",
-      "Enrage",
-      "Intermission",
-    ],
+    ["Diamond Dust", "Mirrors", "Light Rampant", "Enrage", "Intermission"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
