@@ -4,9 +4,15 @@ import "./PullLink.scss";
 
 const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
   const [showModal, setShowModal] = useState(false);
+  const [newLogLink, setNewLogLink] = useState(logLink);
+  const [newClipLink, setNewClipLink] = useState(clipLink);
 
   function toggleLinkModal() {
     setShowModal(!showModal);
+
+    if (logLink != newLogLink || clipLink != newClipLink) {
+      handleLinkChange(newLogLink, newClipLink);
+    }
   }
 
   return (
@@ -17,6 +23,22 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
         <button className="pull-link__add-link-btn" onClick={toggleLinkModal}>
           {!showModal ? "+" : "x"}
         </button>
+      )}
+
+      {logLink.length ? (
+        <a
+          className="pull-link__link"
+          href={logLink}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="https://i.imgur.com/WUA83tW.png"
+            className="pull-link__icon"
+          />
+        </a>
+      ) : (
+        ""
       )}
 
       {clipLink ? (
@@ -34,27 +56,14 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
       ) : (
         ""
       )}
-      {logLink ? (
-        <a
-          className="pull-link__link"
-          href={logLink}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="https://i.imgur.com/WUA83tW.png"
-            className="pull-link__icon"
-          />
-        </a>
-      ) : (
-        ""
-      )}
 
       {editMode && showModal ? (
         <EditLinkModal
           logLink={logLink}
           clipLink={clipLink}
           handleLinkChange={handleLinkChange}
+          setNewLogLink={setNewLogLink}
+          setNewClipLink={setNewClipLink}
         />
       ) : (
         ""
