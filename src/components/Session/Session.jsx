@@ -7,7 +7,7 @@ import {
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {
-  const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_link } =
+  const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
 
   return (
@@ -36,17 +36,8 @@ const Session = ({ sessionData }) => {
           <img src="../../src/assets/25_fflogs.png" className="session__icon" />
           FFLogs
         </a>
-        {/* <a
-          className={`session__link ${checkIfEmptyLink(twitch_link)}`}
-          href={twitch_link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="/src/assets/25_twitch.png" className="session__icon" />
-          Twitch
-        </a> */}
-        {sessionData.twitch_links.length ? (
-          sessionData.twitch_links.map((vod) => {
+        {twitch_links.length ? (
+          twitch_links.map((vod) => {
             return (
               <>
                 <span className="report__divider"> • </span>
