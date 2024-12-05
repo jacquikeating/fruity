@@ -15,7 +15,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
         ""
       ) : (
         <button className="pull-link__add-link-btn" onClick={toggleLinkModal}>
-          +
+          {!showModal ? "+" : "x"}
         </button>
       )}
 
