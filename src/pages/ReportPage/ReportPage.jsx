@@ -75,7 +75,7 @@ const ReportPage = () => {
   async function deletePull(pullToDelete) {
     try {
       const response = await axios.delete(
-        `http://${API_URL}:5050/pulls/${pullToDelete.id}`
+        `http://${API_URL}/pulls/${pullToDelete.id}`
       );
       if (response.status === 204) {
         setPullsArray(pullsArray.filter((pull) => pull.id !== pullToDelete.id));
@@ -93,7 +93,7 @@ const ReportPage = () => {
 
     try {
       await axios.put(
-        `http://${API_URL}:5050/pulls/${pullToUpdate.id}`,
+        `http://${API_URL}/pulls/${pullToUpdate.id}`,
         pullToUpdate
       );
     } catch (error) {
