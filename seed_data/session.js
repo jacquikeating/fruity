@@ -1,6 +1,6 @@
 export default [
   {
-    date: "2024-11-26",
+    date: "2024-11-26T21:00:00Z",
     prog_phase: 1,
     prog_mech: "Opener",
     fflogs_link: "https://www.fflogs.com/reports/Fn6zbtjc2hLpVN9M",
@@ -24,7 +24,7 @@ export default [
       "Char",
       "Laveera",
     ]),
-    goal: "Die a lot",
+    goal: "Die a lot.",
     notes: JSON.stringify([
       "Unofficial session 0",
       "Chro's VOD is split into multiple parts",

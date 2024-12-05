@@ -24,7 +24,7 @@ export default [
     log_link: "",
     clip_link: "",
     notes:
-      "No swap on TB killed both tanks again, but we recovered. We are just starting to learn US, so Sophia was slow getting to his spread spot and both RDPS went too far out.",
+      "TB killed both tanks again, but we recovered. Timing or precise positioning in the safe spots got Soph and both RDPS.",
   },
   {
     session_id: 1,
@@ -38,7 +38,7 @@ export default [
     log_link: "",
     clip_link: "",
     notes:
-      "1) No swap on TB killed both tanks; 2) Did not rez in time to see clones → late safe spot call → Quil, Tori, Ruv, and Laveera died to clone lines; 3) Char too close to Ella",
+      "1) TB killed tanks; 2) Did not rez in time to see clones → late safe spot call → Quil, Tori, Ruv, and Laveera died to clone lines; 3) Char too close to Ella",
   },
   {
     session_id: 1,
@@ -593,7 +593,7 @@ export default [
     prog_point_reached: "target",
     cause: "16.5% with 3 DDs and 3 deaths",
     players_responsible: JSON.stringify(["Chro", "Sophia", "Ruv"]),
-    log_link: "",
+    log_link: "https://www.fflogs.com/reports/Fn6zbtjc2hLpVN9M#fight=48",
     clip_link: "",
     notes:
       "Ruv started FoF on wrong side and died trying to correct it → 3-stack put DDs on Quil, Soph, and Ella; tanks too close for final TB.",
