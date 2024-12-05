@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import PullLink from "../PullLink/PullLink";
-import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./Pull.scss";
 
 const Pull = ({

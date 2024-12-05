@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
 const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
