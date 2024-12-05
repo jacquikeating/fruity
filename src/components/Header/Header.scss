@@ -9,7 +9,7 @@
 .nav {
     margin: auto;
     padding: 0.7rem 0;
-    width: 90%;
+    width:  clamp(300px, 85vw, 1600px);
     display: flex;
 
     &__list {

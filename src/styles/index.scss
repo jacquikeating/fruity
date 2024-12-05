@@ -7,10 +7,10 @@
 }
 
 main {
-  width: 90%;
+  width: clamp(300px, 85vw, 1600px);
   margin: 1.5rem auto;
   color: $text-light;
-  padding-bottom: 10rem;
+  padding-bottom: 5rem;
 }
 
 body {
