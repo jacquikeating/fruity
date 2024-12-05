@@ -1,7 +1,10 @@
-import React from "react";
+import { React, useState } from "react";
 import "./EditLinkModal.scss";
 
-const EditLinkModal = () => {
+const EditLinkModal = ({ logLink, clipLink, handleLinkChange }) => {
+  const [newLogLink, setNewLogLink] = useState(logLink);
+  const [newClipLink, setNewClipLink] = useState(clipLink);
+
   return (
     <div className="link-modal">
       <label className="link-modal__label">
@@ -14,6 +17,8 @@ const EditLinkModal = () => {
           id="link-input-twitch"
           type="text"
           className="link-modal__input"
+          value={newLogLink}
+          onChange={(e) => setNewLogLink(e.target.value)}
         ></input>
       </label>
 
@@ -27,6 +32,8 @@ const EditLinkModal = () => {
           id="link-input-fflogs"
           type="text"
           className="link-modal__input"
+          value={newClipLink}
+          onChange={(e) => setNewClipLink(e.target.value)}
         />
       </label>
     </div>

@@ -50,7 +50,15 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
         ""
       )}
 
-      {editMode && showModal ? <EditLinkModal /> : ""}
+      {editMode && showModal ? (
+        <EditLinkModal
+          logLink={logLink}
+          clipLink={clipLink}
+          handleLinkChange={handleLinkChange}
+        />
+      ) : (
+        ""
+      )}
     </td>
   );
 };
