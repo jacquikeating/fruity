@@ -49,4 +49,20 @@
             transform: scale(1.1);
         }
     }
+
+    &__add-link-btn {
+        position: absolute;
+        left: -14px;
+        top: 5px;
+        border: none;
+        border-radius: 2px;
+        width: 25px;
+        height: 25px;
+        background-color: $grey;
+        color: $text-light;
+
+        &:hover {
+            transform: scale(1.1)
+        }
+    }
 }

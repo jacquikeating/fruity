@@ -111,6 +111,21 @@ const Pull = ({
       </td>
 
       <td key={`${index}-notes`} className="pull__cell">
+        {!editMode ? (
+          notes
+        ) : (
+          <input
+            className="pull__input"
+            type="text"
+            value={notes}
+            onChange={(e) => {
+              setNotes(e.target.value);
+            }}
+          />
+        )}
+
+        {!editMode ? "" : <button className="pull__add-link-btn">+</button>}
+
         {clipLink ? (
           <a
             className="pull__link"
@@ -134,18 +149,6 @@ const Pull = ({
           </a>
         ) : (
           ""
-        )}
-        {!editMode ? (
-          notes
-        ) : (
-          <input
-            className="pull__input"
-            type="text"
-            value={notes}
-            onChange={(e) => {
-              setNotes(e.target.value);
-            }}
-          />
         )}
       </td>
 
