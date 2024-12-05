@@ -127,7 +127,7 @@ const ReportPage = () => {
                 rel="noreferrer"
               >
                 <img
-                  src="../../src/assets/25_fflogs.png"
+                  src="/.netlify/images?url=/src/assets/25_fflogs.png"
                   className="report__icon"
                 />
                 Logs
