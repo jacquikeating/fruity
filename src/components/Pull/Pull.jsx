@@ -149,6 +149,14 @@ const Pull = ({
       ) : (
         ""
       )}
+      <td className="pull__link-cell">
+        <PullLink
+          logLink={logLink}
+          clipLink={clipLink}
+          editMode={editMode}
+          handleLinkChange={handleLinkChange}
+        />
+      </td>
     </tr>
   );
 };

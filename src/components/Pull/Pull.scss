@@ -69,4 +69,10 @@
             transform: scale(1.1)
         }
     }
+
+    &__link-cell {
+        position: absolute;
+        left: 0px;
+        border: none;
+    }
 }
