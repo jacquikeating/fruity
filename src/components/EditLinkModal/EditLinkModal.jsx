@@ -1,7 +1,7 @@
 import React from "react";
-import "./PullLinkModal.scss";
+import "./EditLinkModal.scss";
 
-const PullLinkModal = () => {
+const EditLinkModal = () => {
   return (
     <div>
       <label htmlFor="link-input-twitch">
@@ -16,4 +16,4 @@ const PullLinkModal = () => {
   );
 };
 
-export default PullLinkModal;
+export default EditLinkModal;
