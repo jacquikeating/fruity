@@ -9,7 +9,7 @@ const EditLinkModal = () => {
       </label>
       <input id="link-input-twitch" type="text"></input>
       <label htmlFor="link-input-fflogs">
-        <img src="https://i.imgur.com/NzRUemQ.png" alt="FFLogs" />
+        <img src="https://i.imgur.com/asZe3Wu.png" alt="FFLogs" />
       </label>
       <input id="link-input-fflogs" type="text" />
     </div>
