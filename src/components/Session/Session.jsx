@@ -33,7 +33,10 @@ const Session = ({ sessionData }) => {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="../../src/assets/25_fflogs.png" className="session__icon" />
+          <img
+            src="https://i.imgur.com/asZe3Wu.png"
+            className="session__icon"
+          />
           FFLogs
         </a>
         {twitch_links.length ? (
@@ -48,7 +51,7 @@ const Session = ({ sessionData }) => {
                   rel="noreferrer"
                 >
                   <img
-                    src="../../src/assets/25_twitch.png"
+                    src="https://i.imgur.com/NzRUemQ.png"
                     className="report__icon"
                   />
                   {vod.name} VOD
@@ -59,7 +62,7 @@ const Session = ({ sessionData }) => {
         ) : (
           <p className={`report__link--empty_link`}>
             <img
-              src="../../src/assets/25_twitch.png"
+              src="https://i.imgur.com/NzRUemQ.png"
               className="report__icon"
             />
             None

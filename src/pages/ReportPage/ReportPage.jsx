@@ -144,7 +144,7 @@ const ReportPage = () => {
                         rel="noreferrer"
                       >
                         <img
-                          src="../../src/assets/25_twitch.png"
+                          src="https://i.imgur.com/NzRUemQ.png"
                           className="report__icon"
                         />
                         {vod.name} VOD
@@ -155,7 +155,7 @@ const ReportPage = () => {
               ) : (
                 <p className={`report__link--empty_link`}>
                   <img
-                    src="../../src/assets/25_twitch.png"
+                    src="https://i.imgur.com/NzRUemQ.png"
                     className="report__icon"
                   />
                   None
