@@ -118,7 +118,7 @@ const Pull = ({
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/src/assets/50_twitch.png" className="pull__icon" />
+            <img src="../../src/assets/50_twitch.png" className="pull__icon" />
           </a>
         ) : (
           ""
@@ -130,7 +130,7 @@ const Pull = ({
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/src/assets/50_fflogs.png" className="pull__icon" />
+            <img src="../../src/assets/50_fflogs.png" className="pull__icon" />
           </a>
         ) : (
           ""

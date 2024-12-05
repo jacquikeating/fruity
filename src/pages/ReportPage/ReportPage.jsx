@@ -126,7 +126,10 @@ const ReportPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src="/src/assets/25_fflogs.png" className="report__icon" />
+                <img
+                  src="../../src/assets/25_fflogs.png"
+                  className="report__icon"
+                />
                 Logs
               </a>
               {sessionData.twitch_links.length ? (
@@ -141,7 +144,7 @@ const ReportPage = () => {
                         rel="noreferrer"
                       >
                         <img
-                          src="/src/assets/25_twitch.png"
+                          src="../../src/assets/25_twitch.png"
                           className="report__icon"
                         />
                         {vod.name} VOD
@@ -152,7 +155,7 @@ const ReportPage = () => {
               ) : (
                 <p className={`report__link--empty_link`}>
                   <img
-                    src="/src/assets/25_twitch.png"
+                    src="../../src/assets/25_twitch.png"
                     className="report__icon"
                   />
                   None
