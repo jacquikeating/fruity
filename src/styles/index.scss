@@ -10,10 +10,13 @@ main {
   width: 90%;
   margin: 1.5rem auto;
   color: $text-light;
+  padding-bottom: 10rem;
 }
 
 body {
   background-color: $bg-dark;
+  height: 100vw;
+  width: 100vw;
   font-weight: 300;
   font-family: $font-body;
 }
