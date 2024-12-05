@@ -162,6 +162,8 @@ const Pull = ({
         ) : (
           ""
         )}
+
+        {showModal ? <EditLinkModal /> : ""}
       </td>
 
       {showEdit ? (
