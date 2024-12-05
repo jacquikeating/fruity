@@ -15,7 +15,7 @@ const InfoPage = () => {
       </p>
       <p>This project is...</p>
 
-      <h2 className="info-page__subheading">Non-toxic</h2>
+      <h2 className="info-page__subheading">⚹ Non-toxic</h2>
       <p className="info-page__text">
         Or, well, as non-toxic as a giant list of our fuckups can be. The goal
         is not to shame people, but to give us a concrete picture of areas we
@@ -23,7 +23,7 @@ const InfoPage = () => {
         we'll make hundreds of mistakes before we get everything right.
       </p>
 
-      <h2 className="info-page__subheading">Subjective and imperfect</h2>
+      <h2 className="info-page__subheading">⚹ Subjective and imperfect</h2>
       <p className="info-page__text">
         All data comes from my personal observations, so it's prone to human
         error. Plus, some things are up to interpretation -- for instance, if
@@ -31,7 +31,7 @@ const InfoPage = () => {
         or are both equally responsible?
       </p>
 
-      <h2 className="info-page__subheading">Collaborative</h2>
+      <h2 className="info-page__subheading">⚹ Collaborative</h2>
       <p className="info-page__text">
         We are a team of eight, and one person cannot be the single source of
         truth. If I get something wrong or if you disagree with my
@@ -39,7 +39,7 @@ const InfoPage = () => {
         able to edit it yourself.
       </p>
 
-      <h2 className="info-page__subheading">Continually growing</h2>
+      <h2 className="info-page__subheading">⚹ Continually growing</h2>
       <p className="info-page__text">
         This will probably look a little bit different each time you check in.
         I've got an endless list of tweaks, UI improvements, and new features to
