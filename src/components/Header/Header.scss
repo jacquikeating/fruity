@@ -2,8 +2,7 @@
 
 .header {
     width: 100vw;
-    // height: 40px;
-    background-color: $bg-mid;
+    background-color: $bg-light;
 }
 
 .nav {
@@ -11,21 +10,49 @@
     padding: 0.7rem 0;
     width:  clamp(300px, 85vw, 1600px);
     display: flex;
+    align-items: center;
+    vertical-align: baseline;
+
+    &__site-logo {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            text-decoration: none;
+
+            img {
+                transform: rotate(15deg);
+            }
+        }
+    }
+
+    &__site-name {
+        height: 100%;
+        color: $text-light;
+        font-family: $font-display;
+        font-weight: bold;
+        margin: 0 1.5rem 0 0.7rem;
+        letter-spacing: 0.06em;
+    }
 
     &__list {
         list-style: none;
         display: flex;
         gap: 1rem;
+        padding-bottom: 3px;
+        margin-bottom: -4px;
     }
 
     &__link {
         text-decoration: none;
         color: $text-light!important;
-        opacity: 0.4;
+        opacity: 0.7;
         font-family: $font-display;
         text-transform: uppercase;
         letter-spacing: 0.07em;
         font-weight: 400;
+        line-height: 1;
+       
 
         &:hover {
             opacity: 1;
