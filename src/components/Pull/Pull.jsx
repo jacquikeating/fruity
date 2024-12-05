@@ -20,6 +20,7 @@ const Pull = ({
   const [logLink, setLogLink] = useState(pullData.log_link);
   const [clipLink, setClipLink] = useState(pullData.clip_link);
   const [notes, setNotes] = useState(pullData.notes);
+  const [showModal, setShowModal] = useState(false);
 
   const index = pullData.index;
 
@@ -42,6 +43,10 @@ const Pull = ({
         index: index,
       });
     }
+  }
+
+  function editLink() {
+    setShowModal(true);
   }
 
   return (
@@ -124,7 +129,13 @@ const Pull = ({
           />
         )}
 
-        {!editMode ? "" : <button className="pull__add-link-btn">+</button>}
+        {!editMode ? (
+          ""
+        ) : (
+          <button className="pull__add-link-btn" onClick={editLink}>
+            +
+          </button>
+        )}
 
         {clipLink ? (
           <a
