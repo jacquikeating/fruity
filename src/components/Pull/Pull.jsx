@@ -22,7 +22,6 @@ const Pull = ({
   const [logLink, setLogLink] = useState(pullData.log_link);
   const [clipLink, setClipLink] = useState(pullData.clip_link);
   const [notes, setNotes] = useState(pullData.notes);
-  const [showModal, setShowModal] = useState(false);
 
   const index = pullData.index;
 
@@ -47,8 +46,9 @@ const Pull = ({
     }
   }
 
-  function toggleLinkModal() {
-    setShowModal(!showModal);
+  function handleLinkChange(newLogLink, newClipLink) {
+    setLogLink(newLogLink);
+    setClipLink(newClipLink);
   }
 
   return (

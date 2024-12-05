@@ -1,7 +1,13 @@
-import React from "react";
+import { React, useState } from "react";
 import "./PullLink.scss";
 
-const PullLink = () => {
+const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  function toggleLinkModal() {
+    setShowModal(!showModal);
+  }
+
   return (
     <div>
       {!editMode ? (
