@@ -35,44 +35,9 @@
         }
     }
 
-    &__link {
-        width: 25px;
-        position: absolute;
-        left: -14px;
-        top: 5px;
-        right: -20px; 
-        display: flex;
-        justify-content: center;
-    }
-
-    &__icon {
-        max-width: 25px;
-        max-height: 25px;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
-
-    &__add-link-btn {
-        position: absolute;
-        left: -14px;
-        top: 5px;
-        border: none;
-        border-radius: 2px;
-        width: 25px;
-        height: 25px;
-        background-color: $grey;
-        color: $text-light;
-
-        &:hover {
-            transform: scale(1.1)
-        }
-    }
-
-    &__link-cell {
-        position: absolute;
-        left: 0px;
-        border: none;
-    }
+    // &__link-cell {
+    //     position: absolute;
+    //     left: 0px;
+    //     border: none;
+    // }
 }

@@ -9,42 +9,48 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
   }
 
   return (
-    <div>
+    <td className="pull-link__cell">
       {!editMode ? (
         ""
       ) : (
-        <button className="pull__add-link-btn" onClick={toggleLinkModal}>
+        <button className="pull-link__add-link-btn" onClick={toggleLinkModal}>
           +
         </button>
       )}
 
       {clipLink ? (
         <a
-          className="pull__link"
+          className="pull-link__link"
           href={clipLink}
           target="_blank"
           rel="noreferrer"
         >
-          <img src="https://i.imgur.com/HRxy3mm.png" className="pull__icon" />
+          <img
+            src="https://i.imgur.com/HRxy3mm.png"
+            className="pull-link__icon"
+          />
         </a>
       ) : (
         ""
       )}
       {logLink ? (
         <a
-          className="pull__link"
+          className="pull-link__link"
           href={logLink}
           target="_blank"
           rel="noreferrer"
         >
-          <img src="https://i.imgur.com/WUA83tW.png" className="pull__icon" />
+          <img
+            src="https://i.imgur.com/WUA83tW.png"
+            className="pull-link__icon"
+          />
         </a>
       ) : (
         ""
       )}
 
       {showModal ? <EditLinkModal /> : ""}
-    </div>
+    </td>
   );
 };
 
