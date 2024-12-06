@@ -10,4 +10,6 @@ router
   .delete(pullController.deletePull)
   .put(pullController.updatePull);
 
+router.route("/count").get(pullController.countPulls);
+
 export default router;
