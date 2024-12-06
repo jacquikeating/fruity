@@ -31,4 +31,28 @@ export default [
       "Should we even count this session?",
     ]),
   },
+  {
+    date: "2024-12-04T21:00:00Z",
+    prog_phase: 1,
+    prog_mech: "Enrage",
+    fflogs_link: "https://www.fflogs.com/reports/4W9pdzBFkvZn8CGc",
+    twitch_links: JSON.stringify([
+      {
+        name: "Chro",
+        link: "https://www.twitch.tv/videos/2318554836",
+      },
+    ]),
+    roster: JSON.stringify([
+      "Chro",
+      "Sophia",
+      "Ruv",
+      "Ella",
+      "Quil",
+      "Hypatia",
+      "Char",
+      "Laveera",
+    ]),
+    goal: "Clear phase 1",
+    notes: JSON.stringify([""]),
+  },
 ];
