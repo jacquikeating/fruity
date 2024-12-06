@@ -22,7 +22,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
       twitch_links: twitchLinks,
       roster: roster.split(", "),
       goal: "",
-      notes: "",
+      notes: null,
     };
 
     handleSessionFormData(sessionObj);
