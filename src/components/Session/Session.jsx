@@ -10,6 +10,7 @@ const Session = ({ sessionData }) => {
   const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
 
+  console.log(roster);
   return (
     <li className="session">
       <div className="session__header">
@@ -24,7 +25,7 @@ const Session = ({ sessionData }) => {
       </p>
       <p className="session__body-text">
         <span className="session__category">Roster: </span>
-        {roster.join(", ")}
+        {roster}
       </p>
       <div className="session__links-container">
         <a

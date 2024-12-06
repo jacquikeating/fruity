@@ -32,6 +32,12 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
+        const typeOfPR = typeof data[0].players_responsible;
+        if (typeOfPR === "string") {
+          data.forEach((pull) => {
+            pull.players_responsible = JSON.parse(pull.players_responsible);
+          });
+        }
         setPullsArray(data);
       } catch (error) {
         console.error(error);
