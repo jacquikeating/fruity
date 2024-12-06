@@ -26,7 +26,7 @@ const Session = ({ sessionData }) => {
         <span className="session__category">Roster: </span>
         {roster.join(", ")}
       </p>
-      <p className="session__links-container">
+      <div className="session__links-container">
         <a
           className={`session__link ${checkIfEmptyLink(fflogs_link)}`}
           href={fflogs_link}
@@ -49,10 +49,12 @@ const Session = ({ sessionData }) => {
                   href={vod}
                   target="_blank"
                   rel="noreferrer"
+                  key={index}
                 >
                   <img
                     src="https://i.imgur.com/NzRUemQ.png"
                     className="report__icon"
+                    key={index}
                   />
                   VOD {index + 1}
                 </a>
@@ -60,15 +62,15 @@ const Session = ({ sessionData }) => {
             );
           })
         ) : (
-          <p className={`report__link--empty_link`}>
+          <span className={`report__link--empty_link`}>
             <img
               src="https://i.imgur.com/NzRUemQ.png"
               className="report__icon"
             />
             None
-          </p>
+          </span>
         )}
-      </p>
+      </div>
     </li>
   );
 };

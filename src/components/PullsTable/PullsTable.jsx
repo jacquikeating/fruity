@@ -71,6 +71,7 @@ const PullsTable = ({
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={progPhase}
+                key={pull.pull_num_today}
               />
               // <tr key={`pull-${id}`} className="pulls-table__row">
               //   <td
