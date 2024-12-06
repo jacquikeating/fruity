@@ -132,13 +132,13 @@ const ReportPage = () => {
                 Logs
               </a>
               {sessionData.twitch_links.length ? (
-                sessionData.twitch_links.map((vod) => {
+                sessionData.twitch_links.map((vod, index) => {
                   return (
                     <>
                       <span className="report__divider"> • </span>
                       <a
                         className={`report__link`}
-                        href={vod.link}
+                        href={vod}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -146,7 +146,7 @@ const ReportPage = () => {
                           src="https://i.imgur.com/NzRUemQ.png"
                           className="report__icon"
                         />
-                        {vod.name} VOD
+                        VOD {index + 1}
                       </a>
                     </>
                   );

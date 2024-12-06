@@ -40,13 +40,13 @@ const Session = ({ sessionData }) => {
           FFLogs
         </a>
         {twitch_links.length ? (
-          twitch_links.map((vod) => {
+          twitch_links.map((vod, index) => {
             return (
               <>
                 <span className="report__divider"> • </span>
                 <a
                   className={`report__link`}
-                  href={vod.link}
+                  href={vod}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -54,7 +54,7 @@ const Session = ({ sessionData }) => {
                     src="https://i.imgur.com/NzRUemQ.png"
                     className="report__icon"
                   />
-                  {vod.name} VOD
+                  VOD {index + 1}
                 </a>
               </>
             );

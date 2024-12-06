@@ -10,7 +10,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
   const [ffLogsLink, setFFLogsLink] = useState("");
-  const [twitchLinks, setTwitchLinks] = useState("");
+  const [twitchLinks, setTwitchLinks] = useState([]);
   const [goal, setGoal] = useState("");
   const [notes, setNotes] = useState([]);
 
@@ -21,11 +21,13 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
       prog_phase: progPhase,
       prog_mech: progMech,
       fflogs_link: ffLogsLink,
-      twitch_links: twitchLinks,
+      twitch_links: twitchLinks.split(", "),
       roster: roster.split(", "),
-      goal: goal.split(", "),
+      goal: goal,
       notes: notes.split(", "),
     };
+
+    console.log(sessionObj);
 
     handleSessionFormData(sessionObj);
     localStorage.setItem("sessionInProgress", JSON.stringify(sessionObj));
@@ -33,7 +35,9 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
     sessionObjToPost.roster = JSON.stringify(roster.split(", "));
-    sessionObjToPost.twitch_links = JSON.stringify(twitchLinks);
+    sessionObjToPost.twitch_links = JSON.stringify(twitchLinks.split(", "));
+    sessionObjToPost.notes = JSON.stringify(notes.split(", "));
+    console.log(sessionObjToPost);
     addNewSession(sessionObjToPost);
   }
 
@@ -64,8 +68,14 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
           <label className="session-form__label" htmlFor="fflogs-link">
             FFLogs Link
           </label>
-          <label className="session-form__label" htmlFor="twitch-link">
-            Twitch Link
+          <label className="session-form__label" htmlFor="twitch-links">
+            Twitch Links
+          </label>
+          <label className="session-form__label" htmlFor="goal">
+            Goal
+          </label>
+          <label className="session-form__label" htmlFor="notes">
+            Notes
           </label>
         </div>
         <div className="session-form__inputs-column">
@@ -112,10 +122,26 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
           <input
             className="session-form__input session-form__input--text"
             type="text"
-            name="twitch-link"
-            id="twitch-link"
+            name="twitch-links"
+            id="twitch-links"
             value={twitchLinks}
             onChange={(e) => setTwitchLinks(e.target.value)}
+          />
+          <input
+            className="session-form__input form__input--text"
+            type="text"
+            name="goal"
+            id="goal"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+          />
+          <input
+            className="session-form__input form__input--text"
+            type="text"
+            name="notes"
+            id="notes"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
           />
         </div>
       </div>

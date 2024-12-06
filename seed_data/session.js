@@ -5,14 +5,8 @@ export default [
     prog_mech: "Opener",
     fflogs_link: "https://www.fflogs.com/reports/Fn6zbtjc2hLpVN9M",
     twitch_links: JSON.stringify([
-      {
-        name: "Chro",
-        link: "https://www.twitch.tv/videos/2312032144",
-      },
-      {
-        name: "Tori",
-        link: "https://www.twitch.tv/videos/2312034395",
-      },
+      "https://www.twitch.tv/videos/2312032144",
+      "https://www.twitch.tv/videos/2312034395",
     ]),
     roster: JSON.stringify([
       "Chro",
@@ -36,12 +30,7 @@ export default [
     prog_phase: 1,
     prog_mech: "Enrage",
     fflogs_link: "https://www.fflogs.com/reports/4W9pdzBFkvZn8CGc",
-    twitch_links: JSON.stringify([
-      {
-        name: "Chro",
-        link: "https://www.twitch.tv/videos/2318554836",
-      },
-    ]),
+    twitch_links: JSON.stringify(["https://www.twitch.tv/videos/2318554836"]),
     roster: JSON.stringify([
       "Chro",
       "Sophia",
