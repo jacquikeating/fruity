@@ -10,9 +10,9 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
   const [ffLogsLink, setFFLogsLink] = useState("");
-  const [twitchLinks, setTwitchLinks] = useState([]);
+  const [twitchLinks, setTwitchLinks] = useState("");
   const [goal, setGoal] = useState("");
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState("");
 
   function handleSubmit() {
     const sessionObj = {
@@ -34,9 +34,9 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
 
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
-    sessionObjToPost.roster = JSON.stringify(roster.split(", "));
-    sessionObjToPost.twitch_links = JSON.stringify(twitchLinks.split(", "));
-    sessionObjToPost.notes = JSON.stringify(notes.split(", "));
+    sessionObjToPost.roster = JSON.stringify(roster);
+    sessionObjToPost.twitch_links = JSON.stringify(twitchLinks);
+    sessionObjToPost.notes = JSON.stringify(notes);
     console.log(sessionObjToPost);
     addNewSession(sessionObjToPost);
   }
