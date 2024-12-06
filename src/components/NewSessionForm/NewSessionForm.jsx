@@ -10,7 +10,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
   const [ffLogsLink, setFFLogsLink] = useState("");
-  const [twitchLink, setTwitchLink] = useState("");
+  const [twitchLinks, setTwitchLinks] = useState("");
 
   function handleSubmit() {
     const sessionObj = {
@@ -19,8 +19,10 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
       prog_phase: progPhase,
       prog_mech: progMech,
       fflogs_link: ffLogsLink,
-      twitch_link: twitchLink,
+      twitch_links: twitchLinks,
       roster: roster.split(", "),
+      goal: "",
+      notes: "",
     };
 
     handleSessionFormData(sessionObj);
@@ -29,6 +31,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
     sessionObjToPost.roster = JSON.stringify(roster.split(", "));
+    sessionObjToPost.twitch_links = JSON.stringify(twitchLinks);
     addNewSession(sessionObjToPost);
   }
 
@@ -109,8 +112,8 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
             type="text"
             name="twitch-link"
             id="twitch-link"
-            value={twitchLink}
-            onChange={(e) => setTwitchLink(e.target.value)}
+            value={twitchLinks}
+            onChange={(e) => setTwitchLinks(e.target.value)}
           />
         </div>
       </div>
