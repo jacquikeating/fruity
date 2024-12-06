@@ -47,6 +47,8 @@ const ReportPage = () => {
             pull.players_responsible = JSON.parse(pull.players_responsible);
           });
         }
+        data.sort((a, b) => a.pull_num_today - b.pull_num_today);
+
         setPullsArray(data);
       } catch (error) {
         console.error(error);
@@ -75,7 +77,7 @@ const ReportPage = () => {
   async function deletePull(pullToDelete) {
     try {
       const response = await axios.delete(
-        `http://${API_URL}/pulls/${pullToDelete.id}`
+        `${API_URL}/pulls/${pullToDelete.id}`
       );
       if (response.status === 204) {
         setPullsArray(pullsArray.filter((pull) => pull.id !== pullToDelete.id));
@@ -92,10 +94,7 @@ const ReportPage = () => {
     );
 
     try {
-      await axios.put(
-        `http://${API_URL}/pulls/${pullToUpdate.id}`,
-        pullToUpdate
-      );
+      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
     } catch (error) {
       console.error(error);
     }
@@ -233,7 +232,7 @@ const ReportPage = () => {
             {progPullsOnly ? (
               <PullsTable
                 pullsArray={getProgPulls()}
-                showEdit={false}
+                showEdit={true}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
