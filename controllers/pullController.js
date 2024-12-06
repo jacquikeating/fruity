@@ -11,6 +11,15 @@ export const index = async (_req, res) => {
   }
 };
 
+export const countPulls = async (req, res) => {
+  try {
+    const result = await knex("pull").count("id");
+    res.status(201).send(result);
+  } catch (err) {
+    res.status(400).send(`Error retrieving pulls: ${err}`);
+  }
+};
+
 export const addPull = async (req, res) => {
   try {
     const data = await knex("pull").insert(req.body);
