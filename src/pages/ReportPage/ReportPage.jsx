@@ -47,6 +47,8 @@ const ReportPage = () => {
             pull.players_responsible = JSON.parse(pull.players_responsible);
           });
         }
+        data.sort((a, b) => a.pull_num_today - b.pull_num_today);
+
         setPullsArray(data);
       } catch (error) {
         console.error(error);
