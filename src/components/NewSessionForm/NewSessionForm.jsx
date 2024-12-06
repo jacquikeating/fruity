@@ -11,6 +11,8 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
   const [ffLogsLink, setFFLogsLink] = useState("");
   const [twitchLinks, setTwitchLinks] = useState("");
+  const [goal, setGoal] = useState("");
+  const [notes, setNotes] = useState([]);
 
   function handleSubmit() {
     const sessionObj = {
@@ -21,8 +23,8 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
       fflogs_link: ffLogsLink,
       twitch_links: twitchLinks,
       roster: roster.split(", "),
-      goal: "",
-      notes: null,
+      goal: goal.split(", "),
+      notes: notes.split(", "),
     };
 
     handleSessionFormData(sessionObj);
