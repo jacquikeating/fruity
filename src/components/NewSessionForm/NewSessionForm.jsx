@@ -6,7 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [num, setNum] = useState(lastSession.id + 1);
-  const [roster, setRoster] = useState(lastSession.roster.join(", "));
+  const [roster, setRoster] = useState(lastSession.roster);
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
   const [ffLogsLink, setFFLogsLink] = useState("");
