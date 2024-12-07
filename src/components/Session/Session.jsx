@@ -10,6 +10,8 @@ const Session = ({ sessionData }) => {
   const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
 
+  const twitchLinks = JSON.parse(twitch_links);
+
   console.log(roster);
   return (
     <li className="session">
@@ -40,8 +42,8 @@ const Session = ({ sessionData }) => {
           />
           FFLogs
         </a>
-        {twitch_links.length ? (
-          twitch_links.join(", ").map((vod, index) => {
+        {twitchLinks.length ? (
+          twitchLinks.map((vod, index) => {
             return (
               <>
                 <span className="report__divider"> • </span>
