@@ -4,6 +4,7 @@ import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
+  const rosterArray = sessionData.roster.split(", ");
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
   const [cause, setCause] = useState("");
@@ -14,7 +15,6 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
   const [notes, setNotes] = useState("");
-  const rosterArray = sessionData.roster.split(", ");
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);

@@ -6,6 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [num, setNum] = useState(lastSession.id + 1);
+  const [date, setDate] = useState(new Date().toISOString());
   const [roster, setRoster] = useState(lastSession.roster);
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
@@ -16,9 +17,9 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
 
   function handleSubmit() {
     const sessionObj = {
-      num: num,
-      date: new Date().toISOString(),
-      prog_phase: progPhase,
+      num: Number(num),
+      date: date,
+      prog_phase: Number(progPhase),
       prog_mech: progMech,
       fflogs_link: ffLogsLink,
       twitch_links: twitchLinks,
@@ -50,6 +51,9 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
           <label className="session-form__label" htmlFor="session-num">
             Session #
           </label>
+          <label className="session-form__label" htmlFor="session-num">
+            Date
+          </label>
           <label className="session-form__label" htmlFor="roster">
             Roster
           </label>
@@ -80,6 +84,14 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
             id="session-num"
             value={num}
             onChange={(e) => setNum(e.target.value)}
+          />
+          <input
+            className="session-form__input session-form__input--number"
+            type="text"
+            name="date"
+            id="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
           />
           <input
             className="session-form__input form__input--text"
