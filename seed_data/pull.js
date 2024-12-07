@@ -745,7 +745,7 @@ export default [
     mech: "Utopian Sky",
     prog_point_reached: "target",
     cause: '"Uh, spread or stack?"',
-    players_responsible: [],
+    players_responsible: JSON.stringify([]),
     log_link: "",
     clip_link: "",
     notes: "One group guessed stack, the other guessed spread!",
