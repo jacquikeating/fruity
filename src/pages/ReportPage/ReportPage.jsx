@@ -42,6 +42,7 @@ const ReportPage = () => {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         let data = result.data;
         data.sort((a, b) => a.pull_num_today - b.pull_num_today);
+        console.log(data);
         setPullsArray(data);
       } catch (error) {
         console.error(error);

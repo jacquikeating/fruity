@@ -72,6 +72,7 @@ export function findGoldStars(pullsArray, playersArray) {
   let goldStars = [];
 
   pullsArray.map((pull) => {
+    JSON.parse(pull.players_responsible);
     if (pull.players_responsible) {
       pull.players_responsible.forEach((playerName) => {
         if (!causedWipes.includes(playerName)) {
