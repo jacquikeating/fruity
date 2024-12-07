@@ -41,12 +41,12 @@ const ReportPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         let data = result.data;
-        const typeOfPR = typeof data[0].players_responsible;
-        if (typeOfPR === "string") {
-          data.forEach((pull) => {
-            pull.players_responsible = JSON.parse(pull.players_responsible);
-          });
-        }
+        // const typeOfPR = typeof data[0].players_responsible;
+        // if (typeOfPR === "string") {
+        //   data.forEach((pull) => {
+        //     pull.players_responsible = JSON.parse(pull.players_responsible);
+        //   });
+        // }
         data.sort((a, b) => a.pull_num_today - b.pull_num_today);
 
         setPullsArray(data);
