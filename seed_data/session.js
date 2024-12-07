@@ -17,7 +17,8 @@ export default [
     prog_phase: 1,
     prog_mech: "Enrage",
     fflogs_link: "https://www.fflogs.com/reports/4W9pdzBFkvZn8CGc",
-    twitch_links: "https://www.twitch.tv/videos/2318554836",
+    twitch_links:
+      "https://www.twitch.tv/videos/2318554836, https://www.twitch.tv/videos/2318548243",
     roster: "Chro, Sophia, Ruv, Ella, Quil, Hypatia, Char, Laveera",
     goal: "Clear phase 1 and practice Diamond Dust",
     notes:
