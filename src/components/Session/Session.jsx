@@ -41,7 +41,7 @@ const Session = ({ sessionData }) => {
           FFLogs
         </a>
         {twitch_links.length ? (
-          twitch_links.map((vod, index) => {
+          twitch_links.join(", ").map((vod, index) => {
             return (
               <>
                 <span className="report__divider"> • </span>
