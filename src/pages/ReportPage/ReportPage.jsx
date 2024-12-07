@@ -27,6 +27,8 @@ const ReportPage = () => {
         let session = result.data[0];
         const typeOfTL = typeof session.twitch_links;
         console.log(session.twitch_links, typeOfTL);
+        console.log(session.roster, typeof session.roster);
+        console.log(session.notes, typeof session.notes);
         // if (typeOfRoster === "string") {
         //   session.roster = JSON.parse(session.roster);
         //   session.twitch_links = JSON.parse(session.twitch_links);
@@ -167,7 +169,7 @@ const ReportPage = () => {
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Roster: </span>
-                  {sessionData.roster.join(", ")}
+                  {/* {sessionData.roster.join(", ")} */}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Most Wipes: </span>
@@ -188,11 +190,11 @@ const ReportPage = () => {
                 {" "}
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Notes: </span>
-                  <ul className="report__list">
+                  {/* <ul className="report__list">
                     {sessionData.notes.map((note) => {
                       return <li className="report__note">{note}</li>;
                     })}
-                  </ul>
+                  </ul> */}
                 </p>
               </div>
             </div>
