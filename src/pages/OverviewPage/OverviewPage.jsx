@@ -15,13 +15,6 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions`);
         let data = result.data;
-        const typeOfRoster = typeof data[0].roster;
-        if (typeOfRoster === "string") {
-          data.forEach((session) => {
-            session.roster = JSON.parse(session.roster);
-            session.twitch_links = JSON.parse(session.twitch_links);
-          });
-        }
         setSessionsArray(data.reverse());
       } catch (error) {
         console.error(error);
@@ -32,12 +25,6 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
-        const typeOfPR = typeof data[0].players_responsible;
-        if (typeOfPR === "string") {
-          data.forEach((pull) => {
-            pull.players_responsible = JSON.parse(pull.players_responsible);
-          });
-        }
         setPullsArray(data);
       } catch (error) {
         console.error(error);

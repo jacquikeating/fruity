@@ -25,14 +25,6 @@ const AddDataPage = () => {
         try {
           let result = await axios.get(`${API_URL}/sessions/`);
           let mostRecentSession = result.data.reverse()[0];
-          const typeOfRoster = typeof mostRecentSession.roster;
-          if (typeOfRoster === "string") {
-            mostRecentSession.roster = JSON.parse(mostRecentSession.roster);
-            mostRecentSession.twitch_links = JSON.parse(
-              mostRecentSession.twitch_links
-            );
-            mostRecentSession.notes = JSON.parse(mostRecentSession.notes);
-          }
           setLastSession(mostRecentSession);
         } catch (error) {
           console.error(error);
@@ -116,7 +108,7 @@ const AddDataPage = () => {
             <h2 className="add-data__section-heading">Session Info</h2>
             <p>Session: {sessionData.num}</p>
             <p>Date: {createReadableDate(sessionData.date)}</p>
-            <p>Roster: {sessionData.roster.join(", ")}</p>
+            <p>Roster: {sessionData.roster}</p>
             <p>
               Prog Point: Phase {sessionData.prog_phase},{" "}
               {sessionData.prog_mech}

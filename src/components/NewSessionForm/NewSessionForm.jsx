@@ -21,23 +21,17 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
       prog_phase: progPhase,
       prog_mech: progMech,
       fflogs_link: ffLogsLink,
-      twitch_links: twitchLinks.split(", "),
-      roster: roster.split(", "),
+      twitch_links: twitchLinks,
+      roster: roster,
       goal: goal,
-      notes: notes.split(", "),
+      notes: notes,
     };
-
-    console.log(sessionObj);
 
     handleSessionFormData(sessionObj);
     localStorage.setItem("sessionInProgress", JSON.stringify(sessionObj));
 
     let sessionObjToPost = { ...sessionObj };
     delete sessionObjToPost.num;
-    sessionObjToPost.roster = JSON.stringify(roster);
-    sessionObjToPost.twitch_links = JSON.stringify(twitchLinks);
-    sessionObjToPost.notes = JSON.stringify(notes);
-    console.log(sessionObjToPost);
     addNewSession(sessionObjToPost);
   }
 

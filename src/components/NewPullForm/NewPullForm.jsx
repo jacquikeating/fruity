@@ -6,7 +6,6 @@ import "./NewPullForm.scss";
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
-  const [rosterArray, setRosterArray] = useState(sessionData.roster);
   const [cause, setCause] = useState("");
   const [logLink, setLogLink] = useState("");
   const [clipLink, setClipLink] = useState("");
@@ -15,6 +14,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
   const [notes, setNotes] = useState("");
+  const rosterArray = sessionData.roster.split(", ");
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -60,7 +60,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         selectedPhase
       ),
       cause: cause,
-      players_responsible: responsiblePlayersArray,
+      players_responsible: responsiblePlayersArray.join(", "),
       log_link: logLink,
       clip_link: clipLink,
       notes: notes,

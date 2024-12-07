@@ -25,15 +25,6 @@ const ReportPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
-        const typeOfTL = typeof session.twitch_links;
-        console.log(session.twitch_links, typeOfTL);
-        console.log(session.roster, typeof session.roster);
-        console.log(session.notes, typeof session.notes);
-        // if (typeOfRoster === "string") {
-        //   session.roster = JSON.parse(session.roster);
-        //   session.twitch_links = JSON.parse(session.twitch_links);
-        //   session.notes = JSON.parse(session.notes);
-        // }
         setSessionData(session);
       } catch (error) {
         console.error(error);
@@ -45,9 +36,6 @@ const ReportPage = () => {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         let data = result.data;
         data.sort((a, b) => a.pull_num_today - b.pull_num_today);
-        data.forEach((pull) => {
-          pull.players_responsible = JSON.parse(pull.players_responsible);
-        });
         setPullsArray(data);
       } catch (error) {
         console.error(error);
@@ -88,10 +76,6 @@ const ReportPage = () => {
 
   async function updatePull(pullToUpdate) {
     delete pullToUpdate.index;
-    pullToUpdate.players_responsible = JSON.stringify(
-      pullToUpdate.players_responsible
-    );
-
     try {
       await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
     } catch (error) {
@@ -130,7 +114,7 @@ const ReportPage = () => {
                 />
                 Logs
               </a>
-              {/* {sessionData.twitch_links.length ? (
+              {sessionData.twitch_links.length ? (
                 sessionData.twitch_links.split(", ").map((vod, index) => {
                   return (
                     <>
@@ -158,7 +142,7 @@ const ReportPage = () => {
                   />
                   None
                 </p>
-              )} */}
+              )}
             </p>
 
             <div className="report__extra-info-container">
@@ -169,7 +153,7 @@ const ReportPage = () => {
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Roster: </span>
-                  {/* {sessionData.roster.join(", ")} */}
+                  {sessionData.roster}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Most Wipes: </span>
@@ -190,11 +174,11 @@ const ReportPage = () => {
                 {" "}
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Notes: </span>
-                  {/* <ul className="report__list">
-                    {sessionData.notes.map((note) => {
+                  <ul className="report__list">
+                    {sessionData.notes.split(", ").map((note) => {
                       return <li className="report__note">{note}</li>;
                     })}
-                  </ul> */}
+                  </ul>
                 </p>
               </div>
             </div>

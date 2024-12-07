@@ -10,10 +10,6 @@ const Session = ({ sessionData }) => {
   const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
 
-  console.log(twitch_links);
-  console.log(typeof twitch_links);
-
-  console.log(roster);
   return (
     <li className="session">
       <div className="session__header">
@@ -44,26 +40,26 @@ const Session = ({ sessionData }) => {
           FFLogs
         </a>
         {twitch_links.length ? (
-          twitch_links.map((vod, index) => {
-            // return (
-            //   // <>
-            //   //   <span className="report__divider"> • </span>
-            //   //   <a
-            //   //     className={`report__link`}
-            //   //     href={vod}``````
-            //   //     target="_blank"
-            //   //     rel="noreferrer"
-            //   //     key={index}
-            //   //   >
-            //   //     <img
-            //   //       src="https://i.imgur.com/NzRUemQ.png"
-            //   //       className="report__icon"
-            //   //       key={index}
-            //   //     />
-            //   //     VOD {index + 1}
-            //   //   </a>
-            //   // </>
-            // );
+          twitch_links.split(", ").map((vod, index) => {
+            return (
+              <>
+                <span className="report__divider"> • </span>
+                <a
+                  className={`report__link`}
+                  href={vod}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={index}
+                >
+                  <img
+                    src="https://i.imgur.com/NzRUemQ.png"
+                    className="report__icon"
+                    key={index}
+                  />
+                  VOD {index + 1}
+                </a>
+              </>
+            );
           })
         ) : (
           <span className={`report__link--empty_link`}>
