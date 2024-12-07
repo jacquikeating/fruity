@@ -49,6 +49,7 @@ a:hover {
   text-decoration-thickness: 2px;
   filter: grayscale(100%);
   opacity: 0.7;
+  pointer-events: none;
  
   &:hover {
     text-decoration: line-through;

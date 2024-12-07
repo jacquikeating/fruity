@@ -19,12 +19,14 @@ const ReportPage = () => {
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
+  let twitchLinksArray = [];
 
   useEffect(() => {
     async function getSessionData() {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
+        twitchLinksArray = session.twitch_links.split(", ");
         setSessionData(session);
       } catch (error) {
         console.error(error);
@@ -114,20 +116,22 @@ const ReportPage = () => {
                 />
                 Logs
               </a>
-              {sessionData.twitch_links.length ? (
-                sessionData.twitch_links.split(", ").map((vod, index) => {
+              {twitchLinksArray.length > 1 ? (
+                twitchLinksArray.map((vod, index) => {
                   return (
                     <>
                       <span className="report__divider"> • </span>
                       <a
-                        className={`report__link`}
+                        className={`session__link`}
                         href={vod}
                         target="_blank"
                         rel="noreferrer"
+                        key={index}
                       >
                         <img
                           src="https://i.imgur.com/NzRUemQ.png"
-                          className="report__icon"
+                          className="session__icon"
+                          key={index}
                         />
                         VOD {index + 1}
                       </a>
@@ -135,13 +139,23 @@ const ReportPage = () => {
                   );
                 })
               ) : (
-                <p className={`report__link--empty_link`}>
-                  <img
-                    src="https://i.imgur.com/NzRUemQ.png"
-                    className="report__icon"
-                  />
-                  None
-                </p>
+                <>
+                  <span className="report__divider"> • </span>
+                  <a
+                    className={`session__link ${checkIfEmptyLink(
+                      sessionData.twitch_links
+                    )}`}
+                    href={sessionData.twitch_links}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="https://i.imgur.com/NzRUemQ.png"
+                      className="session__icon"
+                    />
+                    VOD
+                  </a>
+                </>
               )}
             </p>
 

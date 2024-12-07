@@ -9,6 +9,7 @@ import "./Session.scss";
 const Session = ({ sessionData }) => {
   const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
+  const twitchLinksArray = twitch_links.split(", ");
 
   return (
     <li className="session">
@@ -37,15 +38,16 @@ const Session = ({ sessionData }) => {
             src="https://i.imgur.com/asZe3Wu.png"
             className="session__icon"
           />
-          FFLogs
+          Logs
         </a>
-        {twitch_links.length ? (
-          twitch_links.split(", ").map((vod, index) => {
+
+        {twitchLinksArray.length > 1 ? (
+          twitchLinksArray.map((vod, index) => {
             return (
               <>
                 <span className="report__divider"> • </span>
                 <a
-                  className={`report__link`}
+                  className={`session__link`}
                   href={vod}
                   target="_blank"
                   rel="noreferrer"
@@ -53,7 +55,7 @@ const Session = ({ sessionData }) => {
                 >
                   <img
                     src="https://i.imgur.com/NzRUemQ.png"
-                    className="report__icon"
+                    className="session__icon"
                     key={index}
                   />
                   VOD {index + 1}
@@ -62,13 +64,21 @@ const Session = ({ sessionData }) => {
             );
           })
         ) : (
-          <span className={`report__link--empty_link`}>
-            <img
-              src="https://i.imgur.com/NzRUemQ.png"
-              className="report__icon"
-            />
-            None
-          </span>
+          <>
+            <span className="report__divider"> • </span>
+            <a
+              className={`session__link ${checkIfEmptyLink(twitch_links)}`}
+              href={twitch_links}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="https://i.imgur.com/NzRUemQ.png"
+                className="session__icon"
+              />
+              VOD
+            </a>
+          </>
         )}
       </div>
     </li>
