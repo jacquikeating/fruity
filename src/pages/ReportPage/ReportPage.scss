@@ -40,6 +40,10 @@
         font-size: 1.1em;
     }
 
+    &__extra-info-right {
+        max-width: 40ch;
+    }
+
     &__extra-info {
         margin-bottom: 0.2em;
         font-family: 'Afacad Flux', 'Verdana', sans-serif;

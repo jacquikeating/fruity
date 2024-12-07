@@ -100,7 +100,7 @@ const ReportPage = () => {
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
-              Phase {sessionData.prog_phase} Prog
+              Phase {sessionData.prog_phase} {sessionData.prog_mech} Prog
               <span className="report__divider"> • </span>
               <a
                 className={`report__link ${checkIfEmptyLink(
@@ -200,13 +200,6 @@ const ReportPage = () => {
               </div>
             </div>
           </section>
-
-          {/* <section className="report__section">
-            <PhaseBreakdownTable
-              sessionData={sessionData}
-              pullsArray={pullsArray}
-            />
-          </section> */}
 
           <section className="report__section">
             <div className="report__pulls-heading">
