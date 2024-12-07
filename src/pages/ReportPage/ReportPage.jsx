@@ -25,7 +25,8 @@ const ReportPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
-        // const typeOfRoster = typeof session.roster;
+        const typeOfTL = typeof session.twitch_links;
+        console.log(session.twitch_links, typeOfTL);
         // if (typeOfRoster === "string") {
         //   session.roster = JSON.parse(session.roster);
         //   session.twitch_links = JSON.parse(session.twitch_links);
@@ -42,7 +43,6 @@ const ReportPage = () => {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         let data = result.data;
         data.sort((a, b) => a.pull_num_today - b.pull_num_today);
-        console.log(data);
         data.forEach((pull) => {
           pull.players_responsible = JSON.parse(pull.players_responsible);
         });
@@ -128,8 +128,8 @@ const ReportPage = () => {
                 />
                 Logs
               </a>
-              {sessionData.twitch_links.length ? (
-                sessionData.twitch_links.map((vod, index) => {
+              {/* {sessionData.twitch_links.length ? (
+                sessionData.twitch_links.split(", ").map((vod, index) => {
                   return (
                     <>
                       <span className="report__divider"> • </span>
@@ -156,7 +156,7 @@ const ReportPage = () => {
                   />
                   None
                 </p>
-              )}
+              )} */}
             </p>
 
             <div className="report__extra-info-container">
