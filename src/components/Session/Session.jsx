@@ -10,7 +10,8 @@ const Session = ({ sessionData }) => {
   const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
 
-  const twitchLinks = JSON.parse(twitch_links);
+console.log(twitch_links)
+console.log(typeof twitch_links)
 
   console.log(roster);
   return (
@@ -45,23 +46,23 @@ const Session = ({ sessionData }) => {
         {twitchLinks.length ? (
           twitchLinks.map((vod, index) => {
             return (
-              <>
-                <span className="report__divider"> • </span>
-                <a
-                  className={`report__link`}
-                  href={vod}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={index}
-                >
-                  <img
-                    src="https://i.imgur.com/NzRUemQ.png"
-                    className="report__icon"
-                    key={index}
-                  />
-                  VOD {index + 1}
-                </a>
-              </>
+              // <>
+              //   <span className="report__divider"> • </span>
+              //   <a
+              //     className={`report__link`}
+              //     href={vod}
+              //     target="_blank"
+              //     rel="noreferrer"
+              //     key={index}
+              //   >
+              //     <img
+              //       src="https://i.imgur.com/NzRUemQ.png"
+              //       className="report__icon"
+              //       key={index}
+              //     />
+              //     VOD {index + 1}
+              //   </a>
+              // </>
             );
           })
         ) : (
