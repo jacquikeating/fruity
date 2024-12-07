@@ -72,14 +72,18 @@ export function findGoldStars(pullsArray, playersArray) {
   let goldStars = [];
 
   pullsArray.map((pull) => {
-    JSON.parse(pull.players_responsible);
-    if (pull.players_responsible) {
-      pull.players_responsible.forEach((playerName) => {
-        if (!causedWipes.includes(playerName)) {
-          causedWipes.push(playerName);
-        }
-      });
-    }
+    console.log(pull.players_responsible);
+    console.log(typeof pull.players_responsible);
+    const aaa = pull.players_responsible.join(", ");
+    console.log(aaa);
+    console.log(typeof aaa);
+    // if (pull.players_responsible) {
+    //   pull.players_responsible.forEach((playerName) => {
+    //     if (!causedWipes.includes(playerName)) {
+    //       causedWipes.push(playerName);
+    //     }
+    //   });
+    // }
   });
 
   playersArray.forEach((player) => {
