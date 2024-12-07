@@ -25,12 +25,12 @@ const ReportPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
-        const typeOfRoster = typeof session.roster;
-        if (typeOfRoster === "string") {
-          session.roster = JSON.parse(session.roster);
-          session.twitch_links = JSON.parse(session.twitch_links);
-          session.notes = JSON.parse(session.notes);
-        }
+        // const typeOfRoster = typeof session.roster;
+        // if (typeOfRoster === "string") {
+        //   session.roster = JSON.parse(session.roster);
+        //   session.twitch_links = JSON.parse(session.twitch_links);
+        //   session.notes = JSON.parse(session.notes);
+        // }
         setSessionData(session);
       } catch (error) {
         console.error(error);
