@@ -86,11 +86,11 @@ export function findGoldStars(pullsArray, playersArray) {
   //   }
   // });
 
-  playersArray.forEach((player) => {
-    if (!causedWipes.includes(player)) {
-      goldStars.push(player);
-    }
-  });
+  // playersArray.forEach((player) => {
+  //   if (!causedWipes.includes(player)) {
+  //     goldStars.push(player);
+  //   }
+  // });
 
   if (goldStars.length === 0) {
     return "None";
