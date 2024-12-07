@@ -102,18 +102,18 @@ const Pull = ({
       </td>
 
       <td key={`${index}-players_responsible`} className="pull__cell">
-        {/* {!editMode ? (
-          playersResponsible.join(", ")
+        {!editMode ? (
+          playersResponsible
         ) : (
           <input
             className="pull__input"
             type="text"
-            value={playersResponsible.join(", ")}
+            value={playersResponsible}
             onChange={(e) => {
-              setPlayersResponsible(e.target.value.split(", "));
+              setPlayersResponsible(e.target.value);
             }}
           />
-        )} */}
+        )}
       </td>
 
       <td key={`${index}-notes`} className="pull__cell">
