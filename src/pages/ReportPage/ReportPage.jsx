@@ -185,15 +185,18 @@ const ReportPage = () => {
                 pullsArray={pullsArray}
               />
               <div className="report__extra-info-right">
-                {" "}
-                <p className="report__extra-info">
+                <div className="report__extra-info">
                   <span className="report__extra-info--bold">Notes: </span>
                   <ul className="report__list">
                     {sessionData.notes.split(", ").map((note) => {
-                      return <li className="report__note">{note}</li>;
+                      return (
+                        <li className="report__note" key={note}>
+                          {note}
+                        </li>
+                      );
                     })}
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
           </section>

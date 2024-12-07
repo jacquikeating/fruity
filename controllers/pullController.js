@@ -2,7 +2,7 @@ import createKnex from "knex";
 import knexFile from "../knexfile.js";
 const knex = createKnex(knexFile);
 
-export const index = async (_req, res) => {
+export const getAllPulls = async (_req, res) => {
   try {
     const data = await knex("pull");
     res.json(data);
@@ -11,7 +11,7 @@ export const index = async (_req, res) => {
   }
 };
 
-export const countPulls = async (req, res) => {
+export const getPullsCount = async (req, res) => {
   try {
     const result = await knex("pull").count("id");
     res.status(201).send(result);
@@ -20,7 +20,7 @@ export const countPulls = async (req, res) => {
   }
 };
 
-export const addPull = async (req, res) => {
+export const postNewPull = async (req, res) => {
   try {
     const data = await knex("pull").insert(req.body);
     res.status(201).send(data);
