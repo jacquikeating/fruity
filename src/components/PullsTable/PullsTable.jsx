@@ -59,7 +59,7 @@ const PullsTable = ({
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={progPhase}
-                key={pull.pull_num_today}
+                key={pull.pull_num_today || index}
               />
             );
           })}

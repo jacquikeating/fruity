@@ -1,5 +1,6 @@
-export function createReadableDate(sqlDate) {
-  const readableDate = new Date(sqlDate).toLocaleString("en-US", {
+export function createReadableDate(date) {
+  const dateWithTime = date + "T17:00:00Z"; // 9 PM in UTC
+  const readableDate = new Date(dateWithTime).toLocaleString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",

@@ -706,7 +706,7 @@ export default [
     prog_point_reached: "target",
     cause: "Heal plan in progress",
     players_responsible: "Ruv, Ella",
-    log_link: "test",
+    log_link: "",
     clip_link: "",
     notes: "",
   },
@@ -758,8 +758,7 @@ export default [
     prog_point_reached: "newphase",
     cause: "FIRST P2!",
     players_responsible: "",
-    log_link:
-      "https://www.twitch.tv/xelahart/clip/GlamorousZealousWebPeteZarollTie-kdKCNDNnajEdJbmh",
+    log_link: "",
     clip_link:
       "https://www.twitch.tv/xelahart/clip/AffluentFurtiveRhinocerosMau5-nTseP-62sHsjPfWM",
     notes: "Laveera and Ruv are GAMING and did everything right",

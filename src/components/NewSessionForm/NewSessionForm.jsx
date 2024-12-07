@@ -6,7 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
   const [num, setNum] = useState(lastSession.id + 1);
-  const [date, setDate] = useState(new Date().toISOString());
+  const [date, setDate] = useState("");
   const [roster, setRoster] = useState(lastSession.roster);
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
   const [progMech, setProgMech] = useState(lastSession.prog_mech);
@@ -90,6 +90,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
             type="text"
             name="date"
             id="date"
+            placeholder="YYYY-MM-DD"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
