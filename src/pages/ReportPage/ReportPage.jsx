@@ -43,6 +43,9 @@ const ReportPage = () => {
         let data = result.data;
         data.sort((a, b) => a.pull_num_today - b.pull_num_today);
         console.log(data);
+        data.forEach((pull) => {
+          pull.players_responsible = JSON.parse(pull.players_responsible);
+        });
         setPullsArray(data);
       } catch (error) {
         console.error(error);
