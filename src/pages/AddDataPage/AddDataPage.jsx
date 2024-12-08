@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
@@ -9,6 +10,8 @@ import "./AddDataPage.scss";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const AddDataPage = () => {
+  let navigate = useNavigate();
+
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
   const [lastSession, setLastSession] = useState({});
@@ -82,8 +85,10 @@ const AddDataPage = () => {
       }
     });
 
+    navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
     localStorage.removeItem("pullsFromNewSession");
     localStorage.removeItem("sessionInProgress");
+    navigate(`/report/${sessionData.num}`);
   }
 
   return (
