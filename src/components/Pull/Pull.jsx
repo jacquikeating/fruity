@@ -53,7 +53,9 @@ const Pull = ({
   return (
     <tr key={`pull-${index}`} className="pull">
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
-        {pullNumType === "today" ? index + 1 : pullData.id}
+        {pullNumType === "today"
+          ? pullData.pull_num_today || index + 1
+          : pullData.id}
       </td>
 
       <td key={`${index}-phase`} className="pull__cell">
