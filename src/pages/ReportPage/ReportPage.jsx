@@ -233,7 +233,7 @@ const ReportPage = () => {
             ) : (
               <PullsTable
                 pullsArray={pullsArray}
-                showEdit={false}
+                showEdit={true}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
