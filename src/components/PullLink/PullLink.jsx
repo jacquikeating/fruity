@@ -2,17 +2,11 @@ import { React, useState } from "react";
 import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
-const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
+const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
   const [showModal, setShowModal] = useState(false);
-  const [newLogLink, setNewLogLink] = useState(logLink);
-  const [newClipLink, setNewClipLink] = useState(clipLink);
 
   function toggleLinkModal() {
     setShowModal(!showModal);
-
-    if (logLink != newLogLink || clipLink != newClipLink) {
-      handleLinkChange(newLogLink, newClipLink);
-    }
   }
 
   return (
@@ -25,7 +19,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
         </button>
       )}
 
-      {logLink.length ? (
+      {logLink.length > 0 ? (
         <a
           className="pull-link__link"
           href={logLink}
@@ -41,7 +35,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
         ""
       )}
 
-      {clipLink ? (
+      {clipLink.length > 0 ? (
         <a
           className="pull-link__link"
           href={clipLink}
@@ -61,9 +55,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkChange }) => {
         <EditLinkModal
           logLink={logLink}
           clipLink={clipLink}
-          handleLinkChange={handleLinkChange}
-          setNewLogLink={setNewLogLink}
-          setNewClipLink={setNewClipLink}
+          handleLinkModalData={handleLinkModalData}
         />
       ) : (
         ""

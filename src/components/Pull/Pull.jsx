@@ -45,7 +45,7 @@ const Pull = ({
     }
   }
 
-  function handleLinkChange(newLogLink, newClipLink) {
+  function handleLinkModalData(newLogLink, newClipLink) {
     setLogLink(newLogLink);
     setClipLink(newClipLink);
   }
@@ -152,7 +152,7 @@ const Pull = ({
         logLink={logLink}
         clipLink={clipLink}
         editMode={editMode}
-        handleLinkChange={handleLinkChange}
+        handleLinkModalData={handleLinkModalData}
       />
     </tr>
   );
