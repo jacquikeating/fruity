@@ -10,7 +10,7 @@ import "./AddDataPage.scss";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const AddDataPage = () => {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
@@ -88,7 +88,7 @@ const AddDataPage = () => {
     navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
     localStorage.removeItem("pullsFromNewSession");
     localStorage.removeItem("sessionInProgress");
-    navigate(`/report/${sessionData.num}`);
+    // navigate(`/report/${sessionData.num}`);
   }
 
   return (
