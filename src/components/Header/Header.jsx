@@ -17,6 +17,11 @@ const Header = ({ latestSession }) => {
               Home
             </Link>
           </li>
+          <li className="nav__list-item">
+            <Link to={`/report/${latestSession}`} className="nav__link">
+              Latest
+            </Link>
+          </li>
           {/* <li className="nav__list-item">
             <Link to="/add-data" className="nav__link">
               Add Data
