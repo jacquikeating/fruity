@@ -11,6 +11,15 @@ export const getAllSessions = async (_req, res) => {
   }
 };
 
+export const getSessionsCount = async (req, res) => {
+  try {
+    const result = await knex("session").count("id");
+    res.status(201).send(result);
+  } catch (err) {
+    res.status(400).send(`Error retrieving pulls: ${err}`);
+  }
+};
+
 export const getSingleSession = async (req, res) => {
   try {
     const data = await knex("session").where({ id: req.params.sessionID });

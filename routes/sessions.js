@@ -9,5 +9,6 @@ router
   .post(sessionController.postNewSession);
 router.route("/:sessionID").get(sessionController.getSingleSession);
 router.route("/:sessionID/pulls").get(sessionController.getPullsFromSession);
+router.route("/count").get(sessionController.getSessionsCount);
 
 export default router;
