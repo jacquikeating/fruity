@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ latestSession }) => {
   return (
     <header className="header">
       <nav className="nav">

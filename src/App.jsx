@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header latestSession={latestSession} />
         <Routes>
           <Route path="/" element={<OverviewPage />} />
           <Route path="/report/:sessionID" element={<ReportPage />} />
