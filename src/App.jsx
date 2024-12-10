@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { React, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
 import Header from "./components/Header/Header";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
@@ -7,6 +8,10 @@ import ReportPage from "./pages/ReportPage/ReportPage";
 import "./styles/index.scss";
 
 function App() {
+  useEffect(() => {
+    console.log("howdy");
+  }, []);
+
   return (
     <>
       <BrowserRouter>
