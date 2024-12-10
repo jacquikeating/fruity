@@ -46,7 +46,7 @@ const ReportPage = () => {
 
     getSessionData();
     getPullsData();
-  }, []);
+  }, [sessionID]);
 
   function getProgPulls() {
     const filteredPullsArray = pullsArray.filter(
