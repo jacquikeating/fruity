@@ -17,7 +17,7 @@ function App() {
     async function getSessionsCount() {
       try {
         let result = await axios.get(`${API_URL}/sessions`);
-        setLatestSession[result.data.length];
+        setLatestSession(result.data.length);
       } catch (error) {
         console.error(error);
       }
