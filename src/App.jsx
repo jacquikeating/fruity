@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Header from "./components/Header/Header";
@@ -8,9 +8,22 @@ import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import "./styles/index.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
+  const [latestSession, setLatestSession] = useState(0);
+
   useEffect(() => {
-    console.log("howdy");
+    async function getSessionsCount() {
+      try {
+        let result = await axios.get(`${API_URL}/sessions`);
+        setLatestSession[result.data.length];
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getSessionsCount();
   }, []);
 
   return (
