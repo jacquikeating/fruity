@@ -16,7 +16,7 @@ export const getSessionsCount = async (req, res) => {
     const result = await knex("session").count("id");
     res.status(201).send(result);
   } catch (err) {
-    res.status(400).send(`Error retrieving pulls: ${err}`);
+    res.status(400).send(`Error retrieving sessions: ${err}`);
   }
 };
 
