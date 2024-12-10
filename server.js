@@ -6,7 +6,7 @@ import pullRoutes from "./routes/pulls.js";
 
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 3306;
 
 app.get("/", (_req, res) => {
   res.send("If you're reading this, the server is running!");

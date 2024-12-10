@@ -1,7 +1,14 @@
 import { React, useState } from "react";
+import Pull from "../Pull/Pull";
 import "./PullsTable.scss";
 
-const PullsTable = ({ pullsArray }) => {
+const PullsTable = ({
+  pullsArray,
+  showEdit,
+  updatePull,
+  deletePull,
+  progPhase,
+}) => {
   const [pullNumType, setPullNumType] = useState("today");
 
   function togglePullNumType() {
@@ -12,19 +19,13 @@ const PullsTable = ({ pullsArray }) => {
     }
   }
 
-  const columns = [
-    "Phase",
-    "Mechanic",
-    "Cause",
-    "Players Responsible",
-    "Notes",
-  ];
+  const columns = ["p", "mechanic", "cause", "players", "notes"];
 
   return (
     <div className="pulls-table">
       <table className="pulls-table__table">
         <tbody>
-          <tr className="pulls-table__row">
+          <tr className="pulls-table__header-row">
             <th
               className="pulls-table__header-cell"
               onClick={togglePullNumType}
@@ -33,60 +34,33 @@ const PullsTable = ({ pullsArray }) => {
             </th>
             {columns.map((column) => {
               return (
-                <th key={column} className="pulls-table__header-cell">
+                <th
+                  key={column}
+                  className={`pulls-table__header-cell pulls-table__header-cell--${column}`}
+                >
                   {column}
                 </th>
               );
             })}
+            {showEdit ? (
+              <th className="pulls-table__header-cell pulls-table__header-cell--actions">
+                Actions
+              </th>
+            ) : (
+              ""
+            )}
           </tr>
-          {pullsArray.map((pull) => {
-            const {
-              id,
-              pull_num_today,
-              phase,
-              mech,
-              cause,
-              players_responsible,
-              log_link,
-              clip_link,
-              notes,
-            } = pull;
-
+          {pullsArray.map((pull, index) => {
             return (
-              <tr key={`pull-${id}`} className="pulls-table__row">
-                <td
-                  key={`#${id}-${pull_num_today}`}
-                  className="pulls-table__cell pulls-table__cell--num-today"
-                >
-                  {pullNumType === "today" ? pull_num_today : id}
-                  {/* {pull_num_today}
-                  <span className="pulls-table__num-overall">{id}</span> */}
-                </td>
-                {/* <td
-                  key={`${id}`}
-                  className="pulls-table__cell pulls-table__cell--num-overall"
-                >
-                  {id}
-                </td> */}
-                <td key={`${id}-${phase}`} className="pulls-table__cell">
-                  {phase}
-                </td>
-                <td key={`${id}-${mech}`} className="pulls-table__cell">
-                  {mech}
-                </td>
-                <td key={`${id}-${cause}`} className="pulls-table__cell">
-                  {cause}
-                </td>
-                <td
-                  key={`${id}-${players_responsible}`}
-                  className="pulls-table__cell"
-                >
-                  {players_responsible?.join(", ")}
-                </td>
-                <td key={`${id}-${notes}`} className="pulls-table__cell">
-                  {notes}
-                </td>
-              </tr>
+              <Pull
+                pullData={{ ...pull, index: index }}
+                pullNumType={pullNumType}
+                showEdit={showEdit}
+                updatePull={updatePull}
+                deletePull={deletePull}
+                progPhase={progPhase}
+                key={pull.pull_num_today || index}
+              />
             );
           })}
         </tbody>

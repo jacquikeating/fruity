@@ -12,21 +12,22 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
+  let twitchLinksArray = [];
 
   useEffect(() => {
     async function getSessionData() {
       try {
-        let result = await axios.get(
-          `http://localhost:5050/sessions/${sessionID}`
-        );
-        let data = result.data[0];
-        setSessionData(data);
-        createReadableDate(data.date);
+        let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
+        let session = result.data[0];
+        twitchLinksArray = session.twitch_links.split(", ");
+        setSessionData(session);
       } catch (error) {
         console.error(error);
       }
@@ -34,10 +35,9 @@ const ReportPage = () => {
 
     async function getPullsData() {
       try {
-        let result = await axios.get(
-          `http://localhost:5050/sessions/${sessionID}/pulls`
-        );
+        let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         let data = result.data;
+        data.sort((a, b) => a.pull_num_today - b.pull_num_today);
         setPullsArray(data);
       } catch (error) {
         console.error(error);
@@ -63,6 +63,28 @@ const ReportPage = () => {
     }
   }
 
+  async function deletePull(pullToDelete) {
+    try {
+      const response = await axios.delete(
+        `${API_URL}/pulls/${pullToDelete.id}`
+      );
+      if (response.status === 204) {
+        setPullsArray(pullsArray.filter((pull) => pull.id !== pullToDelete.id));
+      }
+    } catch (err) {
+      console.error("Error deleting pull:", err);
+    }
+  }
+
+  async function updatePull(pullToUpdate) {
+    delete pullToUpdate.index;
+    try {
+      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <main className="report">
       {sessionData ? (
@@ -74,67 +96,109 @@ const ReportPage = () => {
                 {createReadableDate(sessionData.date)}
               </span>
             </h1>
-            {/* <p className="report__subtitle">
-              Session {sessionData.id}
-              <span className="report__divider"> • </span>
-              Phase {sessionData.prog_phase} Prog
-            </p>
-            <p className="report__subtitle">
-              <a className="report__link" href={sessionData.twitch_link}>
-                <img src="/src/assets/25_twitch.png" className="report__icon" />
-                Twitch
-              </a>
-              <a className="report__link" href={sessionData.fflogs_link}>
-                <img src="/src/assets/25_fflogs.png" className="report__icon" />
-                FFLogs
-              </a>
-            </p> */}
+
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
-              Phase {sessionData.prog_phase} Prog
+              Phase {sessionData.prog_phase} {sessionData.prog_mech} Prog
               <span className="report__divider"> • </span>
               <a
                 className={`report__link ${checkIfEmptyLink(
                   sessionData.fflogs_link
                 )}`}
                 href={sessionData.fflogs_link}
+                target="_blank"
+                rel="noreferrer"
               >
-                <img src="/src/assets/25_fflogs.png" className="report__icon" />
-                FFLogs
+                <img
+                  src="https://i.imgur.com/asZe3Wu.png"
+                  className="report__icon"
+                />
+                Logs
               </a>
-              <span className="report__divider"> • </span>
-              <a
-                className={`report__link ${checkIfEmptyLink(
-                  sessionData.twitch_link
-                )}`}
-                href={sessionData.twitch_link}
-              >
-                <img src="/src/assets/25_twitch.png" className="report__icon" />
-                Twitch
-              </a>
+              {twitchLinksArray.length > 1 ? (
+                twitchLinksArray.map((vod, index) => {
+                  return (
+                    <>
+                      <span className="report__divider"> • </span>
+                      <a
+                        className={`session__link`}
+                        href={vod}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={index}
+                      >
+                        <img
+                          src="https://i.imgur.com/NzRUemQ.png"
+                          className="session__icon"
+                          key={index}
+                        />
+                        VOD {index + 1}
+                      </a>
+                    </>
+                  );
+                })
+              ) : (
+                <>
+                  <span className="report__divider"> • </span>
+                  <a
+                    className={`session__link ${checkIfEmptyLink(
+                      sessionData.twitch_links
+                    )}`}
+                    href={sessionData.twitch_links}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="https://i.imgur.com/NzRUemQ.png"
+                      className="session__icon"
+                    />
+                    VOD
+                  </a>
+                </>
+              )}
             </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Roster: </span>
-              {sessionData.roster.join(", ")}
-            </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Most Wipes: </span>P
-              {findStrugglePhase(pullsArray)}
-              <span className="report__divider"> • </span>
-              {findStruggleMech(pullsArray)}
-            </p>
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">Gold Stars: </span>
-              {findGoldStars(pullsArray, sessionData.roster)}
-            </p>
-          </section>
 
-          <section className="report__section">
-            <PhaseBreakdownTable
-              sessionData={sessionData}
-              pullsArray={pullsArray}
-            />
+            <div className="report__extra-info-container">
+              <div className="report__extra-info-left">
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Goal: </span>
+                  {sessionData.goal}
+                </p>
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Roster: </span>
+                  {sessionData.roster}
+                </p>
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Most Wipes: </span>
+                  Phase {findStrugglePhase(pullsArray)}
+                  <span className="report__divider"> • </span>
+                  {findStruggleMech(pullsArray)}
+                </p>
+                <p className="report__extra-info">
+                  <span className="report__extra-info--bold">Gold Stars: </span>
+                  {findGoldStars(pullsArray, sessionData.roster)}
+                </p>
+              </div>
+              <PhaseBreakdownTable
+                sessionData={sessionData}
+                pullsArray={pullsArray}
+              />
+              <div className="report__extra-info-right">
+                <div className="report__extra-info">
+                  <span className="report__extra-info--bold">Notes: </span>
+                  <ul className="report__list">
+                    {sessionData.notes.split(", ").map((note) => {
+                      return (
+                        <li className="report__note" key={note}>
+                          {note}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section className="report__section">
@@ -142,10 +206,14 @@ const ReportPage = () => {
               <h2 className="report__subheading">
                 Pulls ({pullsArray.length})
               </h2>
-              <label className="report__checkbox-label">
+              <label
+                className="report__checkbox-label"
+                htmlFor="progOnlyCheckbox"
+              >
                 <input
                   type="checkbox"
                   name="progOnlyCheckbox"
+                  id="progOnlyCheckbox"
                   className="report__prog-only-checkbox"
                   value={progPullsOnly}
                   onChange={handleCheckbox}
@@ -155,9 +223,21 @@ const ReportPage = () => {
             </div>
 
             {progPullsOnly ? (
-              <PullsTable pullsArray={getProgPulls()} />
+              <PullsTable
+                pullsArray={getProgPulls()}
+                showEdit={false}
+                updatePull={updatePull}
+                deletePull={deletePull}
+                progPhase={sessionData.prog_phase}
+              />
             ) : (
-              <PullsTable pullsArray={pullsArray} />
+              <PullsTable
+                pullsArray={pullsArray}
+                showEdit={false}
+                updatePull={updatePull}
+                deletePull={deletePull}
+                progPhase={sessionData.prog_phase}
+              />
             )}
           </section>
         </>

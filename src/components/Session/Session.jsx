@@ -7,8 +7,9 @@ import {
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {
-  const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_link } =
+  const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } =
     sessionData;
+  const twitchLinksArray = twitch_links.split(", ");
 
   return (
     <li className="session">
@@ -24,24 +25,62 @@ const Session = ({ sessionData }) => {
       </p>
       <p className="session__body-text">
         <span className="session__category">Roster: </span>
-        {roster.join(", ")}
+        {roster}
       </p>
-      <p className="session__links-container">
+      <div className="session__links-container">
         <a
           className={`session__link ${checkIfEmptyLink(fflogs_link)}`}
           href={fflogs_link}
+          target="_blank"
+          rel="noreferrer"
         >
-          <img src="/src/assets/25_fflogs.png" className="session__icon" />
-          FFLogs
+          <img
+            src="https://i.imgur.com/asZe3Wu.png"
+            className="session__icon"
+          />
+          Logs
         </a>
-        <a
-          className={`session__link ${checkIfEmptyLink(twitch_link)}`}
-          href={twitch_link}
-        >
-          <img src="/src/assets/25_twitch.png" className="session__icon" />
-          Twitch
-        </a>
-      </p>
+
+        {twitchLinksArray.length > 1 ? (
+          twitchLinksArray.map((vod, index) => {
+            return (
+              <>
+                <span className="report__divider"> • </span>
+                <a
+                  className={`session__link`}
+                  href={vod}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={index}
+                >
+                  <img
+                    src="https://i.imgur.com/NzRUemQ.png"
+                    className="session__icon"
+                    key={index}
+                  />
+                  VOD {index + 1}
+                </a>
+              </>
+            );
+          })
+        ) : (
+          <>
+            <span className="report__divider"> • </span>
+            <a
+              className={`session__link ${checkIfEmptyLink(twitch_links)}`}
+              href={twitch_links}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="https://i.imgur.com/NzRUemQ.png"
+                className="session__icon"
+              />
+              VOD
+            </a>
+          </>
+        )}
+      </div>
     </li>
   );
 };

@@ -6,7 +6,7 @@ const SessionsList = ({ sessionsArray }) => {
   return (
     <ul className="sessions-list">
       {sessionsArray.map((session) => {
-        return <Session key={session.id} sessionData={session} />;
+        return <Session key={session.date} sessionData={session} />;
       })}
     </ul>
   );

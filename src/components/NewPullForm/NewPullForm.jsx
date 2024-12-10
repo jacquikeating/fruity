@@ -1,13 +1,12 @@
 import { React, useState } from "react";
 import Picker from "react-mobile-picker";
-import axios from "axios";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
-const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
+const NewPullForm = ({ sessionData, handlePullFormData }) => {
+  const rosterArray = sessionData.roster.split(", ");
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
-  const [rosterArray, setRosterArray] = useState(sessionData.roster);
   const [cause, setCause] = useState("");
   const [logLink, setLogLink] = useState("");
   const [clipLink, setClipLink] = useState("");
@@ -15,6 +14,7 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     new Array(rosterArray.length).fill(false)
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
+  const [notes, setNotes] = useState("");
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -25,20 +25,9 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
   }
 
   const phaseAndMechOptions = [
-    /* DSR: 
     ["N/A"],
-    ["A", "B", "C"],
-    ["Strength", "Sanctity", "Enrage"],
-    ["Transition", "Wyrmhole", "Enums", "Drachenlance", "Enrage"],
-    ["Orbs", "Tethers", "Enrage"],
-    ["Wrath", "Death", "Enrage"],
-    ["A", "Wrothflame", "Cauterize", "Enrage"],
-    ["Transition", "Exas", "Akh Morn", "Enrage"],
-    */
-
-    ["N/A"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
+    ["Diamond Dust", "Mirrors", "Light Rampant", "Enrage", "Intermission"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
@@ -64,32 +53,25 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
     e.preventDefault();
     const pullObj = {
       session_id: Number(sessionData.num),
-      pull_num_today: pullsArray.length + 1,
       phase: selectedPhase,
       mech: selectedMech,
       prog_point_reached: checkIfProgPointReached(
         sessionData.prog_phase,
         selectedPhase
       ),
-      players_responsible: responsiblePlayersArray,
       cause: cause,
+      players_responsible: responsiblePlayersArray.join(", "),
       log_link: logLink,
       clip_link: clipLink,
+      notes: notes,
     };
 
     handlePullFormData(pullObj);
 
-    let pullObjToPost = { ...pullObj };
-    pullObjToPost.players_responsible = JSON.stringify(responsiblePlayersArray);
-    addNewPull(pullObjToPost);
-  }
-
-  async function addNewPull(pullObjToPost) {
-    try {
-      await axios.post(`http://localhost:5050/pulls/`, pullObjToPost);
-    } catch (error) {
-      console.error(error);
-    }
+    setCause("");
+    setCheckedState(new Array(rosterArray.length).fill(false));
+    setResponsiblePlayersArray([]);
+    setNotes("");
   }
 
   return (
@@ -258,6 +240,20 @@ const NewPullForm = ({ sessionData, handlePullFormData, pullsArray }) => {
         value={clipLink}
         onChange={(e) => {
           setClipLink(e.target.value);
+        }}
+      />
+
+      <label className="form__label" htmlFor="notes">
+        Notes
+      </label>
+      <input
+        className="form__input form__input--text"
+        type="text"
+        name="notes"
+        id="notes"
+        value={notes}
+        onChange={(e) => {
+          setNotes(e.target.value);
         }}
       />
 
