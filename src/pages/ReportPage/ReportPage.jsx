@@ -229,6 +229,7 @@ const ReportPage = () => {
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
+                key={pullsArray}
               />
             ) : (
               <PullsTable
@@ -237,6 +238,7 @@ const ReportPage = () => {
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
+                key={pullsArray}
               />
             )}
           </section>
