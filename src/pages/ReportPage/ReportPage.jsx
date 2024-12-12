@@ -13,6 +13,7 @@ import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
+const username = localStorage.getItem("name") || "not ella";
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
@@ -234,7 +235,7 @@ const ReportPage = () => {
             ) : (
               <PullsTable
                 pullsArray={pullsArray}
-                showEdit={false}
+                showEdit={username === "ella" ? true : false}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
