@@ -2,8 +2,6 @@ import React from "react";
 import "./InfoPage.scss";
 
 const InfoPage = () => {
-  localStorage.setItem("name", "ella");
-
   return (
     <main className="info-page">
       <h1 className="info-page__title">About</h1>
