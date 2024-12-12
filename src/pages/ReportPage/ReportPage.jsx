@@ -19,14 +19,14 @@ const ReportPage = () => {
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
-  let twitchLinksArray = [];
+  const [twitchLinksArray, setTwitchLinksArray] = useState([]);
 
   useEffect(() => {
     async function getSessionData() {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
-        twitchLinksArray = session.twitch_links.split(", ");
+        setTwitchLinksArray(session.twitch_links.split(", "));
         setSessionData(session);
       } catch (error) {
         console.error(error);
