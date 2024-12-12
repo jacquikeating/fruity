@@ -13,7 +13,8 @@ import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
-const username = localStorage.getItem("name") || "not ella";
+const username = localStorage.getItem("name");
+console.log(username);
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
