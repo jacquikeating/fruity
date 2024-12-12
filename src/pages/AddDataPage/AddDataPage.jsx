@@ -23,6 +23,7 @@ const AddDataPage = () => {
     if (lsSessionData) {
       setSessionData(lsSessionData);
       setSessionInProgress(true);
+      console.log(lsSessionData);
     } else {
       async function getLastSessionData() {
         try {
@@ -117,6 +118,8 @@ const AddDataPage = () => {
               Prog Point: Phase {sessionData.prog_phase},{" "}
               {sessionData.prog_mech}
             </p>
+            <p>Goal: {sessionData.goal}</p>
+            <p>Notes: {sessionData.notes}</p>
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Add a Pull</h2>
