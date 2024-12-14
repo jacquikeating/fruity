@@ -14,7 +14,6 @@ import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const username = localStorage.getItem("name");
-console.log(username);
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
@@ -22,6 +21,7 @@ const ReportPage = () => {
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
   const [twitchLinksArray, setTwitchLinksArray] = useState([]);
+  const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
     async function getSessionData() {
@@ -48,6 +48,9 @@ const ReportPage = () => {
 
     getSessionData();
     getPullsData();
+    if (username === "ella") {
+      setShowEdit(true);
+    }
   }, [sessionID]);
 
   function getProgPulls() {
@@ -159,6 +162,7 @@ const ReportPage = () => {
                   </a>
                 </>
               )}
+              {showEdit ? <button>Edit</button> : ""}
             </p>
 
             <div className="report__extra-info-container">
@@ -227,7 +231,7 @@ const ReportPage = () => {
             {progPullsOnly ? (
               <PullsTable
                 pullsArray={getProgPulls()}
-                showEdit={false}
+                showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
@@ -236,7 +240,7 @@ const ReportPage = () => {
             ) : (
               <PullsTable
                 pullsArray={pullsArray}
-                showEdit={username === "ella" ? true : false}
+                showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
