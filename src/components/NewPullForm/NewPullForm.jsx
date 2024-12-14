@@ -28,7 +28,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     ["N/A"],
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
     ["Diamond Dust", "Mirrors", "Light Rampant", "Enrage", "Intermission"],
-    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Ultimate Relativity", "Apocalypse", "Enrage"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
     ["Mech 1", "Mech 2", "Mech 3"],
