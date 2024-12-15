@@ -29,10 +29,8 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
     ["Diamond Dust", "Mirrors", "Light Rampant", "Enrage", "Intermission"],
     ["Ultimate Relativity", "Apocalypse", "Enrage"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Darklit Dragonsong", "Akh Morns", "Crystalize Time", "Enrage"],
+    ["Fulgent Blade", "Paradise Regained", "Poalrizing Strikes", "Enrage"],
   ];
 
   const handleCheckboxChange = (position) => {
