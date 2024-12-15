@@ -21,6 +21,7 @@ const ReportPage = () => {
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
   const [twitchLinksArray, setTwitchLinksArray] = useState([]);
+  const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
@@ -162,7 +163,17 @@ const ReportPage = () => {
                   </a>
                 </>
               )}
-              {showEdit ? <button>Edit</button> : ""}
+              {showEdit ? (
+                <button
+                  onClick={() => {
+                    setEditMode(true);
+                  }}
+                >
+                  Edit
+                </button>
+              ) : (
+                ""
+              )}
             </p>
 
             <div className="report__extra-info-container">
