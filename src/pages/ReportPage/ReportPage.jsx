@@ -20,9 +20,18 @@ const ReportPage = () => {
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
-  const [twitchLinksArray, setTwitchLinksArray] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+
+  const [date, setDate] = useState("");
+  const [progPhase, setProgPhase] = useState(0);
+  const [progMech, setProgMech] = useState("");
+  const [fflogsLink, setFFLogsLink] = useState("");
+  const [twitchLinks, setTwitchLinks] = useState("");
+  const [twitchLinksArray, setTwitchLinksArray] = useState([]);
+  const [goal, setGoal] = useState("");
+  const [roster, setRoster] = useState("");
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     async function getSessionData() {
@@ -97,7 +106,7 @@ const ReportPage = () => {
         <>
           <section className="report__section">
             <h1 className="report__heading">
-              Report:{" "}
+              Report:
               <span className="report__date">
                 {createReadableDate(sessionData.date)}
               </span>
