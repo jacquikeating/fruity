@@ -38,7 +38,6 @@ const ReportPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
-        setTwitchLinksArray(session.twitch_links.split(", "));
         setSessionData(session);
       } catch (error) {
         console.error(error);
