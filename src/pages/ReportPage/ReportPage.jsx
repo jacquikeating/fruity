@@ -12,6 +12,7 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
+localStorage.setItem("name", "ella");
 const API_URL = import.meta.env.VITE_API_URL;
 const username = localStorage.getItem("name");
 
@@ -39,6 +40,15 @@ const ReportPage = () => {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
         setSessionData(session);
+        setDate(session.date);
+        setProgPhase(session.prog_phase);
+        setProgMech(session.prog_mech);
+        setFFLogsLink(session.fflogs_link);
+        setTwitchLinks(session.twitch_links);
+        setTwitchLinksArray(session.twitch_links.split(", "));
+        setGoal(session.goal);
+        setRoster(session.roster);
+        setNotes(session.notes);
       } catch (error) {
         console.error(error);
       }
@@ -114,7 +124,7 @@ const ReportPage = () => {
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
-              Phase {sessionData.prog_phase} {sessionData.prog_mech} Prog
+              Phase {progPhase} {sessionData.prog_mech} Prog
               <span className="report__divider"> • </span>
               <a
                 className={`report__link ${checkIfEmptyLink(
