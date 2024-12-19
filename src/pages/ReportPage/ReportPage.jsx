@@ -142,18 +142,18 @@ const ReportPage = () => {
               <span className="report__date">
                 {createReadableDate(sessionData.date)}
               </span>
+                  value={date}
             </h1>
 
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
-              Phase {progPhase} {sessionData.prog_mech} Prog
+                    value={progPhase}
+                    value={progMech}
               <span className="report__divider"> • </span>
               <a
-                className={`report__link ${checkIfEmptyLink(
-                  sessionData.fflogs_link
-                )}`}
-                href={sessionData.fflogs_link}
+                className={`report__link ${checkIfEmptyLink(fflogsLink)}`}
+                href={fflogsLink}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -189,10 +189,8 @@ const ReportPage = () => {
                 <>
                   <span className="report__divider"> • </span>
                   <a
-                    className={`session__link ${checkIfEmptyLink(
-                      sessionData.twitch_links
-                    )}`}
-                    href={sessionData.twitch_links}
+                    className={`session__link ${checkIfEmptyLink(twitchLinks)}`}
+                    href={twitchLinks}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -217,11 +215,11 @@ const ReportPage = () => {
               <div className="report__extra-info-left">
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Goal: </span>
-                  {sessionData.goal}
+                  {goal}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Roster: </span>
-                  {sessionData.roster}
+                  {roster}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Most Wipes: </span>
@@ -231,7 +229,7 @@ const ReportPage = () => {
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Gold Stars: </span>
-                  {findGoldStars(pullsArray, sessionData.roster)}
+                  {findGoldStars(pullsArray, roster)}
                 </p>
               </div>
               <PhaseBreakdownTable
@@ -242,7 +240,7 @@ const ReportPage = () => {
                 <div className="report__extra-info">
                   <span className="report__extra-info--bold">Notes: </span>
                   <ul className="report__list">
-                    {sessionData.notes.split(", ").map((note) => {
+                    {notes.split(", ").map((note) => {
                       return (
                         <li className="report__note" key={note}>
                           {note}
