@@ -109,6 +109,29 @@ const ReportPage = () => {
     }
   }
 
+  async function editSession() {
+    if (editMode === false) {
+      setEditMode(true);
+    } else if (editMode === true) {
+      const updatedSessionObj = {
+        date: date,
+        prog_phase: progPhase,
+        prog_mech: progMech,
+        fflogs_link: fflogsLink,
+        twitch_links: twitchLinks,
+        roster: roster,
+        goal: goal,
+        notes: notes,
+      };
+      try {
+        await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
+      } catch (error) {
+        console.error(error);
+      }
+      setEditMode(false);
+    }
+  }
+
   return (
     <main className="report">
       {sessionData ? (
@@ -182,12 +205,8 @@ const ReportPage = () => {
                 </>
               )}
               {showEdit ? (
-                <button
-                  onClick={() => {
-                    setEditMode(true);
-                  }}
-                >
-                  Edit
+                <button onClick={editSession}>
+                  {!editMode ? "Edit" : "Save"}
                 </button>
               ) : (
                 ""
