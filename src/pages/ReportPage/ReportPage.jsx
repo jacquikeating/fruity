@@ -148,6 +148,7 @@ const ReportPage = () => {
                   name="date-input"
                   placeholder="YYYY-MM-DD"
                   value={date}
+                  onChange={(e) => setDate(e.target.value)}
                 />
               )}
             </h1>
@@ -162,9 +163,12 @@ const ReportPage = () => {
                   <input
                     type="number"
                     value={progPhase}
+                    onChange={(e) => setProgPhase(e.target.value)}
+                  />
                   <input
                     type="text"
                     value={progMech}
+                    onChange={(e) => setProgMech(e.target.value)}
                   />
                 </>
               )}
@@ -223,38 +227,31 @@ const ReportPage = () => {
                     <>
                       <span className="report__divider"> • </span>
                       <a
-                        className={`session__link`}
-                        href={vod}
+                        className={`session__link ${checkIfEmptyLink(
+                          twitchLinks
+                        )}`}
+                        href={twitchLinks}
                         target="_blank"
                         rel="noreferrer"
-                        key={index}
                       >
                         <img
                           src="https://i.imgur.com/NzRUemQ.png"
                           className="session__icon"
-                          key={index}
                         />
-                        VOD {index + 1}
+                        VOD
                       </a>
                     </>
-                  );
-                })
-              ) : (
-                <>
-                  <span className="report__divider"> • </span>
-                  <a
-                    className={`session__link ${checkIfEmptyLink(twitchLinks)}`}
-                    href={twitchLinks}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      src="https://i.imgur.com/NzRUemQ.png"
-                      className="session__icon"
-                    />
-                    VOD
-                  </a>
+                  )}
                 </>
+              ) : (
+                <input
+                  type="text"
+                  value={twitchLinks}
+                  onChange={(e) => {
+                    setTwitchLinks(e.target.value);
+                    setTwitchLinksArray(e.target.value.split(", "));
+                  }}
+                />
               )}
               {showEdit ? (
                 <button onClick={editSession}>
@@ -269,11 +266,27 @@ const ReportPage = () => {
               <div className="report__extra-info-left">
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Goal: </span>
-                  {goal}
+                  {!editMode ? (
+                    `${goal}`
+                  ) : (
+                    <input
+                      type="text"
+                      value={goal}
+                      onChange={(e) => setGoal(e.target.value)}
+                    />
+                  )}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Roster: </span>
-                  {roster}
+                  {!editMode ? (
+                    `${roster}`
+                  ) : (
+                    <input
+                      type="text"
+                      value={roster}
+                      onChange={(e) => setRoster(e.target.value)}
+                    />
+                  )}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Most Wipes: </span>
@@ -294,13 +307,22 @@ const ReportPage = () => {
                 <div className="report__extra-info">
                   <span className="report__extra-info--bold">Notes: </span>
                   <ul className="report__list">
-                    {notes.split(", ").map((note) => {
-                      return (
-                        <li className="report__note" key={note}>
-                          {note}
-                        </li>
-                      );
-                    })}
+                    {!editMode ? (
+                      <>
+                        {notes.split(", ").map((note) => {
+                          return (
+                            <li className="report__note" key={note}>
+                              {note}
+                            </li>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <textarea
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
+                      ></textarea>
+                    )}
                   </ul>
                 </div>
               </div>
