@@ -139,33 +139,87 @@ const ReportPage = () => {
           <section className="report__section">
             <h1 className="report__heading">
               Report:
-              <span className="report__date">
-                {createReadableDate(sessionData.date)}
-              </span>
+              {!editMode ? (
+                <span className="report__date">{createReadableDate(date)}</span>
+              ) : (
+                <input
+                  type="text"
+                  id="date-input"
+                  name="date-input"
+                  placeholder="YYYY-MM-DD"
                   value={date}
+                />
+              )}
             </h1>
 
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
+              {!editMode ? (
+                `Phase ${progPhase} ${progMech} Prog`
+              ) : (
+                <>
+                  <input
+                    type="number"
                     value={progPhase}
+                  <input
+                    type="text"
                     value={progMech}
+                  />
+                </>
+              )}
               <span className="report__divider"> • </span>
-              <a
-                className={`report__link ${checkIfEmptyLink(fflogsLink)}`}
-                href={fflogsLink}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src="https://i.imgur.com/asZe3Wu.png"
-                  className="report__icon"
-                />
-                Logs
-              </a>
-              {twitchLinksArray.length > 1 ? (
-                twitchLinksArray.map((vod, index) => {
-                  return (
+              {!editMode ? (
+                <a
+                  className={`report__link ${checkIfEmptyLink(fflogsLink)}`}
+                  href={fflogsLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="https://i.imgur.com/asZe3Wu.png"
+                    className="report__icon"
+                  />
+                  Logs
+                </a>
+              ) : (
+                <>
+                  {/* <img
+                    src="https://i.imgur.com/asZe3Wu.png"
+                    className="report__icon"
+                  /> */}
+                  <input
+                    type="text"
+                    value={fflogsLink}
+                    onChange={(e) => setFFLogsLink(e.target.value)}
+                  />
+                </>
+              )}
+              {!editMode ? (
+                <>
+                  {twitchLinksArray.length > 1 ? (
+                    twitchLinksArray.map((vod, index) => {
+                      return (
+                        <>
+                          <span className="report__divider"> • </span>
+                          <a
+                            className={`session__link`}
+                            href={vod}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <img
+                              src="https://i.imgur.com/NzRUemQ.png"
+                              className="session__icon"
+                              key={index}
+                            />
+                            VOD {index + 1}
+                          </a>
+                        </>
+                      );
+                    })
+                  ) : (
                     <>
                       <span className="report__divider"> • </span>
                       <a
