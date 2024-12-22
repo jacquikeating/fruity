@@ -15,6 +15,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
   const [notes, setNotes] = useState("");
+  const [insertMode, setInsertMode] = useState(false);
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -70,6 +71,11 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     setCheckedState(new Array(rosterArray.length).fill(false));
     setResponsiblePlayersArray([]);
     setNotes("");
+  }
+
+  function handleInsert(e) {
+    e.preventDefault();
+    setInsertMode(true);
   }
 
   return (
@@ -258,6 +264,20 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       <button type="submit" className="form__button" onClick={handleSubmit}>
         Save
       </button>
+
+      <div>
+        <button className="form__button" onClick={handleInsert}>
+          Insert at...
+        </button>
+
+        {!insertMode ? (
+          ""
+        ) : (
+          <>
+            <input type="number" />
+          </>
+        )}
+      </div>
     </form>
   );
 };

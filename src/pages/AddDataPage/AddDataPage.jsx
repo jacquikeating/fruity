@@ -72,8 +72,6 @@ const AddDataPage = () => {
     setPullsArray(copyOfPullsArray);
   }
 
-  function insertPull(pullData, pullNum) {}
-
   async function handleSubmit() {
     pullsArray.map(async (pull, index) => {
       pull.pull_num_today = index + 1;
@@ -141,9 +139,6 @@ const AddDataPage = () => {
             />
           </section>
           <section className="add-data__section">
-            <button className="add-data__button" onClick={insertPull}>
-              Insert Pull
-            </button>
             <button className="add-data__button" onClick={handleSubmit}>
               Complete Session
             </button>
