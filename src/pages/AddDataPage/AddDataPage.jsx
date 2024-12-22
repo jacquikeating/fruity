@@ -45,7 +45,11 @@ const AddDataPage = () => {
 
   function handlePullFormData(data) {
     let copyOfPullsArray = [...pullsArray];
-    copyOfPullsArray.push(data);
+    if (data.index == 0) {
+      copyOfPullsArray.push(data);
+    } else {
+      copyOfPullsArray.splice(data.index - 1, 0, data);
+    }
     setPullsArray(copyOfPullsArray);
     localStorage.setItem(
       "pullsFromNewSession",
