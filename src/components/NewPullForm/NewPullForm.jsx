@@ -15,6 +15,8 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
   const [notes, setNotes] = useState("");
+  const [insertMode, setInsertMode] = useState(false);
+  const [indexToInsert, setIndexToInsert] = useState(0);
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -64,6 +66,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       log_link: logLink,
       clip_link: clipLink,
       notes: notes,
+      index: indexToInsert,
     };
 
     handlePullFormData(pullObj);
@@ -260,6 +263,26 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       <button type="submit" className="form__button" onClick={handleSubmit}>
         Save
       </button>
+
+      <div>
+        <button className="form__button" onClick={handleInsert}>
+          Insert at...
+        </button>
+
+        {!insertMode ? (
+          ""
+        ) : (
+          <>
+            <input
+              type="number"
+              value={indexToInsert}
+              onChange={(e) => {
+                setIndexToInsert(e.target.value);
+              }}
+            />
+          </>
+        )}
+      </div>
     </form>
   );
 };
