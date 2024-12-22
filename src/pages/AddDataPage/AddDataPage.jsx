@@ -73,8 +73,6 @@ const AddDataPage = () => {
     setPullsArray(copyOfPullsArray);
   }
 
-  function insertPull(pullData, pullNum) {}
-
   async function handleSubmit() {
     pullsArray.map(async (pull, index) => {
       pull.pull_num_today = index + 1;
@@ -120,6 +118,8 @@ const AddDataPage = () => {
             </p>
             <p>Goal: {sessionData.goal}</p>
             <p>Notes: {sessionData.notes}</p>
+            <p>FFLogs Link: {sessionData.fflogs_link}</p>
+            <p>Twitch Links: {sessionData.twitch_links}</p>
           </section>
           <section className="add-data__section">
             <h2 className="add-data__section-heading">Add a Pull</h2>
@@ -140,9 +140,6 @@ const AddDataPage = () => {
             />
           </section>
           <section className="add-data__section">
-            <button className="add-data__button" onClick={insertPull}>
-              Insert Pull
-            </button>
             <button className="add-data__button" onClick={handleSubmit}>
               Complete Session
             </button>

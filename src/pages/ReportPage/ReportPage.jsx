@@ -12,22 +12,43 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
+localStorage.setItem("name", "ella");
 const API_URL = import.meta.env.VITE_API_URL;
+const username = localStorage.getItem("name");
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const { sessionID } = useParams();
+  const [editMode, setEditMode] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+
+  const [date, setDate] = useState("");
+  const [progPhase, setProgPhase] = useState(0);
+  const [progMech, setProgMech] = useState("");
+  const [fflogsLink, setFFLogsLink] = useState("");
+  const [twitchLinks, setTwitchLinks] = useState("");
   const [twitchLinksArray, setTwitchLinksArray] = useState([]);
+  const [goal, setGoal] = useState("");
+  const [roster, setRoster] = useState("");
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     async function getSessionData() {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         let session = result.data[0];
-        setTwitchLinksArray(session.twitch_links.split(", "));
         setSessionData(session);
+        setDate(session.date);
+        setProgPhase(session.prog_phase);
+        setProgMech(session.prog_mech);
+        setFFLogsLink(session.fflogs_link);
+        setTwitchLinks(session.twitch_links);
+        setTwitchLinksArray(session.twitch_links.split(", "));
+        setGoal(session.goal);
+        setRoster(session.roster);
+        setNotes(session.notes);
       } catch (error) {
         console.error(error);
       }
@@ -46,6 +67,9 @@ const ReportPage = () => {
 
     getSessionData();
     getPullsData();
+    if (username === "ella") {
+      setShowEdit(true);
+    }
   }, [sessionID]);
 
   function getProgPulls() {
@@ -85,77 +109,156 @@ const ReportPage = () => {
     }
   }
 
+  async function editSession() {
+    if (editMode === false) {
+      setEditMode(true);
+    } else if (editMode === true) {
+      const updatedSessionObj = {
+        date: date,
+        prog_phase: progPhase,
+        prog_mech: progMech,
+        fflogs_link: fflogsLink,
+        twitch_links: twitchLinks,
+        roster: roster,
+        goal: goal,
+        notes: notes,
+      };
+      try {
+        await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
+      } catch (error) {
+        console.error(error);
+      }
+      setEditMode(false);
+    }
+  }
+
   return (
     <main className="report">
       {sessionData ? (
         <>
           <section className="report__section">
             <h1 className="report__heading">
-              Report:{" "}
-              <span className="report__date">
-                {createReadableDate(sessionData.date)}
-              </span>
+              Report:
+              {!editMode ? (
+                <span className="report__date">{createReadableDate(date)}</span>
+              ) : (
+                <input
+                  type="text"
+                  id="date-input"
+                  name="date-input"
+                  placeholder="YYYY-MM-DD"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              )}
             </h1>
 
             <p className="report__subtitle">
               Session {sessionData.id}
               <span className="report__divider"> • </span>
-              Phase {sessionData.prog_phase} {sessionData.prog_mech} Prog
+              {!editMode ? (
+                `Phase ${progPhase} ${progMech} Prog`
+              ) : (
+                <>
+                  <input
+                    type="number"
+                    value={progPhase}
+                    onChange={(e) => setProgPhase(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    value={progMech}
+                    onChange={(e) => setProgMech(e.target.value)}
+                  />
+                </>
+              )}
               <span className="report__divider"> • </span>
-              <a
-                className={`report__link ${checkIfEmptyLink(
-                  sessionData.fflogs_link
-                )}`}
-                href={sessionData.fflogs_link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src="https://i.imgur.com/asZe3Wu.png"
-                  className="report__icon"
-                />
-                Logs
-              </a>
-              {twitchLinksArray.length > 1 ? (
-                twitchLinksArray.map((vod, index) => {
-                  return (
+              {!editMode ? (
+                <a
+                  className={`report__link ${checkIfEmptyLink(fflogsLink)}`}
+                  href={fflogsLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="https://i.imgur.com/asZe3Wu.png"
+                    className="report__icon"
+                  />
+                  Logs
+                </a>
+              ) : (
+                <>
+                  {/* <img
+                    src="https://i.imgur.com/asZe3Wu.png"
+                    className="report__icon"
+                  /> */}
+                  <input
+                    type="text"
+                    value={fflogsLink}
+                    onChange={(e) => setFFLogsLink(e.target.value)}
+                  />
+                </>
+              )}
+              {!editMode ? (
+                <>
+                  {twitchLinksArray.length > 1 ? (
+                    twitchLinksArray.map((vod, index) => {
+                      return (
+                        <>
+                          <span className="report__divider"> • </span>
+                          <a
+                            className={`session__link`}
+                            href={vod}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <img
+                              src="https://i.imgur.com/NzRUemQ.png"
+                              className="session__icon"
+                              key={index}
+                            />
+                            VOD {index + 1}
+                          </a>
+                        </>
+                      );
+                    })
+                  ) : (
                     <>
                       <span className="report__divider"> • </span>
                       <a
-                        className={`session__link`}
-                        href={vod}
+                        className={`session__link ${checkIfEmptyLink(
+                          twitchLinks
+                        )}`}
+                        href={twitchLinks}
                         target="_blank"
                         rel="noreferrer"
-                        key={index}
                       >
                         <img
                           src="https://i.imgur.com/NzRUemQ.png"
                           className="session__icon"
-                          key={index}
                         />
-                        VOD {index + 1}
+                        VOD
                       </a>
                     </>
-                  );
-                })
-              ) : (
-                <>
-                  <span className="report__divider"> • </span>
-                  <a
-                    className={`session__link ${checkIfEmptyLink(
-                      sessionData.twitch_links
-                    )}`}
-                    href={sessionData.twitch_links}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      src="https://i.imgur.com/NzRUemQ.png"
-                      className="session__icon"
-                    />
-                    VOD
-                  </a>
+                  )}
                 </>
+              ) : (
+                <input
+                  type="text"
+                  value={twitchLinks}
+                  onChange={(e) => {
+                    setTwitchLinks(e.target.value);
+                    setTwitchLinksArray(e.target.value.split(", "));
+                  }}
+                />
+              )}
+              {showEdit ? (
+                <button onClick={editSession}>
+                  {!editMode ? "Edit" : "Save"}
+                </button>
+              ) : (
+                ""
               )}
             </p>
 
@@ -163,11 +266,27 @@ const ReportPage = () => {
               <div className="report__extra-info-left">
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Goal: </span>
-                  {sessionData.goal}
+                  {!editMode ? (
+                    `${goal}`
+                  ) : (
+                    <input
+                      type="text"
+                      value={goal}
+                      onChange={(e) => setGoal(e.target.value)}
+                    />
+                  )}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Roster: </span>
-                  {sessionData.roster}
+                  {!editMode ? (
+                    `${roster}`
+                  ) : (
+                    <input
+                      type="text"
+                      value={roster}
+                      onChange={(e) => setRoster(e.target.value)}
+                    />
+                  )}
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Most Wipes: </span>
@@ -177,7 +296,7 @@ const ReportPage = () => {
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Gold Stars: </span>
-                  {findGoldStars(pullsArray, sessionData.roster)}
+                  {findGoldStars(pullsArray, roster)}
                 </p>
               </div>
               <PhaseBreakdownTable
@@ -188,13 +307,22 @@ const ReportPage = () => {
                 <div className="report__extra-info">
                   <span className="report__extra-info--bold">Notes: </span>
                   <ul className="report__list">
-                    {sessionData.notes.split(", ").map((note) => {
-                      return (
-                        <li className="report__note" key={note}>
-                          {note}
-                        </li>
-                      );
-                    })}
+                    {!editMode ? (
+                      <>
+                        {notes.split(", ").map((note) => {
+                          return (
+                            <li className="report__note" key={note}>
+                              {note}
+                            </li>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <textarea
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
+                      ></textarea>
+                    )}
                   </ul>
                 </div>
               </div>
@@ -225,7 +353,7 @@ const ReportPage = () => {
             {progPullsOnly ? (
               <PullsTable
                 pullsArray={getProgPulls()}
-                showEdit={false}
+                showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
@@ -234,7 +362,7 @@ const ReportPage = () => {
             ) : (
               <PullsTable
                 pullsArray={pullsArray}
-                showEdit={false}
+                showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}

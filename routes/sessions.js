@@ -7,7 +7,10 @@ router
   .route("/")
   .get(sessionController.getAllSessions)
   .post(sessionController.postNewSession);
-router.route("/:sessionID").get(sessionController.getSingleSession);
+router
+  .route("/:sessionID")
+  .get(sessionController.getSingleSession)
+  .put(sessionController.updateSession);
 router.route("/:sessionID/pulls").get(sessionController.getPullsFromSession);
 router.route("/count").get(sessionController.getSessionsCount);
 
