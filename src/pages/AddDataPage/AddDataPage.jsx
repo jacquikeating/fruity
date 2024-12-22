@@ -81,6 +81,7 @@ const AddDataPage = () => {
     pullsArray.map(async (pull, index) => {
       pull.pull_num_today = index + 1;
       delete pull.index;
+      delete pull.indexToInsert;
       try {
         await axios.post(`${API_URL}/pulls/`, pull);
       } catch (error) {

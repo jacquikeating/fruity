@@ -64,7 +64,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       log_link: logLink,
       clip_link: clipLink,
       notes: notes,
-      index: indexToInsert,
+      indexToInsert: indexToInsert,
     };
 
     handlePullFormData(pullObj);
