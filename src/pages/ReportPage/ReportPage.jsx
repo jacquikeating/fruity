@@ -360,6 +360,26 @@ const ReportPage = () => {
                 />
                 Show prog pulls only
               </label>
+              {sessionData.roster.split(", ").length > 0 ? (
+                <label className="report__select-label" htmlFor="playerSelect">
+                  Filter by player
+                  <select
+                    name="playerSelect"
+                    id="playerSelect"
+                    className="report__select"
+                    onChange={(e) => {
+                      filterPulls(e.target.value);
+                    }}
+                  >
+                    <option value={""}>--</option>
+                    {sessionData.roster.split(", ").map((player) => {
+                      return <option value={player}>{player}</option>;
+                    })}
+                  </select>
+                </label>
+              ) : (
+                ""
+              )}
             </div>
 
             {progPullsOnly ? (
