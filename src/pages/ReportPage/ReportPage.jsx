@@ -354,7 +354,7 @@ const ReportPage = () => {
 
             {progPullsOnly ? (
               <PullsTable
-                pullsArray={getProgPulls()}
+                pullsArray={getProgPulls(pullsToDisplay)}
                 showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
@@ -363,7 +363,7 @@ const ReportPage = () => {
               />
             ) : (
               <PullsTable
-                pullsArray={pullsArray}
+                pullsArray={pullsToDisplay}
                 showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
