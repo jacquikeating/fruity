@@ -75,7 +75,7 @@ const ReportPage = () => {
   }, [sessionID]);
 
   function getProgPulls() {
-    const filteredPullsArray = pullsArray.filter(
+    const filteredPullsArray = pullsToDisplay.filter(
       (pull) => pull.phase >= sessionData.prog_phase
     );
     return filteredPullsArray;
