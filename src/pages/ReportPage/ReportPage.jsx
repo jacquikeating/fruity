@@ -134,6 +134,16 @@ const ReportPage = () => {
     }
   }
 
+  function filterPulls(name) {
+    let newArray = pullsArray;
+
+    const arrayFilteredByPlayer = newArray.filter((pull) =>
+      pull.players_responsible.includes(name)
+    );
+
+    setPullsToDisplay(arrayFilteredByPlayer);
+  }
+
   return (
     <main className="report">
       {sessionData ? (
