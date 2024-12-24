@@ -20,6 +20,7 @@ const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
+  const [pullsToDisplay, setPullsToDisplay] = useState([]);
   const { sessionID } = useParams();
   const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -60,6 +61,7 @@ const ReportPage = () => {
         let data = result.data;
         data.sort((a, b) => a.pull_num_today - b.pull_num_today);
         setPullsArray(data);
+        setPullsToDisplay(data);
       } catch (error) {
         console.error(error);
       }
