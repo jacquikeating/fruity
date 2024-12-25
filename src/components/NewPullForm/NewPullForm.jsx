@@ -73,6 +73,9 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     setCheckedState(new Array(rosterArray.length).fill(false));
     setResponsiblePlayersArray([]);
     setNotes("");
+    setLogLink("");
+    setClipLink("");
+    setIndexToInsert(0);
   }
 
   function handleInsert(e) {

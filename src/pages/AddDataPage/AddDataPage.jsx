@@ -45,10 +45,10 @@ const AddDataPage = () => {
 
   function handlePullFormData(data) {
     let copyOfPullsArray = [...pullsArray];
-    if (data.index == 0) {
+    if (data.indexToInsert == 0) {
       copyOfPullsArray.push(data);
     } else {
-      copyOfPullsArray.splice(data.index - 1, 0, data);
+      copyOfPullsArray.splice(data.indexToInsert - 1, 0, data);
     }
     setPullsArray(copyOfPullsArray);
     localStorage.setItem(
