@@ -347,14 +347,14 @@ const ReportPage = () => {
                 Pulls ({pullsArray.length})
               </h2>
               <label
-                className="report__checkbox-label"
+                className="report__filter-label"
                 htmlFor="progOnlyCheckbox"
               >
                 <input
                   type="checkbox"
                   name="progOnlyCheckbox"
                   id="progOnlyCheckbox"
-                  className="report__prog-only-checkbox"
+                  className="report__filter-input"
                   value={progPullsOnly}
                   onChange={handleCheckbox}
                 />
@@ -363,10 +363,11 @@ const ReportPage = () => {
               {sessionData.roster.split(", ").length > 0 ? (
                 <label className="report__select-label" htmlFor="playerSelect">
                   Filter by player
+                <label className="report__filter-label" htmlFor="playerSelect">
                   <select
                     name="playerSelect"
                     id="playerSelect"
-                    className="report__select"
+                    className="report__filter-input"
                     onChange={(e) => {
                       filterPulls(e.target.value);
                     }}
