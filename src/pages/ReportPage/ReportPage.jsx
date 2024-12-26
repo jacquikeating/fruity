@@ -361,8 +361,6 @@ const ReportPage = () => {
                 Show prog pulls only
               </label>
               {sessionData.roster.split(", ").length > 0 ? (
-                <label className="report__select-label" htmlFor="playerSelect">
-                  Filter by player
                 <label className="report__filter-label" htmlFor="playerSelect">
                   <select
                     name="playerSelect"
@@ -377,6 +375,7 @@ const ReportPage = () => {
                       return <option value={player}>{player}</option>;
                     })}
                   </select>
+                  Filter by player
                 </label>
               ) : (
                 ""
