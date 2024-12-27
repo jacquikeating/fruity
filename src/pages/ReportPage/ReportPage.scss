@@ -77,6 +77,10 @@
 
     &__filter-input {
         margin: 0 0.5em;   
+        color: $text-mid;
+        background-color: $bg-light;
+        border-radius: 2px;
+        font-style: italic;
     }
 
     &__filter-label {
@@ -85,14 +89,7 @@
         color: $text-mid;
     }
 
-    select {
-        color: $text-mid;
-        background-color: $bg-light;
-        border-radius: 2px;
-        font-style: italic;
-    }
-
-    option {
+    &__filter-option {
         background-color: $bg-light;
         color: $text-mid;
         font-style: italic;

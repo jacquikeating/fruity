@@ -372,7 +372,14 @@ const ReportPage = () => {
                   >
                     <option value={""}>--</option>
                     {sessionData.roster.split(", ").map((player) => {
-                      return <option value={player}>{player}</option>;
+                      return (
+                        <option
+                          className="report__filter-option"
+                          value={player}
+                        >
+                          {player}
+                        </option>
+                      );
                     })}
                   </select>
                   Filter by player
