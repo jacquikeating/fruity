@@ -35,6 +35,14 @@ const OverviewPage = () => {
     getPullsData();
   }, []);
 
+  function getPullsAtProgPoint() {
+    const onlyProg = pullsArray.filter(
+      (pull) => pull.mech == sessionsArray[0].prog_mech
+    );
+
+    return onlyProg.length;
+  }
+
   return (
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
@@ -51,6 +59,9 @@ const OverviewPage = () => {
               {`Current prog point:
               Phase ${sessionsArray[0]?.prog_phase}, 
               ${sessionsArray[0]?.prog_mech}`}
+            </p>
+            <p className="overview-page__info">
+              Pulls at prog point: {getPullsAtProgPoint()}{" "}
             </p>
             <PhaseBreakdownTable
               sessionData={sessionsArray[0]}
