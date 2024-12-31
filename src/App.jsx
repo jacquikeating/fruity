@@ -4,7 +4,7 @@ import axios from "axios";
 import Header from "./components/Header/Header";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import InfoPage from "./pages/InfoPage/InfoPage";
-import MechPage from "./pages/MechPage/MechPage";
+import MechsPage from "./pages/MechsPage/MechsPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import "./styles/index.scss";
@@ -36,7 +36,7 @@ function App() {
           <Route path="/report/:sessionID" element={<ReportPage />} />
           <Route path="/add-data" element={<AddDataPage />} />
           <Route path="/about" element={<InfoPage />} />
-          <Route path="/mechanics" element={<MechPage />} />
+          <Route path="/mechanics" element={<MechsPage />} />
         </Routes>
       </BrowserRouter>
     </>
