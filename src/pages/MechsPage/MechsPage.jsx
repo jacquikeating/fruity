@@ -30,7 +30,13 @@ const MechsPage = () => {
       <section>
         <h1>Mechanics</h1>
       </section>
-      <section></section>
+      <section>
+        <ul>
+          {mechsList.map((mech) => {
+            return <li key="mech">{mech}</li>;
+          })}
+        </ul>
+      </section>
     </main>
   );
 };
