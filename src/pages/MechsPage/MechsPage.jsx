@@ -27,7 +27,9 @@ const MechsPage = () => {
 
   return (
     <main>
-      <section></section>
+      <section>
+        <h1>Mechanics</h1>
+      </section>
       <section></section>
     </main>
   );
