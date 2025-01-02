@@ -76,7 +76,7 @@ const ReportPage = () => {
 
   function getProgPulls() {
     const filteredPullsArray = pullsToDisplay.filter(
-      (pull) => pull.mech >= sessionData.prog_mech
+      (pull) => pull.mech === sessionData.prog_mech
     );
     return filteredPullsArray;
   }
