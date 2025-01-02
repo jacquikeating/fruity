@@ -31,8 +31,8 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
     ["Diamond Dust", "Mirrors", "Light Rampant", "Enrage", "Intermission"],
     ["Ultimate Relativity", "Apocalypse", "Enrage"],
-    ["Darklit Dragonsong", "Akh Morns", "Crystalize Time", "Enrage"],
-    ["Fulgent Blade", "Paradise Regained", "Poalrizing Strikes", "Enrage"],
+    ["Darklit Dragonsong", "Crystalize Time", "Enrage"],
+    ["Fulgent Blade", "Paradise Regained", "Polarizing Strikes", "Enrage"],
   ];
 
   const handleCheckboxChange = (position) => {
