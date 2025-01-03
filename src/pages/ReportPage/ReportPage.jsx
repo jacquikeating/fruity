@@ -7,6 +7,7 @@ import {
   findStrugglePhase,
   findStruggleMech,
   checkIfEmptyLink,
+  getMechAfterProgMech,
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
@@ -76,7 +77,8 @@ const ReportPage = () => {
 
   function getProgPulls() {
     const filteredPullsArray = pullsToDisplay.filter(
-      (pull) => pull.mech === sessionData.prog_mech
+      (pull) =>
+        pull.mech === progMech || pull.mech === getMechAfterProgMech(progMech)
     );
     return filteredPullsArray;
   }
