@@ -26,6 +26,7 @@ const OverviewPage = () => {
         let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
         setPullsArray(data);
+        console.log(data);
       } catch (error) {
         console.error(error);
       }
