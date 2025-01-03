@@ -312,6 +312,14 @@ const ReportPage = () => {
                   <span className="report__extra-info--bold">Gold Stars: </span>
                   {findGoldStars(pullsArray, roster)}
                 </p>
+                {sessionID == 14 ? (
+                  <p className="report__extra-info">
+                    <span className="report__extra-info--bold">💩 Star: </span>
+                    Sophia
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
               <PhaseBreakdownTable
                 sessionData={sessionData}
