@@ -40,10 +40,14 @@ const ReportPage = () => {
   const [notes, setNotes] = useState("");
 
   useEffect(() => {
+    let session = null;
+    let pulls = null;
+    let ffLogs = null;
+
     async function getSessionData() {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
-        let session = result.data[0];
+        session = result.data[0];
         setSessionData(session);
         setDate(session.date);
         setProgPhase(session.prog_phase);
@@ -56,18 +60,20 @@ const ReportPage = () => {
         setNotes(session.notes);
       } catch (error) {
         console.error(error);
+      } finally {
+        getPullsData();
       }
     }
 
     async function getPullsData() {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
-        let data = result.data;
-        data.sort((a, b) => a.pull_num_today - b.pull_num_today);
-        setPullsArray(data);
-        setPullsToDisplay(data);
+        pulls = result.data;
+        pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
       } catch (error) {
         console.error(error);
+      } finally {
+        getFFLogsData();
       }
     }
 
@@ -76,17 +82,24 @@ const ReportPage = () => {
         let result = await axios.get(
           `https://www.fflogs.com:443/v1/report/fights/Kb2kf43tMxVhCcHa?api_key=${API_KEY}`
         );
-        let data = result.data;
-        setFFLogsData(data.fights);
-        console.log(convertMSToMinSec(data.fights[0].combatTime));
+        ffLogs = result.data.fights;
+        setFFLogsData(ffLogs);
       } catch (error) {
         console.error(error);
+      } finally {
+        if (ffLogs.length >= 1) {
+          for (let i = 0; i < pulls.length; i++) {
+            pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
+            console.log(pulls[i]);
+          }
+        }
+        setPullsArray(pulls);
+        setPullsToDisplay(pulls);
       }
     }
 
     getSessionData();
-    getPullsData();
-    getFFLogsData();
+
     if (username === "ella") {
       setShowEdit(true);
     }
