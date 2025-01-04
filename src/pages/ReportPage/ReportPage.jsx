@@ -15,6 +15,7 @@ import "./ReportPage.scss";
 
 localStorage.setItem("name", "ella");
 const API_URL = import.meta.env.VITE_API_URL;
+const API_KEY = import.meta.env.VITE_FFLOGS_API_KEY;
 const username = localStorage.getItem("name");
 
 const ReportPage = () => {
