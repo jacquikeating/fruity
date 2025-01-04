@@ -8,6 +8,7 @@ import {
   findStruggleMech,
   checkIfEmptyLink,
   getMechAfterProgMech,
+  convertMSToMinSec,
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
@@ -77,6 +78,7 @@ const ReportPage = () => {
         );
         let data = result.data;
         setFFLogsData(data.fights);
+        console.log(convertMSToMinSec(data.fights[0].combatTime));
       } catch (error) {
         console.error(error);
       }

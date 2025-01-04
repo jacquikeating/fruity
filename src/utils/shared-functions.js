@@ -165,3 +165,13 @@ export function getMechAfterProgMech(progMech) {
   const progMechIndex = mechsList.indexOf(progMech);
   return mechsList[progMechIndex + 1];
 }
+
+export function convertMSToMinSec(ms) {
+  const date = new Date(ms);
+  const mins = date.getMinutes();
+  let secs = date.getSeconds().toString();
+  if (secs.length == 1) {
+    secs = "0" + secs;
+  }
+  return `${mins}:${secs}`;
+}
