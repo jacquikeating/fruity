@@ -69,8 +69,21 @@ const ReportPage = () => {
       }
     }
 
+    async function getFFLogsData() {
+      try {
+        let result = await axios.get(
+          `https://www.fflogs.com:443/v1/report/fights/Kb2kf43tMxVhCcHa?api_key=${API_KEY}`
+        );
+        let data = result.data;
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     getSessionData();
     getPullsData();
+    getFFLogsData();
     if (username === "ella") {
       setShowEdit(true);
     }
