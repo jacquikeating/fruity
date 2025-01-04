@@ -78,9 +78,11 @@ const ReportPage = () => {
     }
 
     async function getFFLogsData() {
+      const reportCode = session.fflogs_link.substring(31);
+
       try {
         let result = await axios.get(
-          `https://www.fflogs.com:443/v1/report/fights/Kb2kf43tMxVhCcHa?api_key=${API_KEY}`
+          `https://www.fflogs.com:443/v1/report/fights/${reportCode}?api_key=${API_KEY}`
         );
         ffLogs = result.data.fights;
         setFFLogsData(ffLogs);
