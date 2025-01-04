@@ -21,6 +21,7 @@ const username = localStorage.getItem("name");
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
   const [pullsArray, setPullsArray] = useState([]);
+  const [ffLogsData, setFFLogsData] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
   const { sessionID } = useParams();
@@ -75,7 +76,7 @@ const ReportPage = () => {
           `https://www.fflogs.com:443/v1/report/fights/Kb2kf43tMxVhCcHa?api_key=${API_KEY}`
         );
         let data = result.data;
-        console.log(data);
+        setFFLogsData(data.fights);
       } catch (error) {
         console.error(error);
       }
