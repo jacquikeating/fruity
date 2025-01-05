@@ -29,8 +29,8 @@
 
     &__button {
         @include icon-button;
-        margin-right: 0.25em;
         padding: 0 0.5em;
+        margin-left: 0.4em;
     }
 
     &__save {
