@@ -11,14 +11,6 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
 
   return (
     <td className="pull-link__cell">
-      {!editMode ? (
-        ""
-      ) : (
-        <button className="pull-link__add-link-btn" onClick={toggleLinkModal}>
-          {!showModal ? "+" : "x"}
-        </button>
-      )}
-
       {logLink.length > 0 ? (
         <a
           className="pull-link__link"
@@ -49,6 +41,18 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
         </a>
       ) : (
         ""
+      )}
+
+      {!editMode ? (
+        ""
+      ) : (
+        <button className="pull-link__add-link-btn" onClick={toggleLinkModal}>
+          {!showModal ? (
+            <i className="fa-solid fa-plus"></i>
+          ) : (
+            <i className="fa-solid fa-check"></i>
+          )}
+        </button>
       )}
 
       {editMode && showModal ? (
