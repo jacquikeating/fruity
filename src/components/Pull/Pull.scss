@@ -1,4 +1,5 @@
 @use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
 
 .pull {
     border-top: 1px solid $borders;
@@ -27,11 +28,12 @@
     }
 
     &__button {
-        margin-right: 0.75em;
+        @include icon-button;
+        margin-right: 0.25em;
         padding: 0 0.5em;
+    }
 
-        &:hover {
-            cursor: pointer;
-        }
+    &__save {
+        color: $green;
     }
 }
