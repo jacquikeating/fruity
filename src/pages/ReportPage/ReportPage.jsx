@@ -13,7 +13,6 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
-localStorage.setItem("name", "ella");
 const API_URL = import.meta.env.VITE_API_URL;
 const username = localStorage.getItem("name");
 
