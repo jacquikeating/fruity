@@ -269,7 +269,11 @@ const ReportPage = () => {
               )}
               {showEdit ? (
                 <button onClick={editSession}>
-                  {!editMode ? "Edit" : "Save"}
+                  {!editMode ? (
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  ) : (
+                    <i class="fa-regular fa-square-check"></i>
+                  )}
                 </button>
               ) : (
                 ""
