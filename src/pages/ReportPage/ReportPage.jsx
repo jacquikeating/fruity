@@ -467,6 +467,7 @@ const ReportPage = () => {
                 key={pullsArray}
               />
             )}
+            <button onClick={fillPullNumOverall}>x</button>
           </section>
         </>
       ) : (
