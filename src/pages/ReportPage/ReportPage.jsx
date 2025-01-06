@@ -149,15 +149,22 @@ const ReportPage = () => {
     }
   }
 
-  async function fillPullNumOverall() {
+  console.log(pullsArray);
+  function fillPullNumOverall() {
     let counter = localStorage.getItem("counter");
     console.log(counter);
     console.log(pullsArray);
-    // pullsArray.forEach((pull) => {
-    //   pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
-    //   counter++;
-    // });
-    // console.log(pullsArray);
+    pullsArray.forEach((pull) => {
+      pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
+    });
+    console.log(pullsArray);
+
+    const reverseArray = pullsArray.reverse();
+    const lastPull = reverseArray[0];
+    const lastPullNumOverall = lastPull.pull_num_overall;
+    console.log(lastPullNumOverall);
+    localStorage.setItem("counter", lastPullNumOverall);
+    console.log(`Counter: ${localStorage.getItem("counter")}`);
   }
 
   async function editSession() {
