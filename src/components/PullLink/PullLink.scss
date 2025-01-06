@@ -8,7 +8,9 @@
         left: -13px;
         top: 5px;
         display: flex;
-        justify-content: center;
+        justify-content: right;
+        align-items: top;
+        gap: 0.3em;
     }
 
     &__icon {
@@ -21,11 +23,12 @@
     }
 
     &__add-link-btn {
-        border: none;
+        border: 1px solid $grey;
         border-radius: 2px;
         width: 100%;
+        min-width: 100%;
         height: 100%;
-        background-color: $grey;
+        background-color: $bg-light;
         color: $text-light;
 
         &:hover {
