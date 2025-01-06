@@ -14,7 +14,6 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
-localStorage.setItem("name", "ella");
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_FFLOGS_API_KEY;
 const username = localStorage.getItem("name");
@@ -300,8 +299,12 @@ const ReportPage = () => {
                 />
               )}
               {showEdit ? (
-                <button onClick={editSession}>
-                  {!editMode ? "Edit" : "Save"}
+                <button className="report__button" onClick={editSession}>
+                  {!editMode ? (
+                    <i className="fa-regular fa-pen-to-square"></i>
+                  ) : (
+                    <i className="fa-solid fa-check report__save"></i>
+                  )}
                 </button>
               ) : (
                 ""

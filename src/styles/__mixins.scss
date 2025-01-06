@@ -1,0 +1,13 @@
+@use "/src/styles/__variables" as *;
+
+@mixin icon-button() {
+    border: none;
+    background-color: transparent;
+    color: $grey;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+        color: $text-mid;
+    }
+}

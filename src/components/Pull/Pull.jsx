@@ -136,7 +136,11 @@ const Pull = ({
       {showEdit ? (
         <td key={`${index}-actions`} className="pull__cell">
           <button className="pull__button" onClick={editRow}>
-            {!editMode ? "Edit" : "Save"}
+            {!editMode ? (
+              <i className="fa-regular fa-pen-to-square"></i>
+            ) : (
+              <i className="fa-solid fa-check pull__save"></i>
+            )}
           </button>
           <button
             className="pull__button"
@@ -144,7 +148,7 @@ const Pull = ({
               deletePull(pullData);
             }}
           >
-            Delete
+            <i className="fa-regular fa-trash-can"></i>
           </button>
         </td>
       ) : (

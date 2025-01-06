@@ -1,4 +1,5 @@
 @use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
 
 .report {   
     &__heading {
@@ -24,6 +25,15 @@
     &__divider {
         margin: 0 0.4em;
         color: $grey;
+    }
+
+    &__button {
+        @include icon-button;
+        margin-left: 0.75em;
+    }
+
+    &__save {
+        color: $green;
     }
 
     &__extra-info-container {
