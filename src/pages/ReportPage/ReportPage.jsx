@@ -149,10 +149,6 @@ const ReportPage = () => {
     }
   }
 
-  localStorage.setItem("counter", 98);
-  const counter = localStorage.getItem("counter");
-  console.log(counter);
-
   async function fillPullNumOverall() {
     let counter = localStorage.getItem("counter");
     console.log(counter);
