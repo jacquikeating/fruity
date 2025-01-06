@@ -91,7 +91,6 @@ const ReportPage = () => {
         if (ffLogs.length >= 1) {
           for (let i = 0; i < pulls.length; i++) {
             pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
-            console.log(pulls[i]);
           }
         }
         setPullsArray(pulls);
@@ -143,6 +142,10 @@ const ReportPage = () => {
       console.error(error);
     }
   }
+
+  localStorage.setItem("counter", 98);
+  const counter = localStorage.getItem("counter");
+  console.log(counter);
 
   async function editSession() {
     if (editMode === false) {
