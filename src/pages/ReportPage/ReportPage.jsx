@@ -72,7 +72,12 @@ const ReportPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        getFFLogsData();
+        if (fflogsLink.length > 1) {
+          getFFLogsData();
+        } else {
+          setPullsArray(pulls);
+          setPullsToDisplay(pulls);
+        }
       }
     }
 
@@ -90,7 +95,8 @@ const ReportPage = () => {
       } finally {
         if (ffLogs.length >= 1) {
           for (let i = 0; i < pulls.length; i++) {
-            pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
+            pulls[i].combatTime =
+              convertMSToMinSec(ffLogs[i].combatTime) || "???";
           }
         }
         setPullsArray(pulls);
