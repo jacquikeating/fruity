@@ -147,6 +147,17 @@ const ReportPage = () => {
   const counter = localStorage.getItem("counter");
   console.log(counter);
 
+  async function fillPullNumOverall() {
+    let counter = localStorage.getItem("counter");
+    console.log(counter);
+    console.log(pullsArray);
+    // pullsArray.forEach((pull) => {
+    //   pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
+    //   counter++;
+    // });
+    // console.log(pullsArray);
+  }
+
   async function editSession() {
     if (editMode === false) {
       setEditMode(true);
