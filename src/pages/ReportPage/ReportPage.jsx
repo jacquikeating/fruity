@@ -149,7 +149,6 @@ const ReportPage = () => {
     }
   }
 
-  console.log(pullsArray);
   function fillPullNumOverall() {
     let counter = localStorage.getItem("counter");
     console.log(`Counter begins at ${counter}`);
@@ -169,6 +168,16 @@ const ReportPage = () => {
     localStorage.setItem("counter", lastPullNumOverall);
     console.log(`Counter is now at ${localStorage.getItem("counter")}`);
 
+    updateAllPullNums(copyOfPullsArray);
+  }
+
+  function updateAllPullNums(copyOfPullsArray) {
+    copyOfPullsArray.map(async (pull) => {
+        await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
+      } catch (error) {
+        console.error(error);
+      }
+    });
   }
 
   async function editSession() {
