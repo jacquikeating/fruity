@@ -78,6 +78,12 @@ const ReportPage = () => {
           setPullsArray(pulls);
           setPullsToDisplay(pulls);
         }
+        if (fflogsLink.length > 1) {
+          getFFLogsData();
+        } else {
+          setPullsArray(pulls);
+          setPullsToDisplay(pulls);
+        }
       }
     }
 
