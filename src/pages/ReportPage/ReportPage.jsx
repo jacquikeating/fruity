@@ -152,19 +152,23 @@ const ReportPage = () => {
   console.log(pullsArray);
   function fillPullNumOverall() {
     let counter = localStorage.getItem("counter");
-    console.log(counter);
-    console.log(pullsArray);
-    pullsArray.forEach((pull) => {
+    console.log(`Counter begins at ${counter}`);
+    const copyOfPullsArray = [...pullsArray];
+
+    copyOfPullsArray.forEach((pull) => {
       pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
     });
-    console.log(pullsArray);
 
-    const reverseArray = pullsArray.reverse();
-    const lastPull = reverseArray[0];
-    const lastPullNumOverall = lastPull.pull_num_overall;
-    console.log(lastPullNumOverall);
+    console.log(copyOfPullsArray);
+
+    setPullsArray(copyOfPullsArray);
+    setPullsToDisplay(copyOfPullsArray);
+
+    const lastPullNumOverall =
+      copyOfPullsArray[copyOfPullsArray.length - 1].pull_num_overall;
     localStorage.setItem("counter", lastPullNumOverall);
-    console.log(`Counter: ${localStorage.getItem("counter")}`);
+    console.log(`Counter is now at ${localStorage.getItem("counter")}`);
+
   }
 
   async function editSession() {
