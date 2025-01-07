@@ -173,6 +173,7 @@ const ReportPage = () => {
 
   function updateAllPullNums(copyOfPullsArray) {
     copyOfPullsArray.map(async (pull) => {
+      try {
         await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
       } catch (error) {
         console.error(error);
