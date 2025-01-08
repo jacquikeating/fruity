@@ -60,11 +60,11 @@ const ReportPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        getPullsData();
+        getPullsData(session.fflogs_link);
       }
     }
 
-    async function getPullsData() {
+    async function getPullsData(logLink) {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         pulls = result.data;
@@ -72,13 +72,7 @@ const ReportPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        if (fflogsLink.length > 1) {
-          getFFLogsData();
-        } else {
-          setPullsArray(pulls);
-          setPullsToDisplay(pulls);
-        }
-        if (fflogsLink.length > 1) {
+        if (logLink.length > 1) {
           getFFLogsData();
         } else {
           setPullsArray(pulls);
@@ -101,10 +95,14 @@ const ReportPage = () => {
       } finally {
         if (ffLogs.length >= 1) {
           for (let i = 0; i < pulls.length; i++) {
-            pulls[i].combatTime =
-              convertMSToMinSec(ffLogs[i].combatTime) || "???";
+            if (ffLogs[i].combatTime) {
+              pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
+            } else {
+              pulls[i].combatTime = "?";
+            }
           }
         }
+        console.log(pulls);
         setPullsArray(pulls);
         setPullsToDisplay(pulls);
       }
