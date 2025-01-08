@@ -12,6 +12,7 @@ const Pull = ({
   progPhase,
 }) => {
   const [editMode, setEditMode] = useState(false);
+  const [dur, setDur] = useState(pullData.combatTime);
   const [phase, setPhase] = useState(pullData.phase);
   const [mech, setMech] = useState(pullData.mech);
   const [cause, setCause] = useState(pullData.cause);
@@ -56,6 +57,10 @@ const Pull = ({
         {pullNumType === "today"
           ? pullData.pull_num_today || index + 1
           : pullData.id}
+      </td>
+
+      <td key={`${index}-dur`} className="pull__cell pull__cell--dur">
+        {pullData.combatTime}
       </td>
 
       <td key={`${index}-phase`} className="pull__cell">
