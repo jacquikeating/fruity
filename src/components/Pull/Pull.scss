@@ -9,20 +9,20 @@
         border-left: 1px solid $borders;
         padding: 0.3rem 0.7rem;
 
-        &:first-of-type {
+        &--num-today {
             border-left: none;
             text-align: center;
         }
 
-        &:nth-of-type(2) {
+        &--dur {
             text-align: center;
         }
 
-        &:nth-of-type(3) {
+        &--phase {
             text-align: center;
         }
 
-        &:nth-of-type(4) {
+        &--mech {
             text-align: center;
         }
     }

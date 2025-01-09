@@ -63,7 +63,7 @@ const Pull = ({
         {pullData.combatTime}
       </td> */}
 
-      <td key={`${index}-phase`} className="pull__cell">
+      <td key={`${index}-phase`} className="pull__cell pull__cell--phase">
         {!editMode ? (
           phase
         ) : (
@@ -78,7 +78,7 @@ const Pull = ({
         )}
       </td>
 
-      <td key={`${index}-mech`} className="pull__cell">
+      <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
         {!editMode ? (
           mech
         ) : (
@@ -93,7 +93,7 @@ const Pull = ({
         )}
       </td>
 
-      <td key={`${index}-cause`} className="pull__cell">
+      <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
         {!editMode ? (
           cause
         ) : (
@@ -108,7 +108,10 @@ const Pull = ({
         )}
       </td>
 
-      <td key={`${index}-players_responsible`} className="pull__cell">
+      <td
+        key={`${index}-players_responsible`}
+        className="pull__cell pull__cell--players"
+      >
         {!editMode ? (
           playersResponsible
         ) : (
@@ -123,7 +126,7 @@ const Pull = ({
         )}
       </td>
 
-      <td key={`${index}-notes`} className="pull__cell">
+      <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
         {!editMode ? (
           notes
         ) : (
@@ -139,7 +142,7 @@ const Pull = ({
       </td>
 
       {showEdit ? (
-        <td key={`${index}-actions`} className="pull__cell">
+        <td key={`${index}-actions`} className="pull__cell pull__cell--actions">
           <button className="pull__button" onClick={editRow}>
             {!editMode ? (
               <i className="fa-regular fa-pen-to-square"></i>
