@@ -95,10 +95,20 @@ const ReportPage = () => {
       } finally {
         if (ffLogs.length >= 1) {
           for (let i = 0; i < pulls.length; i++) {
+            console.log(ffLogs[i]);
             if (ffLogs[i].combatTime) {
               pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
             } else {
               pulls[i].combatTime = "?";
+            }
+            if (ffLogs[i].bossPercentage) {
+              pulls[i].bossPercentage = ffLogs[i].bossPercentage.toString();
+              // ffLogs[i].bossPercentage.toString().slice(1, 3) +
+              // "." +
+              // ffLogs[i].bossPercentage.toString().slice(1, 3) +
+              // "%";
+
+              console.log(pulls[i].bossPercentage);
             }
           }
         }
