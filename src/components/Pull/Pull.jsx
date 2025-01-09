@@ -59,9 +59,9 @@ const Pull = ({
           : pullData.id}
       </td>
 
-      <td key={`${index}-dur`} className="pull__cell pull__cell--dur">
+      {/* <td key={`${index}-dur`} className="pull__cell pull__cell--dur">
         {pullData.combatTime}
-      </td>
+      </td> */}
 
       <td key={`${index}-phase`} className="pull__cell">
         {!editMode ? (
