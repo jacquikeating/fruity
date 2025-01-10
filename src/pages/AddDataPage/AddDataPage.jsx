@@ -142,6 +142,7 @@ const AddDataPage = () => {
               deletePull={deletePull}
               updatePull={updatePull}
               progPhase={sessionData.prog_phase}
+              allowDelete={true}
             />
           </section>
           <section className="add-data__section">

@@ -8,6 +8,7 @@ const PullsTable = ({
   updatePull,
   deletePull,
   progPhase,
+  allowDelete,
 }) => {
   const [pullNumType, setPullNumType] = useState("today");
 
@@ -60,6 +61,7 @@ const PullsTable = ({
                 deletePull={deletePull}
                 progPhase={progPhase}
                 key={pull.pull_num_today || index}
+                allowDelete={allowDelete}
               />
             );
           })}

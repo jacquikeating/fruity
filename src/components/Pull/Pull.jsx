@@ -10,6 +10,7 @@ const Pull = ({
   updatePull,
   deletePull,
   progPhase,
+  allowDelete,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [dur, setDur] = useState(pullData.combatTime);
@@ -150,14 +151,18 @@ const Pull = ({
               <i className="fa-solid fa-check pull__save"></i>
             )}
           </button>
-          <button
-            className="pull__button"
-            onClick={() => {
-              deletePull(pullData);
-            }}
-          >
-            <i className="fa-regular fa-trash-can"></i>
-          </button>
+          {allowDelete ? (
+            <button
+              className="pull__button"
+              onClick={() => {
+                deletePull(pullData);
+              }}
+            >
+              <i className="fa-regular fa-trash-can"></i>
+            </button>
+          ) : (
+            ""
+          )}
         </td>
       ) : (
         ""

@@ -461,6 +461,7 @@ const ReportPage = () => {
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
+                allowDelete={false}
               />
             ) : (
               <PullsTable
@@ -470,6 +471,7 @@ const ReportPage = () => {
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
+                allowDelete={false}
               />
             )}
           </section>
