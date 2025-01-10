@@ -13,7 +13,7 @@ const NotesPage = () => {
           something goes wrong. So here's a collection of all the different ways
           you can screw up Darklit Dragonsong!
         </p>
-        <p className="notes__body-text">
+        <p className="notes__body-text notes__body-text--italic">
           The point here is not to shame random strangers (who are probably more
           skilled than me) — it's to learn common pitfalls to look out for in my
           own prog.

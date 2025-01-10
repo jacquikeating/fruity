@@ -1,0 +1,10 @@
+.notes {
+    &__body-text {
+        max-width: 90ch;
+        margin: 0.5em 0;
+
+        &--italic {
+            font-style: italic;
+        }
+    }
+}
