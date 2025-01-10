@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import InfoPage from "./pages/InfoPage/InfoPage";
 import MechsPage from "./pages/MechsPage/MechsPage";
+import NotesPage from "./pages/NotesPage/NotesPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import "./styles/index.scss";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/add-data" element={<AddDataPage />} />
           <Route path="/about" element={<InfoPage />} />
           <Route path="/mechanics" element={<MechsPage />} />
+          <Route path="/notes" element={<NotesPage />} />
         </Routes>
       </BrowserRouter>
     </>
