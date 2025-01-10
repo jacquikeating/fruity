@@ -144,25 +144,27 @@ const Pull = ({
 
       {showEdit ? (
         <td key={`${index}-actions`} className="pull__cell pull__cell--actions">
-          <button className="pull__button" onClick={editRow}>
-            {!editMode ? (
-              <i className="fa-regular fa-pen-to-square"></i>
-            ) : (
-              <i className="fa-solid fa-check pull__save"></i>
-            )}
-          </button>
-          {allowDelete ? (
-            <button
-              className="pull__button"
-              onClick={() => {
-                deletePull(pullData);
-              }}
-            >
-              <i className="fa-regular fa-trash-can"></i>
+          <div className="pull__cell-container">
+            <button className="pull__button" onClick={editRow}>
+              {!editMode ? (
+                <i className="fa-regular fa-pen-to-square"></i>
+              ) : (
+                <i className="fa-solid fa-check pull__save"></i>
+              )}
             </button>
-          ) : (
-            ""
-          )}
+            {allowDelete ? (
+              <button
+                className="pull__button"
+                onClick={() => {
+                  deletePull(pullData);
+                }}
+              >
+                <i className="fa-regular fa-trash-can"></i>
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
         </td>
       ) : (
         ""

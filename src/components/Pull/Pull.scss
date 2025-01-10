@@ -34,10 +34,14 @@
     &__button {
         @include icon-button;
         padding: 0 0.5em;
-        margin-left: 0.4em;
     }
 
     &__save {
         color: $green;
+    }
+
+    &__cell-container {
+        display: flex;
+        justify-content: center;
     }
 }
