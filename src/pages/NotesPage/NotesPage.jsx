@@ -18,6 +18,25 @@ const NotesPage = () => {
           skilled than me) — it's to learn common pitfalls to look out for in my
           own prog.
         </p>
+
+        <article className="notes__mech">
+          <h3 className="notes__mech-subheading">Akh Rhai</h3>
+          <div className="notes__example">
+            <ul className="notes__list">
+              <li className="notes__list-item">
+                <span className="notes__bold-text">Problem: </span>
+                BRD ran out too soon
+              </li>
+              <li className="notes__list-item">
+                BRD dropped an off-center Akh Rhai that killed PCT
+              </li>
+              <li className="notes__list-item notes__list-item--solution">
+                <span className="notes__bold-text">Solution: </span>
+                Don't move until the wings pop
+              </li>
+            </ul>
+          </div>
+        </article>
       </section>
     </main>
   );
