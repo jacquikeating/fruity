@@ -44,8 +44,8 @@ const PullsTable = ({
               );
             })}
             {showEdit ? (
-              <th className="pulls-table__header-cell pulls-table__header-cell--actions">
-                Actions
+              <th className="pulls-table__header-cell pulls-table__header-cell--edit">
+                Edit
               </th>
             ) : (
               ""

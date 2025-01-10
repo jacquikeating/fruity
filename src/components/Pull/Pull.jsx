@@ -143,7 +143,7 @@ const Pull = ({
       </td>
 
       {showEdit ? (
-        <td key={`${index}-actions`} className="pull__cell pull__cell--actions">
+        <td key={`${index}-edit`} className="pull__cell pull__cell--edit">
           <div className="pull__cell-container">
             <button className="pull__button" onClick={editRow}>
               {!editMode ? (
