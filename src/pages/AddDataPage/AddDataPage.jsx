@@ -95,6 +95,27 @@ const AddDataPage = () => {
     // navigate(`/report/${sessionData.num}`);
   }
 
+  async function resurrectPull() {
+    let pull = {
+      cause: "Hypatia wrong flex",
+      clip_link: "",
+      log_link: "",
+      mech: "Fall of Faith",
+      notes: "Didn't see Char's tether",
+      phase: "1",
+      players_responsible: "Hypatia",
+      prog_point_reached: "old",
+      pull_num_overall: 0,
+      pull_num_today: 12,
+      session_id: 16,
+    };
+    try {
+      await axios.post(`${API_URL}/pulls/`, pull);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <main className="add-data">
       <h1 className="add-data__heading">Add Data</h1>
@@ -149,6 +170,7 @@ const AddDataPage = () => {
             <button className="add-data__button" onClick={handleSubmit}>
               Complete Session
             </button>
+            <button onClick={resurrectPull}>bring the pull back</button>
           </section>
         </>
       )}
