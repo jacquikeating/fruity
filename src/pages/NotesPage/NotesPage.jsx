@@ -77,6 +77,16 @@ const NotesPage = () => {
         "Don't go to Narnia for Spirit Taker spreads. Baiting tank, look where she ends up and tell yourself in advance what the opposite side is, so you're not trying to figure it out in the moment.",
     },
     {
+      link: "https://www.twitch.tv/videos/2346309039?t=1h47m17s",
+      url: "2346309039",
+      time: "1h47m17s",
+      problem: "Tank ran out too late",
+      description:
+        "Best Darklit clip ever, because they screw up and then spend 15 minutes arguing about it :3",
+      solution:
+        "Move on Hallowed Wings castbar, don't wait for stack damage/animation.",
+    },
+    {
       link: "https://www.twitch.tv/storkod/clip/WanderingSneakyRuffThunBeast-RpT3TVEQCyUPJSIW",
       url: "2341997316",
       time: "2h6m34s",
