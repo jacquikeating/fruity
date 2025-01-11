@@ -38,7 +38,7 @@ function App() {
           <Route path="/add-data" element={<AddDataPage />} />
           <Route path="/about" element={<InfoPage />} />
           <Route path="/mechanics" element={<MechsPage />} />
-          <Route path="/notes" element={<NotesPage />} />
+          <Route path="/clips" element={<NotesPage />} />
         </Routes>
       </BrowserRouter>
     </>

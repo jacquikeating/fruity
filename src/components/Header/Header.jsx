@@ -32,6 +32,11 @@ const Header = ({ latestSession }) => {
               About
             </Link>
           </li>
+          <li className="nav__list-item">
+            <Link to="/clips" className="nav__link">
+              Clips
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
