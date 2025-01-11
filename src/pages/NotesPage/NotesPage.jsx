@@ -40,6 +40,16 @@ const NotesPage = () => {
       solution: "Just do LR spots 4head",
     },
     {
+      link: "https://www.twitch.tv/videos/2349084399?t=2h24m32s",
+      url: "2349084399",
+      time: "2h24m32s",
+      problem: "Tethered water flex",
+      description:
+        "DRG and DNC both had water. DRG probably panicked when they saw the DNC not flexing.",
+      solution:
+        "Just stay and yell at the DNC in Discord. The stacks resolve after the tethers.",
+    },
+    {
       link: "https://www.twitch.tv/videos/2346402771?t=0h31m2s",
       url: "2346402771",
       time: "0h31m2s",
