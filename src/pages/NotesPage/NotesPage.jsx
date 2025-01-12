@@ -13,6 +13,15 @@ const NotesPage = () => {
   //   };
   const clipsArray = [
     {
+      link: "https://www.twitch.tv/videos/2347272686?t=2h20m8s",
+      url: "2347272686",
+      time: "2h20m8s",
+      problem: "Moving too late",
+      description:
+        "It's this group's first time reaching P4 and they're so excited! But then...",
+      solution: "Know when to move LOL",
+    },
+    {
       link: "https://www.twitch.tv/videos/2342258741?t=0h43m28s",
       url: "2342258741",
       time: "0h43m28s",
@@ -20,6 +29,15 @@ const NotesPage = () => {
       description:
         "BRD went out too soon and dropped an off-center Akh Rhai that killed PCT.",
       solution: "Don't move until the wings pop.",
+    },
+    {
+      link: "https://www.twitch.tv/videos/2349041148?t=0h33m39s",
+      url: "2349041148",
+      time: "0h33m39s",
+      problem: "DPS taking second aggro on Shiva",
+      description:
+        "GNB starts at 2nd aggro, but because he has dmg down, the BLM quickly overtakes him and dies to autos. 3 support get tethered.",
+      solution: "GNB should have suicided as soon as Gaia hit 20%.",
     },
     {
       link: "https://www.twitch.tv/videos/2335965689?t=00h32m43s",
@@ -40,6 +58,16 @@ const NotesPage = () => {
       solution: "Just do LR spots 4head",
     },
     {
+      link: "https://www.twitch.tv/videos/2343743751?t=0h20m15s",
+      url: "2343743751",
+      time: "0h20m15s",
+      problem: "No bowtie",
+      description:
+        "Hourglass = tank and west DPS need to switch. The switch starts out okay, but then the WAR second-guesses themselves and turns around.",
+      solution: "Don't do that",
+    },
+
+    {
       link: "https://www.twitch.tv/videos/2349084399?t=2h24m32s",
       url: "2349084399",
       time: "2h24m32s",
@@ -47,7 +75,7 @@ const NotesPage = () => {
       description:
         "DRG and DNC both had water. DRG probably panicked when they saw the DNC not flexing.",
       solution:
-        "Just stay and yell at the DNC in Discord. The stacks resolve after the tethers.",
+        "Just stay and yell at the DNC in Discord. The stacks resolve after Spirit Taker.",
     },
     {
       link: "https://www.twitch.tv/videos/2346402771?t=0h31m2s",
@@ -65,6 +93,15 @@ const NotesPage = () => {
       problem: "Moving too slowly for Hallowed Wings",
       description: "DNC and PCT got hit by wings and blew up the raid.",
       solution: "Start moving to safe side as soon as Spirit Taker resolves.",
+    },
+    {
+      link: "https://www.twitch.tv/videos/2343743751?t=0h56m1s",
+      url: "2343743751",
+      time: "0h56m1s",
+      problem: "Both waters on same side ",
+      description: "SCH was untethered and should have switched with PCT.",
+      solution:
+        "Obviously, waters should pay attention. But it's also kinda crazy that nobody else noticed and called it out in Discord. If you see something, say something!",
     },
     {
       link: "https://www.twitch.tv/videos/2347173197?t=0h22m14s",
