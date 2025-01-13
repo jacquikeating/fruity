@@ -9,6 +9,10 @@
         }
     }
 
+    &__subheading {
+        margin-bottom: 1em;
+    }
+
     &__list {
         margin-left: 2em;
     }
@@ -16,14 +20,24 @@
     &__bold-text {
         font-weight: bold;
     }
+    
 
     &__list-item {
         &--solution {
             font-style: italic;
         }
     }
+
+    &__subsection {
+        margin-bottom: 2.5em;
+    }
+
+    &__subsection-heading {
+        margin-bottom: 0.5em;
+    }
 }
 
 .clip {
-    margin-top: 1.5em;
+    margin-bottom: 1.2em;
+    margin-left: 1em;
 }
