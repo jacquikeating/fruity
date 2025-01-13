@@ -22,7 +22,7 @@ const NotesPage = () => {
           problem: "Moving too late",
           description:
             "It's this group's first time reaching P4 and they're so excited! But then...",
-          solution: "Know when to move LOL",
+          solution: "No notes, this is perfect.",
         },
         {
           link: "https://www.twitch.tv/videos/2342258741?t=0h43m28s",
@@ -99,6 +99,16 @@ const NotesPage = () => {
             "I'm not sure if this group is following LesBin strats, but it looks like they yoloed the spreads. SAM got yeeted into the wall.",
           solution: "Review diagrum on slide 15",
         },
+        {
+          link: "https://www.twitch.tv/videos/2345919219?t=2h46m46s",
+          url: "2345919219",
+          time: "2h46m46s",
+          problem: "Spreading too far",
+          description:
+            "(JP strats) Tethered WHM spreads to Narnia and their tether to the BRD breaks. If you pause at the right moment, you can see only 3 tethers.",
+          solution:
+            "If you're a tether, just go to your nearest number marker. Non-tethers can spread a little further, but there's no need to go super far.",
+        },
       ],
     },
     {
@@ -150,8 +160,18 @@ const NotesPage = () => {
       ],
     },
     {
-      subsection: "Morn Afah",
+      subsection: "Post-DD",
       clips: [
+        {
+          link: "https://www.twitch.tv/videos/2350949322?t=1h41m46s",
+          url: "2350949322",
+          time: "1h41m46s",
+          problem: "7/1 tank died",
+          description:
+            "GNB wasted his Corundum on the WAR, who was taking Somber Dance with invuln. Then he did not have it up for himself and hit his other mits late. He had only 38% mit (Nascent + 2 oGCDs from each healer).",
+          solution:
+            "Know your mit plan and call out in voice if you need help.",
+        },
         {
           link: "https://www.twitch.tv/storkod/clip/WanderingSneakyRuffThunBeast-RpT3TVEQCyUPJSIW",
           url: "2341997316",
@@ -197,7 +217,6 @@ const NotesPage = () => {
 
         <article className="notes__mech">
           <h2 className="notes__subheading">Darklit Dragonsong</h2>
-          {/* <h3 className="notes__mech-subheading">Akh Rhai</h3> */}
           {clipsArray.map((subsection) => {
             // new Twitch.Player("twitch-embed", {
             //   video: clip.url,
