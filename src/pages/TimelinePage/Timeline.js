@@ -1,3 +1,23 @@
+export const phases = [
+  {
+    phaseNum: 1,
+    phaseName: "Fatebreaker",
+    mechs: ["P1 Opener", "Utopian Sky", "Fall of Faith", "Towers"],
+  },
+  {
+    phaseNum: 2,
+    phaseName: "Shiva",
+    mechs: [
+      "P2 Opener",
+      "Diamond Dust",
+      "Mirror, Mirror",
+      "Light Rampant",
+      "P2 Enrage",
+      "Intermission",
+    ],
+  },
+];
+
 export const timeline = [
   {
     phase: 1,
@@ -134,21 +154,21 @@ export const timeline2 = [
     nickname: "proteans",
     time: "0:14",
     phase: 1,
-    subphase: "Opener",
+    subphase: "P1 Opener",
   },
   {
     name: "Sinsmoke/Sinsmite",
     nickname: "partner stack/spread",
     time: "0:16",
     phase: 1,
-    subphase: "Opener",
+    subphase: "P1 Opener",
   },
   {
     name: "Powder Mark Trail",
     nickname: "single TB",
     time: "0:24",
     phase: 1,
-    subphase: "Opener",
+    subphase: "P1 Opener",
   },
   {
     name: "Burn Mark",
@@ -236,7 +256,7 @@ export const timeline2 = [
     time: "2:51",
     additionalHitsAt: ["2:55"],
     phase: 2,
-    subphase: "Opener",
+    subphase: "P2 Opener",
   },
   {
     name: "Diamond Dust",
@@ -357,6 +377,6 @@ export const timeline2 = [
     nickname: "phase ender",
     time: "5:45",
     phase: 2,
-    subphase: "Enrage",
+    subphase: "P2 Enrage",
   },
 ];
