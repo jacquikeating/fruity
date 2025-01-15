@@ -389,7 +389,7 @@ export const timeline2 = [
   {
     name: "Hell's Judgment",
     nickname: "1 HP",
-    time: "",
+    time: "7:21",
     phase: 3,
     subphase: "P3 Opener",
   },
@@ -514,8 +514,8 @@ export const timeline2 = [
   },
   {
     name: "Dark Water III",
-    nickname: "9:36",
-    time: "3rd stack",
+    nickname: "3rd stacks",
+    time: "9:36",
     phase: 3,
     subphase: "Apocalypse",
   },
