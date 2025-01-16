@@ -3,53 +3,30 @@ import { phases, timeline2 } from "./Timeline.js";
 import "./TimelinePage.scss";
 
 const TimelinePage = () => {
-  function renderMechs(mechToFilter) {
+  function filterMechs(phaseToFilter) {
     let copyOfTimeline = [...timeline2];
     let filteredTimeline = copyOfTimeline.filter(
-      (submech) => submech.subphase === mechToFilter
+      (submech) => submech.phase === phaseToFilter
     );
-    return filteredTimeline.map((submech) => {
-      // console.log(submech.name);
-      <p>{submech.name}</p>;
-    });
+    return filteredTimeline;
   }
 
   return (
     <main className="timeline">
-      {/* {timeline.map((phase) => {
-        phase.mechs.map((mech) => {
-          console.log(mech.mechName);
-          return <h2>{mech.mechName}</h2>;
-        });
-      })} */}
       {phases.map((phase) => {
         return (
           <div>
-            <h2>
+            <h2 className="timeline__subheading">
               {phase.phaseNum} - {phase.phaseName}
             </h2>
-            {phase.mechs.map((mech) => {
-              <h3>{mech}</h3>;
-              renderMechs(mech);
-              // {
-              //   timeline2
-              //     .filter((submech) => submech.name === mech)
-              //     .map((submech) => {
-              //       {
-              //         console.log(submech.name);
-              //       }
-              //       <p>{submech.name}</p>;
-              //     });
-              // }
+            {filterMechs(phase.phaseNum).map((mech) => {
+              return (
+                <p className="timeline__entry">
+                  {mech.time} {mech.name} ({mech.nickname})
+                </p>
+              );
             })}
           </div>
-        );
-      })}
-      {timeline2.map((mech) => {
-        return (
-          <p>
-            {mech.time} {mech.name} ({mech.nickname})
-          </p>
         );
       })}
     </main>
