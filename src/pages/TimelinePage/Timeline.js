@@ -16,6 +16,9 @@ export const phases = [
       "Intermission",
     ],
   },
+  { phaseNum: 3, phaseName: "Gaia" },
+  { phaseNum: 4, phaseName: "Roommates" },
+  { phaseNum: 5, phaseName: "Pandora" },
 ];
 
 export const timeline = [
