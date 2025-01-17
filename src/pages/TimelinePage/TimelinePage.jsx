@@ -13,22 +13,35 @@ const TimelinePage = () => {
 
   return (
     <main className="timeline">
-      {phases.map((phase) => {
-        return (
-          <div>
-            <h2 className="timeline__subheading">
-              {phase.phaseNum} - {phase.phaseName}
-            </h2>
-            {filterMechs(phase.phaseNum).map((mech) => {
-              return (
-                <p className="timeline__entry">
-                  {mech.time} {mech.name} ({mech.nickname})
-                </p>
-              );
-            })}
-          </div>
-        );
-      })}
+      <table className="timeline__table">
+        <tbody>
+          {phases.map((phase) => {
+            return (
+              <div>
+                <h2 className="timeline__subheading">
+                  {phase.phaseNum} - {phase.phaseName}
+                </h2>
+                {filterMechs(phase.phaseNum).map((mech) => {
+                  return (
+                    <tr className="timeline__row">
+                      <td className="timeline__cell timeline__cell--time">
+                        {mech.time}
+                      </td>
+                      <td className="timeline__cell timeline__cell--name">
+                        {mech.name}
+                      </td>
+                      <td className="timeline__cell timeline__cell--nick">
+                        {" "}
+                        ({mech.nickname})
+                      </td>
+                    </tr>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </tbody>
+      </table>
     </main>
   );
 };
