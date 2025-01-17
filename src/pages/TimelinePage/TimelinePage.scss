@@ -2,5 +2,19 @@
     &__subheading {
         margin-top: 2rem;
         margin-bottom: 0.5rem;
+    } 
+
+    &__table {
+        width: 100%;
+    }
+
+    &__cell {
+        &--time {
+            width: 3em;
+        }
+
+        // &--name {
+        //     width: 100%;
+        // }
     }
 }

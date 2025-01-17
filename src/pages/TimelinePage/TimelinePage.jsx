@@ -32,7 +32,7 @@ const TimelinePage = () => {
                       </td>
                       <td className="timeline__cell timeline__cell--nick">
                         {" "}
-                        ({mech.nickname})
+                        {mech.nickname}
                       </td>
                     </tr>
                   );
