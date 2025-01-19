@@ -57,7 +57,7 @@ const Pull = ({
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
         {pullNumType === "today"
           ? pullData.pull_num_today || index + 1
-          : pullData.id}
+          : pullData.pull_num_overall}
       </td>
 
       {/* <td key={`${index}-dur`} className="pull__cell pull__cell--dur">
