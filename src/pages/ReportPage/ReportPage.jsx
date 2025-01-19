@@ -109,6 +109,7 @@ const ReportPage = () => {
     if (username === "ella") {
       setShowEdit(true);
     }
+    localStorage.setItem("counter", 98);
   }, [sessionID]);
 
   function getProgPulls() {
