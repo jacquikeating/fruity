@@ -509,7 +509,7 @@ const ReportPage = () => {
                 allowDelete={false}
               />
             )}
-            <button onClick={fillPullNumOverall}>x</button>
+            {/* <button onClick={fillPullNumOverall}>x</button> */}
           </section>
         </>
       ) : (
