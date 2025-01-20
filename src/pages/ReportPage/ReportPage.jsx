@@ -122,6 +122,8 @@ const ReportPage = () => {
 
     if (username === "ella") {
       setShowEdit(true);
+      localStorage.setItem("counter", 98);
+      console.log(localStorage.getItem("counter"));
     }
   }, [sessionID]);
 
@@ -169,6 +171,8 @@ const ReportPage = () => {
     const copyOfPullsArray = [...pullsArray];
 
     copyOfPullsArray.forEach((pull) => {
+      delete pull.bossPercentage;
+      delete pull.combatTime;
       pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
     });
 
@@ -506,7 +510,7 @@ const ReportPage = () => {
                 allowDelete={false}
               />
             )}
-            {/* <button onClick={fillPullNumOverall}>x</button> */}
+            <button onClick={fillPullNumOverall}>x</button>
           </section>
         </>
       ) : (
