@@ -95,7 +95,7 @@ const ReportPage = () => {
       } finally {
         if (ffLogs.length >= 1) {
           for (let i = 0; i < pulls.length; i++) {
-            console.log(ffLogs[i]);
+            // console.log(ffLogs[i]);
             if (ffLogs[i].combatTime) {
               pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
             } else {
@@ -108,11 +108,11 @@ const ReportPage = () => {
               // ffLogs[i].bossPercentage.toString().slice(1, 3) +
               // "%";
 
-              console.log(pulls[i].bossPercentage);
+              // console.log(pulls[i].bossPercentage);
             }
           }
         }
-        console.log(pulls);
+        // console.log(pulls);
         setPullsArray(pulls);
         setPullsToDisplay(pulls);
       }
@@ -122,7 +122,6 @@ const ReportPage = () => {
 
     if (username === "ella") {
       setShowEdit(true);
-      localStorage.setItem("counter", 98);
       console.log(localStorage.getItem("counter"));
     }
   }, [sessionID]);
