@@ -77,9 +77,15 @@ const AddDataPage = () => {
     setPullsArray(copyOfPullsArray);
   }
 
+  console.log(Number(localStorage.getItem("counter")));
+
   async function handleSubmit() {
+    let counter = Number(localStorage.getItem("counter"));
+
     pullsArray.map(async (pull, index) => {
-      pull.pull_num_today = index + 1;
+      pull.pull_num_today = Number(index + 1);
+      pull.pull_num_overall = counter + pull.pull_num_today;
+      counter++;
       delete pull.index;
       delete pull.indexToInsert;
       try {
@@ -89,6 +95,7 @@ const AddDataPage = () => {
       }
     });
 
+    localStorage.setItem("counter", counter);
     navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
     localStorage.removeItem("pullsFromNewSession");
     localStorage.removeItem("sessionInProgress");
