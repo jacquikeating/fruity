@@ -38,6 +38,9 @@ const ReportPage = () => {
   const [roster, setRoster] = useState("");
   const [notes, setNotes] = useState("");
 
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 1040;
+
   useEffect(() => {
     let session = null;
     let pulls = null;
