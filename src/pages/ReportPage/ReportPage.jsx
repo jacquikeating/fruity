@@ -127,6 +127,10 @@ const ReportPage = () => {
       setShowEdit(true);
       console.log(localStorage.getItem("counter"));
     }
+
+    const handleWindowResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize"), handleWindowResize;
   }, [sessionID]);
 
   function getProgPulls() {
