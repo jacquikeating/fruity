@@ -75,51 +75,51 @@ const ReportPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        if (logLink.length > 1) {
-          getFFLogsData();
-        } else {
-          setPullsArray(pulls);
-          setPullsToDisplay(pulls);
-        }
-      }
-    }
-
-    async function getFFLogsData() {
-      const reportCode = session.fflogs_link.substring(31);
-
-      try {
-        let result = await axios.get(
-          `https://www.fflogs.com:443/v1/report/fights/${reportCode}?api_key=${API_KEY}`
-        );
-        ffLogs = result.data.fights;
-        setFFLogsData(ffLogs);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        if (ffLogs.length >= 1) {
-          for (let i = 0; i < pulls.length; i++) {
-            // console.log(ffLogs[i]);
-            if (ffLogs[i].combatTime) {
-              pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
-            } else {
-              pulls[i].combatTime = "?";
-            }
-            if (ffLogs[i].bossPercentage) {
-              pulls[i].bossPercentage = ffLogs[i].bossPercentage.toString();
-              // ffLogs[i].bossPercentage.toString().slice(1, 3) +
-              // "." +
-              // ffLogs[i].bossPercentage.toString().slice(1, 3) +
-              // "%";
-
-              // console.log(pulls[i].bossPercentage);
-            }
-          }
-        }
-        // console.log(pulls);
+        // if (logLink.length > 1) {
+        //   getFFLogsData();
+        // } else {
         setPullsArray(pulls);
         setPullsToDisplay(pulls);
+        // }
       }
     }
+
+    // async function getFFLogsData() {
+    //   const reportCode = session.fflogs_link.substring(31);
+
+    //   try {
+    //     let result = await axios.get(
+    //       `https://www.fflogs.com:443/v1/report/fights/${reportCode}?api_key=${API_KEY}`
+    //     );
+    //     ffLogs = result.data.fights;
+    //     setFFLogsData(ffLogs);
+    //   } catch (error) {
+    //     console.error(error);
+    //   } finally {
+    //     if (ffLogs.length >= 1) {
+    //       for (let i = 0; i < pulls.length; i++) {
+    //         // console.log(ffLogs[i]);
+    //         if (ffLogs[i].combatTime) {
+    //           pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
+    //         } else {
+    //           pulls[i].combatTime = "?";
+    //         }
+    //         if (ffLogs[i].bossPercentage) {
+    //           pulls[i].bossPercentage = ffLogs[i].bossPercentage.toString();
+    //           // ffLogs[i].bossPercentage.toString().slice(1, 3) +
+    //           // "." +
+    //           // ffLogs[i].bossPercentage.toString().slice(1, 3) +
+    //           // "%";
+
+    //           // console.log(pulls[i].bossPercentage);
+    //         }
+    //       }
+    //     }
+    //     // console.log(pulls);
+    //     setPullsArray(pulls);
+    //     setPullsToDisplay(pulls);
+    //   }
+    // }
 
     getSessionData();
 
