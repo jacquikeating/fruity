@@ -102,7 +102,7 @@ const AddDataPage = () => {
     // navigate(`/report/${sessionData.num}`);
   }
 
-  let aaa = [
+  const aaa = [
     {
       session_id: 21,
       phase: 1,
@@ -322,7 +322,7 @@ const AddDataPage = () => {
     {
       session_id: 21,
       phase: 3,
-      mech: "P3 Enrage",
+      mech: "Enrage",
       prog_point_reached: "cleanup",
       cause: "Quil gaze",
       players_responsible: "Quil",
@@ -333,15 +333,12 @@ const AddDataPage = () => {
     },
   ];
 
-  console.log(aaa);
-
   aaa.map(async (pull, index) => {
     pull.pull_num_today = index + 1;
-    delete pull.indexToInsert;
     delete pull.index;
+    delete pull.indexToInsert;
     try {
       await axios.post(`${API_URL}/pulls/`, pull);
-      console.log(pull);
     } catch (error) {
       console.error(error);
     }
