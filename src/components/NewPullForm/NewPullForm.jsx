@@ -28,11 +28,11 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
 
   const phaseAndMechOptions = [
     ["N/A"],
-    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
-    ["Diamond Dust", "Mirrors", "Light Rampant", "Enrage", "Intermission"],
-    ["Ultimate Relativity", "Apocalypse", "Enrage"],
-    ["Darklit Dragonsong", "Crystalize Time", "Enrage"],
-    ["Fulgent Blade", "Paradise Regained", "Polarizing Strikes", "Enrage"],
+    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
+    ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
+    ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
+    ["Darklit Dragonsong", "Crystalize Time", "P4 Enrage"],
+    ["Fulgent Blade", "Paradise Regained", "Polarizing Strikes", "P5 Enrage"],
   ];
 
   const handleCheckboxChange = (position) => {
