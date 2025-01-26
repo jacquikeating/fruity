@@ -41,6 +41,11 @@ const ReportPage = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 1040;
 
+  let allowDelete = false;
+  if (sessionID == 21) {
+    allowDelete = true;
+  }
+
   useEffect(() => {
     let session = null;
     let pulls = null;
@@ -503,7 +508,7 @@ const ReportPage = () => {
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
-                allowDelete={false}
+                allowDelete={allowDelete}
               />
             ) : (
               <PullsTable
@@ -513,7 +518,7 @@ const ReportPage = () => {
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
-                allowDelete={false}
+                allowDelete={allowDelete}
               />
             )}
             {/* <button onClick={fillPullNumOverall}>x</button> */}
