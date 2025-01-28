@@ -29,7 +29,18 @@ const PullsTable = ({
     <div className="pulls-table">
       {width < breakpoint ? (
         pullsArray.map((pull, index) => {
-          return <PullDiv />;
+          return (
+            <PullDiv
+              pullData={{ ...pull, index: index }}
+              pullNumType={pullNumType}
+              showEdit={showEdit}
+              updatePull={updatePull}
+              deletePull={deletePull}
+              progPhase={progPhase}
+              key={pull.pull_num_today || index}
+              allowDelete={allowDelete}
+            />
+          );
         })
       ) : (
         <table className="pulls-table__table">
