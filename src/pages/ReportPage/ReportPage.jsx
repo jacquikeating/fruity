@@ -39,7 +39,7 @@ const ReportPage = () => {
   const [notes, setNotes] = useState("");
 
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 1040;
+  const breakpoint = 0;
 
   useEffect(() => {
     let session = null;
