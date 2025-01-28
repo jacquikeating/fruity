@@ -504,6 +504,8 @@ const ReportPage = () => {
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
                 allowDelete={false}
+                width={width}
+                breakpoint={breakpoint}
               />
             ) : (
               <PullsTable
@@ -514,6 +516,8 @@ const ReportPage = () => {
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
                 allowDelete={false}
+                width={width}
+                breakpoint={breakpoint}
               />
             )}
             {/* <button onClick={fillPullNumOverall}>x</button> */}
