@@ -1,1 +1,25 @@
 @use "/src/styles/__variables" as *;
+
+.pull-div {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+
+    &__top {
+        display: flex;
+        gap: 1em;
+    }
+
+    &__pull-num {
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    &__p {
+        &--notes {
+            font-style: italic;
+            font-size: 0.9em;
+            color: $text-mid;
+        }
+    }
+}
