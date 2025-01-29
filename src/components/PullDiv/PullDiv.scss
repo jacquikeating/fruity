@@ -8,22 +8,47 @@
     background: $bg-mid;
     display: flex;
     gap: 1em;
+    width: 100%;
+
     
     &__top {
+        margin-bottom: 0.4em;
         display: flex;
         gap: 0.5em;
+        font-size: 1.1em;
     }
 
     &__pull-num {
         font-size: 1.1em;
         font-weight: bold;
+        font-family: $font-display;
+    }
+
+    &__divider {
+        margin: 0 0.4em;
+        color: $grey;
     }
 
     &__p {
-        &--notes {
+        &--mech {
+            font-family: $font-display;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        &--players {
             font-size: 0.9em;
             font-style: italic;
             color: $text-mid;
         }
+    }
+
+    &__bold {
+        font-weight: 500;
+    }
+
+    &__mid {
+        margin-bottom: 0.25em;
     }
 }
