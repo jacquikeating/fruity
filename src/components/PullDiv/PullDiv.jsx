@@ -1,4 +1,5 @@
 import React from "react";
+import PullLink from "../PullLink/PullLink";
 import "./PullDiv.scss";
 
 const PullDiv = ({
@@ -42,6 +43,12 @@ const PullDiv = ({
           </p>
         </div>
       </div>
+      <PullLink
+        logLink={pullData.log_link}
+        clipLink={pullData.clip_link}
+        // editMode={editMode}
+        // handleLinkModalData={handleLinkModalData}
+      />
     </div>
   );
 };

@@ -10,7 +10,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
   }
 
   return (
-    <td className="pull-link__cell">
+    <div className="pull-link__cell">
       {logLink.length > 0 ? (
         <a
           className="pull-link__link"
@@ -64,7 +64,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
       ) : (
         ""
       )}
-    </td>
+    </div>
   );
 };
 

@@ -9,8 +9,8 @@
     display: flex;
     gap: 1em;
     width: 100%;
+    position: relative;
 
-    
     &__top {
         margin-bottom: 0.4em;
         display: flex;
@@ -50,5 +50,10 @@
 
     &__mid {
         margin-bottom: 0.25em;
+    }
+
+    .pull-link__cell {
+        left: -19px;
+        top: 12px;
     }
 }
