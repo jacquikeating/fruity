@@ -55,6 +55,7 @@ const PullDiv = ({
               phase
             ) : (
               <input
+                className="pull-div__input pull-div__input--number"
                 type="number"
                 value={phase}
                 onChange={(e) => {
@@ -85,6 +86,7 @@ const PullDiv = ({
               cause
             ) : (
               <input
+                className="pull-div__input pull-div__input--cause"
                 type="text"
                 value={cause}
                 onChange={(e) => {
@@ -98,6 +100,7 @@ const PullDiv = ({
             notes
           ) : (
             <input
+              className="pull-div__input pull-div__input--notes"
               type="text"
               value={notes}
               onChange={(e) => {
@@ -113,6 +116,7 @@ const PullDiv = ({
               playersResponsible
             ) : (
               <input
+                className="pull-div__input pull-div__input--players"
                 type="text"
                 value={playersResponsible}
                 onChange={(e) => {
