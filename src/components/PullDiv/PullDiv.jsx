@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { checkIfProgPointReached } from "../../utils/shared-functions";
 import PullLink from "../PullLink/PullLink";
 import "./PullDiv.scss";
 
@@ -20,8 +21,28 @@ const PullDiv = ({
   const [logLink, setLogLink] = useState(pullData.log_link);
   const [clipLink, setClipLink] = useState(pullData.clip_link);
   const [notes, setNotes] = useState(pullData.notes);
+  const index = pullData.index;
 
-  function editPull() {}
+  function editPull() {
+    if (editMode === false) {
+      setEditMode(true);
+    } else if (editMode === true) {
+      setEditMode(false);
+      updatePull({
+        id: pullData.id,
+        session_id: pullData.session_id,
+        phase: phase,
+        mech: mech,
+        prog_point_reached: checkIfProgPointReached(progPhase, phase),
+        cause: cause,
+        players_responsible: playersResponsible,
+        log_link: logLink,
+        clip_link: clipLink,
+        notes: notes,
+        index: index,
+      });
+    }
+  }
 
   return (
     <div className="pull-div">
