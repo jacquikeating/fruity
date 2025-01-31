@@ -90,6 +90,11 @@
                 width: 1fr;
             }
 
+            &::placeholder {
+                font-style: italic;
+                color: $grey;
+            }
+        }
 
         &__bold {
             font-weight: 500;

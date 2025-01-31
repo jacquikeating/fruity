@@ -69,6 +69,7 @@ const PullDiv = ({
             ) : (
               <input
                 className="pull-div__input pull-div__input--mech"
+                placeholder="Mech..."
                 type="text"
                 value={mech}
                 onChange={(e) => {
@@ -88,6 +89,7 @@ const PullDiv = ({
               <input
                 className="pull-div__input pull-div__input--cause"
                 type="text"
+                placeholder="Enter cause..."
                 value={cause}
                 onChange={(e) => {
                   setCause(e.target.value);
@@ -102,6 +104,7 @@ const PullDiv = ({
             <input
               className="pull-div__input pull-div__input--notes"
               type="text"
+              placeholder="Add notes..."
               value={notes}
               onChange={(e) => {
                 setNotes(e.target.value);
@@ -118,6 +121,7 @@ const PullDiv = ({
               <input
                 className="pull-div__input pull-div__input--players"
                 type="text"
+                placeholder="Players responsible..."
                 value={playersResponsible}
                 onChange={(e) => {
                   setPlayersResponsible(e.target.value);
