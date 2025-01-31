@@ -44,6 +44,31 @@ const PullDiv = ({
           <p className="pull-div__p pull-div__p--players">
             {pullData.players_responsible}
           </p>
+          {showEdit ? (
+            <div className="pull-div__actions-container">
+              <button className="pull-div__button" onClick={editPull}>
+                {!editMode ? (
+                  <i className="fa-regular fa-pen-to-square"></i>
+                ) : (
+                  <i className="fa-solid fa-check pull__save"></i>
+                )}
+              </button>
+              {allowDelete ? (
+                <button
+                  className="pull-div__button"
+                  //   onClick={() => {
+                  //     deletePull(pullData);
+                  //   }}
+                >
+                  <i className="fa-regular fa-trash-can"></i>
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <PullLink
@@ -52,32 +77,6 @@ const PullDiv = ({
         // editMode={editMode}
         // handleLinkModalData={handleLinkModalData}
       />
-
-      {showEdit ? (
-        <div className="pull-div__actions-container">
-          <button className="pull-div__button" onClick={editPull}>
-            {!editMode ? (
-              <i className="fa-regular fa-pen-to-square"></i>
-            ) : (
-              <i className="fa-solid fa-check pull__save"></i>
-            )}
-          </button>
-          {allowDelete ? (
-            <button
-              className="pull-div__button"
-              //   onClick={() => {
-              //     deletePull(pullData);
-              //   }}
-            >
-              <i className="fa-regular fa-trash-can"></i>
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 };
