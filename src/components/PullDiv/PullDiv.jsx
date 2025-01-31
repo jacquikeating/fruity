@@ -54,8 +54,8 @@ const PullDiv = ({
       />
 
       {showEdit ? (
-        <div className="pull__cell-container">
-          <button className="pull__button" onClick={editPull}>
+        <div className="pull-div__actions-container">
+          <button className="pull-div__button" onClick={editPull}>
             {!editMode ? (
               <i className="fa-regular fa-pen-to-square"></i>
             ) : (
@@ -64,7 +64,7 @@ const PullDiv = ({
           </button>
           {allowDelete ? (
             <button
-              className="pull__button"
+              className="pull-div__button"
               //   onClick={() => {
               //     deletePull(pullData);
               //   }}
