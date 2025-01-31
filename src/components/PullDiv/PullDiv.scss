@@ -64,6 +64,33 @@
             }
         }
 
+        &__input {
+            &--number {
+                width: 0.9em;
+                margin-left: 0.1em;
+                // font-family: $font-display;
+                // font-weight: bold;
+                // font-size: 1.1em;
+                // height: 1em;
+            }
+
+            &--mech {
+                // font-family: $font-display;
+                // font-weight: bold;
+                // font-size: 1.1em;
+                // height: 1em;
+                // text-transform: uppercase;
+            }
+
+            &--cause, &--notes {
+                width: 90%;
+            }
+
+            &--players {
+                width: 1fr;
+            }
+
+
         &__bold {
             font-weight: 500;
         }
