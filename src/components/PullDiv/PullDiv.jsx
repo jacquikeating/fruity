@@ -11,6 +11,16 @@ const PullDiv = ({
   allowDelete,
 }) => {
   const [editMode, setEditMode] = useState(false);
+  const [phase, setPhase] = useState(pullData.phase);
+  const [mech, setMech] = useState(pullData.mech);
+  const [cause, setCause] = useState(pullData.cause);
+  const [playersResponsible, setPlayersResponsible] = useState(
+    pullData.players_responsible
+  );
+  const [logLink, setLogLink] = useState(pullData.log_link);
+  const [clipLink, setClipLink] = useState(pullData.clip_link);
+  const [notes, setNotes] = useState(pullData.notes);
+
   function editPull() {}
 
   return (
@@ -19,21 +29,21 @@ const PullDiv = ({
       <div className="pull-div__info">
         <div className="pull-div__top">
           <p className="pull-div__p pull-div__p--mech">
-            P{pullData.phase}
+            P{phase}
             <span className="pull-div__divider">•</span>
-            {pullData.mech}
+            {mech}
           </p>
         </div>
 
         <div className="pull-div__mid">
           <p className="pull-div__p">
             {/* <span className="pull-div__bold">Cause: </span> */}
-            {pullData.cause}
+            {cause}
           </p>
           {pullData.notes ? (
             <p className="pull-div__p pull-div__p--notes">
               <span className="pull-div__bold">Notes: </span>
-              {pullData.notes}
+              {notes}
             </p>
           ) : (
             ""
@@ -42,7 +52,7 @@ const PullDiv = ({
 
         <div className="pull-div__bottom">
           <p className="pull-div__p pull-div__p--players">
-            {pullData.players_responsible}
+            {playersResponsible}
           </p>
           {showEdit ? (
             <div className="pull-div__actions-container">
@@ -72,8 +82,8 @@ const PullDiv = ({
         </div>
       </div>
       <PullLink
-        logLink={pullData.log_link}
-        clipLink={pullData.clip_link}
+        logLink={logLink}
+        clipLink={clipLink}
         // editMode={editMode}
         // handleLinkModalData={handleLinkModalData}
       />
