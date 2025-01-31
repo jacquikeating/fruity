@@ -50,30 +50,76 @@ const PullDiv = ({
       <div className="pull-div__info">
         <div className="pull-div__top">
           <p className="pull-div__p pull-div__p--mech">
-            P{phase}
+            P
+            {!editMode ? (
+              phase
+            ) : (
+              <input
+                type="number"
+                value={phase}
+                onChange={(e) => {
+                  setPhase(e.target.value);
+                }}
+              />
+            )}
             <span className="pull-div__divider">•</span>
-            {mech}
+            {!editMode ? (
+              mech
+            ) : (
+              <input
+                className="pull-div__input pull-div__input--mech"
+                type="text"
+                value={mech}
+                onChange={(e) => {
+                  setMech(e.target.value);
+                }}
+              />
+            )}
           </p>
         </div>
 
         <div className="pull-div__mid">
           <p className="pull-div__p">
             {/* <span className="pull-div__bold">Cause: </span> */}
-            {cause}
+            {!editMode ? (
+              cause
+            ) : (
+              <input
+                type="text"
+                value={cause}
+                onChange={(e) => {
+                  setCause(e.target.value);
+                }}
+              />
+            )}
           </p>
-          {pullData.notes ? (
-            <p className="pull-div__p pull-div__p--notes">
-              <span className="pull-div__bold">Notes: </span>
-              {notes}
-            </p>
+
+          {!editMode ? (
+            notes
           ) : (
-            ""
+            <input
+              type="text"
+              value={notes}
+              onChange={(e) => {
+                setNotes(e.target.value);
+              }}
+            />
           )}
         </div>
 
         <div className="pull-div__bottom">
           <p className="pull-div__p pull-div__p--players">
-            {playersResponsible}
+            {!editMode ? (
+              playersResponsible
+            ) : (
+              <input
+                type="text"
+                value={playersResponsible}
+                onChange={(e) => {
+                  setPlayersResponsible(e.target.value);
+                }}
+              />
+            )}
           </p>
           {showEdit ? (
             <div className="pull-div__actions-container">
