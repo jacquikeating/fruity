@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import PullLink from "../PullLink/PullLink";
 import "./PullDiv.scss";
 
@@ -10,6 +10,9 @@ const PullDiv = ({
   progPhase,
   allowDelete,
 }) => {
+  const [editMode, setEditMode] = useState(false);
+  function editPull() {}
+
   return (
     <div className="pull-div">
       <p className="pull-div__pull-num">{pullData.pull_num_today}</p>
@@ -49,6 +52,32 @@ const PullDiv = ({
         // editMode={editMode}
         // handleLinkModalData={handleLinkModalData}
       />
+
+      {showEdit ? (
+        <div className="pull__cell-container">
+          <button className="pull__button" onClick={editPull}>
+            {!editMode ? (
+              <i className="fa-regular fa-pen-to-square"></i>
+            ) : (
+              <i className="fa-solid fa-check pull__save"></i>
+            )}
+          </button>
+          {allowDelete ? (
+            <button
+              className="pull__button"
+              //   onClick={() => {
+              //     deletePull(pullData);
+              //   }}
+            >
+              <i className="fa-regular fa-trash-can"></i>
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
