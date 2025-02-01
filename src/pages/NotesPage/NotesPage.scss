@@ -1,4 +1,11 @@
 .notes {
+
+
+    &__subheading-container {
+        display: flex;
+        gap: 0.75em;
+        align-items: center;
+    }
     &__body-text {
         // max-width: 90ch;
         margin: 0.25em 0;
