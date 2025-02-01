@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import "./NotesPage.scss";
 
 const NotesPage = () => {
+  const [showDD, setShowDD] = useState(false);
+  const [showCT, setShowCT] = useState(false);
   const [videoURL, setVideoURL] = useState(null);
   const [timestamp, setTimestamp] = useState("0h0m0s");
   //   const embed = useRef(); // We use a ref instead of state to avoid rerenders.
