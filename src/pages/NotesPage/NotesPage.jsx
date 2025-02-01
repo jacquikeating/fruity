@@ -120,31 +120,49 @@ const NotesPage = () => {
         {/* <TwitchPlayer video="2335965689" /> */}
 
         <article className="notes__mech">
-          <h2 className="notes__subheading">Darklit Dragonsong</h2>
-
           {/* <h3 className="notes__mech-subheading">Akh Rhai</h3> */}
-
-          {clipsArray.map((clip) => {
-            // new Twitch.Player("twitch-embed", {
-            //   video: clip.url,
-            //   time: clip.time,
-            //   autoplay: false,
-            // });
-
-            return (
-              <div className="clip">
-                {/* <div className="clip__player" id="twitch-embed"></div> */}
-                Problem:{" "}
-                <a href={clip.link} target="_blank">
-                  {clip.problem}
-                </a>
-                <div className="clip__text">
-                  <p>{clip.description}</p>
-                  <p>Solution: {clip.solution}</p>
-                </div>
+          {showDD ? (
+            <>
+              <div className="notes__subheading-container">
+                <h2 className="notes__subheading">Darklit Dragonsong</h2>
+                <i
+                  class="fa-solid fa-caret-up"
+                  onClick={() => setShowDD(false)}
+                ></i>
               </div>
-            );
-          })}
+              {clipsArray.map((clip) => {
+                // new Twitch.Player("twitch-embed", {
+                //   video: clip.url,
+                //   time: clip.time,
+                //   autoplay: false,
+                // });
+
+                return (
+                  <div className="clip">
+                    {/* <div className="clip__player" id="twitch-embed"></div> */}
+                    Problem:{" "}
+                    <a href={clip.link} target="_blank">
+                      {clip.problem}
+                    </a>
+                    <div className="clip__text">
+                      <p>{clip.description}</p>
+                      <p>Solution: {clip.solution}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <div className="notes__subheading-container">
+                <h2 className="notes__subheading">Darklit Dragonsong</h2>
+                <i
+                  class="fa-solid fa-caret-down"
+                  onClick={() => setShowDD(true)}
+                ></i>
+              </div>
+            </>
+          )}
 
           {/* <div className="notes__example">
             <ul className="notes__list">
