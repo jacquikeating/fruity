@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "./components/Header/Header";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import InfoPage from "./pages/InfoPage/InfoPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import MechsPage from "./pages/MechsPage/MechsPage";
 import NotesPage from "./pages/NotesPage/NotesPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/mechanics" element={<MechsPage />} />
           <Route path="/clips" element={<NotesPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </>
