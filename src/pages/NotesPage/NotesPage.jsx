@@ -222,7 +222,7 @@ const NotesPage = () => {
             <div className="notes__subheading-container">
               <h2 className="notes__subheading">Darklit Dragonsong</h2>
               <i
-                class="fa-solid fa-caret-up"
+                className="fa-solid fa-caret-up"
                 onClick={() => setShowDD(false)}
               ></i>
             </div>
@@ -262,7 +262,7 @@ const NotesPage = () => {
             <div className="notes__subheading-container">
               <h2 className="notes__subheading">Darklit Dragonsong</h2>
               <i
-                class="fa-solid fa-caret-down"
+                className="fa-solid fa-caret-down"
                 onClick={() => setShowDD(true)}
               ></i>
             </div>
