@@ -12,6 +12,18 @@
     display: flex;
     align-items: center;
     vertical-align: baseline;
+    justify-content: space-between;
+   
+
+    &__group {
+        display: flex;
+        align-items: center;
+        vertical-align: baseline;
+
+        &--secondary {
+        font-size: 0.8em;
+        }
+    }
 
     &__site-logo {
         display: flex;
