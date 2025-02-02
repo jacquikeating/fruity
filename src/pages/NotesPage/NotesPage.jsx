@@ -217,40 +217,59 @@ const NotesPage = () => {
 
         {/* <TwitchPlayer video="2335965689" /> */}
 
-        <article className="notes__mech">
-          <h2 className="notes__subheading">Darklit Dragonsong</h2>
-          {clipsArray.map((subsection) => {
-            // new Twitch.Player("twitch-embed", {
-            //   video: clip.url,
-            //   time: clip.time,
-            //   autoplay: false,
-            // });
+        {showDD ? (
+          <article className="notes__mech">
+            <div className="notes__subheading-container">
+              <h2 className="notes__subheading">Darklit Dragonsong</h2>
+              <i
+                class="fa-solid fa-caret-up"
+                onClick={() => setShowDD(false)}
+              ></i>
+            </div>
+            {clipsArray.map((subsection) => {
+              // new Twitch.Player("twitch-embed", {
+              //   video: clip.url,
+              //   time: clip.time,
+              //   autoplay: false,
+              // });
 
-            return (
-              <div className="notes__subsection">
-                <h3 className="notes__subsection-heading">
-                  {subsection.subsection}
-                </h3>
-                {subsection.clips.map((clip) => {
-                  return (
-                    <div className="clip">
-                      {/* <div className="clip__player" id="twitch-embed"></div> */}
-                      Problem:{" "}
-                      <a href={clip.link} target="_blank">
-                        {clip.problem}
-                      </a>
-                      <div className="clip__text">
-                        <p>{clip.description}</p>
-                        <p>Solution: {clip.solution}</p>
+              return (
+                <div className="notes__subsection">
+                  <h3 className="notes__subsection-heading">
+                    {subsection.subsection}
+                  </h3>
+                  {subsection.clips.map((clip) => {
+                    return (
+                      <div className="clip">
+                        {/* <div className="clip__player" id="twitch-embed"></div> */}
+                        Problem:{" "}
+                        <a href={clip.link} target="_blank">
+                          {clip.problem}
+                        </a>
+                        <div className="clip__text">
+                          <p>{clip.description}</p>
+                          <p>Solution: {clip.solution}</p>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </article>
+        ) : (
+          <article className="notes__mech">
+            <div className="notes__subheading-container">
+              <h2 className="notes__subheading">Darklit Dragonsong</h2>
+              <i
+                class="fa-solid fa-caret-down"
+                onClick={() => setShowDD(true)}
+              ></i>
+            </div>
+          </article>
+        )}
 
-          {/* <div className="notes__example">
+        {/* <div className="notes__example">
             <ul className="notes__list">
               <li className="notes__list-item">
                 <button
@@ -300,7 +319,6 @@ const NotesPage = () => {
               </li>
             </ul>
           </div> */}
-        </article>
       </section>
     </main>
   );
