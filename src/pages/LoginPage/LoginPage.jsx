@@ -26,20 +26,20 @@ const LoginPage = () => {
       <main className="login">
         <h1 className="login__heading">Your Account</h1>
         <div className="login__info">
-          <img
-            src={user.picture}
-            alt="Sorry, you can't change your avatar yet"
-            className="login__avatar"
-          />
+          <img src={user.picture} alt="Your avatar" className="login__avatar" />
           <div className="login__info-text">
-            <h2 className="login__user-name">{user.name}</h2>
+            <h2 className="login__user-name">{user.username}</h2>
             <p className="login__body-text">
               <span className="login__label-text">Email</span>
               {user.email}
             </p>
             <p className="login__body-text">
               <span className="login__label-text">Role </span>
-              {role}
+              {role || "N/A"}
+            </p>
+            <p className="login__note">
+              TEMP NOTE: Roles are manually granted within a few hours, or
+              faster if you @ me. Avatars can't be changed yet, sorry!
             </p>
           </div>
         </div>
