@@ -34,7 +34,7 @@ const LoginPage = () => {
               {user.email}
             </p>
             <p className="login__body-text">
-              <span className="login__label-text">Role </span>
+              <span className="login__label-text">Role{"  "}</span>
               {role || "N/A"}
             </p>
             <p className="login__note">
