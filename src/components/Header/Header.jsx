@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./Header.scss";
 
 const Header = ({ latestSession }) => {
+  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
   return (
     <header className="header">
       <nav className="nav">
@@ -23,11 +25,6 @@ const Header = ({ latestSession }) => {
                 Latest
               </Link>
             </li>
-            {/* <li className="nav__list-item">
-            <Link to="/add-data" className="nav__link">
-              Add Data
-            </Link>
-          </li> */}
             <li className="nav__list-item">
               <Link to="/about" className="nav__link">
                 About
@@ -42,11 +39,20 @@ const Header = ({ latestSession }) => {
         </div>
         <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
-            <li className="nav__list-item">
-              <Link to="/login" className="nav__link">
-                Login
-              </Link>
-            </li>
+            {isAuthenticated ? (
+              <li className="nav__list-item">
+                <Link to="/login" className="nav__link nav__link--account">
+                  <img src={user.picture} className="nav__avatar" />
+                  Account
+                </Link>
+              </li>
+            ) : (
+              <li className="nav__list-item">
+                <p className="nav__link" onClick={() => loginWithRedirect()}>
+                  Login
+                </p>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
