@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   createReadableDate,
   findGoldStars,
@@ -16,7 +17,6 @@ import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_FFLOGS_API_KEY;
-const username = localStorage.getItem("name");
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
@@ -27,6 +27,7 @@ const ReportPage = () => {
   const { sessionID } = useParams();
   const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [allowDelete, setAllowDelete] = useState(false);
 
   const [date, setDate] = useState("");
   const [progPhase, setProgPhase] = useState(0);
@@ -41,10 +42,24 @@ const ReportPage = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 1040;
 
+  const { isAuthenticated, user } = useAuth0();
+  let role = "none";
+
   useEffect(() => {
     let session = null;
     let pulls = null;
     let ffLogs = null;
+
+    if (isAuthenticated) {
+      role = user["https://wall-is-safe.netlify.app/roles"][0];
+      console.log(role);
+    }
+    if (role === "admin") {
+      setShowEdit(true);
+      setAllowDelete(true);
+    } else if (role === "static") {
+      setShowEdit(true);
+    }
 
     async function getSessionData() {
       try {
@@ -122,11 +137,6 @@ const ReportPage = () => {
     // }
 
     getSessionData();
-
-    if (username === "ella") {
-      setShowEdit(true);
-      console.log(localStorage.getItem("counter"));
-    }
 
     const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
@@ -503,7 +513,7 @@ const ReportPage = () => {
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
-                allowDelete={false}
+                allowDelete={allowDelete}
                 width={width}
                 breakpoint={breakpoint}
               />
@@ -515,7 +525,7 @@ const ReportPage = () => {
                 deletePull={deletePull}
                 progPhase={sessionData.prog_phase}
                 key={pullsArray}
-                allowDelete={false}
+                allowDelete={allowDelete}
                 width={width}
                 breakpoint={breakpoint}
               />
