@@ -29,7 +29,6 @@ const LoginPage = () => {
           <img src={user.picture} alt={user.name} />
           <h2>{user.name}</h2>
           <p>{user.email}</p>
-          {role === "admin" ? <p>Hi admin</p> : ""}
         </div>
         <button
           className="login__button"

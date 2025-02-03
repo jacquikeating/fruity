@@ -5,6 +5,11 @@ import "./Header.scss";
 
 const Header = ({ latestSession }) => {
   const { isAuthenticated, user, loginWithRedirect } = useAuth0();
+  let role = "none";
+  if (isAuthenticated) {
+    role = user["https://wall-is-safe.netlify.app/roles"][0];
+  }
+
   return (
     <header className="header">
       <nav className="nav">
@@ -35,6 +40,15 @@ const Header = ({ latestSession }) => {
                 Clips
               </Link>
             </li>
+            {role === "admin" ? (
+              <li className="nav__list-item">
+                <Link to="/add-data" className="nav__link">
+                  Add Data
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
         <div className="nav__group nav__group--secondary">
