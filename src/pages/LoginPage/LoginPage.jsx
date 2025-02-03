@@ -25,10 +25,23 @@ const LoginPage = () => {
     return (
       <main className="login">
         <h1 className="login__heading">Your Account</h1>
-        <div>
-          <img src={user.picture} alt={user.name} className="login__avatar" />
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
+        <div className="login__info">
+          <img
+            src={user.picture}
+            alt="Sorry, you can't change your avatar yet"
+            className="login__avatar"
+          />
+          <div className="login__info-text">
+            <h2 className="login__user-name">{user.name}</h2>
+            <p className="login__body-text">
+              <span className="login__label-text">Email</span>
+              {user.email}
+            </p>
+            <p className="login__body-text">
+              <span className="login__label-text">Role </span>
+              {role}
+            </p>
+          </div>
         </div>
         <button
           className="login__button"
