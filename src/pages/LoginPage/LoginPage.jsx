@@ -26,7 +26,7 @@ const LoginPage = () => {
       <main className="login">
         <h1 className="login__heading">Your Account</h1>
         <div>
-          <img src={user.picture} alt={user.name} />
+          <img src={user.picture} alt={user.name} className="login__avatar" />
           <h2>{user.name}</h2>
           <p>{user.email}</p>
         </div>
