@@ -55,7 +55,7 @@ const Header = ({ latestSession }) => {
           <ul className="nav__list">
             {isAuthenticated ? (
               <li className="nav__list-item">
-                <Link to="/login" className="nav__link nav__link--account">
+                <Link to="/account" className="nav__link nav__link--account">
                   <img src={user.picture} className="nav__avatar" />
                   Account
                 </Link>

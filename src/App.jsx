@@ -42,7 +42,7 @@ function App() {
           <Route path="/mechanics" element={<MechsPage />} />
           <Route path="/clips" element={<NotesPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/account" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </>
