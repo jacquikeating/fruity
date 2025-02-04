@@ -112,7 +112,7 @@ const NotesPage = () => {
                 </button>
               </li>
           */}
-        <Accordion accordionItemsData={accordionItemsData} />
+        <Accordion accordionItemsData={accordionItemsData} context={"clips"} />
       </section>
     </main>
   );
