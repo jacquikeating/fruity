@@ -10,7 +10,7 @@ const NotesPage = () => {
   const [videoURL, setVideoURL] = useState(null);
   const [timestamp, setTimestamp] = useState("0h0m0s");
   const accordionItemsData = [
-    { mechName: "Darklit Dragonsong", content: DDClipsArray },
+    // { mechName: "Darklit Dragonsong", content: DDClipsArray },
     {
       mechName: "Crystalize Time",
       content: CTClipsArray,
