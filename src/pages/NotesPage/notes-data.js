@@ -176,21 +176,23 @@ export const CTClipsArray = [
     clips: [
       {
         link: "https://www.twitch.tv/storkod/clip/SneakyAbstruseDragonTBTacoLeft-S2SXjjFCT8cRuhuN",
+        title: "north/easy dodge",
         url: "",
         time: "",
-        notes: [
-          "✓ clean personal execution, party almost clean",
-          "north/easy dodge",
-        ],
+        clean: true,
+        cleanliness: "✓  clean personal execution, party almost clean",
+        notes: ["no notes here"],
       },
       {
         link: "https://www.twitch.tv/storkod/clip/HardAuspiciousAlmondPicoMause-VkXnGoKORzjJ9Pce",
+        title: "south/tricky dodge",
         url: "",
         time: "",
+        clean: true,
+        cleanliness: "✓  clean personal execution",
         notes: [
-          "✓ clean personal execution",
-          "south/tricky dodge",
-          "wipe on akh morns because DRK has aggro on both bosses. WAR died before CT and I guess they didn't voke",
+          "WAR died before CT and I guess they didn't voke",
+          "wipe on akh morns because DRK has aggro on both bosses",
         ],
       },
     ],
@@ -200,11 +202,12 @@ export const CTClipsArray = [
     clips: [
       {
         link: "https://medal.tv/games/ff-xiv-online/clips/jBAeI1BdT6PviXYDg/IgtiCffLH249?invite=cr-MSw2VE4sMzA0MjM5OTA0LA",
+        title: "purple tether (slow) tower",
         url: "",
         time: "",
+        clean: false,
+        cleanliness: "✗  head won't pop",
         notes: [
-          "✗  head won't pop",
-          "purple tether (slow) tower",
           "does the dodge first like you would on non-tether side",
           "you really do gotta boop that snoot specifically, the hitbox is tiny",
         ],
