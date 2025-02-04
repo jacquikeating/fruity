@@ -20,8 +20,9 @@ const MechClipsCollection = ({ mech }) => {
                 return (
                   <div className="clip" key={index}>
                     <a href={clip.link} target="_blank" className="clip__link">
-                      Clip {index}
+                      {clip.title}
                     </a>
+                    <p className="clip__cleanliness">{clip.cleanliness}</p>
                     <ul className="clip__notes-list">
                       {clip.notes.map((note, index) => {
                         return (
