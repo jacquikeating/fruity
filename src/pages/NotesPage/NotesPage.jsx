@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 // import { TwitchPlayer } from "react-twitch-embed";
+import Accordion from "../../components/Accordion/Accordion";
 import { DDClipsArray, CTClipsArray } from "./notes-data";
 import "./NotesPage.scss";
 
@@ -8,6 +9,8 @@ const NotesPage = () => {
   const [showCT, setShowCT] = useState(false);
   const [videoURL, setVideoURL] = useState(null);
   const [timestamp, setTimestamp] = useState("0h0m0s");
+  const accordionItemsData = [DDClipsArray, CTClipsArray];
+
   //   const embed = useRef(); // We use a ref instead of state to avoid rerenders.
 
   //   const handleReady = (e) => {
@@ -109,6 +112,7 @@ const NotesPage = () => {
                 </button>
               </li>
           */}
+        <Accordion accordionItemsData={accordionItemsData} />
       </section>
     </main>
   );
