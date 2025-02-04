@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 // import { TwitchPlayer } from "react-twitch-embed";
-import { DDClipsArray } from "./notes-data";
+import { DDClipsArray, CTClipsArray } from "./notes-data";
 import "./NotesPage.scss";
 
 const NotesPage = () => {
