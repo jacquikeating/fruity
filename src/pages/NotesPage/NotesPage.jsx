@@ -97,8 +97,7 @@ const NotesPage = () => {
           </article>
         )}
 
-        {/* <div className="notes__example">
-            <ul className="notes__list">
+        {/* 
               <li className="notes__list-item">
                 <button
                   onClick={() => {
@@ -109,44 +108,7 @@ const NotesPage = () => {
                   Play
                 </button>
               </li>
-              <li className="notes__list-item">
-                <span className="notes__bold-text">Problem: </span>
-                BRD ran out too soon
-              </li>
-              <li className="notes__list-item">
-                BRD dropped an off-center Akh Rhai that killed PCT
-              </li>
-              <li className="notes__list-item notes__list-item--solution">
-                <span className="notes__bold-text">Solution: </span>
-                Don't move until the wings pop
-              </li>
-            </ul>
-          </div>
-          <div className="notes__example">
-            <ul className="notes__list">
-              <li className="notes__list-item">
-                <button
-                  onClick={() => {
-                    setVideoURL("2349081816");
-                    setTimestamp("0h35m35s");
-                  }}
-                >
-                  Play
-                </button>
-              </li>
-              <li className="notes__list-item">
-                <span className="notes__bold-text">Problem: </span>
-                BRD ran out too soon
-              </li>
-              <li className="notes__list-item">
-                BRD dropped an off-center Akh Rhai that killed PCT
-              </li>
-              <li className="notes__list-item notes__list-item--solution">
-                <span className="notes__bold-text">Solution: </span>
-                Don't move until the wings pop
-              </li>
-            </ul>
-          </div> */}
+          */}
       </section>
     </main>
   );
