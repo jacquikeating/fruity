@@ -19,8 +19,6 @@
         letter-spacing: 0.05em;
         color: $text-light;
         margin-bottom: -25px;
-        z-index: 2;
-
     }
 
     &__body {
@@ -30,20 +28,14 @@
     &__subheading {
         border-top: 1px solid $borders;
         margin-bottom: 0.25em;
-        padding: 1.25em 0 0.25em 0;
+        padding: 1.25em 0 1.25em 0;
         font-size: 1.3em;
     }
 }
 
-
-.clip:first-of-type {
-        border-top: none;
-}
-
 .clip {
-    margin: 1em 0 0 3em;
+    margin: 0 0 0 3em;
     padding-bottom: 1em;
-
 
     &__link {
         color: $blue;

@@ -181,7 +181,7 @@ export const CTClipsArray = [
         time: "",
         clean: true,
         cleanliness: "✓  clean personal execution, party almost clean",
-        notes: ["no notes here"],
+        notes: [],
       },
       {
         link: "https://www.twitch.tv/storkod/clip/HardAuspiciousAlmondPicoMause-VkXnGoKORzjJ9Pce",
@@ -214,4 +214,106 @@ export const CTClipsArray = [
       },
     ],
   },
+  {
+    subsection: "🌊🟦 WATER",
+    clips: [
+      {
+        link: "https://www.twitch.tv/storkod/clip/EnthusiasticPreciousPeanutChocolateRain-CLVtkP6cl4uDXE7z",
+        title: "stack NE, exas W then S, poo SE",
+        url: "",
+        time: "",
+        clean: false,
+        cleanliness: "✗ misses poo pickup",
+        notes: ["has to double back, dropping rewind in narnia"],
+      },
+    ],
+  },
+  {
+    subsection: "❄️🟦 BLUE ICE",
+    clips: [],
+  },
+  {
+    subsection: "🟣🟦 ERUPTION",
+    clips: [
+      {
+        link: "https://www.twitch.tv/videos/2341136208?t=1h14m15s",
+        title: "stack NE, exas W then S, poo W",
+        url: "2341136208",
+        time: "1h14m15s",
+        clean: false,
+        cleanliness: "✗  too slow for poo pickup",
+        notes: [
+          "you can watch the blue thing at D disappear without anyone touching it",
+          "I believe this is time-based: in this case it despawns at quietus, but Tori's stayed up for several seconds afterward",
+          "what they could have done: dodge 1st exa → poo → dodge 2nd exa",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/storkod/clip/SincereCleanSandstormNinjaGrumpy-_dedPhlxUsB0Ztsh",
+        title: "stack NE, exas W then N, poo W",
+        url: "",
+        time: "",
+        clean: true,
+        cleanliness: "✓ 100% clean",
+        notes: [],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2369181965?t=1h7m8s",
+        title: "stack NW, exas E then N, poo W",
+        url: "2369181965",
+        time: "1h7m8s",
+        clean: true,
+        cleanliness: "✓ clean personal execution",
+        notes: [],
+      },
+    ],
+  },
+  {
+    subsection: "💛🟦 UNHOLY (STACK)",
+    clips: [
+      {
+        link: "https://www.twitch.tv/videos/2341997316?t=2h6m46s",
+        title: "stack NW, exas E then S, poo E",
+        url: "2341997316",
+        time: "2h6m46s",
+        clean: true,
+        cleanliness: "✓ clean personal execution",
+        notes: [
+          "watch PLD (aero) at 3, he walks through his own poo while dodging exa, stealing it from the NIN (water)",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/storkod/clip/PiliableAgreeableJackalHassaanChop-xcmCxRQtL4YhBz_B",
+        title: "stack NW, exas E then S, poo E",
+        url: "",
+        time: "",
+        clean: true,
+        cleanliness: "✓  clean personal execution",
+        notes: [],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2350466224?t=0h25m15s",
+        title: "stack NW, exas E then N, poo E",
+        url: "",
+        time: "",
+        clean: true,
+        cleanliness: "✓  clean personal execution",
+        notes: [],
+      },
+    ],
+  },
+  // {
+  //   subsection: "🌊🟦 WATER",
+  //   clips: [
+  //     {
+  //       link: "",
+  //       title: "",
+  //       url: "",
+  //       time: "",
+  //       clean: false,
+  //       cleanliness: "",
+  //       notes: [],
+  //     },
+  //   ],
+  // },
 ];

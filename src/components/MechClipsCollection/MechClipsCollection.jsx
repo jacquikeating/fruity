@@ -7,7 +7,7 @@ const MechClipsCollection = ({ mech }) => {
     <>
       <button className="mech-clips__header">
         {mechName}
-        <span className="control">—</span>
+        {/* <span className="control">—</span> */}
       </button>
       <div className="mech-clips__body">
         {content.map((subsection, index) => {
