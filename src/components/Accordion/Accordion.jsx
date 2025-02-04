@@ -1,4 +1,5 @@
 import React from "react";
+import AccordionItem from "../AccordionItem/AccordionItem";
 import "./Accordion.scss";
 
 const Accordion = () => {
