@@ -20,7 +20,7 @@ const MechClipsCollection = ({ mech }) => {
                 return (
                   <div className="clip" key={index}>
                     <a href={clip.link} target="_blank" className="clip__link">
-                      <img src="./src/assets/25_twitch.png" />
+                      <img src="https://i.imgur.com/NzRUemQ.png" />
                       {clip.title}
                     </a>
                     <p className="clip__cleanliness">{clip.cleanliness}</p>
