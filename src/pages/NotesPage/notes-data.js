@@ -201,6 +201,15 @@ export const CTClipsArray = [
     subsection: "♻️🟥 AERO",
     clips: [
       {
+        link: "https://www.twitch.tv/videos/2369023820?t=0h23m0s",
+        title: "non-tethered (fast) tower",
+        url: "",
+        time: "",
+        clean: true,
+        cleanliness: "✓  100% clean",
+        notes: ["HAPPY HAPPY"],
+      },
+      {
         link: "https://medal.tv/games/ff-xiv-online/clips/jBAeI1BdT6PviXYDg/IgtiCffLH249?invite=cr-MSw2VE4sMzA0MjM5OTA0LA",
         title: "purple tether (slow) tower",
         url: "",
@@ -211,15 +220,6 @@ export const CTClipsArray = [
           "does the dodge first like you would on non-tether side",
           "I guess you really do gotta boop that snoot specifically, the hitbox is tiny",
         ],
-      },
-      {
-        link: "https://www.twitch.tv/videos/2369023820?t=0h23m0s",
-        title: "non-tethered (fast) tower",
-        url: "",
-        time: "",
-        clean: true,
-        cleanliness: "✓  100% clean",
-        notes: ["HAPPY HAPPY", "real hardcore raider music"],
       },
     ],
   },
@@ -235,8 +235,7 @@ export const CTClipsArray = [
         cleanliness: "✗ misses poo pickup",
         notes: ["has to double back, dropping rewind in narnia"],
       },
-    ],
-    clips: [
+
       {
         link: "https://www.twitch.tv/videos/2369023820?t=0h54m47s",
         title: "stack NW, exas W then S, poo SE",
@@ -245,6 +244,19 @@ export const CTClipsArray = [
         clean: true,
         cleanliness: "✓  100% clean",
         notes: [],
+      },
+      {
+        link: "https://youtube.com/watch?v=g5NezJtbdrs",
+        title: "stack NE, exas W then S, poo SE",
+        url: "",
+        time: "",
+        clean: false,
+        cleanliness: "✓ clean personal execution",
+        notes: [
+          "WHM gets knocked too far N and hits the crystal",
+          "movement through the exas is SMOOOOTH",
+          "tank makes a baby cry when the akh morn kills them",
+        ],
       },
     ],
   },
@@ -276,7 +288,8 @@ export const CTClipsArray = [
         cleanliness: "✗  too slow for poo pickup",
         notes: [
           "you can watch the blue thing at D disappear without anyone touching it",
-          "I believe this is time-based: in this case it despawns at quietus, but Tori's stayed up for several seconds afterward",
+          "I believe this is time-based: here it despawns at quietus, but in Tori's water clip, it stayed up until at least rewind",
+          "(makes sense they'd be staggered because E/W pop earlier)",
           "what they could have done: dodge 1st exa → poo → dodge 2nd exa",
         ],
       },
