@@ -2,21 +2,32 @@
 @use "/src/styles/__mixins" as *;
 
 .mech-clips {
-    &__body {
-        padding: 1.5em;
-    }
+    height: 0;
+    overflow: hidden;
+    transition: all ease 0.5s;
 
+    &--active { 
+        height: 2230px;
+    }
+     
     &__subheading {
         border-top: 1px solid $borders;
-        margin-bottom: 0.25em;
+        margin: 0 1.5em 0.25em 1em;
         padding: 1.25em 0 0.75em 0;
         font-size: 1.3em;
+
+        &--first {
+            margin-top: 0px;
+            border-top: none;
+        }
     }
+
 }
 
 .clip {
-    margin: 0 0 0 3em;
     padding-bottom: 0.75em;
+    padding-left: 1.25em;
+    margin: 0 1.5em 0.25em;
 
     &__link {
         color: $blue;

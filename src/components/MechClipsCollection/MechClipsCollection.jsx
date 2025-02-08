@@ -1,13 +1,21 @@
 import React from "react";
 import "./MechClipsCollection.scss";
 
-const MechClipsCollection = ({ mech }) => {
+const MechClipsCollection = ({ mech, active }) => {
   return (
-    <div className="mech-clips__body">
+    <div className={active ? "mech-clips mech-clips--active" : "mech-clips"}>
       {mech.content.map((subsection, index) => {
         return (
           <div className="mech-clips__subsection" key={index}>
-            <h3 className="mech-clips__subheading">{subsection.subsection}</h3>
+            <h3
+              className={`${
+                index === 0
+                  ? "mech-clips__subheading mech-clips__subheading--first"
+                  : "mech-clips__subheading"
+              }`}
+            >
+              {subsection.subsection}
+            </h3>
             {subsection.clips.map((clip, index) => {
               return (
                 <div className="clip" key={index}>

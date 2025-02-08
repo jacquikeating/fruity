@@ -6,23 +6,21 @@
         width: 100%;
         padding: 1em;
         border:  none;
-        border-bottom: 1px solid $borders;
-        border-radius: 0;
         background-color: $bg-mid;
         text-align: left;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         font-family: $font-display;
         font-size: 1.5em;
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 0.05em;
         color: $text-light;
-        margin-bottom: -25px;
     }
 
     &__control {
-        transition: all linear 0.25s;
+        transition: all ease 0.25s;
 
         &--active {
             transform: rotate(180deg)
