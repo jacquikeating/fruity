@@ -12,7 +12,7 @@ const NotesPage = () => {
   const accordionItemsData = [
     // { mechName: "Darklit Dragonsong", content: DDClipsArray },
     {
-      mechName: "Crystalize Time",
+      accordionItemTitle: "Crystalize Time",
       content: CTClipsArray,
     },
   ];
