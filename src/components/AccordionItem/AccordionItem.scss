@@ -20,4 +20,12 @@
         color: $text-light;
         margin-bottom: -25px;
     }
+
+    &__control {
+        transition: all linear 0.25s;
+
+        &--active {
+            transform: rotate(180deg)
+        }
+    }
 }
