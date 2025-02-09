@@ -1,9 +1,17 @@
-import React from "react";
+import { React, useRef } from "react";
 import "./MechClipsCollection.scss";
 
 const MechClipsCollection = ({ mech, active }) => {
+  const contentEl = useRef();
+
   return (
-    <div className={active ? "mech-clips mech-clips--active" : "mech-clips"}>
+    <div
+      ref={contentEl}
+      style={
+        active ? { height: contentEl.current.scrollHeight } : { height: "0px" }
+      }
+      className={active ? "mech-clips mech-clips--active" : "mech-clips"}
+    >
       {mech.content.map((subsection, index) => {
         return (
           <div className="mech-clips__subsection" key={index}>
