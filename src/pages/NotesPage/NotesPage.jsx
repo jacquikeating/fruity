@@ -10,7 +10,10 @@ const NotesPage = () => {
   const [videoURL, setVideoURL] = useState(null);
   const [timestamp, setTimestamp] = useState("0h0m0s");
   const accordionItemsData = [
-    // { mechName: "Darklit Dragonsong", content: DDClipsArray },
+    {
+      accordionItemTitle: "Darklit Dragonsong",
+      content: DDClipsArray,
+    },
     {
       accordionItemTitle: "Crystalize Time",
       content: CTClipsArray,
@@ -54,7 +57,7 @@ const NotesPage = () => {
 
         {/* <TwitchPlayer video="2335965689" /> */}
 
-        {showDD ? (
+        {/* {showDD ? (
           <article className="notes__mech">
             <div className="notes__subheading-container">
               <h2 className="notes__subheading">Darklit Dragonsong</h2>
@@ -64,11 +67,11 @@ const NotesPage = () => {
               ></i>
             </div>
             {DDClipsArray.map((subsection) => {
-              // new Twitch.Player("twitch-embed", {
-              //   video: clip.url,
-              //   time: clip.time,
-              //   autoplay: false,
-              // });
+              new Twitch.Player("twitch-embed", {
+                video: clip.url,
+                time: clip.time,
+                autoplay: false,
+              });
 
               return (
                 <div className="notes__subsection">
@@ -78,7 +81,7 @@ const NotesPage = () => {
                   {subsection.clips.map((clip) => {
                     return (
                       <div className="clip">
-                        {/* <div className="clip__player" id="twitch-embed"></div> */}
+                        <div className="clip__player" id="twitch-embed"></div>
                         Problem:{" "}
                         <a href={clip.link} target="_blank">
                           {clip.problem}
@@ -104,7 +107,7 @@ const NotesPage = () => {
               ></i>
             </div>
           </article>
-        )}
+        )} */}
 
         {/* 
               <li className="notes__list-item">

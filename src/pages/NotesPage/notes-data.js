@@ -1,4 +1,4 @@
-export const DDClipsArray = [
+export const originalDDClipsArray = [
   {
     subsection: "Pre-DD",
     clips: [
@@ -165,6 +165,141 @@ export const DDClipsArray = [
         description:
           "Nobody hit Gaia except for Tori. PLD had to sacc to save the run.",
         solution: "Pay attention to boss HP.",
+      },
+    ],
+  },
+];
+
+export const DDClipsArray = [
+  {
+    subsection: "Pre-DD",
+    clips: [
+      {
+        link: "https://www.twitch.tv/videos/2347272686?t=2h20m8s",
+        title: "'I don't know when we have to move'",
+        url: "2347272686",
+        time: "2h20m8s",
+        clean: false,
+        cleanliness: "✗, just ✗",
+        notes: [
+          "this group's first time seeing P4",
+          "no notes, this is perfect",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2342258741?t=0h43m28s",
+        title: "akh rhai",
+        url: "2342258741",
+        time: "0h43m28s",
+        clean: false,
+        cleanliness: "✓  clean personal execution",
+        notes: [
+          "BRD went out too soon and dropped an off-center Akh Rhai that killed PCT",
+          "don't move until the wings pop",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2349041148?t=0h33m39s",
+        title: "aggro problems",
+        url: "2349041148",
+        time: "0h33m39s",
+        clean: false,
+        cleanliness: "✓  clean personal execution",
+        notes: [
+          "GNB starts at 2nd aggro, but because he has dmg down, the BLM quickly overtakes him and dies to autos",
+          "3 support get tethered",
+          "GNB should have suicided as soon as Gaia hit 20%",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2335965689?t=00h32m43s",
+        title: "outranging shields",
+        url: "2335965689",
+        time: "00h32m43s",
+        clean: false,
+        cleanliness: "✓  clean personal execution",
+        notes: [
+          "shields need to be reapplied after the first crystal pulse, a few seconds before Darklit cast",
+          "everyone please hug Shiva when the Akh Rhais stop",
+        ],
+      },
+    ],
+  },
+  {
+    subsection: "Tethers",
+    clips: [
+      {
+        link: "https://www.twitch.tv/videos/2342258741?t=0h43m43s",
+        title: "weird starting positions",
+        url: "2342258741",
+        time: "0h43m43s",
+        clean: false,
+        cleanliness: "✗  melees stacked",
+        notes: [
+          "extreme example, but shows how confusing it is when the shape isn't easily identifiable",
+          "just do LR spots 4head",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2343743751?t=0h20m15s",
+        title: "no bowtie",
+        url: "2343743751",
+        time: "0h20m15s",
+        clean: false,
+        cleanliness: "✓  clean personal execution",
+        notes: [
+          "hourglass = tank and west DPS need to switch",
+          "switch starts out okay, but then the WAR second-guesses themselves and turns around",
+        ],
+      },
+      {
+        link: "https://www.twitch.tv/videos/2349084399?t=2h24m32s",
+        title: "tethered water flexed",
+        url: "2349084399",
+        time: "2h24m32s",
+        clean: false,
+        cleanliness: "✗  unnecessary flex",
+        notes: [
+          "DRG and DNC both had water",
+          "DRG probably panicked when they saw the DNC not flexing",
+          "the stacks resolve after Spirit Taker, so stay calm and tell DNC to swap after",
+        ],
+      },
+    ],
+  },
+  {
+    subsection: "Spirit Taker",
+    clips: [],
+  },
+  {
+    subsection: "Water Stacks & Wings",
+    clips: [
+      {
+        link: "https://www.twitch.tv/videos/2343743751?t=0h56m1s",
+        title: "both waters on same side",
+        url: "2343743751",
+        time: "0h56m1s",
+        clean: false,
+        cleanliness: "✗  did not flex",
+        notes: ["SCH was untethered and should have switched with PCT"],
+      },
+    ],
+  },
+  {
+    subsection: "Somber Dance (Tankbuster)",
+    clips: [],
+  },
+  {
+    subsection: "Post-DD",
+    clips: [
+      {
+        link: "https://www.twitch.tv/storkod/clip/WanderingSneakyRuffThunBeast-RpT3TVEQCyUPJSIW",
+        title: "hp imba",
+        url: "",
+        time: "",
+        clean: false,
+        cleanliness: "✓  clean personal execution",
+        notes: ["only Tori hit Gaia", "PLD had to sac to save the run"],
       },
     ],
   },
