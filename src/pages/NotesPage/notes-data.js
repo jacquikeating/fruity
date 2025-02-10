@@ -202,7 +202,7 @@ export const CTClipsArray = [
     clips: [
       {
         link: "https://www.twitch.tv/videos/2369023820?t=0h23m0s",
-        title: "non-tethered (fast) tower",
+        title: "non-tethered tower",
         url: "",
         time: "",
         clean: true,
@@ -211,7 +211,7 @@ export const CTClipsArray = [
       },
       {
         link: "https://medal.tv/games/ff-xiv-online/clips/jBAeI1BdT6PviXYDg/IgtiCffLH249?invite=cr-MSw2VE4sMzA0MjM5OTA0LA",
-        title: "purple tether (slow) tower",
+        title: "purple tether tower",
         url: "",
         time: "",
         clean: false,
