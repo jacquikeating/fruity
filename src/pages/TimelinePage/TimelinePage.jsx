@@ -13,6 +13,29 @@ const TimelinePage = () => {
 
   return (
     <main className="timeline">
+      <p className="timeline__intro-text">
+        This timeline assumes a P1 kill time of 2:37 (i gaming). Our ideal P4
+        kill time is TBD, but currently assuming 12:53 based on previous pulls.
+      </p>
+      <ul className="timeline__kt-list">
+        <li className="timeline__kt-list-item">
+          Session 27, pull 13 — P1 2:37, P4 12:51. Ella got a DD during CT, but
+          we saw P5.
+        </li>
+        <li className="timeline__kt-list-item">
+          Session 27, pull 15 — P1 2:37, P4 12:58. Soph died on the post-CT akh
+          morns. Crystal smash.
+        </li>
+        <li className="timeline__kt-list-item">
+          Session 28, pull 18 — P1 2:38, P4 12:56. Clean except for crystal
+          smash.
+        </li>
+        <li className="timeline__kt-list-item">
+          Session 29, pull 14 — P1 2:38, P4 13:03. Lots of CT deaths. ~4%
+          enrage.
+        </li>
+      </ul>
+
       <div className="timeline__container">
         <table className="timeline__table">
           <tbody>
