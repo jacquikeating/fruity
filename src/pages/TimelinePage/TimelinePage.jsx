@@ -16,7 +16,15 @@ const TimelinePage = () => {
       <h1 className="timeline__heading">Timeline</h1>
       <p className="timeline__intro-text">
         This timeline assumes a P1 kill time of 2:37 (i gaming). Our ideal P4
-        kill time is TBD, but currently assuming 12:53 based on previous pulls.
+        kill time is TBD, but I am currently assuming 12:53 based on the average
+        of our cleanest pulls.
+      </p>
+      <p className="timeline__intro-text">
+        Right now, those are 27.13 and 28.18 — which would have had a 12:55 P4
+        if we'd killed P1 at 2:37.
+      </p>
+      <p className="timeline__intro-text">
+        This timeline may be adjusted as we get more P5 pulls.
       </p>
       <ul className="timeline__kt-list">
         <li className="timeline__kt-list-item">
