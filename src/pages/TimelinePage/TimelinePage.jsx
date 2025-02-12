@@ -53,7 +53,6 @@ const TimelinePage = () => {
                 <>
                   <tr className="timeline__header-row">
                     <th className="timeline__header-cell timeline__header-cell--phase">
-                      {" "}
                       <h2 className="timeline__subheading">
                         {phase.phaseName}
                       </h2>
@@ -72,7 +71,6 @@ const TimelinePage = () => {
                           {mech.name}
                         </td>
                         <td className="timeline__cell timeline__cell--nick">
-                          {" "}
                           {mech.nickname}
                         </td>
                       </tr>
