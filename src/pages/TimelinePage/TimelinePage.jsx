@@ -1,5 +1,5 @@
 import React from "react";
-import { phases, timeline2 } from "./Timeline.js";
+import { phases, timeline2, dpsTimeline } from "./Timeline.js";
 import "./TimelinePage.scss";
 
 const TimelinePage = () => {
@@ -44,44 +44,83 @@ const TimelinePage = () => {
           enrage.
         </li>
       </ul>
+      <section className="timeline__body">
+        <article className="timeine__article">
+          <h2 className="timeline__timeline-subheading">Mit Timeline</h2>
+          <div className="timeline__container">
+            <table className="timeline__table">
+              <tbody>
+                {phases.map((phase) => {
+                  return (
+                    <>
+                      <tr className="timeline__header-row">
+                        <th className="timeline__header-cell timeline__header-cell--phase">
+                          <h2 className="timeline__subheading">
+                            {phase.phaseName}
+                          </h2>
+                        </th>
+                        <th className="timeline__header-cell timeline__header-cell--name"></th>
+                        <th className="timeline__header-cell timeline__header-cell--nick"></th>
+                      </tr>
 
-      <div className="timeline__container">
-        <table className="timeline__table">
-          <tbody>
-            {phases.map((phase) => {
-              return (
+                      {filterMechs(phase.phaseNum).map((mech) => {
+                        return (
+                          <tr className="timeline__row">
+                            <td className="timeline__cell timeline__cell--time">
+                              {mech.time}
+                            </td>
+                            <td className="timeline__cell timeline__cell--name">
+                              {mech.name}
+                            </td>
+                            <td className="timeline__cell timeline__cell--nick">
+                              {mech.nickname}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article className="timeine__article">
+          <h2 className="timeline__timeline-subheading">DPS Timeline</h2>
+          <div className="timeline__container timeline__container--dps">
+            <table className="timeline__table timeline__table--dps">
+              <tbody>
                 <>
                   <tr className="timeline__header-row">
-                    <th className="timeline__header-cell timeline__header-cell--phase">
-                      <h2 className="timeline__subheading">
-                        {phase.phaseName}
-                      </h2>
+                    <th className="timeline__header-cell timeline__header-cell--time">
+                      Time
                     </th>
-                    <th className="timeline__header-cell timeline__header-cell--name"></th>
-                    <th className="timeline__header-cell timeline__header-cell--nick"></th>
+                    <th className="timeline__header-cell timeline__header-cell--mech">
+                      Mech
+                    </th>
                   </tr>
-
-                  {filterMechs(phase.phaseNum).map((mech) => {
+                  {dpsTimeline.map((mech) => {
                     return (
-                      <tr className="timeline__row">
+                      <tr
+                        className={`timeline__row ${
+                          !mech.uptime ? "timeline__row--downtime" : ""
+                        }`}
+                      >
                         <td className="timeline__cell timeline__cell--time">
                           {mech.time}
                         </td>
                         <td className="timeline__cell timeline__cell--name">
                           {mech.name}
                         </td>
-                        <td className="timeline__cell timeline__cell--nick">
-                          {mech.nickname}
-                        </td>
                       </tr>
                     );
                   })}
                 </>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
     </main>
   );
 };

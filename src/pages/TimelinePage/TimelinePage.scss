@@ -15,10 +15,22 @@
         font-style: italic;
     }
 
+    &__body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: 5rem 10vw;
+    }
+
     &__container {
+        margin-top: 1em;
         border: 1px solid $borders;
         border-radius: 3px;
         max-width: 600px;
+
+        &--dps {
+            max-width: 300px;
+        }
     }
 
     &__table {
@@ -26,6 +38,7 @@
         width: 100%;
         background: $bg-mid;
         table-layout: fixed;
+
     }
     
     &__header-cell {
@@ -47,6 +60,13 @@
         }
     }
 
+    &__row {
+        &--downtime {
+            color: $text-mid;
+            background-color: $bg-light;
+        }
+    }
+
     &__cell {        
         border-left: 1px solid $borders;
         border-bottom: 1px solid $borders;
@@ -63,4 +83,10 @@
             color: $text-mid;
         }
     }
+
+    &__timeline-heading {
+        margin-top: 1em;
+    }
+
+
 }
