@@ -13,6 +13,7 @@ const TimelinePage = () => {
 
   return (
     <main className="timeline">
+      <h1 className="timeline__heading">Timeline</h1>
       <p className="timeline__intro-text">
         This timeline assumes a P1 kill time of 2:37 (i gaming). Our ideal P4
         kill time is TBD, but currently assuming 12:53 based on previous pulls.
