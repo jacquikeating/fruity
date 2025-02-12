@@ -872,20 +872,20 @@ export const timeline2 = [
 
 export const dpsTimeline = [
   {
-    name: "Start",
+    name: "Fight begins",
     time: "0:00",
     phase: 1,
     uptime: true,
   },
   {
-    name: "P1 Ideal Kill Time",
+    name: "P1 ideal kill time",
     time: "2:37",
     phase: 1,
     uptime: false,
   },
 
   {
-    name: "P2 Start",
+    name: "Shiva targetable",
     time: "2:41",
     phase: 2,
     uptime: true,
@@ -897,7 +897,7 @@ export const dpsTimeline = [
     uptime: false,
   },
   {
-    name: "Mirrors (Targetable)",
+    name: "Shiva returns (Mirrors)",
     time: "3:53",
     phase: 2,
     uptime: true,
@@ -909,51 +909,51 @@ export const dpsTimeline = [
     uptime: false,
   },
   {
-    name: "P2 End",
+    name: "Shiva returns (P2 enrage sequence)",
     time: "5:22",
     phase: 2,
     uptime: true,
   },
   {
-    name: "P2 Transition",
+    name: "P2 ends",
     time: "5:46",
     phase: 2,
     uptime: false,
   },
   {
-    name: "Intermission Start",
+    name: "Intermission starts",
     time: "6:08",
     phase: 2,
     uptime: true,
   },
   {
-    name: "Gaia Smash",
+    name: "Gaia smashes crystal",
     time: "6:51",
     phase: 2,
     uptime: false,
   },
 
   {
-    name: "P3 Start",
+    name: "Gaia targetable",
     time: "7:19",
     phase: 3,
     uptime: true,
   },
   {
-    name: "P3 End",
+    name: "P3 ends",
     time: "10:00",
     phase: 3,
     uptime: false,
   },
 
   {
-    name: "P4 Start (Ryne Only)",
+    name: "Ryne targetable",
     time: "10:06",
     phase: 4,
     uptime: true,
   },
   {
-    name: "Gaia Targetable",
+    name: "Gaia targetable",
     time: "10:31",
     phase: 4,
     uptime: true,
@@ -965,45 +965,32 @@ export const dpsTimeline = [
     uptime: false,
   },
   {
-    name: "P4 End",
+    name: "Roommates return (P4 enrage sequence)",
     time: "12:34",
     phase: 4,
     uptime: true,
   },
   {
-    name: "P4 Ideal Kill Time",
+    name: "P4 ideal kill time",
     time: "12:53",
     phase: 4,
     uptime: false,
   },
 
   {
-    name: "P4 End",
-    time: "12:34",
-    phase: 4,
-    uptime: true,
-  },
-  {
-    name: "P4 Ideal Kill Time",
-    time: "12:53",
-    phase: 4,
-    uptime: false,
-  },
-
-  {
-    name: "Cutscene",
+    name: "Cutscene begins",
     time: "13:03",
     phase: 5,
     uptime: false,
   },
   {
-    name: "P5 Start",
+    name: "Pandora targetable",
     time: "14:09",
     phase: 5,
     uptime: true,
   },
   {
-    name: "P5 Enrage",
+    name: "P5 enrage",
     time: "18:33",
     phase: 5,
     uptime: false,

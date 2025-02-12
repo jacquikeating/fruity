@@ -92,10 +92,13 @@ const TimelinePage = () => {
               <tbody>
                 <>
                   <tr className="timeline__header-row">
-                    <th className="timeline__header-cell timeline__header-cell--time">
+                    <th className="timeline__header-cell timeline__header-cell--dps-time">
                       Time
                     </th>
-                    <th className="timeline__header-cell timeline__header-cell--mech">
+                    <th className="timeline__header-cell timeline__header-cell--dps-phase">
+                      P
+                    </th>
+                    <th className="timeline__header-cell timeline__header-cell--dps-mech">
                       Mech
                     </th>
                   </tr>
@@ -106,10 +109,13 @@ const TimelinePage = () => {
                           !mech.uptime ? "timeline__row--downtime" : ""
                         }`}
                       >
-                        <td className="timeline__cell timeline__cell--time">
+                        <td className="timeline__cell timeline__cell--dps-time">
                           {mech.time}
                         </td>
-                        <td className="timeline__cell timeline__cell--name">
+                        <td className="timeline__cell timeline__cell--dps-phase">
+                          {mech.phase}
+                        </td>
+                        <td className="timeline__cell timeline__cell--dps-name">
                           {mech.name}
                         </td>
                       </tr>
