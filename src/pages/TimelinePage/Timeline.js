@@ -869,3 +869,143 @@ export const timeline2 = [
     subphase: "P5 Enrage",
   },
 ];
+
+export const dpsTimeline = [
+  {
+    name: "Start",
+    time: "0:00",
+    phase: 1,
+    uptime: true,
+  },
+  {
+    name: "P1 Ideal Kill Time",
+    time: "2:37",
+    phase: 1,
+    uptime: false,
+  },
+
+  {
+    name: "P2 Start",
+    time: "2:41",
+    phase: 2,
+    uptime: true,
+  },
+  {
+    name: "Diamond Dust",
+    time: "3:16",
+    phase: 2,
+    uptime: false,
+  },
+  {
+    name: "Mirrors (Targetable)",
+    time: "3:53",
+    phase: 2,
+    uptime: true,
+  },
+  {
+    name: "Light Rampant",
+    time: "4:53",
+    phase: 2,
+    uptime: false,
+  },
+  {
+    name: "P2 End",
+    time: "5:22",
+    phase: 2,
+    uptime: true,
+  },
+  {
+    name: "P2 Transition",
+    time: "5:46",
+    phase: 2,
+    uptime: false,
+  },
+  {
+    name: "Intermission Start",
+    time: "6:08",
+    phase: 2,
+    uptime: true,
+  },
+  {
+    name: "Gaia Smash",
+    time: "6:51",
+    phase: 2,
+    uptime: false,
+  },
+
+  {
+    name: "P3 Start",
+    time: "7:19",
+    phase: 3,
+    uptime: true,
+  },
+  {
+    name: "P3 End",
+    time: "10:00",
+    phase: 3,
+    uptime: false,
+  },
+
+  {
+    name: "P4 Start (Ryne Only)",
+    time: "10:06",
+    phase: 4,
+    uptime: true,
+  },
+  {
+    name: "Gaia Targetable",
+    time: "10:31",
+    phase: 4,
+    uptime: true,
+  },
+  {
+    name: "Crystalize Time",
+    time: "11:45",
+    phase: 4,
+    uptime: false,
+  },
+  {
+    name: "P4 End",
+    time: "12:34",
+    phase: 4,
+    uptime: true,
+  },
+  {
+    name: "P4 Ideal Kill Time",
+    time: "12:53",
+    phase: 4,
+    uptime: false,
+  },
+
+  {
+    name: "P4 End",
+    time: "12:34",
+    phase: 4,
+    uptime: true,
+  },
+  {
+    name: "P4 Ideal Kill Time",
+    time: "12:53",
+    phase: 4,
+    uptime: false,
+  },
+
+  {
+    name: "Cutscene",
+    time: "13:03",
+    phase: 5,
+    uptime: false,
+  },
+  {
+    name: "P5 Start",
+    time: "14:09",
+    phase: 5,
+    uptime: true,
+  },
+  {
+    name: "P5 Enrage",
+    time: "18:33",
+    phase: 5,
+    uptime: false,
+  },
+];
