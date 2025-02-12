@@ -1,6 +1,19 @@
 @use "/src/styles/__variables" as *;
 
 .timeline {
+    &__intro-text {
+        margin: 0.5em 0;
+    }
+
+    &__kt-list {
+        margin: 0 0 1.5em 2em;
+    }
+    
+    &__kt-list-item {
+        font-size: 0.9em;
+        color: $text-mid;
+        font-style: italic;
+    }
 
     &__container {
         border: 1px solid $borders;
