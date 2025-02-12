@@ -40,6 +40,11 @@ const Header = ({ latestSession }) => {
                 Clips
               </Link>
             </li>
+            <li className="nav__list-item">
+              <Link to="/timeline" className="nav__link">
+                Timeline
+              </Link>
+            </li>
             {role === "admin" ? (
               <li className="nav__list-item">
                 <Link to="/add-data" className="nav__link">
