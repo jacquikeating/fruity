@@ -28,6 +28,7 @@
     }
 
     &__input {
+        @include input;
         width: 100%;
     }
 
