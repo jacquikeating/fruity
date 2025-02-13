@@ -104,5 +104,10 @@
         color: $text-mid;
         font-style: italic;
     }
+
+    &__input {
+        @include input;
+        font-size: 0.8em;
+    }
 }
 

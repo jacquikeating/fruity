@@ -265,6 +265,7 @@ const ReportPage = () => {
                   placeholder="YYYY-MM-DD"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
+                  className="report__input"
                 />
               )}
             </h1>
@@ -280,11 +281,13 @@ const ReportPage = () => {
                     type="number"
                     value={progPhase}
                     onChange={(e) => setProgPhase(e.target.value)}
+                    className="report__input"
                   />
                   <input
                     type="text"
                     value={progMech}
                     onChange={(e) => setProgMech(e.target.value)}
+                    className="report__input"
                   />
                 </>
               )}
@@ -312,6 +315,7 @@ const ReportPage = () => {
                     type="text"
                     value={fflogsLink}
                     onChange={(e) => setFFLogsLink(e.target.value)}
+                    className="report__input"
                   />
                 </>
               )}
@@ -367,6 +371,7 @@ const ReportPage = () => {
                     setTwitchLinks(e.target.value);
                     setTwitchLinksArray(e.target.value.split(", "));
                   }}
+                  className="report__input"
                 />
               )}
               {showEdit ? (
@@ -393,6 +398,7 @@ const ReportPage = () => {
                       type="text"
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
+                      className="report__input"
                     />
                   )}
                 </p>
@@ -405,6 +411,7 @@ const ReportPage = () => {
                       type="text"
                       value={roster}
                       onChange={(e) => setRoster(e.target.value)}
+                      className="report__input"
                     />
                   )}
                 </p>
@@ -449,6 +456,7 @@ const ReportPage = () => {
                       <textarea
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
+                        className="report__input"
                       ></textarea>
                     )}
                   </ul>
