@@ -1,5 +1,6 @@
-export function createReadableDate(sqlDate) {
-  const readableDate = new Date(sqlDate).toLocaleString("en-US", {
+export function createReadableDate(date) {
+  const dateWithTime = date + "T17:00:00Z"; // 9 PM in UTC
+  const readableDate = new Date(dateWithTime).toLocaleString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -68,12 +69,14 @@ export const findStruggleMech = (pullsArray) => {
 };
 
 export function findGoldStars(pullsArray, playersArray) {
+  const rosterArray = playersArray.split(", ");
   let causedWipes = [];
   let goldStars = [];
 
   pullsArray.map((pull) => {
     if (pull.players_responsible) {
-      pull.players_responsible.forEach((playerName) => {
+      const prArray = pull.players_responsible.split(", ");
+      prArray.forEach((playerName) => {
         if (!causedWipes.includes(playerName)) {
           causedWipes.push(playerName);
         }
@@ -81,7 +84,7 @@ export function findGoldStars(pullsArray, playersArray) {
     }
   });
 
-  playersArray.forEach((player) => {
+  rosterArray.forEach((player) => {
     if (!causedWipes.includes(player)) {
       goldStars.push(player);
     }
@@ -134,4 +137,41 @@ export function checkIfEmptyLink(link) {
   if (!link) {
     return "empty-link";
   }
+}
+
+export function getMechAfterProgMech(progMech) {
+  const mechsList = [
+    "P1 Opener",
+    "Utopian Sky",
+    "Fall of Faith",
+    "Towers",
+    "P1 Enrage",
+    "Diamond Dust",
+    "Mirrors",
+    "Light Rampant",
+    "P2 Enrage",
+    "Intermission",
+    "Ultimate Relativity",
+    "Apocalypse",
+    "P3 Enrage",
+    "Darklit Dragonsong",
+    "Crystallize Time",
+    "P4 Enrage",
+    "Fulgent Blade",
+    "Paradise Regained",
+    "Polarizing Strikes",
+    "P5 Enrage",
+  ];
+  const progMechIndex = mechsList.indexOf(progMech);
+  return mechsList[progMechIndex + 1];
+}
+
+export function convertMSToMinSec(ms) {
+  const date = new Date(ms);
+  const mins = date.getMinutes();
+  let secs = date.getSeconds().toString();
+  if (secs.length == 1) {
+    secs = "0" + secs;
+  }
+  return `${mins}:${secs}`;
 }

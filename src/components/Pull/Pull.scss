@@ -1,17 +1,48 @@
 @use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
 
 .pull {
     border-top: 1px solid $borders;
-    
+    position: relative; 
+
     &__cell {
         border-left: 1px solid $borders;
         padding: 0.3rem 0.7rem;
 
-        &:first-of-type {
+        &--num-today {
             border-left: none;
+            text-align: center;
         }
-        &:last-of-type {
-            overflow-x: auto;
+
+        &--dur {
+            text-align: center;
         }
+
+        &--phase {
+            text-align: center;
+        }
+
+        &--mech {
+            text-align: center;
+        }
+    }
+
+    &__input {
+        @include input;
+        width: 100%;
+    }
+
+    &__button {
+        @include icon-button;
+        padding: 0 0.5em;
+    }
+
+    &__save {
+        color: $green;
+    }
+
+    &__cell-container {
+        display: flex;
+        justify-content: center;
     }
 }

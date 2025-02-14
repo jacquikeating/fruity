@@ -19,23 +19,40 @@
 
         &:first-of-type {
             border-left: none;
-            width: 4em;
+            width: 3.5em;
+            text-align: center;
         }
 
-        &--phase {
-            width: 4.3em;
+        &--dur {
+            width: 3.6em;
+            text-align: center;
+        }
+
+        &--p {
+            width: 3.6em;
+            text-align: center;
         }
 
         &--mechanic {
-            width: 10em;
+            width: 12%;
+            text-align: center;
+        }
+
+        &--cause {
+            width: 32%;
         }
 
         &--players {
-            width: 10em;
+            width: 12%;
         }
 
         &--notes {
-            width: 20em;
+            width: 44%;
+        }
+
+        &--edit {
+            width: 3.5em;
+            text-align: center;
         }
     }
 }

@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
+import PullLink from "../PullLink/PullLink";
 import "./Pull.scss";
 
 const Pull = ({
@@ -9,8 +10,10 @@ const Pull = ({
   updatePull,
   deletePull,
   progPhase,
+  allowDelete,
 }) => {
   const [editMode, setEditMode] = useState(false);
+  const [dur, setDur] = useState(pullData.combatTime);
   const [phase, setPhase] = useState(pullData.phase);
   const [mech, setMech] = useState(pullData.mech);
   const [cause, setCause] = useState(pullData.cause);
@@ -35,7 +38,7 @@ const Pull = ({
         mech: mech,
         prog_point_reached: checkIfProgPointReached(progPhase, phase),
         cause: cause,
-        players_responsible: JSON.stringify(playersResponsible),
+        players_responsible: playersResponsible,
         log_link: logLink,
         clip_link: clipLink,
         notes: notes,
@@ -44,12 +47,24 @@ const Pull = ({
     }
   }
 
+  function handleLinkModalData(newLogLink, newClipLink) {
+    setLogLink(newLogLink);
+    setClipLink(newClipLink);
+  }
+
   return (
     <tr key={`pull-${index}`} className="pull">
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
-        {pullNumType === "today" ? index + 1 : pullData.id}
+        {pullNumType === "today"
+          ? pullData.pull_num_today || index + 1
+          : pullData.pull_num_overall}
       </td>
-      <td key={`${index}-phase`} className="pull__cell">
+
+      {/* <td key={`${index}-dur`} className="pull__cell pull__cell--dur">
+        {pullData.combatTime}
+      </td> */}
+
+      <td key={`${index}-phase`} className="pull__cell pull__cell--phase">
         {!editMode ? (
           phase
         ) : (
@@ -63,7 +78,8 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-mech`} className="pull__cell">
+
+      <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
         {!editMode ? (
           mech
         ) : (
@@ -77,7 +93,8 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-cause`} className="pull__cell">
+
+      <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
         {!editMode ? (
           cause
         ) : (
@@ -91,9 +108,13 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-players_responsible`} className="pull__cell">
+
+      <td
+        key={`${index}-players_responsible`}
+        className="pull__cell pull__cell--players"
+      >
         {!editMode ? (
-          playersResponsible.join(", ")
+          playersResponsible
         ) : (
           <input
             className="pull__input"
@@ -105,7 +126,8 @@ const Pull = ({
           />
         )}
       </td>
-      <td key={`${index}-notes`} className="pull__cell">
+
+      <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
         {!editMode ? (
           notes
         ) : (
@@ -119,23 +141,40 @@ const Pull = ({
           />
         )}
       </td>
+
       {showEdit ? (
-        <td key={`${index}-actions`} className="pull__cell">
-          <button className="pull__button" onClick={editRow}>
-            {!editMode ? "Edit" : "Save"}
-          </button>
-          <button
-            className="pull__button"
-            onClick={() => {
-              deletePull(pullData);
-            }}
-          >
-            Delete
-          </button>
+        <td key={`${index}-edit`} className="pull__cell pull__cell--edit">
+          <div className="pull__cell-container">
+            <button className="pull__button" onClick={editRow}>
+              {!editMode ? (
+                <i className="fa-regular fa-pen-to-square"></i>
+              ) : (
+                <i className="fa-solid fa-check pull__save"></i>
+              )}
+            </button>
+            {allowDelete ? (
+              <button
+                className="pull__button"
+                onClick={() => {
+                  deletePull(pullData);
+                }}
+              >
+                <i className="fa-regular fa-trash-can"></i>
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
         </td>
       ) : (
         ""
       )}
+      <PullLink
+        logLink={logLink}
+        clipLink={clipLink}
+        editMode={editMode}
+        handleLinkModalData={handleLinkModalData}
+      />
     </tr>
   );
 };

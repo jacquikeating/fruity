@@ -1,0 +1,13 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.accordion {
+    margin-top: 2em;
+    border: 1px solid $borders;
+    border-bottom: none;
+    border-radius: 2px;
+    list-style: none;
+    list-style-position: inside;
+    width: 100%;
+    background-color: $bg-light;
+}

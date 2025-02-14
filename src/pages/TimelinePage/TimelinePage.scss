@@ -1,0 +1,97 @@
+@use "/src/styles/__variables" as *;
+
+.timeline {
+    &__heading {
+        margin-bottom: 0.5em;
+    }
+
+    &__kt-list {
+        margin: 0.5em 0 1.5em 2em;
+    }
+    
+    &__kt-list-item {
+        font-size: 0.9em;
+        color: $text-mid;
+        font-style: italic;
+    }
+
+    &__body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: 5rem 10vw;
+    }
+
+    &__container {
+        margin-top: 1em;
+        border: 1px solid $borders;
+        border-radius: 3px;
+        max-width: 600px;
+
+        &--dps {
+            max-width: 400px;
+        }
+    }
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+        background: $bg-mid;
+        table-layout: fixed;
+    }
+    
+    &__header-cell {
+        border-bottom: 1px solid $borders;
+        padding: 0.7rem;
+        background: $bg-light;
+        text-align: left;
+
+        &--phase {
+            width: 2rem;
+        }
+
+        &--name {
+            width: 9rem;
+        }
+
+        &--nick {
+            width: 8rem;
+        }
+
+        &--dps-time {
+            width: 3.55rem;
+        }
+
+        &--dps-phase {
+            width: 2rem;
+        }
+    }
+
+    &__row {
+        &--downtime {
+            color: $text-mid;
+            background-color: $bg-light;
+        }
+    }
+
+    &__cell {        
+        border-left: 1px solid $borders;
+        border-bottom: 1px solid $borders;
+        padding: 0.3rem 0.7rem;
+        text-align: left;
+
+        &--time {
+            border-left: none;
+        }
+
+        &--nick {
+            font-style: italic;
+            font-size: 0.9em;
+            color: $text-mid;
+        }
+    }
+
+    &__timeline-heading {
+        margin-top: 1em;
+    }
+}

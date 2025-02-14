@@ -4,9 +4,9 @@ import { checkIfProgPointReached } from "../../utils/shared-functions";
 import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
+  const rosterArray = sessionData.roster.split(", ");
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [selectedMech, setSelectedMech] = useState("");
-  const [rosterArray, setRosterArray] = useState(sessionData.roster);
   const [cause, setCause] = useState("");
   const [logLink, setLogLink] = useState("");
   const [clipLink, setClipLink] = useState("");
@@ -15,6 +15,8 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
   );
   const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
   const [notes, setNotes] = useState("");
+  const [insertMode, setInsertMode] = useState(false);
+  const [indexToInsert, setIndexToInsert] = useState(0);
 
   function handlePhaseChange(e) {
     setSelectedPhase(e.phase);
@@ -26,20 +28,11 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
 
   const phaseAndMechOptions = [
     ["N/A"],
-    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "Enrage"],
-    [
-      "Diamond Dust",
-      "Swappies",
-      "Mirrors",
-      "Light Rampant",
-      "Enrage",
-      "Intermission",
-    ],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
-    ["Mech 1", "Mech 2", "Mech 3"],
+    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
+    ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
+    ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
+    ["Darklit Dragonsong", "Crystalize Time", "P4 Enrage"],
+    ["Fulgent Blade", "Paradise Regained", "Polarizing Strikes", "P5 Enrage"],
   ];
 
   const handleCheckboxChange = (position) => {
@@ -67,10 +60,11 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         selectedPhase
       ),
       cause: cause,
-      players_responsible: responsiblePlayersArray,
+      players_responsible: responsiblePlayersArray.join(", "),
       log_link: logLink,
       clip_link: clipLink,
       notes: notes,
+      indexToInsert: indexToInsert,
     };
 
     handlePullFormData(pullObj);
@@ -79,6 +73,14 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     setCheckedState(new Array(rosterArray.length).fill(false));
     setResponsiblePlayersArray([]);
     setNotes("");
+    setLogLink("");
+    setClipLink("");
+    setIndexToInsert(0);
+  }
+
+  function handleInsert(e) {
+    e.preventDefault();
+    setInsertMode(true);
   }
 
   return (
@@ -267,6 +269,26 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       <button type="submit" className="form__button" onClick={handleSubmit}>
         Save
       </button>
+
+      <div>
+        <button className="form__button" onClick={handleInsert}>
+          Insert at...
+        </button>
+
+        {!insertMode ? (
+          ""
+        ) : (
+          <>
+            <input
+              type="number"
+              value={indexToInsert}
+              onChange={(e) => {
+                setIndexToInsert(e.target.value);
+              }}
+            />
+          </>
+        )}
+      </div>
     </form>
   );
 };

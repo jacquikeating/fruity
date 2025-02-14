@@ -1,0 +1,57 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.mech-clips {
+    height: 0;
+    overflow: hidden;
+    transition: all ease 0.5s;
+     
+    &__subheading {
+        border-top: 1px solid $borders;
+        margin: 0 1.5em 0.25em 1em;
+        padding: 1.25em 0 0.75em 0;
+        font-size: 1.3em;
+
+        &--first {
+            margin-top: 0px;
+            border-top: none;
+        }
+    }
+}
+
+.clip {
+    padding-bottom: 0.75em;
+    padding-left: 1.25em;
+    margin: 0 1.5em 0.25em;
+
+    &__link {
+        color: $blue;
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+        font-weight: 500;
+
+        img {
+            max-height: 20px;
+            max-width: 20px;
+        }
+
+        &:hover {
+            color: $purple;
+
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__cleanliness {
+        margin-left: 2em;
+        color: $text-mid;
+        font-style: italic;
+    }
+
+    &__notes-list {
+        margin-left: 3em;
+    }
+}
