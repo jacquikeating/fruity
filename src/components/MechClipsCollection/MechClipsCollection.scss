@@ -46,9 +46,8 @@
     }
 
     &__cleanliness {
+        @include sub-text;
         margin-left: 2em;
-        color: $text-mid;
-        font-style: italic;
     }
 
     &__notes-list {

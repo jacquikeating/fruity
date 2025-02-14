@@ -1,4 +1,6 @@
 @use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
 
 .timeline {
     &__heading {
@@ -10,9 +12,7 @@
     }
     
     &__kt-list-item {
-        font-size: 0.9em;
-        color: $text-mid;
-        font-style: italic;
+        @include sub-text;
     }
 
     &__body {

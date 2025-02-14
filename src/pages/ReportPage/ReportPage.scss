@@ -94,9 +94,8 @@
     }
 
     &__filter-label {
-        font-size: 0.8em;
-        font-style: italic;
-        color: $text-mid;
+      @include sub-text;
+      font-size: 0.8em;
     }
 
     &__filter-option {
