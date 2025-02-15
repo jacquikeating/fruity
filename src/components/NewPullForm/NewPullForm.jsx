@@ -32,7 +32,12 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
     ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
     ["Darklit Dragonsong", "Crystalize Time", "P4 Enrage"],
-    ["Fulgent Blade", "Paradise Regained", "Polarizing Strikes", "P5 Enrage"],
+    [
+      "Fulgent Blade",
+      "Wings Dark and Light",
+      "Polarizing Strikes",
+      "P5 Enrage",
+    ],
   ];
 
   const handleCheckboxChange = (position) => {
