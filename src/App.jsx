@@ -7,6 +7,7 @@ import InfoPage from "./pages/InfoPage/InfoPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import MechsPage from "./pages/MechsPage/MechsPage";
 import NotesPage from "./pages/NotesPage/NotesPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import TimelinePage from "./pages/TimelinePage/TimelinePage";
@@ -43,6 +44,7 @@ function App() {
           <Route path="/clips" element={<NotesPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
           <Route path="/account" element={<LoginPage />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
