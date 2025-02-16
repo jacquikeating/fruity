@@ -20,7 +20,7 @@ const MechsPage = () => {
     "Crystallize Time",
     "P4 Enrage",
     "Fulgent Blade",
-    "Paradise Regained",
+    "Wings Dark and Light",
     "Polarizing Strikes",
     "P5 Enrage",
   ];
