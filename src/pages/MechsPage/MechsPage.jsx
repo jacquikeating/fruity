@@ -3,26 +3,16 @@ import "./MechsPage.scss";
 
 const MechsPage = () => {
   const mechsList = [
-    "P1 Opener",
-    "Utopian Sky",
-    "Fall of Faith",
-    "Towers",
-    "P1 Enrage",
-    "Diamond Dust",
-    "Mirrors",
-    "Light Rampant",
-    "P2 Enrage",
-    "Intermission",
-    "Ultimate Relativity",
-    "Apocalypse",
-    "P3 Enrage",
-    "Darklit Dragonsong",
-    "Crystallize Time",
-    "P4 Enrage",
-    "Fulgent Blade",
-    "Wings Dark and Light",
-    "Polarizing Strikes",
-    "P5 Enrage",
+    ["P1 Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
+    ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
+    ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
+    ["Darklit Dragonsong", "Crystallize Time", "P4 Enrage"],
+    [
+      "Fulgent Blade",
+      "Wings Dark and Light",
+      "Polarizing Strikes",
+      "P5 Enrage",
+    ],
   ];
 
   return (
@@ -31,11 +21,18 @@ const MechsPage = () => {
         <h1>Mechanics</h1>
       </section>
       <section>
-        <ul>
-          {mechsList.map((mech) => {
-            return <li key="mech">{mech}</li>;
-          })}
-        </ul>
+        {mechsList.map((phase, index) => {
+          return (
+            <>
+              <h2>Phase {index + 1}</h2>
+              <ul key={index}>
+                {phase.map((mech) => {
+                  return <li key="mech">{mech}</li>;
+                })}
+              </ul>
+            </>
+          );
+        })}
       </section>
     </main>
   );
