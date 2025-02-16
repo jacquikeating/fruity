@@ -1,7 +1,12 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import "./MechsPage.scss";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const MechsPage = () => {
+  const [sessionsList, setSessionsList] = useState([]);
+
   const mechsList = [
     ["P1 Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
     ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
@@ -14,6 +19,19 @@ const MechsPage = () => {
       "P5 Enrage",
     ],
   ];
+
+  useEffect(() => {
+    async function getSessionsList() {
+      try {
+        let result = await axios.get(`${API_URL}/sessions`);
+        setSessionsList(result.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getSessionsList();
+  }, []);
 
   return (
     <main className="mechs-page">
