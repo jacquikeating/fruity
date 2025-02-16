@@ -22,6 +22,7 @@ const MechsPage = () => {
 
   useEffect(() => {
     async function getSessionsList() {
+      let sessions = [];
       try {
         let result = await axios.get(`${API_URL}/sessions`);
         setSessionsList(result.data);
