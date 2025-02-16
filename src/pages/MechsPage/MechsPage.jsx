@@ -25,9 +25,24 @@ const MechsPage = () => {
       let sessions = [];
       try {
         let result = await axios.get(`${API_URL}/sessions`);
-        setSessionsList(result.data);
+        sessions = result.data;
+        setSessionsList(sessions);
       } catch (error) {
         console.error(error);
+      } finally {
+        /*  Find the id of the first session where we reached each phase. 
+            While the id of the first session with each prog_phase would be index + 1, 
+            we would have first reached the phase in the session prior, 
+            so just the index works here.
+        */
+        for (let i = 1; i < 6; i++) {
+          const firstSession = sessions.findIndex(
+            (session) => session.prog_phase === i
+          );
+          console.log(
+            `We first reached phase ${i} in session ${firstSession}.`
+          );
+        }
       }
     }
 
