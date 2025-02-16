@@ -45,7 +45,7 @@ const MechsPage = () => {
               <ul key={index} className="mechs-page__list">
                 {phase.map((mech) => {
                   return (
-                    <li key="mech" className="mechs-page__list-item">
+                    <li key={mech} className="mechs-page__list-item">
                       {mech}
                     </li>
                   );
