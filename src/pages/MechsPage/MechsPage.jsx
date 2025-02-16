@@ -16,18 +16,21 @@ const MechsPage = () => {
   ];
 
   return (
-    <main>
-      <section>
-        <h1>Mechanics</h1>
-      </section>
-      <section>
+    <main className="mechs-page">
+      <section className="mechs-page">
+        <h1 className="mechs-page__heading">Mechanics</h1>
+
         {mechsList.map((phase, index) => {
           return (
             <>
-              <h2>Phase {index + 1}</h2>
-              <ul key={index}>
+              <h2 className="mechs-page__subheading">Phase {index + 1}</h2>
+              <ul key={index} className="mechs-page__list">
                 {phase.map((mech) => {
-                  return <li key="mech">{mech}</li>;
+                  return (
+                    <li key="mech" className="mechs-page__list-item">
+                      {mech}
+                    </li>
+                  );
                 })}
               </ul>
             </>
