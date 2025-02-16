@@ -6,6 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const MechsPage = () => {
   const [sessionsList, setSessionsList] = useState([]);
+  const [test, setTest] = useState([]);
 
   const mechsList = [
     ["P1 Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
@@ -30,6 +31,7 @@ const MechsPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
+        let firstSessionsArr = [];
         /*  Find the id of the first session where we reached each phase. 
             While the id of the first session with each prog_phase would be index + 1, 
             we would have first reached the phase in the session prior, 
@@ -39,10 +41,10 @@ const MechsPage = () => {
           const firstSession = sessions.findIndex(
             (session) => session.prog_phase === i
           );
-          console.log(
-            `We first reached phase ${i} in session ${firstSession}.`
-          );
+
+          firstSessionsArr.push(firstSession);
         }
+        setTest(firstSessionsArr);
       }
     }
 
@@ -55,9 +57,21 @@ const MechsPage = () => {
         <h1 className="mechs-page__heading">Mechanics</h1>
 
         {mechsList.map((phase, index) => {
+          const difference = test[index + 1] - test[index];
+
           return (
-            <>
-              <h2 className="mechs-page__subheading">Phase {index + 1}</h2>
+            <div key={index}>
+              {index === 4 ? (
+                <h2 className="mechs-page__subheading">
+                  Phase {index + 1} (in progress)
+                </h2>
+              ) : (
+                <h2 className="mechs-page__subheading">
+                  Phase {index + 1}: {difference} sessions ({test[index]} to{" "}
+                  {test[index + 1]})
+                </h2>
+              )}
+
               <ul key={index} className="mechs-page__list">
                 {phase.map((mech) => {
                   return (
@@ -67,7 +81,7 @@ const MechsPage = () => {
                   );
                 })}
               </ul>
-            </>
+            </div>
           );
         })}
       </section>
