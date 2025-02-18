@@ -55,7 +55,30 @@ const MechsPage = () => {
       }
     }
 
+    async function getPullsList() {
+      let pulls = [];
+
+      try {
+        let result = await axios.get(`${API_URL}/pulls`);
+        pulls = result.data.sort(
+          (a, b) => a.pull_num_overall - b.pull_num_overall
+        );
+        console.log(pulls);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        concatenatedMechsArray.map((mech) => {
+          let firstPullAtMech = pulls.find((pull) => pull.mech === mech);
+          console.log(firstPullAtMech);
+          if (firstPullAtMech >= 1) {
+            console.log(`First ${mech} pull was pull #${firstPullAtMech}`);
+          }
+        });
+      }
+    }
+
     getSessionsList();
+    getPullsList();
   }, []);
 
   return (
