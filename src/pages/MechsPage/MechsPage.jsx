@@ -9,7 +9,7 @@ const MechsPage = () => {
   const [test, setTest] = useState([]);
 
   const mechsList = [
-    ["P1 Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
+    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
     ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
     ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
     ["Darklit Dragonsong", "Crystallize Time", "P4 Enrage"],
@@ -20,6 +20,13 @@ const MechsPage = () => {
       "P5 Enrage",
     ],
   ];
+
+  const concatenatedMechsArray = mechsList[0].concat(
+    mechsList[1],
+    mechsList[2],
+    mechsList[3],
+    mechsList[4]
+  );
 
   useEffect(() => {
     async function getSessionsList() {
