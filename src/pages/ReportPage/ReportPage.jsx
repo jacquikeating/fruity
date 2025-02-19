@@ -184,25 +184,77 @@ const ReportPage = () => {
   function fillPullNumOverall() {
     let counter = localStorage.getItem("counter");
     console.log(`Counter begins at ${counter}`);
-    const copyOfPullsArray = [...pullsArray];
 
-    copyOfPullsArray.forEach((pull) => {
-      delete pull.bossPercentage;
-      delete pull.combatTime;
-      pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
-    });
+    const pullsToAdd = [
+      {
+        session_id: 5,
+        pull_num_today: 4,
+        pull_num_overall: 173,
+        phase: 1,
+        mech: "Fall of Faith",
+        prog_point_reached: "old",
+        cause: "Failed Burnished Glory heal check",
+        players_responsible: "Ella, Ruv",
+        log_link: "",
+        clip_link: "",
+        notes: "",
+      },
+      {
+        session_id: 21,
+        pull_num_today: 18,
+        pull_num_overall: 0,
+        phase: 1,
+        mech: "Utopian Sky",
+        prog_point_reached: "old",
+        cause: "Hypatia hit by clone lines",
+        players_responsible: "Hypatia",
+        log_link: "",
+        clip_link: "",
+        notes: "",
+      },
+      {
+        session_id: 22,
+        pull_num_today: 12,
+        pull_num_overall: 0,
+        phase: 1,
+        mech: "Fall of Faith",
+        prog_point_reached: "old",
+        cause: "Char sniped melee mirror",
+        players_responsible: "Ruv, Char",
+        log_link: "",
+        clip_link: "",
+        notes: "Ruv P1 protean",
+      },
+    ];
 
-    console.log(copyOfPullsArray);
+    async function addPull(pull) {
+      try {
+        await axios.post(`${API_URL}/pulls/`, pull);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-    setPullsArray(copyOfPullsArray);
-    setPullsToDisplay(copyOfPullsArray);
+    pullsToAdd.forEach((pull) => addPull(pull));
+    // const copyOfPullsArray = [...pullsArray];
 
-    const lastPullNumOverall =
-      copyOfPullsArray[copyOfPullsArray.length - 1].pull_num_overall;
-    localStorage.setItem("counter", lastPullNumOverall);
-    console.log(`Counter is now at ${localStorage.getItem("counter")}`);
+    // copyOfPullsArray.forEach((pull) => {
+    //   delete pull.bossPercentage;
+    //   delete pull.combatTime;
+    //   pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
+    // });
 
-    updateAllPullNums(copyOfPullsArray);
+    // console.log(copyOfPullsArray);
+
+    // setPullsArray(copyOfPullsArray);
+    // setPullsToDisplay(copyOfPullsArray);
+
+    // const lastPullNumOverall =
+    //   copyOfPullsArray[copyOfPullsArray.length - 1].pull_num_overall;
+    // localStorage.setItem("counter", lastPullNumOverall);
+    // console.log(`Counter is now at ${localStorage.getItem("counter")}`);
+
+    // updateAllPullNums(copyOfPullsArray);
   }
 
   function updateAllPullNums(copyOfPullsArray) {
@@ -538,7 +590,7 @@ const ReportPage = () => {
                 breakpoint={breakpoint}
               />
             )}
-            {/* <button onClick={fillPullNumOverall}>x</button> */}
+            <button onClick={fillPullNumOverall}>x</button>
           </section>
         </>
       ) : (
