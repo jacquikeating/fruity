@@ -1,3 +1,6 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
 .mechs-page {
 
     &__subheading {
