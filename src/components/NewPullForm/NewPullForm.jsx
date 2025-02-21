@@ -37,6 +37,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       "Wings Dark and Light",
       "Polarizing Strikes",
       "P5 Enrage",
+      "Clear",
     ],
   ];
 
