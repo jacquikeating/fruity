@@ -5,6 +5,17 @@
     border-top: 1px solid $borders;
     position: relative; 
 
+    &--clear {
+        background-color: $pink;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+
+        button {
+            color: $text-mid;
+        }
+    }
+
     &__cell {
         border-left: 1px solid $borders;
         padding: 0.3rem 0.7rem;

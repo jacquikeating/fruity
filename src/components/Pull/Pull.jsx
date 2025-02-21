@@ -53,7 +53,10 @@ const Pull = ({
   }
 
   return (
-    <tr key={`pull-${index}`} className="pull">
+    <tr
+      key={`pull-${index}`}
+      className={mech === "Clear" ? "pull pull--clear" : "pull"}
+    >
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
         {pullNumType === "today"
           ? pullData.pull_num_today || index + 1
