@@ -94,7 +94,7 @@ const MechsPage = () => {
             <div key={index}>
               {index === 4 ? (
                 <h2 className="mechs-page__subheading">
-                  Phase {index + 1} (in progress)
+                  Phase {index + 1}: 9 sessions (27 to 36)
                 </h2>
               ) : (
                 <h2 className="mechs-page__subheading">
