@@ -49,8 +49,6 @@ const ReportPage = () => {
     let session = null;
     let pulls = null;
     let ffLogs = null;
-    localStorage.setItem("counter", 510);
-    console.log(localStorage.getItem("counter"));
 
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
@@ -540,7 +538,7 @@ const ReportPage = () => {
                 breakpoint={breakpoint}
               />
             )}
-            {/* <button onClick={fillPullNumOverall}>x</button> */}
+            <button onClick={fillPullNumOverall}>x</button>
           </section>
         </>
       ) : (
