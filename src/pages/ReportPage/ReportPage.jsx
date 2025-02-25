@@ -87,7 +87,6 @@ const ReportPage = () => {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         pulls = result.data;
         pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-        console.log(pulls);
       } catch (error) {
         console.error(error);
       } finally {
@@ -206,13 +205,20 @@ const ReportPage = () => {
     updateAllPullNums(copyOfPullsArray);
   }
 
-  // async function fixPull12() {
-  //   try {
-  //     await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  async function fixPullNums() {
+    const pullsToUpdate = pullsArray.slice(-2);
+
+    pullsToUpdate[0].pull_num_today = 13;
+    pullsToUpdate[1].pull_num_today = 14;
+
+    pullsToUpdate.map(async (pull) => {
+      try {
+        await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }
 
   function updateAllPullNums(copyOfPullsArray) {
     copyOfPullsArray.map(async (pull) => {
@@ -547,7 +553,7 @@ const ReportPage = () => {
                 breakpoint={breakpoint}
               />
             )}
-            {/* <button onClick={fillPullNumOverall}>x</button> */}
+            {sessionID == 22 ? <button onClick={fixPullNums}>x</button> : ""}
           </section>
         </>
       ) : (
