@@ -205,21 +205,6 @@ const ReportPage = () => {
     updateAllPullNums(copyOfPullsArray);
   }
 
-  async function fixPullNums() {
-    const pullsToUpdate = pullsArray.slice(-2);
-
-    pullsToUpdate[0].pull_num_today = 13;
-    pullsToUpdate[1].pull_num_today = 14;
-
-    pullsToUpdate.map(async (pull) => {
-      try {
-        await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  }
-
   function updateAllPullNums(copyOfPullsArray) {
     copyOfPullsArray.map(async (pull) => {
       try {
@@ -553,7 +538,7 @@ const ReportPage = () => {
                 breakpoint={breakpoint}
               />
             )}
-            {sessionID == 22 ? <button onClick={fixPullNums}>x</button> : ""}
+            {/* <button onClick={fillPullNumOverall}>x</button> */}
           </section>
         </>
       ) : (
