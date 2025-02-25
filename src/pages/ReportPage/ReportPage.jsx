@@ -87,6 +87,7 @@ const ReportPage = () => {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         pulls = result.data;
         pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
+        console.log(pulls);
       } catch (error) {
         console.error(error);
       } finally {
@@ -204,6 +205,14 @@ const ReportPage = () => {
 
     updateAllPullNums(copyOfPullsArray);
   }
+
+  // async function fixPull12() {
+  //   try {
+  //     await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   function updateAllPullNums(copyOfPullsArray) {
     copyOfPullsArray.map(async (pull) => {
