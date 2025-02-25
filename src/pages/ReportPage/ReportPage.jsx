@@ -538,7 +538,7 @@ const ReportPage = () => {
                 breakpoint={breakpoint}
               />
             )}
-            <button onClick={fillPullNumOverall}>x</button>
+            {/* <button onClick={fillPullNumOverall}>x</button> */}
           </section>
         </>
       ) : (
