@@ -64,16 +64,20 @@ const MechsPage = () => {
         pulls = result.data.sort(
           (a, b) => a.pull_num_overall - b.pull_num_overall
         );
-        console.log(pulls);
+        // console.log(pulls);
       } catch (error) {
         console.error(error);
       } finally {
-        concatenatedMechsArray.map((mech) => {
-          let firstPullAtMech = pulls.find((pull) => pull.mech === mech);
-          console.log(firstPullAtMech);
-          if (firstPullAtMech >= 1) {
-            console.log(`First ${mech} pull was pull #${firstPullAtMech}`);
+        concatenatedMechsArray.map((mechName) => {
+          let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
+          if (firstPullAtMech) {
+            console.log(
+              `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}`
+            );
           }
+          // if (firstPullAtMech.pull_num_overall >= 1) {
+          //   console.log();
+          // }
         });
       }
     }
