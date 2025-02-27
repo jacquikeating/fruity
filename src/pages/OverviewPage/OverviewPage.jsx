@@ -55,14 +55,23 @@ const OverviewPage = () => {
             <p className="overview-page__info">
               Total pulls: {pullsArray.length}
             </p>
-            <p className="overview-page__info">
-              {`Current prog point:
+            {sessionsArray[0].prog_mech === "Reclears" ? (
+              <p className="overview-page__info">
+                Current prog point: Reclears
+              </p>
+            ) : (
+              <>
+                <p className="overview-page__info">
+                  {`Current prog point:
               Phase ${sessionsArray[0]?.prog_phase}, 
               ${sessionsArray[0]?.prog_mech}`}
-            </p>
-            <p className="overview-page__info">
-              Pulls at prog point: {getPullsAtProgPoint()}{" "}
-            </p>
+                </p>
+                <p className="overview-page__info">
+                  Pulls at prog point: {getPullsAtProgPoint()}{" "}
+                </p>
+              </>
+            )}
+
             <PhaseBreakdownTable
               sessionData={sessionsArray[0]}
               pullsArray={pullsArray}
