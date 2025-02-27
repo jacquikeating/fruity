@@ -274,7 +274,11 @@ const ReportPage = () => {
               Session {sessionData.id}
               <span className="report__divider"> • </span>
               {!editMode ? (
-                `Phase ${progPhase} ${progMech} Prog`
+                progMech === "Reclears" && sessionID !== "37" ? (
+                  "Reclears"
+                ) : (
+                  `Phase ${progPhase} ${progMech} Prog`
+                )
               ) : (
                 <>
                   <input
