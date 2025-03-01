@@ -47,7 +47,11 @@ export const findStrugglePhase = (pullsArray) => {
 };
 
 export const findStruggleMech = (pullsArray) => {
-  const tallyObject = pullsArray.reduce((accumulatedObject, thisPull) => {
+  const noClearPulls = pullsArray.filter((pull) => {
+    return pull.mech !== "Clear";
+  });
+
+  const tallyObject = noClearPulls.reduce((accumulatedObject, thisPull) => {
     accumulatedObject[thisPull.mech] =
       (accumulatedObject[thisPull.mech] ?? 0) + 1;
     return accumulatedObject;
