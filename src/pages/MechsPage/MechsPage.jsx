@@ -69,6 +69,10 @@ const MechsPage = () => {
         console.error(error);
       } finally {
         concatenatedMechsArray.map((mechName) => {
+          let filteredPullsArray = pulls.filter((pull) => {
+            return pull.mech === mechName;
+          });
+          console.log(filteredPullsArray);
           let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
           if (firstPullAtMech) {
             console.log(
