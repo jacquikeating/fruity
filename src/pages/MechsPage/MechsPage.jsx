@@ -58,31 +58,32 @@ const MechsPage = () => {
 
     async function getPullsList() {
       let pulls = [];
+      let firstPullForEachMechArray = [];
 
       try {
         let result = await axios.get(`${API_URL}/pulls`);
         pulls = result.data.sort(
           (a, b) => a.pull_num_overall - b.pull_num_overall
         );
-        // console.log(pulls);
       } catch (error) {
         console.error(error);
       } finally {
         concatenatedMechsArray.map((mechName) => {
-          let filteredPullsArray = pulls.filter((pull) => {
-            return pull.mech === mechName;
-          });
-          console.log(filteredPullsArray);
           let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
+          firstPullForEachMechArray.push(firstPullAtMech?.pull_num_overall);
           if (firstPullAtMech) {
             console.log(
               `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}`
             );
+            let filteredPullsArray = pulls.filter((pull) => {
+              return pull.mech === mechName;
+            });
+            console.log(
+              `Total ${mechName} pulls: ${filteredPullsArray.length}`
+            );
           }
-          // if (firstPullAtMech.pull_num_overall >= 1) {
-          //   console.log();
-          // }
         });
+        console.log("All first pulls:", firstPullForEachMechArray);
       }
     }
 
