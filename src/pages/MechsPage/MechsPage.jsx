@@ -88,13 +88,18 @@ const MechsPage = () => {
               firstClearOfMech &&
               index !== concatenatedMechsArray.length - 1
             ) {
+              let pullsToClear = filteredPullsArray.filter(
+                (pull) =>
+                  pull.pull_num_overall < firstClearOfMech.pull_num_overall
+              );
+              console.log(`Pulls to clear ${mechName}: `, pullsToClear);
               console.log(
-                `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}. First clear was pull #${firstClearOfMech.pull_num_overall}. There are a total of ${filteredPullsArray.length} ${mechName} pulls overall.`
+                `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}. First clear was pull #${firstClearOfMech.pull_num_overall}. There are a total of ${filteredPullsArray.length} ${mechName} wipes overall. It took ${pullsToClear.length} pulls to clear ${mechName}.`
               );
             }
           }
         });
-        console.log("All first pulls:", firstPullForEachMechArray);
+        // console.log("All first pulls:", firstPullForEachMechArray);
       }
     }
 
