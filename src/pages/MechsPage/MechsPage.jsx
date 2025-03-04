@@ -68,19 +68,30 @@ const MechsPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        concatenatedMechsArray.map((mechName) => {
+        concatenatedMechsArray.map((mechName, index) => {
           let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
           firstPullForEachMechArray.push(firstPullAtMech?.pull_num_overall);
           if (firstPullAtMech) {
-            console.log(
-              `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}`
-            );
+            // console.log(
+            //   `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}`
+            // );
             let filteredPullsArray = pulls.filter((pull) => {
               return pull.mech === mechName;
             });
-            console.log(
-              `Total ${mechName} pulls: ${filteredPullsArray.length}`
+            // console.log(
+            //   `Total ${mechName} pulls: ${filteredPullsArray.length}`
+            // );
+            let firstClearOfMech = pulls.find(
+              (pull) => pull.mech === concatenatedMechsArray[index + 1]
             );
+            if (
+              firstClearOfMech &&
+              index !== concatenatedMechsArray.length - 1
+            ) {
+              console.log(
+                `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}. First clear was pull #${firstClearOfMech.pull_num_overall}. There are a total of ${filteredPullsArray.length} ${mechName} pulls overall.`
+              );
+            }
           }
         });
         console.log("All first pulls:", firstPullForEachMechArray);
