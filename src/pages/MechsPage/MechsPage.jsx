@@ -92,9 +92,17 @@ const MechsPage = () => {
                 (pull) =>
                   pull.pull_num_overall < firstClearOfMech.pull_num_overall
               );
-              console.log(`Pulls to clear ${mechName}: `, pullsToClear);
+              // console.log(`Pulls to clear ${mechName}: `, pullsToClear);
               console.log(
-                `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}. First clear was pull #${firstClearOfMech.pull_num_overall}. There are a total of ${filteredPullsArray.length} ${mechName} wipes overall. It took ${pullsToClear.length} pulls to clear ${mechName}.`
+                `Our first ${mechName} attempt was pull #${
+                  firstPullAtMech.pull_num_overall
+                }, and our first clear was pull #${
+                  firstClearOfMech.pull_num_overall
+                }.  We cleared on our ${
+                  pullsToClear.length + 1
+                }th attempt. There are a total of ${
+                  filteredPullsArray.length
+                } ${mechName} wipes overall.`
               );
             }
           }
