@@ -84,7 +84,7 @@ const MechsPage = () => {
             let firstClearOfMech = pulls.find(
               (pull) =>
                 pull.mech === concatenatedMechsArray[index + 1] ||
-                concatenatedMechsArray[index + 2]
+                pull.mech === concatenatedMechsArray[index + 2]
             );
             if (
               firstClearOfMech &&
