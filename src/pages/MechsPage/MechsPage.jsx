@@ -8,10 +8,10 @@ const MechsPage = () => {
   const [sessionsList, setSessionsList] = useState([]);
 
   const mechsList = [
-    ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
-    ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
-    ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
-    ["Darklit Dragonsong", "Crystalize Time", "P4 Enrage"],
+    ["Opener", "Utopian Sky", "Fall of Faith", "Towers"],
+    ["Diamond Dust", "Mirrors", "Light Rampant", "Intermission"],
+    ["Ultimate Relativity", "Apocalypse"],
+    ["Darklit Dragonsong", "Crystalize Time"],
     [
       "Fulgent Blade",
       "Wings Dark and Light",
