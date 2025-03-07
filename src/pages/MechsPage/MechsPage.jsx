@@ -6,7 +6,6 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const MechsPage = () => {
   const [sessionsList, setSessionsList] = useState([]);
-  const [test, setTest] = useState([]);
 
   const mechsList = [
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
@@ -35,7 +34,6 @@ const MechsPage = () => {
       try {
         let result = await axios.get(`${API_URL}/sessions`);
         sessions = result.data;
-        setSessionsList(sessions);
       } catch (error) {
         console.error(error);
       } finally {
@@ -52,7 +50,7 @@ const MechsPage = () => {
 
           firstSessionsArr.push(firstSession);
         }
-        setTest(firstSessionsArr);
+        setSessionsList(firstSessionsArr);
       }
     }
 
@@ -123,7 +121,7 @@ const MechsPage = () => {
         <h1 className="mechs-page__heading">Mechanics</h1>
 
         {mechsList.map((phase, index) => {
-          const difference = test[index + 1] - test[index];
+          const difference = sessionsList[index + 1] - sessionsList[index];
 
           return (
             <div key={index}>
@@ -133,8 +131,8 @@ const MechsPage = () => {
                 </h2>
               ) : (
                 <h2 className="mechs-page__subheading">
-                  Phase {index + 1}: {difference} sessions ({test[index]} to{" "}
-                  {test[index + 1]})
+                  Phase {index + 1}: {difference} sessions (
+                  {sessionsList[index]} to {sessionsList[index + 1]})
                 </h2>
               )}
 
