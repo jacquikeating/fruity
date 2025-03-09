@@ -57,6 +57,7 @@ const MechsPage = () => {
     async function getPullsList() {
       let pulls = [];
       let firstPullForEachMechArray = [];
+      let mechsInfo = [];
 
       try {
         let result = await axios.get(`${API_URL}/pulls`);
@@ -93,20 +94,33 @@ const MechsPage = () => {
                   pull.pull_num_overall < firstClearOfMech.pull_num_overall
               );
               // console.log(`Pulls to clear ${mechName}: `, pullsToClear);
-              console.log(
-                `Our first ${mechName} attempt was pull #${
-                  firstPullAtMech.pull_num_overall
-                }, and our first clear was pull #${
-                  firstClearOfMech.pull_num_overall
-                }.  We cleared on our ${
-                  pullsToClear.length + 1
-                }th attempt. There are a total of ${
-                  filteredPullsArray.length
-                } ${mechName} wipes overall.`
-              );
+              // console.log(
+              //   `Our first ${mechName} attempt was pull #${
+              //     firstPullAtMech.pull_num_overall
+              //   }, and our first clear was pull #${
+              //     firstClearOfMech.pull_num_overall
+              //   }.  We cleared on our ${
+              //     pullsToClear.length + 1
+              //   }th attempt. There are a total of ${
+              //     filteredPullsArray.length
+              //   } ${mechName} wipes overall.`
+              // );
+
+              let mechInfo = {
+                name: mechName,
+                firstPull: firstPullAtMech,
+                firstPullNum: firstPullAtMech.pull_num_overall,
+                firstClear: firstClearOfMech,
+                firstClearNum: firstClearOfMech.pull_num_overall,
+                pullsToClear: pullsToClear.length + 1,
+                totalWipes: filteredPullsArray.length,
+              };
+
+              mechsInfo.push(mechInfo);
             }
           }
         });
+        console.log(mechsInfo);
         // console.log("All first pulls:", firstPullForEachMechArray);
       }
     }
