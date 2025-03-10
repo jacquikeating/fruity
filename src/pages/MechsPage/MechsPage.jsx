@@ -71,15 +71,9 @@ const MechsPage = () => {
           let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
           firstPullForEachMechArray.push(firstPullAtMech?.pull_num_overall);
           if (firstPullAtMech) {
-            // console.log(
-            //   `First ${mechName} pull was pull #${firstPullAtMech.pull_num_overall}`
-            // );
             let filteredPullsArray = pulls.filter((pull) => {
               return pull.mech === mechName;
             });
-            // console.log(
-            //   `Total ${mechName} pulls: ${filteredPullsArray.length}`
-            // );
             let firstClearOfMech = pulls.find(
               (pull) =>
                 pull.mech === concatenatedMechsArray[index + 1] ||
@@ -93,19 +87,6 @@ const MechsPage = () => {
                 (pull) =>
                   pull.pull_num_overall < firstClearOfMech.pull_num_overall
               );
-              // console.log(`Pulls to clear ${mechName}: `, pullsToClear);
-              // console.log(
-              //   `Our first ${mechName} attempt was pull #${
-              //     firstPullAtMech.pull_num_overall
-              //   }, and our first clear was pull #${
-              //     firstClearOfMech.pull_num_overall
-              //   }.  We cleared on our ${
-              //     pullsToClear.length + 1
-              //   }th attempt. There are a total of ${
-              //     filteredPullsArray.length
-              //   } ${mechName} wipes overall.`
-              // );
-
               let mechInfo = {
                 name: mechName,
                 firstPull: firstPullAtMech,
@@ -115,13 +96,11 @@ const MechsPage = () => {
                 pullsToClear: pullsToClear.length + 1,
                 totalWipes: filteredPullsArray.length,
               };
-
               mechsInfo.push(mechInfo);
             }
           }
         });
         console.log(mechsInfo);
-        // console.log("All first pulls:", firstPullForEachMechArray);
       }
     }
 
