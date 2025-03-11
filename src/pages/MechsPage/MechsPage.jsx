@@ -101,7 +101,7 @@ const MechsPage = () => {
             }
           }
         });
-        console.log(mechsInfo);
+        setMechsProgInfo(mechsInfo);
       }
     }
 
