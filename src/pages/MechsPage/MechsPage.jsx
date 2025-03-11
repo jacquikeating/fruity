@@ -134,7 +134,7 @@ const MechsPage = () => {
                 {phase.map((mech) => {
                   return (
                     <li key={mech} className="mechs-page__list-item">
-                      {mech}
+                      {mech}: {mechsProgInfo[index]?.pullsToClear} pulls
                     </li>
                   );
                 })}
