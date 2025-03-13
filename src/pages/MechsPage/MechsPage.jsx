@@ -109,6 +109,8 @@ const MechsPage = () => {
     getPullsList();
   }, []);
 
+  let test = 0;
+
   return (
     <main className="mechs-page">
       <section className="mechs-page">
@@ -132,9 +134,10 @@ const MechsPage = () => {
 
               <ul key={index} className="mechs-page__list">
                 {phase.map((mech, index) => {
+                  test = test++;
                   return (
                     <li key={mech} className="mechs-page__list-item">
-                      {mech}: {mechsProgInfo[index]?.pullsToClear} pulls
+                      {mech}: {mechsProgInfo[test - 1]?.pullsToClear} pulls
                     </li>
                   );
                 })}
