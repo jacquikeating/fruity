@@ -135,7 +135,6 @@ const MechsPage = () => {
               <ul key={index} className="mechs-page__list">
                 {phase.map((mech, index) => {
                   test = test++;
-                  console.log(test);
                   return (
                     <li key={mech} className="mechs-page__list-item">
                       {mech}: {mechsProgInfo[test - 1]?.pullsToClear} pulls
