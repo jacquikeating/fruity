@@ -443,28 +443,32 @@ const ReportPage = () => {
                 pullsArray={pullsArray}
               />
               <div className="report__extra-info-right">
-                <div className="report__extra-info">
-                  <span className="report__extra-info--bold">Notes: </span>
-                  <ul className="report__list">
-                    {!editMode ? (
-                      <>
-                        {notes.split(", ").map((note) => {
-                          return (
-                            <li className="report__note" key={note}>
-                              {note}
-                            </li>
-                          );
-                        })}
-                      </>
-                    ) : (
-                      <textarea
-                        value={notes}
-                        onChange={(e) => setNotes(e.target.value)}
-                        className="report__input"
-                      ></textarea>
-                    )}
-                  </ul>
-                </div>
+                {notes.length > 0 ? (
+                  <div className="report__extra-info">
+                    <span className="report__extra-info--bold">Notes: </span>
+                    <ul className="report__list">
+                      {!editMode ? (
+                        <>
+                          {notes.split(", ").map((note) => {
+                            return (
+                              <li className="report__note" key={note}>
+                                {note}
+                              </li>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <textarea
+                          value={notes}
+                          onChange={(e) => setNotes(e.target.value)}
+                          className="report__input"
+                        ></textarea>
+                      )}
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </section>
