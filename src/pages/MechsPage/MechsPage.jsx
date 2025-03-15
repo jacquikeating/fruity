@@ -29,6 +29,8 @@ const MechsPage = () => {
     mechsList[4]
   );
 
+  let mechIndex = 0;
+
   useEffect(() => {
     async function getSessionsList() {
       let sessions = [];
@@ -102,15 +104,12 @@ const MechsPage = () => {
           }
         });
         setMechsProgInfo(mechsInfo);
-        console.log(mechsInfo);
       }
     }
 
     getSessionsList();
     getPullsList();
   }, []);
-
-  let test = 0;
 
   return (
     <main className="mechs-page">
@@ -119,7 +118,6 @@ const MechsPage = () => {
 
         {mechsList.map((phase, index) => {
           const difference = sessionsList[index + 1] - sessionsList[index];
-
           return (
             <div key={index}>
               {index === 4 ? (
@@ -134,15 +132,19 @@ const MechsPage = () => {
               )}
 
               <ul key={index} className="mechs-page__list">
-                {phase.map((mech, index) => {
-                  test++;
-                  console.log(test);
+                {phase.map((mech) => {
+                  mechIndex++; // Cannot use the array's index since the mechs are split into multiple arrays. Incrementing this variable instead.
 
-                  return (
-                    <li key={mech} className="mechs-page__list-item">
-                      {mech}: {mechsProgInfo[test - 1]?.pullsToClear} pulls
-                    </li>
-                  );
+                  if (mech !== "Clear") {
+                    // There's no prog after Clear! It needs to be included in the array to calculate the # of Enrage pulls, but rendering it is pointless.
+
+                    return (
+                      <li key={mech} className="mechs-page__list-item">
+                        {mech}: {mechsProgInfo[mechIndex - 1]?.pullsToClear}{" "}
+                        pulls
+                      </li>
+                    );
+                  }
                 })}
               </ul>
             </div>
