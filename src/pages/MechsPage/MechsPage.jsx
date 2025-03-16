@@ -7,6 +7,8 @@ const API_URL = import.meta.env.VITE_API_URL;
 const MechsPage = () => {
   const [sessionsList, setSessionsList] = useState([]);
   const [mechsProgInfo, setMechsProgInfo] = useState([]);
+  const [mostAttempts, setMostAttempts] = useState({});
+  const [mostWipes, setMostWipes] = useState({});
 
   const mechsList = [
     ["Utopian Sky", "Fall of Faith", "Towers"],
@@ -104,6 +106,17 @@ const MechsPage = () => {
           }
         });
         setMechsProgInfo(mechsInfo);
+
+        const mechsSortedByAttempts = mechsInfo.sort(
+          (a, b) => a.pullsToClear - b.pullsToClear
+        );
+        setMostAttempts(mechsSortedByAttempts[0]);
+
+        const mechsSortedByWipes = mechsInfo.sort(
+          (a, b) => a.totalWipes - b.totalWipes
+        );
+
+        setMostWipes(mechsSortedByWipes[0]);
       }
     }
 
@@ -115,6 +128,18 @@ const MechsPage = () => {
     <main className="mechs-page">
       <section className="mechs-page">
         <h1 className="mechs-page__heading">Mechanics</h1>
+        {mechsProgInfo.length == 14 ? (
+          <p>Cleared on pull {mechsProgInfo[14].firstClearNum} overall</p>
+        ) : (
+          ""
+        )}
+        <p>
+          Most attempts before clear: {mostAttempts.name} with{" "}
+          {mostAttempts.pullsToClear} pulls
+        </p>
+        <p>
+          Most wipes overall: {mostWipes.name} with {mostWipes.totalWipes} wipes
+        </p>
 
         {mechsList.map((phase, index) => {
           const difference = sessionsList[index + 1] - sessionsList[index];
