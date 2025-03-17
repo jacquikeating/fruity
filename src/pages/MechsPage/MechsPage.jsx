@@ -128,7 +128,7 @@ const MechsPage = () => {
     <main className="mechs-page">
       <section className="mechs-page">
         <h1 className="mechs-page__heading">Mechanics</h1>
-        {mechsProgInfo.length == 14 ? (
+        {mechsProgInfo.length == 15 ? (
           <p>Cleared on pull {mechsProgInfo[14].firstClearNum} overall</p>
         ) : (
           ""
