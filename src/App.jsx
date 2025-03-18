@@ -40,7 +40,7 @@ function App() {
           <Route path="/report/:sessionID" element={<ReportPage />} />
           <Route path="/add-data" element={<AddDataPage />} />
           <Route path="/about" element={<InfoPage />} />
-          <Route path="/mechanics" element={<MechsPage />} />
+          <Route path="/prog" element={<MechsPage />} />
           <Route path="/clips" element={<NotesPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
           <Route path="/account" element={<LoginPage />} />
