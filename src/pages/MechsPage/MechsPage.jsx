@@ -107,7 +107,9 @@ const MechsPage = () => {
         });
         setMechsProgInfo(mechsInfo);
 
-        const mechsSortedByAttempts = mechsInfo.sort(
+        const copyOfMechsInfo = mechsInfo;
+
+        const mechsSortedByAttempts = copyOfMechsInfo.sort(
           (a, b) => a.pullsToClear - b.pullsToClear
         );
         setMostAttempts(mechsSortedByAttempts[0]);
