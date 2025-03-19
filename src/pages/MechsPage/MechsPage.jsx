@@ -107,10 +107,10 @@ const MechsPage = () => {
         });
         setMechsProgInfo(mechsInfo);
 
-        // const mechsSortedByAttempts = mechsInfo.sort(
-        //   (a, b) => a.pullsToClear - b.pullsToClear
-        // );
-        // setMostAttempts(mechsSortedByAttempts[0]);
+        const mechsSortedByAttempts = mechsInfo.sort(
+          (a, b) => a.pullsToClear - b.pullsToClear
+        );
+        setMostAttempts(mechsSortedByAttempts[0]);
 
         // const mechsSortedByWipes = mechsInfo.sort(
         //   (a, b) => a.totalWipes - b.totalWipes
@@ -133,11 +133,11 @@ const MechsPage = () => {
         ) : (
           ""
         )}
-        {/* <p>
+        <p>
           Most attempts before clear: {mostAttempts.name} with{" "}
           {mostAttempts.pullsToClear} pulls
         </p>
-        <p>
+        {/* <p>
           Most wipes overall: {mostWipes.name} with {mostWipes.totalWipes} wipes
         </p> */}
 
