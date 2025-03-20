@@ -110,15 +110,15 @@ const MechsPage = () => {
         const copyOfMechsInfo = [...mechsInfo];
 
         const mechsSortedByAttempts = copyOfMechsInfo.sort(
-          (a, b) => a.pullsToClear - b.pullsToClear
+          (a, b) => b.pullsToClear - a.pullsToClear
         );
         setMostAttempts(mechsSortedByAttempts[0]);
 
-        // const mechsSortedByWipes = mechsInfo.sort(
-        //   (a, b) => a.totalWipes - b.totalWipes
-        // );
+        const mechsSortedByWipes = copyOfMechsInfo.sort(
+          (a, b) => b.totalWipes - a.totalWipes
+        );
 
-        // setMostWipes(mechsSortedByWipes[0]);
+        setMostWipes(mechsSortedByWipes[0]);
       }
     }
 
@@ -139,9 +139,9 @@ const MechsPage = () => {
           Most attempts before clear: {mostAttempts.name} with{" "}
           {mostAttempts.pullsToClear} pulls
         </p>
-        {/* <p>
+        <p>
           Most wipes overall: {mostWipes.name} with {mostWipes.totalWipes} wipes
-        </p> */}
+        </p>
 
         {mechsList.map((phase, index) => {
           const difference = sessionsList[index + 1] - sessionsList[index];
