@@ -105,6 +105,7 @@ const MechsPage = () => {
             }
           }
         });
+
         setMechsProgInfo(mechsInfo);
 
         const copyOfMechsInfo = [...mechsInfo];
@@ -131,7 +132,10 @@ const MechsPage = () => {
       <section className="mechs-page">
         <h1 className="mechs-page__heading">Mechanics</h1>
         {mechsProgInfo.length == 15 ? (
-          <p>Cleared on pull {mechsProgInfo[14].firstClearNum} overall</p>
+          <p>
+            Cleared on pull {mechsProgInfo[14].firstClearNum} overall. Total of{" "}
+            {mechsProgInfo[14].totalWipes} clears.
+          </p>
         ) : (
           ""
         )}
