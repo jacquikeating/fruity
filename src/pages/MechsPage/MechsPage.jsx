@@ -108,7 +108,7 @@ const MechsPage = () => {
 
         setMechsProgInfo(mechsInfo);
 
-        console.log(mechsInfo[15]);
+        console.log(mechsInfo);
 
         const copyOfMechsInfo = [...mechsInfo];
 
