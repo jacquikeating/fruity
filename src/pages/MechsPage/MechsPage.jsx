@@ -108,6 +108,8 @@ const MechsPage = () => {
 
         setMechsProgInfo(mechsInfo);
 
+        console.log(mechsInfo[15]);
+
         const copyOfMechsInfo = [...mechsInfo];
 
         const mechsSortedByAttempts = copyOfMechsInfo.sort(
