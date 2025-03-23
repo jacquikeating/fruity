@@ -74,6 +74,7 @@ const MechsPage = () => {
       } finally {
         concatenatedMechsArray.map((mechName, index) => {
           let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
+          console.log(firstPullAtMech);
           firstPullForEachMechArray.push(firstPullAtMech?.pull_num_overall);
           if (firstPullAtMech) {
             let filteredPullsArray = pulls.filter((pull) => {
@@ -85,8 +86,9 @@ const MechsPage = () => {
                 pull.mech === concatenatedMechsArray[index + 2]
             );
             if (
-              firstClearOfMech &&
-              index !== concatenatedMechsArray.length - 1
+              firstClearOfMech
+              // firstClearOfMech &&
+              // index !== concatenatedMechsArray.length - 1
             ) {
               let pullsToClear = filteredPullsArray.filter(
                 (pull) =>
