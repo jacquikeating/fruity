@@ -104,6 +104,14 @@ const MechsPage = () => {
                 totalWipes: filteredPullsArray.length,
               };
               mechsInfo.push(mechInfo);
+            } else if (mechName === "Clear") {
+              let mechInfo = {
+                name: mechName,
+                firstPull: firstPullAtMech,
+                firstPullNum: firstPullAtMech.pull_num_overall,
+                totalClears: filteredPullsArray.length,
+              };
+              mechsInfo.push(mechInfo);
             }
           }
         });
@@ -138,7 +146,7 @@ const MechsPage = () => {
         {mechsProgInfo.length == 15 ? (
           <p>
             Cleared on pull {mechsProgInfo[14].firstClearNum} overall. Total of{" "}
-            {mechsProgInfo[15].totalWipes} clears.
+            {mechsProgInfo[15].totalClears} clears.
           </p>
         ) : (
           ""
