@@ -74,7 +74,6 @@ const MechsPage = () => {
       } finally {
         concatenatedMechsArray.map((mechName, index) => {
           let firstPullAtMech = pulls.find((pull) => pull.mech === mechName);
-          console.log(firstPullAtMech);
           firstPullForEachMechArray.push(firstPullAtMech?.pull_num_overall);
           if (firstPullAtMech) {
             let filteredPullsArray = pulls.filter((pull) => {
@@ -116,8 +115,6 @@ const MechsPage = () => {
         });
 
         setMechsProgInfo(mechsInfo);
-
-        console.log(mechsInfo);
 
         const copyOfMechsInfo = [...mechsInfo];
 
