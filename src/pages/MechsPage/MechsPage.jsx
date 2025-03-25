@@ -86,9 +86,8 @@ const MechsPage = () => {
                 pull.mech === concatenatedMechsArray[index + 2]
             );
             if (
-              firstClearOfMech
-              // firstClearOfMech &&
-              // index !== concatenatedMechsArray.length - 1
+              firstClearOfMech &&
+              index !== concatenatedMechsArray.length - 1
             ) {
               let pullsToClear = filteredPullsArray.filter(
                 (pull) =>
@@ -143,7 +142,7 @@ const MechsPage = () => {
     <main className="mechs-page">
       <section className="mechs-page">
         <h1 className="mechs-page__heading">Mechanics</h1>
-        {mechsProgInfo.length == 15 ? (
+        {mechsProgInfo.length == 16 ? (
           <p>
             Cleared on pull {mechsProgInfo[14].firstClearNum} overall. Total of{" "}
             {mechsProgInfo[15].totalClears} clears.
