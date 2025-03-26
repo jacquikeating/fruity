@@ -113,6 +113,7 @@ const MechsPage = () => {
                 totalClears: filteredPullsArray.length,
               };
               mechsInfo.push(mechInfo);
+              setWipesNum(pulls.length - mechInfo.totalClears);
             }
           }
         });
