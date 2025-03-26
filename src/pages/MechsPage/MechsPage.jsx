@@ -10,6 +10,7 @@ const MechsPage = () => {
   const [mostAttempts, setMostAttempts] = useState({});
   const [mostWipes, setMostWipes] = useState({});
   const [pullsNum, setPullsNum] = useState(0);
+  const [wipesNum, setWipesNum] = useState(0);
 
   const mechsList = [
     ["Utopian Sky", "Fall of Faith", "Towers"],
@@ -155,6 +156,7 @@ const MechsPage = () => {
         </p>
         <p>
           Most wipes overall: {mostWipes.name} with {mostWipes.totalWipes} wipes
+          ({Math.floor(wipesNum / mostWipes.totalWipes)}% of all wipes).
         </p>
 
         {mechsList.map((phase, index) => {
