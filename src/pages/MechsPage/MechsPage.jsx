@@ -9,6 +9,7 @@ const MechsPage = () => {
   const [mechsProgInfo, setMechsProgInfo] = useState([]);
   const [mostAttempts, setMostAttempts] = useState({});
   const [mostWipes, setMostWipes] = useState({});
+  const [pullsNum, setPullsNum] = useState(0);
 
   const mechsList = [
     ["Utopian Sky", "Fall of Faith", "Towers"],
@@ -69,6 +70,7 @@ const MechsPage = () => {
         pulls = result.data.sort(
           (a, b) => a.pull_num_overall - b.pull_num_overall
         );
+        setPullsNum(pulls.length);
       } catch (error) {
         console.error(error);
       } finally {
