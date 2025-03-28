@@ -146,6 +146,7 @@ const MechsPage = () => {
         {mechsProgInfo.length == 16 ? (
           <p>
             Cleared on pull {mechsProgInfo[14].firstClearNum} overall. Total of{" "}
+            {pullsNum} pulls and
             {mechsProgInfo[15].totalClears} clears.
           </p>
         ) : (
