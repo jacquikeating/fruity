@@ -146,15 +146,14 @@ const MechsPage = () => {
         {mechsProgInfo.length == 16 ? (
           <p>
             Cleared on pull {mechsProgInfo[14].firstClearNum} overall. Total of{" "}
-            {pullsNum} pulls and
-            {mechsProgInfo[15].totalClears} clears.
+            {pullsNum} pulls and {mechsProgInfo[15].totalClears} clears.
           </p>
         ) : (
           ""
         )}
         <p>
           Most attempts before clear: {mostAttempts.name} with{" "}
-          {mostAttempts.pullsToClear} pulls
+          {mostAttempts.pullsToClear} pulls.
         </p>
         <p>
           Most wipes overall: {mostWipes.name} with {mostWipes.totalWipes} wipes
