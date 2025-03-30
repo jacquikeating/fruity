@@ -25,6 +25,10 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
+        let clearsArray = data.filter((pull) => {
+          pull.mech === "Clear";
+        });
+        console.log(clearsArray);
         setPullsArray(data);
       } catch (error) {
         console.error(error);
@@ -56,9 +60,12 @@ const OverviewPage = () => {
               Total pulls: {pullsArray.length}
             </p>
             {sessionsArray[0].prog_mech === "Reclears" ? (
-              <p className="overview-page__info">
-                Current prog point: Reclears
-              </p>
+              <>
+                <p className="overview-page__info">Total clears: {}</p>
+                <p className="overview-page__info">
+                  Current prog point: Reclears
+                </p>
+              </>
             ) : (
               <>
                 <p className="overview-page__info">
