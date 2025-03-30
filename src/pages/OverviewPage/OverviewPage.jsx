@@ -25,9 +25,9 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
-        let clearsArray = data.filter((pull) => {
-          pull.mech === "Clear";
-        });
+        // console.log(data);
+        let test = [...data];
+        let clearsArray = test.filter((pull) => pull.mech == "Clear");
         console.log(clearsArray);
         setPullsArray(data);
       } catch (error) {
