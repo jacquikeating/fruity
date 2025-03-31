@@ -9,6 +9,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const OverviewPage = () => {
   const [sessionsArray, setSessionsArray] = useState([]);
   const [pullsArray, setPullsArray] = useState([]);
+  const [clearsNum, setClearsNum] = useState(0);
 
   useEffect(() => {
     async function getSessionsData() {
@@ -25,11 +26,9 @@ const OverviewPage = () => {
       try {
         let result = await axios.get(`${API_URL}/pulls`);
         let data = result.data;
-        // console.log(data);
-        let test = [...data];
-        let clearsArray = test.filter((pull) => pull.mech == "Clear");
-        console.log(clearsArray);
+        let clearsArray = data.filter((pull) => pull.mech == "Clear");
         setPullsArray(data);
+        setClearsNum(clearsArray.length);
       } catch (error) {
         console.error(error);
       }
@@ -61,7 +60,7 @@ const OverviewPage = () => {
             </p>
             {sessionsArray[0].prog_mech === "Reclears" ? (
               <>
-                <p className="overview-page__info">Total clears: {}</p>
+                <p className="overview-page__info">Total clears: {clearsNum}</p>
                 <p className="overview-page__info">
                   Current prog point: Reclears
                 </p>
