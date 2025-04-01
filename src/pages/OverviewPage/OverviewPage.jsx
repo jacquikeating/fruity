@@ -61,9 +61,6 @@ const OverviewPage = () => {
             {sessionsArray[0].prog_mech === "Reclears" ? (
               <>
                 <p className="overview-page__info">Total clears: {clearsNum}</p>
-                <p className="overview-page__info">
-                  Current prog point: Reclears
-                </p>
               </>
             ) : (
               <>
