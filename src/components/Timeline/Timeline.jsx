@@ -1,14 +1,12 @@
 import React from "react";
 import "./Timeline.scss";
 
-const Timeline = () => {
-  const phases = [];
-
+const Timeline = ({ fightTimeline }) => {
   return (
     <div className="timeline">
       <table className="timeline__table">
         <tbody>
-          {phases.map((phase) => {
+          {fightTimeline.map((phase) => {
             return (
               <>
                 <tr className="timeline__header-row">

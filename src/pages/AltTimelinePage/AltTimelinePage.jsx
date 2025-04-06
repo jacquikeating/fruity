@@ -3,7 +3,9 @@ import Timeline from "../../components/Timeline/Timeline.jsx";
 import "./AltTimelinePage.scss";
 
 const AltTimelinePage = () => {
-  return <Timeline />;
+  fightTimeline = [];
+
+  return <Timeline fightTimeline={fightTimeline} />;
 };
 
 export default AltTimelinePage;
