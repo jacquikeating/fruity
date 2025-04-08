@@ -11,13 +11,13 @@ const Timeline = ({ fightTimeline }) => {
               <>
                 <tr className="timeline__header-row">
                   <th className="timeline__header-cell timeline__header-cell--phase">
-                    {/* <h2 className="timeline__subheading">{phase.phaseName}</h2> */}
+                    <h2 className="timeline__subheading">{phase.phaseName}</h2>
                   </th>
                   <th className="timeline__header-cell timeline__header-cell--name"></th>
                   <th className="timeline__header-cell timeline__header-cell--nick"></th>
                 </tr>
 
-                {/* {filterMechs(phase.phaseNum).map((mech) => {
+                {phase.mechanics.map((mech) => {
                   return (
                     <tr className="timeline__row">
                       <td className="timeline__cell timeline__cell--time">
@@ -26,12 +26,12 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="timeline__cell timeline__cell--name">
                         {mech.name}
                       </td>
-                      <td className="timeline__cell timeline__cell--nick">
-                        {mech.nickname}
+                      <td className="timeline__cell timeline__cell--desc">
+                        {mech.desc}
                       </td>
                     </tr>
                   );
-                })} */}
+                })}
               </>
             );
           })}
