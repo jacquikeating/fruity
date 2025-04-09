@@ -3,7 +3,7 @@ import Timeline from "../../components/Timeline/Timeline.jsx";
 import "./AltTimelinePage.scss";
 
 const AltTimelinePage = () => {
-  fightTimeline = [
+  let fightTimeline = [
     {
       phaseName: "Dancing Green",
       phaseNum: 1,
