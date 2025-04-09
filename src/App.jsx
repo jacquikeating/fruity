@@ -11,6 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import TimelinePage from "./pages/TimelinePage/TimelinePage";
+import AltTimelinePage from "./pages/AltTimelinePage/AltTimelinePage";
 import "./styles/index.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -43,6 +44,7 @@ function App() {
           <Route path="/prog" element={<MechsPage />} />
           <Route path="/clips" element={<NotesPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/alt-timeline" element={<AltTimelinePage />} />
           <Route path="/account" element={<LoginPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
