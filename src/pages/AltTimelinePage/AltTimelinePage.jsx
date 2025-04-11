@@ -36,7 +36,11 @@ const AltTimelinePage = () => {
     },
   ];
 
-  return <Timeline fightTimeline={fightTimeline} />;
+  return (
+    <main>
+      <Timeline fightTimeline={fightTimeline} />
+    </main>
+  );
 };
 
 export default AltTimelinePage;
