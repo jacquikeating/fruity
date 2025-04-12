@@ -26,6 +26,9 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="timeline__cell timeline__cell--name">
                         {mech.name}
                       </td>
+                      <td className="timeline__cell timeline__cell--damage">
+                        {mech.damage}
+                      </td>
                       <td className="timeline__cell timeline__cell--desc">
                         {mech.desc}
                       </td>
