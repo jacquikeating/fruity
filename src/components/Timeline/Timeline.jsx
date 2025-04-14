@@ -32,6 +32,9 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="timeline__cell timeline__cell--desc">
                         {mech.desc}
                       </td>
+                      <td className="timeline__cell timeline__cell--mits-heals">
+                        {mech.pre.join(", ")} → {mech.post.join(", ")}
+                      </td>
                     </tr>
                   );
                 })}
