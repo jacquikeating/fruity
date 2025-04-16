@@ -10,11 +10,21 @@ const Timeline = ({ fightTimeline }) => {
             return (
               <>
                 <tr className="timeline__header-row">
-                  <th className="timeline__header-cell timeline__header-cell--phase">
-                    <h2 className="timeline__subheading">{phase.phaseName}</h2>
+                  <th className="timeline__header-cell timeline__header-cell--time">
+                    Time
                   </th>
-                  <th className="timeline__header-cell timeline__header-cell--name"></th>
-                  <th className="timeline__header-cell timeline__header-cell--nick"></th>
+                  <th className="timeline__header-cell timeline__header-cell--name">
+                    Name
+                  </th>
+                  <th className="timeline__header-cell timeline__header-cell--dmg">
+                    Damage
+                  </th>
+                  <th className="timeline__header-cell timeline__header-cell--desc">
+                    Description
+                  </th>
+                  <th className="timeline__header-cell timeline__header-cell--desc">
+                    Mits & Heals
+                  </th>
                 </tr>
 
                 {phase.mechanics.map((mech) => {
