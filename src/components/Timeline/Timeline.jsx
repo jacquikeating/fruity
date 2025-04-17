@@ -3,46 +3,40 @@ import "./Timeline.scss";
 
 const Timeline = ({ fightTimeline }) => {
   return (
-    <div className="timeline">
-      <table className="timeline__table">
+    <div className="tl">
+      <table className="tl__table">
         <tbody>
           {fightTimeline.map((phase) => {
             return (
               <>
-                <tr className="timeline__header-row">
-                  <th className="timeline__header-cell timeline__header-cell--time">
+                <tr className="tl__header-row">
+                  <th className="tl__header-cell tl__header-cell--time">
                     Time
                   </th>
-                  <th className="timeline__header-cell timeline__header-cell--name">
+                  <th className="tl__header-cell tl__header-cell--name">
                     Name
                   </th>
-                  <th className="timeline__header-cell timeline__header-cell--dmg">
+                  <th className="tl__header-cell tl__header-cell--dmg">
                     Damage
                   </th>
-                  <th className="timeline__header-cell timeline__header-cell--desc">
+                  <th className="tl__header-cell tl__header-cell--desc">
                     Description
                   </th>
-                  <th className="timeline__header-cell timeline__header-cell--desc">
+                  <th className="tl__header-cell tl__header-cell--desc">
                     Mits & Heals
                   </th>
                 </tr>
 
                 {phase.mechanics.map((mech) => {
                   return (
-                    <tr className="timeline__row">
-                      <td className="timeline__cell timeline__cell--time">
-                        {mech.time}
-                      </td>
-                      <td className="timeline__cell timeline__cell--name">
-                        {mech.name}
-                      </td>
-                      <td className="timeline__cell timeline__cell--damage">
+                    <tr className="tl__row">
+                      <td className="tl__cell tl__cell--time">{mech.time}</td>
+                      <td className="tl__cell tl__cell--name">{mech.name}</td>
+                      <td className="tl__cell tl__cell--damage">
                         {mech.damage}
                       </td>
-                      <td className="timeline__cell timeline__cell--desc">
-                        {mech.desc}
-                      </td>
-                      <td className="timeline__cell timeline__cell--mits-heals">
+                      <td className="tl__cell tl__cell--desc">{mech.desc}</td>
+                      <td className="tl__cell tl__cell--mits-heals">
                         {mech.pre.join(", ")} → {mech.post.join(", ")}
                       </td>
                     </tr>
