@@ -46,24 +46,24 @@
         background: $bg-light;
         text-align: left;
 
-        &--phase {
-            width: 2rem;
+        &--time {
+            width: 4rem;
         }
 
         &--name {
-            width: 9rem;
+            width: 15rem;
         }
 
-        &--nick {
-            width: 8rem;
+        &--dmg {
+            width: 4rem;
         }
 
-        &--dps-time {
-            width: 3.55rem;
+        &--desc {
+            width: 15rem;
         }
 
-        &--dps-phase {
-            width: 2rem;
+        &--mits-heals {
+            width: 100%;
         }
     }
 

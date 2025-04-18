@@ -16,13 +16,11 @@ const Timeline = ({ fightTimeline }) => {
                   <th className="tl__header-cell tl__header-cell--name">
                     Name
                   </th>
-                  <th className="tl__header-cell tl__header-cell--dmg">
-                    Damage
-                  </th>
+                  <th className="tl__header-cell tl__header-cell--dmg">Dmg</th>
                   <th className="tl__header-cell tl__header-cell--desc">
                     Description
                   </th>
-                  <th className="tl__header-cell tl__header-cell--desc">
+                  <th className="tl__header-cell tl__header-cell--mits-heals">
                     Mits & Heals
                   </th>
                 </tr>
