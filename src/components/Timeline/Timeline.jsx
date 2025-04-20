@@ -4,11 +4,18 @@ import "./Timeline.scss";
 const Timeline = ({ fightTimeline }) => {
   return (
     <div className="tl">
+      <h1 className="tl__title">{fightTimeline.fightName}</h1>
       <table className="tl__table">
         <tbody>
-          {fightTimeline.map((phase) => {
+          {fightTimeline.phases.map((phase) => {
             return (
               <>
+                {phase.phaseName ? (
+                  <h2 className="tl__phase-name">{phase.phaseName}</h2>
+                ) : (
+                  ""
+                )}
+
                 <tr className="tl__header-row">
                   <th className="tl__header-cell tl__header-cell--time">
                     Time
