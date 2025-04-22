@@ -3,39 +3,8 @@
 
 
 .tl {
-
     &__title {
         margin-bottom: 1rem;
-    }
-
-    &__heading {
-        margin-bottom: 0.5em;
-    }
-
-    &__kt-list {
-        margin: 0.5em 0 1.5em 2em;
-    }
-    
-    &__kt-list-item {
-        @include sub-text;
-    }
-
-    &__body {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: start;
-        gap: 5rem 10vw;
-    }
-
-    &__container {
-        margin-top: 1em;
-        border: 1px solid $borders;
-        border-radius: 3px;
-        max-width: 600px;
-
-        &--dps {
-            max-width: 400px;
-        }
     }
 
     &__table {
@@ -72,31 +41,13 @@
         }
     }
 
-    &__row {
-        &--downtime {
-            color: $text-mid;
-            background-color: $bg-light;
-        }
-    }
-
     &__cell {        
         border-left: 1px solid $borders;
         border-bottom: 1px solid $borders;
         padding: 0.3rem 0.7rem;
-        text-align: left;
 
         &--time {
             border-left: none;
         }
-
-        &--nick {
-            font-style: italic;
-            font-size: 0.9em;
-            color: $text-mid;
-        }
-    }
-
-    &__tl-heading {
-        margin-top: 1em;
     }
 }
