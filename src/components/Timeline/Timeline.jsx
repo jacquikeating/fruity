@@ -38,7 +38,7 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="tl__cell tl__cell--time">{mech.time}</td>
                       <td className="tl__cell tl__cell--name">{mech.name}</td>
                       <td className="tl__cell tl__cell--damage">
-                        {mech.damage}
+                        {mech.damage}k
                       </td>
                       <td className="tl__cell tl__cell--desc">{mech.desc}</td>
                       <td className="tl__cell tl__cell--mits-heals">
