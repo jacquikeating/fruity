@@ -5,6 +5,11 @@ const Timeline = ({ fightTimeline }) => {
   return (
     <div className="tl">
       <h1 className="tl__title">{fightTimeline.fightName}</h1>
+      <img
+        className="tl__img"
+        src={fightTimeline.fightImage}
+        alt={`Image of ${fightTimeline.fightName}`}
+      />
       <table className="tl__table">
         <tbody>
           {fightTimeline.phases.map((phase) => {

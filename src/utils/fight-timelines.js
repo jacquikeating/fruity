@@ -1,5 +1,7 @@
 export const m5sTimeline = {
   fightName: "Dancing Green",
+  fightImage:
+    "https://static1.thegamerimages.com/wordpress/wp-content/uploads/wm/2025/03/dancing-green-intro.jpg",
   phases: [
     {
       phaseName: "",
@@ -39,7 +41,7 @@ export const m5sTimeline = {
         },
         {
           name: "Disco Infernal",
-          time: "1:7",
+          time: "1:17",
           damage: 132,
           desc: "raidwide",
           pre: [],
