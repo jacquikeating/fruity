@@ -12,8 +12,34 @@ export const m5sTimeline = {
           time: "0:14",
           damage: 309,
           desc: "double tankbuster",
-          pre: ["ED tanks", "Spire", "Exalt"],
-          post: ["Tauro"],
+          pre: [
+            {
+              job: "SGE",
+              name: "Eukrasian Diagnosis",
+              abbr: "ED",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "Exaltation",
+              abbr: "Exalt",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "The Spire",
+              abbr: "Spire",
+              icon: "",
+            },
+          ],
+          post: [
+            {
+              job: "SGE",
+              name: "Taurochole",
+              abbr: "Tauro",
+              icon: "",
+            },
+          ],
         },
         {
           name: "Play A/B Side",
@@ -21,15 +47,66 @@ export const m5sTimeline = {
           damage: 132,
           desc: "roles/parties",
           pre: [],
-          post: ["Oppo", "Phys"],
+          post: [
+            {
+              job: "SGE",
+              name: "Physis",
+              abbr: "Phys",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "Celestial Opposition",
+              abbr: "Oppo",
+              icon: "",
+            },
+          ],
         },
         {
           name: "Play A/B Side",
           time: "0:58",
           damage: 132,
           desc: "roles/parties",
-          pre: ["Pan", "Kera", "Macro"],
-          post: ["Star", "Lady", "Ixo"],
+          pre: [
+            {
+              job: "SGE",
+              name: "Panhaima",
+              abbr: "Pan",
+              icon: "",
+            },
+            {
+              job: "SGE",
+              name: "Kerachole",
+              abbr: "Kera",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "Macrocosmos",
+              abbr: "Macro",
+              icon: "",
+            },
+          ],
+          post: [
+            {
+              job: "SGE",
+              name: "Ixochole",
+              abbr: "Ixo",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "Earthly Star",
+              abbr: "Star",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "Lady of Crowns",
+              abbr: "lady",
+              icon: "",
+            },
+          ],
         },
         {
           name: "Celebrate Good Times",
@@ -37,7 +114,20 @@ export const m5sTimeline = {
           damage: 181,
           desc: "raidwide",
           pre: [],
-          post: ["Micro", "Horo"],
+          post: [
+            {
+              job: "AST",
+              name: "Horoscope",
+              abbr: "Horo",
+              icon: "",
+            },
+            {
+              job: "AST",
+              name: "Microcosmos",
+              abbr: "Micro",
+              icon: "",
+            },
+          ],
         },
         {
           name: "Disco Infernal",
@@ -45,7 +135,7 @@ export const m5sTimeline = {
           damage: 132,
           desc: "raidwide",
           pre: [],
-          post: ["Micro", "Horo"],
+          post: [],
         },
       ],
     },
