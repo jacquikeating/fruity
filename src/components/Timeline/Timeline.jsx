@@ -47,7 +47,22 @@ const Timeline = ({ fightTimeline }) => {
                       </td>
                       <td className="tl__cell tl__cell--desc">{mech.desc}</td>
                       <td className="tl__cell tl__cell--mits-heals">
-                        {mech.pre.join(", ")} → {mech.post.join(", ")}
+                        {/* {mech.pre.join(", ")} → {mech.post.join(", ")} */}
+                        {mech.pre.map((action, index) => {
+                          if (index != 0) {
+                            return <span>, {action.abbr}</span>;
+                          } else {
+                            return <span>{action.abbr}</span>;
+                          }
+                        })}{" "}
+                        →{" "}
+                        {mech.post.map((action, index) => {
+                          if (index != 0) {
+                            return <span>, {action.abbr}</span>;
+                          } else {
+                            return <span>{action.abbr}</span>;
+                          }
+                        })}
                       </td>
                     </tr>
                   );
