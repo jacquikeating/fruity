@@ -49,6 +49,11 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="tl__cell tl__cell--mits-heals">
                         {mech.pre.map((action, index) => {
                           if (index != 0) {
+                            if (action.icon) {
+                              return (
+                                <img src={action.icon} alt={action.name} />
+                              );
+                            }
                             return <span>, {action.abbr}</span>;
                           } else {
                             return <span>{action.abbr}</span>;
