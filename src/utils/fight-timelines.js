@@ -78,7 +78,7 @@ export const m5sTimeline = {
               job: "SGE",
               name: "Kerachole",
               abbr: "Kera",
-              icon: "src/assets/Kerachole.png",
+              icon: "public/Kerachole.png",
             },
             {
               job: "AST",
