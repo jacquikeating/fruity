@@ -49,7 +49,13 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="tl__cell tl__cell--mits-heals">
                         {mech.pre.map((action, index) => {
                           if (action.icon) {
-                            return <img src={action.icon} alt={action.name} />;
+                            return (
+                              <img
+                                src={action.icon}
+                                alt={action.name}
+                                className="tl__action-icon"
+                              />
+                            );
                           } else if (index != 0) {
                             return <span>, {action.abbr}</span>;
                           } else {
@@ -59,7 +65,13 @@ const Timeline = ({ fightTimeline }) => {
                         →{" "}
                         {mech.post.map((action, index) => {
                           if (action.icon) {
-                            return <img src={action.icon} alt={action.name} />;
+                            return (
+                              <img
+                                src={action.icon}
+                                alt={action.name}
+                                className="tl__action-icon"
+                              />
+                            );
                           } else if (index != 0) {
                             return <span>, {action.abbr}</span>;
                           } else {
