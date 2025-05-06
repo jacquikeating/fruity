@@ -73,7 +73,7 @@ export const actionsArray = [
     job: "AST",
     name: "Horoscope (Place)",
     abbr: "Horo (Place)",
-    icon: "/actions/Horosocope_1.png",
+    icon: "/actions/Horoscope_1.png",
     cd: 60,
   },
   {
