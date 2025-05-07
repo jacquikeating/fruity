@@ -55,5 +55,16 @@
         &--time {
             border-left: none;
         }
+
+        &--mits-heals {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+    }
+
+    &__action-icon {
+        max-width: 36px;
+        max-height: 36px;
     }
 }
