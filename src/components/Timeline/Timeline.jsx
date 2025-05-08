@@ -1,7 +1,9 @@
-import React from "react";
+import { React, useState } from "react";
 import "./Timeline.scss";
 
 const Timeline = ({ fightTimeline }) => {
+  const [displayIcons, setDisplayIcons] = useState(true);
+
   return (
     <div className="tl">
       <h1 className="tl__title">{fightTimeline.fightName}</h1>
