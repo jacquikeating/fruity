@@ -50,7 +50,7 @@ const Timeline = ({ fightTimeline }) => {
                       <td className="tl__cell tl__cell--desc">{mech.desc}</td>
                       <td className="tl__cell tl__cell--mits-heals">
                         {mech.pre.map((action, index) => {
-                          if (action.icon) {
+                          if (displayIcons && action.icon) {
                             return (
                               <img
                                 src={action.icon}
@@ -66,7 +66,7 @@ const Timeline = ({ fightTimeline }) => {
                         })}{" "}
                         →{" "}
                         {mech.post.map((action, index) => {
-                          if (action.icon) {
+                          if (displayIcons && action.icon) {
                             return (
                               <img
                                 src={action.icon}
