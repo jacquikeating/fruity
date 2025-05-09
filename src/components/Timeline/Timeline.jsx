@@ -63,8 +63,8 @@ const Timeline = ({ fightTimeline }) => {
                           } else {
                             return <span>{action.abbr}</span>;
                           }
-                        })}{" "}
-                        →{" "}
+                        })}
+                        <span className="tl__arrow"> → </span>
                         {mech.post.map((action, index) => {
                           if (displayIcons && action.icon) {
                             return (
