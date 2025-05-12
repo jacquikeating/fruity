@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Timeline.scss";
 
 const Timeline = ({ fightTimeline }) => {
@@ -89,6 +90,8 @@ const Timeline = ({ fightTimeline }) => {
           })}
         </tbody>
       </table>
+
+      <ToggleSwitch />
     </div>
   );
 };
