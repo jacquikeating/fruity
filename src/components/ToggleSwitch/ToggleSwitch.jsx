@@ -1,23 +1,28 @@
-import React, { Component } from "react";
+import { React, useState } from "react";
 import Switch from "react-switch";
 import "./ToggleSwitch.scss";
 
-class SwitchExample extends Component {
-  constructor() {
-    super();
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
-}
-function handleChange(checked) {
-  this.setState({ checked });
-}
 const ToggleSwitch = () => {
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (nextChecked) => {
+    setChecked(nextChecked);
+  };
+
   return (
-    <label>
-      <span>Switch with default style</span>
-      <Switch onChange={this.handleChange} checked={this.state.checked} />
-    </label>
+    <div className="example">
+      <label>
+        <span>Switch with default style</span>
+        <Switch
+          onChange={handleChange}
+          checked={checked}
+          className="react-switch"
+        />
+      </label>
+      <p>
+        The switch is <span>{checked ? "on" : "off"}</span>.
+      </p>
+    </div>
   );
 };
 
