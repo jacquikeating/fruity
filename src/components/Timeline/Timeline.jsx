@@ -5,6 +5,14 @@ import "./Timeline.scss";
 const Timeline = ({ fightTimeline }) => {
   const [displayIcons, setDisplayIcons] = useState(true);
 
+  function toggleIcons() {
+    if (displayIcons) {
+      setDisplayIcons(false);
+    } else {
+      setDisplayIcons(true);
+    }
+  }
+
   return (
     <div className="tl">
       <h1 className="tl__title">{fightTimeline.fightName}</h1>
@@ -91,7 +99,11 @@ const Timeline = ({ fightTimeline }) => {
         </tbody>
       </table>
 
-      <ToggleSwitch />
+      <ToggleSwitch
+        stateToToggle={displayIcons}
+        toggleFunction={toggleIcons}
+        labelText={"Action icons"}
+      />
     </div>
   );
 };

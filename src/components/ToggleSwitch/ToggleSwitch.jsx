@@ -2,26 +2,13 @@ import { React, useState } from "react";
 import Switch from "react-switch";
 import "./ToggleSwitch.scss";
 
-const ToggleSwitch = () => {
-  const [checked, setChecked] = useState(true);
-
-  const handleChange = (nextChecked) => {
-    setChecked(nextChecked);
-  };
-
+const ToggleSwitch = ({ stateToToggle, toggleFunction, labelText }) => {
   return (
-    <div className="example">
+    <div>
       <label>
-        <span>Switch with default style</span>
-        <Switch
-          onChange={handleChange}
-          checked={checked}
-          className="react-switch"
-        />
+        <span>{labelText}</span>
+        <Switch checked={stateToToggle} onChange={toggleFunction} />
       </label>
-      <p>
-        The switch is <span>{checked ? "on" : "off"}</span>.
-      </p>
     </div>
   );
 };
