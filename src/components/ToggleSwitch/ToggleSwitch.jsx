@@ -4,10 +4,14 @@ import "./ToggleSwitch.scss";
 
 const ToggleSwitch = ({ stateToToggle, toggleFunction, labelText }) => {
   return (
-    <div>
-      <label>
-        <span>{labelText}</span>
-        <Switch checked={stateToToggle} onChange={toggleFunction} />
+    <div className="toggle-switch">
+      <label className="toggle-switch__label">
+        <span className="toggle-switch__label-text">{labelText}</span>
+        <Switch
+          checked={stateToToggle}
+          onChange={toggleFunction}
+          className="toggle-switch__switch"
+        />
       </label>
     </div>
   );
