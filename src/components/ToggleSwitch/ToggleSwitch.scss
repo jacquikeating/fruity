@@ -1,0 +1,17 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.toggle-switch {
+    margin: 1rem 0;
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__label-text {
+        font-size: 0.9rem;
+    }
+
+}
