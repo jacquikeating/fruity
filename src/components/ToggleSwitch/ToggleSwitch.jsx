@@ -10,7 +10,12 @@ const ToggleSwitch = ({ stateToToggle, toggleFunction, labelText }) => {
         <Switch
           checked={stateToToggle}
           onChange={toggleFunction}
-          className="toggle-switch__switch"
+          onColor="#57AA50"
+          offColor="#797977"
+          height={24}
+          width={50}
+          handleDiameter={22}
+          activeBoxShadow="0 0 2px 3px #4775D1"
         />
       </label>
     </div>
