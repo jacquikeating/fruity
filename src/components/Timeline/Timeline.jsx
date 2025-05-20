@@ -15,7 +15,7 @@ const Timeline = ({ fightTimeline }) => {
 
   return (
     <div className="tl">
-      <h1 className="tl__title">{fightTimeline.fightName}</h1>
+      <h2 className="tl__title">{fightTimeline.fightName}</h2>
       <img
         className="tl__img"
         src={fightTimeline.fightImage}
@@ -27,7 +27,7 @@ const Timeline = ({ fightTimeline }) => {
             return (
               <>
                 {phase.phaseName ? (
-                  <h2 className="tl__phase-name">{phase.phaseName}</h2>
+                  <h3 className="tl__phase-name">{phase.phaseName}</h3>
                 ) : (
                   ""
                 )}
