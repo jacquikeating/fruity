@@ -6,6 +6,7 @@ import "./AltTimelinePage.scss";
 const AltTimelinePage = () => {
   return (
     <main>
+      <h1>Timelines</h1>
       <Timeline fightTimeline={m5sTimeline} />
     </main>
   );
