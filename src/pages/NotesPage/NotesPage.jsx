@@ -1,14 +1,12 @@
-import { useRef, useState } from "react";
+// import { useState } from "react";
 // import { TwitchPlayer } from "react-twitch-embed";
 import Accordion from "../../components/Accordion/Accordion";
 import { DDClipsArray, CTClipsArray } from "./notes-data";
 import "./NotesPage.scss";
 
 const NotesPage = () => {
-  const [showDD, setShowDD] = useState(false);
-  const [showCT, setShowCT] = useState(false);
-  const [videoURL, setVideoURL] = useState(null);
-  const [timestamp, setTimestamp] = useState("0h0m0s");
+  // const [videoURL, setVideoURL] = useState(null);
+  // const [timestamp, setTimestamp] = useState("0h0m0s");
   const accordionItemsData = [
     {
       accordionItemTitle: "Darklit Dragonsong",
