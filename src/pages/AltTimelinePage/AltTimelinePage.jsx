@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "../../components/Accordion/Accordion";
-import Timeline from "../../components/Timeline/Timeline.jsx";
+// import Timeline from "../../components/Timeline/Timeline.jsx";
 import { m5sTimeline } from "../../utils/fight-timelines.js";
 import "./AltTimelinePage.scss";
 
@@ -20,7 +20,7 @@ const AltTimelinePage = () => {
         context={"timelines"}
       />
 
-      <Timeline fightTimeline={m5sTimeline} />
+      {/* <Timeline fightTimeline={m5sTimeline} /> */}
     </main>
   );
 };
