@@ -1,8 +1,9 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Timeline.scss";
 
-const Timeline = ({ fightTimeline }) => {
+const Timeline = ({ fightTimeline, active }) => {
+  const contentEl = useRef();
   const [displayIcons, setDisplayIcons] = useState(true);
 
   function toggleIcons() {
@@ -14,7 +15,13 @@ const Timeline = ({ fightTimeline }) => {
   }
 
   return (
-    <div className="tl">
+    <div
+      className={active ? "tl tl--active" : "tl"}
+      ref={contentEl}
+      style={
+        active ? { height: contentEl.current.scrollHeight } : { height: "0px" }
+      }
+    >
       <h2 className="tl__title">{fightTimeline.fightName}</h2>
       <img
         className="tl__img"

@@ -3,6 +3,10 @@
 
 
 .tl {
+    height: 0;
+    overflow: hidden;
+    transition: all ease 0.5s;
+    
     &__title {
         margin-bottom: 1rem;
     }
