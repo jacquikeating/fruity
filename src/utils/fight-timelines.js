@@ -163,3 +163,251 @@ export const m5sTimeline = {
     },
   ],
 };
+
+export const m6sTimeline = {
+  fightName: "Sugar Riot",
+  fightImage:
+    "https://static1.thegamerimages.com/wordpress/wp-content/uploads/wm/2025/03/sugar-riot-intro.jpg",
+  phases: [
+    {
+      phaseName: "Opener",
+      phaseNum: 1,
+      mechanics: [
+        {
+          name: "Mousse Mural",
+          time: "0:11",
+          damage: 0,
+          desc: "raidwide",
+          pre: [],
+          post: [],
+        },
+        {
+          name: "Color Riot",
+          time: "0:22",
+          damage: 0,
+          desc: "double tankbuster",
+          pre: [
+            {
+              job: "WAR",
+              name: "Holmgang",
+              abbr: "Holm",
+              icon: "/actions/Holmgang.png",
+              cd: 240,
+            },
+            {
+              job: "WAR",
+              name: "Thrill of Battle",
+              abbr: "Thrill",
+              icon: "/actions/Thrill_of_Battle.png",
+              cd: 90,
+            },
+          ],
+          post: [
+            {
+              job: "WAR",
+              name: "Equilibrium",
+              abbr: "Eq",
+              icon: "/actions/Equilibrium.png",
+              cd: 60,
+            },
+          ],
+        },
+        {
+          name: "Color Clash",
+          time: "1:02",
+          damage: 0,
+          desc: "pairs/lps",
+          pre: [],
+          post: [
+            {
+              job: "WAR",
+              name: "Shake It Off",
+              abbr: "Shake",
+              icon: "/actions/Shake_It_Off.png",
+              cd: 90,
+            },
+          ],
+        },
+        {
+          name: "Sticky Mousse",
+          time: "1:10",
+          damage: 0,
+          desc: "AoEs on 2 people",
+          pre: [
+            {
+              job: "WAR",
+              name: "Reprisal",
+              abbr: "Rep",
+              icon: "/actions/Reprisal.png",
+              cd: 60,
+            },
+          ],
+          post: [],
+        },
+        {
+          name: "Sticky Mousse",
+          time: "1:16",
+          damage: 0,
+          desc: "lp stacks",
+          pre: [],
+          post: [],
+        },
+        {
+          name: "Color Riot",
+          time: "1:22",
+          damage: 0,
+          desc: "double tankbuster",
+          pre: [
+            {
+              job: "WAR",
+              name: "Damnation",
+              abbr: "Damn",
+              icon: "/actions/Damnation.png",
+              cd: 120,
+            },
+            {
+              job: "WAR",
+              name: "Bloodwhetting",
+              abbr: "BW",
+              icon: "/actions/Bloodwhetting.png",
+              cd: 25,
+            },
+          ],
+          post: [],
+        },
+      ],
+    },
+
+    // DESERT PHASE
+
+    {
+      phaseName: "Desert",
+      phaseNum: 2,
+      mechanics: [
+        {
+          name: "",
+          time: "0:00",
+          damage: 0,
+          desc: "",
+          pre: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 0,
+            },
+          ],
+          post: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 45,
+            },
+          ],
+        },
+      ],
+    },
+
+    // ADDS PHASE
+
+    {
+      phaseName: "Adds",
+      phaseNum: 3,
+      mechanics: [
+        {
+          name: "",
+          time: "0:00",
+          damage: 0,
+          desc: "",
+          pre: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 0,
+            },
+          ],
+          post: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 45,
+            },
+          ],
+        },
+      ],
+    },
+
+    // RIVER PHASE
+
+    {
+      phaseName: "River",
+      phaseNum: 4,
+      mechanics: [
+        {
+          name: "",
+          time: "0:00",
+          damage: 0,
+          desc: "",
+          pre: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 0,
+            },
+          ],
+          post: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 45,
+            },
+          ],
+        },
+      ],
+    },
+
+    // LAVA PHASE
+
+    {
+      phaseName: "Lava",
+      phaseNum: 5,
+      mechanics: [
+        {
+          name: "",
+          time: "0:00",
+          damage: 0,
+          desc: "",
+          pre: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 0,
+            },
+          ],
+          post: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 45,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
