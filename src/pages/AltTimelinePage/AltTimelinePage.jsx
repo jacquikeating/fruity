@@ -1,7 +1,7 @@
 import React from "react";
 import Accordion from "../../components/Accordion/Accordion";
 // import Timeline from "../../components/Timeline/Timeline.jsx";
-import { m5sTimeline } from "../../utils/fight-timelines.js";
+import { m5sTimeline, m6sTimeline } from "../../utils/fight-timelines.js";
 import "./AltTimelinePage.scss";
 
 const AltTimelinePage = () => {
@@ -9,6 +9,10 @@ const AltTimelinePage = () => {
     {
       accordionItemTitle: "(M5S) Dancing Green",
       content: m5sTimeline,
+    },
+    {
+      accordionItemTitle: "(M6S) Sugar Riot",
+      content: m6sTimeline,
     },
   ];
 
