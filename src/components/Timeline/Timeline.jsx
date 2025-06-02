@@ -83,7 +83,7 @@ const Timeline = ({ fightTimeline, active }) => {
                         {mech.pre.length > 0 && mech.post.length > 0 ? (
                           <span className="tl__arrow"> → </span>
                         ) : (
-                          <span className="tl__arrow"> </span>
+                          ""
                         )}
 
                         {mech.post.map((action, index) => {
