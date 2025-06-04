@@ -22,7 +22,6 @@ const Timeline = ({ fightTimeline, active }) => {
         active ? { height: contentEl.current.scrollHeight } : { height: "0px" }
       }
     >
-      <h2 className="tl__title">{fightTimeline.fightName}</h2>
       <img
         className="tl__img"
         src={fightTimeline.fightImage}
