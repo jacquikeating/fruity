@@ -8,10 +8,12 @@ const AltTimelinePage = () => {
   const accordionItemsData = [
     {
       accordionItemTitle: "(M5S) Dancing Green",
+      accordionItemThumbnail: m5sTimeline.fightImage,
       content: m5sTimeline,
     },
     {
       accordionItemTitle: "(M6S) Sugar Riot",
+      accordionItemThumbnail: m6sTimeline.fightImage,
       content: m6sTimeline,
     },
   ];
