@@ -22,11 +22,14 @@ const AccordionItem = ({ data, context, onToggle, active }) => {
     return (
       <li className="accordion-item">
         <button className="accordion-item__header" onClick={onToggle}>
-          <img
-            className="accordion-item__thumbnail"
-            src={data.accordionItemThumbnail}
-          />
-          {data.accordionItemTitle}
+          <div className="accordion-item__title-container">
+            <img
+              className="accordion-item__thumbnail"
+              src={data.accordionItemThumbnail}
+            />
+            {data.accordionItemTitle}
+          </div>
+
           {active ? (
             <i className="fa-solid fa-caret-down accordion-item__control accordion-item__control--active"></i>
           ) : (
