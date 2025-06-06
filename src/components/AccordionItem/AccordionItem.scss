@@ -28,4 +28,17 @@
             transform: rotate(180deg)
         }
     }
+
+    &__title-container {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    &__thumbnail {
+        height: 40px;
+        width: 60px;
+        object-fit: cover;
+        border-radius: 3px;
+    }
 }
