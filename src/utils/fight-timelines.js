@@ -290,7 +290,7 @@ export const m5sTimeline = {
         {
           name: "Hi-NRG Fever",
           time: "10:07",
-          damage: 999999,
+          damage: 9999,
           desc: "enrage",
           pre: [],
           post: [],
