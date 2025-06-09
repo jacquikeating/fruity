@@ -516,8 +516,84 @@ export const m6sTimeline = {
     // LAVA PHASE
 
     {
-      phaseName: "Lava",
-      phaseNum: 5,
+      phaseName: "",
+      phaseNum: 1,
+      mechanics: [
+        {
+          name: "",
+          time: "0:00",
+          damage: 0,
+          desc: "",
+          pre: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 0,
+            },
+          ],
+          post: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 45,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const m7sTimeline = {
+  fightName: "Brute Abominator",
+  fightImage:
+    "https://static1.thegamerimages.com/wordpress/wp-content/uploads/wm/2025/03/twisted-vengeance-brute-abombinator.jpg",
+  phases: [
+    {
+      phaseName: "",
+      phaseNum: 1,
+      mechanics: [
+        {
+          name: "",
+          time: "0:00",
+          damage: 0,
+          desc: "",
+          pre: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 0,
+            },
+          ],
+          post: [
+            {
+              job: "",
+              name: "",
+              abbr: "",
+              icon: "/actions/.png",
+              cd: 45,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const m8sTimeline = {
+  fightName: "Howling Blade",
+  fightImage:
+    "https://static1.thegamerimages.com/wordpress/wp-content/uploads/wm/2025/03/lone-wolf-howling-blade.jpg",
+  phases: [
+    {
+      phaseName: "",
+      phaseNum: 1,
       mechanics: [
         {
           name: "",
