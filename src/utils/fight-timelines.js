@@ -546,10 +546,567 @@ export const m8sTimeline = {
     "https://static1.thegamerimages.com/wordpress/wp-content/uploads/wm/2025/03/lone-wolf-howling-blade.jpg",
   mechanics: [
     {
-      name: "",
-      time: "0:00",
+      name: "Extraplanar Pursuit",
+      time: "0:14",
+      damage: 185,
+      desc: "raidwide",
+      pre: [
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+        {
+          job: "SGE",
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
+        },
+      ],
+      post: [
+        {
+          job: "SGE",
+          name: "Ixochole",
+          abbr: "Ixo",
+          icon: "/actions/Ixochole.png",
+          cd: 30,
+        },
+      ],
+    },
+    {
+      name: "Wind/Stonefang",
+      time: "0:29",
+      damage: 192,
+      desc: "in buddies/out spread",
+      pre: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
+        },
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+      ],
+    },
+    {
+      name: "Eminent/Revolutionary Reign",
+      time: "0:47",
+      damage: 182,
+      desc: "dash + in/out + cones",
+      pre: [
+        {
+          job: "SGE",
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
+        },
+      ],
+      post: [
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+      ],
+    },
+    {
+      name: "Extraplanar Pursuit",
+      time: "0:53",
+      damage: 185,
+      desc: "raidwide",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Millennial Decay",
+      time: "1:06",
+      damage: 180,
+      desc: "raidwide (start of mech)",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Aero III",
+      time: "1:17",
+      damage: 60,
+      desc: "knockback",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Gust",
+      time: "1:19, 1:24",
+      damage: 105,
+      desc: "spreads",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Aero III",
+      time: "1:33",
+      damage: 60,
+      desc: "knockback",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Prowling Gale/Winds of Decay",
+      time: "1:35",
+      damage: 76,
+      desc: "tethers/towers",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Tracking Tremors",
+      time: "1:41",
+      damage: 880,
+      desc: "110k raidwide x 8 hits",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Extraplanar Pursuit",
+      time: "1:55",
+      damage: 185,
+      desc: "raidwide",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Great Divide",
+      time: "2:04",
       damage: 0,
-      desc: "",
+      desc: "tankbuster",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Titanic Pursuit",
+      time: "2:26",
+      damage: 69,
+      desc: "slashes towers",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Eminent/Revolutionary Reign",
+      time: "2:47",
+      damage: 182,
+      desc: "dash + in/out + cones",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Howling Havoc",
+      time: "3:08",
+      damage: 115,
+      desc: "add phase begins",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Pack Predation",
+      time: "3:10",
+      damage: 170,
+      desc: "line AoE + tankbusters",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Pack Predation",
+      time: "3:33",
+      damage: 170,
+      desc: "line AoE + tankbusters",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Pack Predation",
+      time: "3:47",
+      damage: 170,
+      desc: "line AoE + tankbusters",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Ravenous Saber",
+      time: "4:15",
+      damage: 0,
+      desc: "post-adds multi-hit",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Heavensearth & Sus. Stone",
+      time: "4:49",
+      damage: 107,
+      desc: "stack + 4 spreads",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Heavensearth & Sus. Stone",
+      time: "4:56",
+      damage: 107,
+      desc: "stack + 4 spreads",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Eminent/Revolutionary Reign",
+      time: "5:13",
+      damage: 182,
+      desc: "dash + in/out + cones",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Great Divide",
+      time: "5:26",
+      damage: 0,
+      desc: "tankbuster",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Heavensearth & Sus. Stone",
+      time: "5:53",
+      damage: 107,
+      desc: "stack + 4 spreads",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Heavensearth & Sus. Stone",
+      time: "6:01",
+      damage: 107,
+      desc: "stack + 4 spreads",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Wind/Stonefang",
+      time: "0:29",
+      damage: 192,
+      desc: "in buddies/out spread",
+      pre: [],
+      post: [],
+    },
+    {
+      name: "Tracking Tremors",
+      time: "6:17",
+      damage: 880,
+      desc: "110k raidwide x 8 hits",
+      pre: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 0,
+        },
+      ],
+      post: [
+        {
+          job: "",
+          name: "",
+          abbr: "",
+          icon: "/actions/.png",
+          cd: 45,
+        },
+      ],
+    },
+    {
+      name: "Extraplanar Pursuit",
+      time: "0:14",
+      damage: 185,
+      desc: "raidwide",
+      pre: [
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+        {
+          job: "SGE",
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
+        },
+      ],
+      post: [
+        {
+          job: "SGE",
+          name: "Ixochole",
+          abbr: "Ixo",
+          icon: "/actions/Ixochole.png",
+          cd: 30,
+        },
+      ],
+    },
+    {
+      name: "Howling Blade",
+      time: "6:48",
+      damage: 0,
+      desc: "transition",
       pre: [
         {
           job: "",
