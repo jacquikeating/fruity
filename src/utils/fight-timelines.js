@@ -844,15 +844,7 @@ export const m8sTimeline = {
       time: "3:08",
       damage: 115,
       desc: "add phase begins",
-      pre: [
-        {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 0,
-        },
-      ],
+      pre: [],
       post: [
         {
           job: "SGE",
@@ -1029,7 +1021,7 @@ export const m8sTimeline = {
     },
     {
       name: "Wind/Stonefang",
-      time: "0:29",
+      time: "6:11",
       damage: 192,
       desc: "in buddies/out spread",
       pre: [],
@@ -1040,30 +1032,6 @@ export const m8sTimeline = {
       time: "6:17",
       damage: 880,
       desc: "110k raidwide x 8 hits",
-      pre: [
-        {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 0,
-        },
-      ],
-      post: [
-        {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 45,
-        },
-      ],
-    },
-    {
-      name: "Extraplanar Pursuit",
-      time: "0:14",
-      damage: 185,
-      desc: "raidwide",
       pre: [
         {
           job: "SGE",
@@ -1089,6 +1057,22 @@ export const m8sTimeline = {
           cd: 30,
         },
       ],
+    },
+    {
+      name: "Extraplanar Pursuit",
+      time: "6:34",
+      damage: 185,
+      desc: "raidwide",
+      pre: [
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+      ],
+      post: [],
     },
     {
       name: "Howling Blade",
