@@ -1,18 +1,9 @@
-import { React, useState, useRef } from "react";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { useRef } from "react";
 import "./Timeline.scss";
 
-const Timeline = ({ fightTimeline, active }) => {
+const Timeline = ({ fightTimeline, active, pageState }) => {
   const contentEl = useRef();
-  const [displayIcons, setDisplayIcons] = useState(true);
-
-  function toggleIcons() {
-    if (displayIcons) {
-      setDisplayIcons(false);
-    } else {
-      setDisplayIcons(true);
-    }
-  }
+  const displayIcons = pageState;
 
   return (
     <div
@@ -91,12 +82,6 @@ const Timeline = ({ fightTimeline, active }) => {
           })}
         </tbody>
       </table>
-
-      <ToggleSwitch
-        stateToToggle={displayIcons}
-        toggleFunction={toggleIcons}
-        labelText={"Action icons"}
-      />
     </div>
   );
 };

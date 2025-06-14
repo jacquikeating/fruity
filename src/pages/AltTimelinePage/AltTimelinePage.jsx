@@ -1,6 +1,6 @@
-import React from "react";
+import { React, useState } from "react";
 import Accordion from "../../components/Accordion/Accordion";
-// import Timeline from "../../components/Timeline/Timeline.jsx";
+import ToggleSwitch from "../../components/ToggleSwitch/ToggleSwitch";
 import {
   m5sTimeline,
   m6sTimeline,
@@ -10,6 +10,16 @@ import {
 import "./AltTimelinePage.scss";
 
 const AltTimelinePage = () => {
+  const [displayIcons, setDisplayIcons] = useState(true);
+
+  function toggleIcons() {
+    if (displayIcons) {
+      setDisplayIcons(false);
+    } else {
+      setDisplayIcons(true);
+    }
+  }
+
   const accordionItemsData = [
     {
       accordionItemTitle: "(M5S) Dancing Green",
@@ -36,12 +46,17 @@ const AltTimelinePage = () => {
   return (
     <main>
       <h1>Timelines</h1>
+
+      <ToggleSwitch
+        stateToToggle={displayIcons}
+        toggleFunction={toggleIcons}
+        labelText={"Action icons"}
+      />
       <Accordion
         accordionItemsData={accordionItemsData}
         context={"timelines"}
+        pageState={displayIcons}
       />
-
-      {/* <Timeline fightTimeline={m5sTimeline} /> */}
     </main>
   );
 };

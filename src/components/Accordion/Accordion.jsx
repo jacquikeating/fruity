@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import AccordionItem from "../AccordionItem/AccordionItem";
 import "./Accordion.scss";
 
-const Accordion = ({ accordionItemsData, context }) => {
+const Accordion = ({ accordionItemsData, context, pageState }) => {
   const [clicked, setClicked] = useState("0");
 
   const handleToggle = (index) => {
@@ -21,6 +21,7 @@ const Accordion = ({ accordionItemsData, context }) => {
           context={context}
           onToggle={() => handleToggle(index)}
           active={clicked === index}
+          pageState={pageState}
         />
       ))}
     </ul>

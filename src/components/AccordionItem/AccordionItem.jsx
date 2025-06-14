@@ -3,7 +3,7 @@ import MechClipsCollection from "../MechClipsCollection/MechClipsCollection";
 import Timeline from "../../components/Timeline/Timeline.jsx";
 import "./AccordionItem.scss";
 
-const AccordionItem = ({ data, context, onToggle, active }) => {
+const AccordionItem = ({ data, context, onToggle, active, pageState }) => {
   if (context === "clips") {
     return (
       <li className="accordion-item">
@@ -36,7 +36,11 @@ const AccordionItem = ({ data, context, onToggle, active }) => {
             <i className="fa-solid fa-caret-down accordion-item__control"></i>
           )}
         </button>
-        <Timeline fightTimeline={data.content} active={active} />
+        <Timeline
+          fightTimeline={data.content}
+          active={active}
+          pageState={pageState}
+        />
       </li>
     );
   }
