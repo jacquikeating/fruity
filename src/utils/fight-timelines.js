@@ -795,7 +795,7 @@ export const m8sTimeline = {
     {
       name: "Great Divide",
       time: "2:04",
-      damage: 0,
+      damage: 999,
       desc: "tankbuster",
       pre: [],
       post: [],
@@ -921,7 +921,7 @@ export const m8sTimeline = {
     {
       name: "Ravenous Saber",
       time: "4:15",
-      damage: 0,
+      damage: 584,
       desc: "post-adds multi-hit",
       pre: [
         {
@@ -998,7 +998,7 @@ export const m8sTimeline = {
     {
       name: "Great Divide",
       time: "5:26",
-      damage: 0,
+      damage: 999,
       desc: "tankbuster",
       pre: [],
       post: [],
@@ -1079,24 +1079,8 @@ export const m8sTimeline = {
       time: "6:48",
       damage: 0,
       desc: "transition",
-      pre: [
-        {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 0,
-        },
-      ],
-      post: [
-        {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 45,
-        },
-      ],
+      pre: [],
+      post: [],
     },
   ],
 };
