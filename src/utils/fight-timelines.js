@@ -857,7 +857,7 @@ export const m8sTimeline = {
     },
     {
       name: "Pack Predation",
-      time: "3:10",
+      time: "3:19",
       damage: 170,
       desc: "line AoE + tankbusters",
       pre: [
