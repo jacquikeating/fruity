@@ -592,13 +592,6 @@ export const m8sTimeline = {
       pre: [
         {
           job: "SGE",
-          name: "Eukrasian Prognosis II",
-          abbr: "EP",
-          icon: "/actions/Eukrasian_Prognosis_II.png",
-          cd: 0,
-        },
-        {
-          job: "SGE",
           name: "Kerachole",
           abbr: "Kera",
           icon: "/actions/Kerachole.png",
@@ -652,15 +645,7 @@ export const m8sTimeline = {
       time: "1:17",
       damage: 60,
       desc: "knockback",
-      pre: [
-        {
-          job: "SGE",
-          name: "Eukrasian Prognosis II",
-          abbr: "EP",
-          icon: "/actions/Eukrasian_Prognosis_II.png",
-          cd: 0,
-        },
-      ],
+      pre: [],
       post: [],
     },
     {
@@ -671,11 +656,11 @@ export const m8sTimeline = {
       pre: [],
       post: [
         {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 45,
+          job: "SGE",
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
         },
       ],
     },
@@ -685,13 +670,6 @@ export const m8sTimeline = {
       damage: 60,
       desc: "knockback",
       pre: [
-        {
-          job: "SGE",
-          name: "Physis II",
-          abbr: "Phys",
-          icon: "/actions/Physis_II.png",
-          cd: 60,
-        },
         {
           job: "SGE",
           name: "Eukrasian Prognosis II",
@@ -876,13 +854,6 @@ export const m8sTimeline = {
           abbr: "Phys",
           icon: "/actions/Physis_II.png",
           cd: 60,
-        },
-        {
-          job: "SGE",
-          name: "Eukrasian Prognosis II",
-          abbr: "EP",
-          icon: "/actions/Eukrasian_Prognosis_II.png",
-          cd: 0,
         },
       ],
     },
