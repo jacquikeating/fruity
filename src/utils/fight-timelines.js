@@ -577,10 +577,10 @@ export const m8sTimeline = {
       post: [
         {
           job: "SGE",
-          name: "Ixochole",
-          abbr: "Ixo",
-          icon: "/actions/Ixochole.png",
-          cd: 30,
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
         },
       ],
     },
@@ -598,7 +598,15 @@ export const m8sTimeline = {
           cd: 30,
         },
       ],
-      post: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Ixochole",
+          abbr: "Ixo",
+          icon: "/actions/Ixochole.png",
+          cd: 30,
+        },
+      ],
     },
     {
       name: "Extraplanar Pursuit",
@@ -638,6 +646,13 @@ export const m8sTimeline = {
           icon: "/actions/Philosophia.png",
           cd: 180,
         },
+        {
+          job: "SGE",
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
+        },
       ],
     },
     {
@@ -654,15 +669,7 @@ export const m8sTimeline = {
       damage: 105,
       desc: "spreads",
       pre: [],
-      post: [
-        {
-          job: "SGE",
-          name: "Physis II",
-          abbr: "Phys",
-          icon: "/actions/Physis_II.png",
-          cd: 60,
-        },
-      ],
+      post: [],
     },
     {
       name: "Aero III",
@@ -677,6 +684,13 @@ export const m8sTimeline = {
           icon: "/actions/Eukrasian_Prognosis_II.png",
           cd: 0,
         },
+        {
+          job: "SGE",
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
+        },
       ],
       post: [],
     },
@@ -686,14 +700,7 @@ export const m8sTimeline = {
       damage: 76,
       desc: "tethers/towers",
       pre: [],
-      post: [],
-    },
-    {
-      name: "Tracking Tremors",
-      time: "1:41",
-      damage: 880,
-      desc: "110k raidwide x 8 hits",
-      pre: [
+      post: [
         {
           job: "SGE",
           name: "Holos",
@@ -701,6 +708,14 @@ export const m8sTimeline = {
           icon: "/actions/Holos.png",
           cd: 120,
         },
+      ],
+    },
+    {
+      name: "Tracking Tremors",
+      time: "1:41",
+      damage: 880,
+      desc: "110k raidwide x 8 hits",
+      pre: [
         {
           job: "SGE",
           name: "Eukrasian Prognosis II",
@@ -715,6 +730,13 @@ export const m8sTimeline = {
           icon: "/actions/Kerachole.png",
           cd: 30,
         },
+        {
+          job: "SGE",
+          name: "Panhaima",
+          abbr: "Pan",
+          icon: "/actions/Panhaima.png",
+          cd: 120,
+        },
       ],
       post: [
         {
@@ -724,13 +746,7 @@ export const m8sTimeline = {
           icon: "/actions/Eukrasian_Prognosis_II.png",
           cd: 0,
         },
-        {
-          job: "SGE",
-          name: "Panhaima",
-          abbr: "Pan",
-          icon: "/actions/Panhaima.png",
-          cd: 120,
-        },
+
         {
           job: "SGE",
           name: "Eukrasian Prognosis II",
@@ -841,21 +857,20 @@ export const m8sTimeline = {
       pre: [
         {
           job: "SGE",
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
+        },
+        {
+          job: "SGE",
           name: "Kerachole",
           abbr: "Kera",
           icon: "/actions/Kerachole.png",
           cd: 30,
         },
       ],
-      post: [
-        {
-          job: "SGE",
-          name: "Physis II",
-          abbr: "Phys",
-          icon: "/actions/Physis_II.png",
-          cd: 60,
-        },
-      ],
+      post: [],
     },
     {
       name: "Pack Predation",
@@ -878,16 +893,16 @@ export const m8sTimeline = {
       time: "3:47",
       damage: 170,
       desc: "line AoE + tankbusters",
-      pre: [],
-      post: [
+      pre: [
         {
           job: "SGE",
-          name: "Pneuma",
-          abbr: "Pneuma",
-          icon: "/actions/Pneuma.png",
-          cd: 120,
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
         },
       ],
+      post: [],
     },
     {
       name: "Ravenous Saber",
@@ -947,7 +962,15 @@ export const m8sTimeline = {
       time: "4:49",
       damage: 107,
       desc: "stack + 4 spreads",
-      pre: [],
+      pre: [
+        {
+          job: "SGE",
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
+        },
+      ],
       post: [],
     },
     {
@@ -964,7 +987,15 @@ export const m8sTimeline = {
       damage: 182,
       desc: "dash + in/out + cones",
       pre: [],
-      post: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
+        },
+      ],
     },
     {
       name: "Great Divide",
@@ -979,7 +1010,15 @@ export const m8sTimeline = {
       time: "5:53",
       damage: 107,
       desc: "stack + 4 spreads",
-      pre: [],
+      pre: [
+        {
+          job: "SGE",
+          name: "Kerachole",
+          abbr: "Kera",
+          icon: "/actions/Kerachole.png",
+          cd: 30,
+        },
+      ],
       post: [],
     },
     {
@@ -996,7 +1035,15 @@ export const m8sTimeline = {
       damage: 192,
       desc: "in buddies/out spread",
       pre: [],
-      post: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Holos",
+          abbr: "Holos",
+          icon: "/actions/Holos.png",
+          cd: 120,
+        },
+      ],
     },
     {
       name: "Tracking Tremors",
@@ -1004,6 +1051,13 @@ export const m8sTimeline = {
       damage: 880,
       desc: "110k raidwide x 8 hits",
       pre: [
+        {
+          job: "SGE",
+          name: "Physis II",
+          abbr: "Phys",
+          icon: "/actions/Physis_II.png",
+          cd: 60,
+        },
         {
           job: "SGE",
           name: "Eukrasian Prognosis II",
@@ -1017,6 +1071,13 @@ export const m8sTimeline = {
           abbr: "Kera",
           icon: "/actions/Kerachole.png",
           cd: 30,
+        },
+        {
+          job: "SGE",
+          name: "Panhaima",
+          abbr: "Pan",
+          icon: "/actions/Panhaima.png",
+          cd: 120,
         },
       ],
       post: [
