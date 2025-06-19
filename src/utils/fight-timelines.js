@@ -613,15 +613,7 @@ export const m8sTimeline = {
       time: "0:53",
       damage: 185,
       desc: "raidwide",
-      pre: [
-        {
-          job: "SGE",
-          name: "Eukrasian Prognosis II",
-          abbr: "EP",
-          icon: "/actions/Eukrasian_Prognosis_II.png",
-          cd: 0,
-        },
-      ],
+      pre: [],
       post: [],
     },
     {
@@ -645,6 +637,13 @@ export const m8sTimeline = {
           abbr: "Phil",
           icon: "/actions/Philosophia.png",
           cd: 180,
+        },
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
         },
         {
           job: "SGE",
@@ -746,14 +745,6 @@ export const m8sTimeline = {
           icon: "/actions/Eukrasian_Prognosis_II.png",
           cd: 0,
         },
-
-        {
-          job: "SGE",
-          name: "Eukrasian Prognosis II",
-          abbr: "EP",
-          icon: "/actions/Eukrasian_Prognosis_II.png",
-          cd: 0,
-        },
         {
           job: "SGE",
           name: "Ixochole",
@@ -767,6 +758,20 @@ export const m8sTimeline = {
           abbr: "EP",
           icon: "/actions/Eukrasian_Prognosis_II.png",
           cd: 0,
+        },
+        {
+          job: "SGE",
+          name: "Zoe",
+          abbr: "Z",
+          icon: "/actions/Zoe.png",
+          cd: 90,
+        },
+        {
+          job: "SGE",
+          name: "Pneuma",
+          abbr: "Pneuma",
+          icon: "/actions/Pneuma.png",
+          cd: 120,
         },
       ],
     },
@@ -924,7 +929,6 @@ export const m8sTimeline = {
           icon: "/actions/Eukrasian_Prognosis_II.png",
           cd: 0,
         },
-
         {
           job: "SGE",
           name: "Kerachole",
@@ -949,11 +953,18 @@ export const m8sTimeline = {
       ],
       post: [
         {
-          job: "",
-          name: "",
-          abbr: "",
-          icon: "/actions/.png",
-          cd: 45,
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
         },
       ],
     },
@@ -971,7 +982,15 @@ export const m8sTimeline = {
           cd: 30,
         },
       ],
-      post: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Ixochole",
+          abbr: "Ixo",
+          icon: "/actions/Ixochole.png",
+          cd: 30,
+        },
+      ],
     },
     {
       name: "Heavensearth & Sus. Stone",
@@ -986,7 +1005,15 @@ export const m8sTimeline = {
       time: "5:13",
       damage: 182,
       desc: "dash + in/out + cones",
-      pre: [],
+      pre: [
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+      ],
       post: [
         {
           job: "SGE",
@@ -1019,7 +1046,15 @@ export const m8sTimeline = {
           cd: 30,
         },
       ],
-      post: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Ixochole",
+          abbr: "Ixo",
+          icon: "/actions/Ixochole.png",
+          cd: 30,
+        },
+      ],
     },
     {
       name: "Heavensearth & Sus. Stone",
@@ -1027,7 +1062,15 @@ export const m8sTimeline = {
       damage: 107,
       desc: "stack + 4 spreads",
       pre: [],
-      post: [],
+      post: [
+        {
+          job: "SGE",
+          name: "Eukrasian Prognosis II",
+          abbr: "EP",
+          icon: "/actions/Eukrasian_Prognosis_II.png",
+          cd: 0,
+        },
+      ],
     },
     {
       name: "Wind/Stonefang",
