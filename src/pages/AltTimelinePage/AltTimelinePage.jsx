@@ -11,6 +11,7 @@ import "./AltTimelinePage.scss";
 
 const AltTimelinePage = () => {
   const [displayIcons, setDisplayIcons] = useState(true);
+  const [majorCDsOnly, setMajorCDsOnly] = useState(false);
 
   function toggleIcons() {
     if (displayIcons) {
@@ -19,6 +20,16 @@ const AltTimelinePage = () => {
       setDisplayIcons(true);
     }
   }
+
+  function toggleMajorCDs() {
+    if (majorCDsOnly) {
+      setMajorCDsOnly(false);
+    } else {
+      setMajorCDsOnly(true);
+    }
+  }
+
+  const stateVariables = [displayIcons, majorCDsOnly];
 
   const accordionItemsData = [
     {
@@ -52,10 +63,15 @@ const AltTimelinePage = () => {
         toggleFunction={toggleIcons}
         labelText={"Action icons"}
       />
+      <ToggleSwitch
+        stateToToggle={majorCDsOnly}
+        toggleFunction={toggleMajorCDs}
+        labelText={"Show major CDs only"}
+      />
       <Accordion
         accordionItemsData={accordionItemsData}
         context={"timelines"}
-        pageState={displayIcons}
+        pageState={stateVariables}
       />
     </main>
   );

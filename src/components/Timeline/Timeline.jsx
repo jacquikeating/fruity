@@ -3,7 +3,8 @@ import "./Timeline.scss";
 
 const Timeline = ({ fightTimeline, active, pageState }) => {
   const contentEl = useRef();
-  const displayIcons = pageState;
+  const displayIcons = pageState[0];
+  const majorCDs = pageState[1];
 
   return (
     <div
