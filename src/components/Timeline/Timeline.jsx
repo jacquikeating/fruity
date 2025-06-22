@@ -42,7 +42,9 @@ const Timeline = ({ fightTimeline, active, pageState }) => {
                 <td className="tl__cell tl__cell--desc">{mech.desc}</td>
                 <td className="tl__cell tl__cell--mits-heals">
                   {mech.pre.map((action, index) => {
-                    if (displayIcons && action.icon) {
+                    if (majorCDs && action.cd < 90) {
+                      return;
+                    } else if (displayIcons && action.icon) {
                       return (
                         <img
                           src={action.icon}
@@ -63,7 +65,9 @@ const Timeline = ({ fightTimeline, active, pageState }) => {
                   )}
 
                   {mech.post.map((action, index) => {
-                    if (displayIcons && action.icon) {
+                    if (majorCDs && action.cd < 90) {
+                      return;
+                    } else if (displayIcons && action.icon) {
                       return (
                         <img
                           src={action.icon}
