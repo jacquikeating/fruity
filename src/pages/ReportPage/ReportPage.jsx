@@ -62,6 +62,8 @@ const ReportPage = () => {
     }
 
     async function getSessionData() {
+      const url = `${API_URL}/sessions/${sessionID}`;
+      console.log(url);
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         session = result.data[0];
