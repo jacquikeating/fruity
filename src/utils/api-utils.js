@@ -11,7 +11,7 @@ const {
   error: pullsError,
 } = useFetch2(`${API_URL}/pulls`);
 
-// FFLogs API stuff from ReportPage.jsx.
+// FFLogs API stuff from ReportPage.jsx. -----------------------------------------------------------------------------------------------------------------
 
 // const API_KEY = import.meta.env.VITE_FFLOGS_API_KEY;
 
@@ -72,3 +72,35 @@ const {
 //     setPullsToDisplay(pulls);
 //   }
 // }
+
+// Original Axios calls from OverviewPage. -----------------------------------------------------------------------------------------------------------------
+// const [sessionsArray, setSessionsArray] = useState([]);
+// const [pullsArray, setPullsArray] = useState([]);
+// const [clearsNum, setClearsNum] = useState(0);
+
+// useEffect(() => {
+//   async function getSessionsData() {
+//     try {
+//       let result = await axios.get(`${API_URL}/sessions`);
+//       let data = result.data;
+//       setSessionsArray(data.reverse());
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
+
+//   async function getPullsData() {
+//     try {
+//       let result = await axios.get(`${API_URL}/pulls`);
+//       let data = result.data;
+//       let clearsArray = data.filter((pull) => pull.mech == "Clear");
+//       setPullsArray(data);
+//       setClearsNum(clearsArray.length);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
+
+//   getSessionsData();
+//   getPullsData();
+// }, []);

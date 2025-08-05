@@ -3,7 +3,6 @@ import axios from "axios";
 
 // Working! Original version
 export default function useFetch(url) {
-  //   console.log(url);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
@@ -13,7 +12,6 @@ export default function useFetch(url) {
       .then((data) => {
         setLoading(false);
         setData(data);
-        // console.log(data);
       });
   }, [url]);
 
@@ -31,7 +29,6 @@ export function useFetch2(url) {
       try {
         setLoading(true);
         const response = await axios.get(url);
-        // console.log(response.data);
         setData(response.data);
       } catch (err) {
         setError(err);
@@ -44,7 +41,7 @@ export function useFetch2(url) {
   return { data, error, loading };
 }
 
-export function useDoubleFetch(url1, url2) {
+export function useDoubleFetch(url1, url1Type, url2, url2Type) {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [error, setError] = useState(null);
@@ -54,7 +51,6 @@ export function useDoubleFetch(url1, url2) {
     (async function () {
       try {
         const response = await axios.get(url1);
-        // console.log(response.data);
         setData1(response.data);
       } catch (err) {
         setError(err);
@@ -66,7 +62,6 @@ export function useDoubleFetch(url1, url2) {
     async function getSecondData() {
       try {
         const response = await axios.get(url2);
-        // console.log(response.data);
         setData2(response.data);
       } catch (err) {
         setError(err);
@@ -79,46 +74,37 @@ export function useDoubleFetch(url1, url2) {
   return { data1, data2, error, loading };
 }
 
+export function useAxiosAll(url1, url2) {
+  const [sessions, setSessions] = useState([]);
+  const [pulls, setPulls] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const response = await axios.get(url1);
+        setSessions(response.data.reverse());
+      } catch (err) {
+        setError(err);
+      } finally {
+        getPullsData();
+      }
+    })();
+
+    async function getPullsData() {
+      try {
+        const response = await axios.get(url2);
+        setPulls(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, [url1, url2]);
+
+  return { sessions, pulls, error, loading };
+}
+
 // example: https://wis-fruity-1ed9bfddc2af.herokuapp.com/sessions/44
-
-// async function getSessionData() {
-//   try {
-//     let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
-//     session = result.data[0];
-//     setSessionData(session);
-//     setDate(session.date);
-//     setProgPhase(session.prog_phase);
-//     setProgMech(session.prog_mech);
-//     setFFLogsLink(session.fflogs_link);
-//     setTwitchLinks(session.twitch_links);
-//     setTwitchLinksArray(session.twitch_links.split(", "));
-//     setGoal(session.goal);
-//     setRoster(session.roster);
-//     setNotes(session.notes);
-//   } catch (error) {
-//     console.error(error);
-//   } finally {
-//     getPullsData(session.fflogs_link);
-//   }
-// }
-
-// async function getPullsData(logLink) {
-//       try {
-//         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
-//         pulls = result.data;
-//         pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-//       } catch (error) {
-//         console.error(error);
-//       } finally {
-
-//         setPullsArray(pulls);
-//         setPullsToDisplay(pulls);
-//       }
-//     }
-
-//     getSessionData();
-
-//     const handleWindowResize = () => setWidth(window.innerWidth);
-//     window.addEventListener("resize", handleWindowResize);
-//     return () => window.removeEventListener("resize"), handleWindowResize;
-//   }, [sessionID]);

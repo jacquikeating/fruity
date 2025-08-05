@@ -3,82 +3,54 @@ import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
+import { useAxiosAll } from "../../hooks/useFetch.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const OverviewPage = () => {
-  const [sessionsArray, setSessionsArray] = useState([]);
-  const [pullsArray, setPullsArray] = useState([]);
-  const [clearsNum, setClearsNum] = useState(0);
-
-  useEffect(() => {
-    async function getSessionsData() {
-      try {
-        let result = await axios.get(`${API_URL}/sessions`);
-        let data = result.data;
-        setSessionsArray(data.reverse());
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    async function getPullsData() {
-      try {
-        let result = await axios.get(`${API_URL}/pulls`);
-        let data = result.data;
-        let clearsArray = data.filter((pull) => pull.mech == "Clear");
-        setPullsArray(data);
-        setClearsNum(clearsArray.length);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    getSessionsData();
-    getPullsData();
-  }, []);
+  const { sessions, pulls, error, loading } = useAxiosAll(
+    `${API_URL}/sessions`,
+    `${API_URL}/pulls`
+  );
 
   function getPullsAtProgPoint() {
-    const onlyProg = pullsArray.filter(
-      (pull) => pull.mech == sessionsArray[0].prog_mech
-    );
+    return pulls.filter((pull) => pull.mech == sessions[0].prog_mech).length;
+  }
 
-    return onlyProg.length;
+  function getClearsNum() {
+    return pulls.filter((pull) => pull.mech == "Clear").length;
   }
 
   return (
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
       <section className="overview-page__section">
-        {sessionsArray.length && pullsArray.length ? (
+        {!loading ? (
           <div className="overview-page__stats">
             <p className="overview-page__info">
-              Total sessions: {sessionsArray.length}
+              Total sessions: {sessions.length}
             </p>
-            <p className="overview-page__info">
-              Total pulls: {pullsArray.length}
-            </p>
-            {sessionsArray[0].prog_mech === "Reclears" ? (
+            <p className="overview-page__info">Total pulls: {pulls.length}</p>
+            {sessions[0].prog_mech === "Reclears" ? (
               <>
-                <p className="overview-page__info">Total clears: {clearsNum}</p>
+                <p className="overview-page__info">
+                  Total clears: {getClearsNum()}
+                </p>
               </>
             ) : (
               <>
                 <p className="overview-page__info">
                   {`Current prog point:
-              Phase ${sessionsArray[0]?.prog_phase}, 
-              ${sessionsArray[0]?.prog_mech}`}
+                    Phase ${sessions[0]?.prog_phase}, 
+                    ${sessions[0]?.prog_mech}`}
                 </p>
                 <p className="overview-page__info">
-                  Pulls at prog point: {getPullsAtProgPoint()}{" "}
+                  Pulls at prog point: {getPullsAtProgPoint()}
                 </p>
               </>
             )}
 
-            <PhaseBreakdownTable
-              sessionData={sessionsArray[0]}
-              pullsArray={pullsArray}
-            />
+            <PhaseBreakdownTable sessionData={sessions[0]} pullsArray={pulls} />
           </div>
         ) : (
           <p>Loading...</p>
@@ -86,8 +58,8 @@ const OverviewPage = () => {
       </section>
 
       <section className="overview-page__section">
-        {sessionsArray.length ? (
-          <SessionsList sessionsArray={sessionsArray} />
+        {!loading ? (
+          <SessionsList sessionsArray={sessions} />
         ) : (
           <p>Loading...</p>
         )}
