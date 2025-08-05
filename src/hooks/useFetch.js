@@ -31,6 +31,7 @@ export function useAxiosGet(url) {
         const response = await axios.get(url);
         setData(response.data);
         console.log("api called!");
+        console.log(response.data);
       } catch (err) {
         setError(err);
       } finally {
