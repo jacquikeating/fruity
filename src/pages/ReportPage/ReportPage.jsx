@@ -183,40 +183,6 @@ const ReportPage = () => {
     }
   }
 
-  function fillPullNumOverall() {
-    let counter = localStorage.getItem("counter");
-    console.log(`Counter begins at ${counter}`);
-    const copyOfPullsArray = [...pullsArray];
-
-    copyOfPullsArray.forEach((pull) => {
-      delete pull.bossPercentage;
-      delete pull.combatTime;
-      pull.pull_num_overall = Number(pull.pull_num_today) + Number(counter);
-    });
-
-    console.log(copyOfPullsArray);
-
-    setPullsArray(copyOfPullsArray);
-    setPullsToDisplay(copyOfPullsArray);
-
-    const lastPullNumOverall =
-      copyOfPullsArray[copyOfPullsArray.length - 1].pull_num_overall;
-    localStorage.setItem("counter", lastPullNumOverall);
-    console.log(`Counter is now at ${localStorage.getItem("counter")}`);
-
-    updateAllPullNums(copyOfPullsArray);
-  }
-
-  function updateAllPullNums(copyOfPullsArray) {
-    copyOfPullsArray.map(async (pull) => {
-      try {
-        await axios.put(`${API_URL}/pulls/${pull.id}`, pull);
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  }
-
   async function editSession() {
     if (editMode === false) {
       setEditMode(true);
