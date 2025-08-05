@@ -1,6 +1,5 @@
-import { React, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { useAxiosGet } from "./hooks/useFetch";
 import Header from "./components/Header/Header";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import InfoPage from "./pages/InfoPage/InfoPage";
@@ -17,25 +16,12 @@ import "./styles/index.scss";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
-  const [latestSession, setLatestSession] = useState(0);
-
-  useEffect(() => {
-    async function getSessionsCount() {
-      try {
-        let result = await axios.get(`${API_URL}/sessions`);
-        setLatestSession(result.data.length);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    getSessionsCount();
-  }, []);
+  const { data: sessions, error, loading } = useAxiosGet(`${API_URL}/sessions`);
 
   return (
     <>
       <BrowserRouter>
-        <Header latestSession={latestSession} />
+        <Header latestSession={sessions.length} />
         <Routes>
           <Route path="/" element={<OverviewPage />} />
           <Route path="/report/:sessionID" element={<ReportPage />} />
