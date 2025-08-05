@@ -179,3 +179,11 @@ export function convertMSToMinSec(ms) {
   }
   return `${mins}:${secs}`;
 }
+
+export function getPullsAtProgPoint(pulls, lastSession) {
+  return pulls.filter((pull) => pull.mech == lastSession.prog_mech).length;
+}
+
+export function getClearsNum(pulls) {
+  return pulls.filter((pull) => pull.mech == "Clear").length;
+}

@@ -2,17 +2,13 @@ import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreak
 import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
 import { useAxiosGet } from "../../hooks/useFetch.js";
+import {
+  getPullsAtProgPoint,
+  getClearsNum,
+} from "../../utils/shared-functions.js";
 
 const OverviewPage = ({ sessions }) => {
   const { data: pulls, error, loading } = useAxiosGet(`pulls`);
-
-  function getPullsAtProgPoint() {
-    return pulls.filter((pull) => pull.mech == sessions[0].prog_mech).length;
-  }
-
-  function getClearsNum() {
-    return pulls.filter((pull) => pull.mech == "Clear").length;
-  }
 
   {
     if (sessions.length > 0) {
@@ -31,7 +27,7 @@ const OverviewPage = ({ sessions }) => {
                 {sessions[0].prog_mech === "Reclears" ? (
                   <>
                     <p className="overview-page__info">
-                      Total clears: {getClearsNum()}
+                      Total clears: {getClearsNum(pulls)}
                     </p>
                   </>
                 ) : (
@@ -42,7 +38,8 @@ const OverviewPage = ({ sessions }) => {
                     ${sessions[0]?.prog_mech}`}
                     </p>
                     <p className="overview-page__info">
-                      Pulls at prog point: {getPullsAtProgPoint()}
+                      Pulls at prog point:{" "}
+                      {getPullsAtProgPoint(pulls, sessions[0])}
                     </p>
                   </>
                 )}
