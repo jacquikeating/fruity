@@ -47,4 +47,8 @@
         display: block;
         transform: scale(0.75);
     }
+
+    &__twitch-container {
+        display: flex;
+    }
 }

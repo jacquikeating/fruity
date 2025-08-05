@@ -44,14 +44,13 @@ const Session = ({ sessionData }) => {
         {twitchLinksArray.length > 1 ? (
           twitchLinksArray.map((vod, index) => {
             return (
-              <>
+              <div key={index} className="session__twitch-container">
                 <span className="report__divider"> • </span>
                 <a
                   className={`session__link`}
                   href={vod}
                   target="_blank"
                   rel="noreferrer"
-                  key={index}
                 >
                   <img
                     src="https://i.imgur.com/NzRUemQ.png"
@@ -60,7 +59,7 @@ const Session = ({ sessionData }) => {
                   />
                   VOD {index + 1}
                 </a>
-              </>
+              </div>
             );
           })
         ) : (
