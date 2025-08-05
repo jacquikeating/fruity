@@ -21,7 +21,7 @@ export default function useFetch(url) {
 }
 
 // Axios version
-export default function useFetch2(url) {
+export function useFetch2(url) {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -42,6 +42,41 @@ export default function useFetch2(url) {
   }, [url]);
 
   return { data, error, loading };
+}
+
+export function useDoubleFetch(url1, url2) {
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const response = await axios.get(url1);
+        // console.log(response.data);
+        setData1(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        getSecondData();
+      }
+    })();
+
+    async function getSecondData() {
+      try {
+        const response = await axios.get(url2);
+        // console.log(response.data);
+        setData2(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, [url1, url2]);
+
+  return { data1, data2, error, loading };
 }
 
 // example: https://wis-fruity-1ed9bfddc2af.herokuapp.com/sessions/44
