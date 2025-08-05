@@ -2,11 +2,11 @@ import React from "react";
 import { getTextColour } from "../../utils/shared-functions";
 import "./PhaseBreakdownTable.scss";
 
-const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
+const PhaseBreakdownTable = ({ lastSession, pulls }) => {
   function getPhaseBreakdown() {
     let phasesReached = [];
 
-    pullsArray.map((pull) => {
+    pulls.map((pull) => {
       phasesReached.push(pull.phase);
     });
 
@@ -46,7 +46,7 @@ const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
                   key={phaseNum}
                   className={`phases-table__cell 
                 phases-table__cell--${getTextColour(
-                  sessionData.prog_phase,
+                  lastSession.prog_phase,
                   phaseNum
                 )}`}
                 >
@@ -65,7 +65,7 @@ const PhaseBreakdownTable = ({ sessionData, pullsArray }) => {
                   key={phaseNum}
                   className={`phases-table__cell 
                 phases-table__cell--${getTextColour(
-                  sessionData.prog_phase,
+                  lastSession.prog_phase,
                   phaseNum
                 )}`}
                 >
