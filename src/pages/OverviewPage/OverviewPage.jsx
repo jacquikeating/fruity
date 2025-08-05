@@ -3,12 +3,12 @@ import axios from "axios";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
-import { useAxiosAll } from "../../hooks/useFetch.js";
+import { useAxiosGetAll } from "../../hooks/useFetch.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const OverviewPage = () => {
-  const { sessions, pulls, error, loading } = useAxiosAll(
+  const { sessions, pulls, error, loading } = useAxiosGetAll(
     `${API_URL}/sessions`,
     `${API_URL}/pulls`
   );

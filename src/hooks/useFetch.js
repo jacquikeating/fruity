@@ -19,7 +19,7 @@ export default function useFetch(url) {
 }
 
 // Axios version
-export function useFetch2(url) {
+export function useAxiosGet(url) {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -30,6 +30,7 @@ export function useFetch2(url) {
         setLoading(true);
         const response = await axios.get(url);
         setData(response.data);
+        console.log("api called!");
       } catch (err) {
         setError(err);
       } finally {
@@ -41,40 +42,7 @@ export function useFetch2(url) {
   return { data, error, loading };
 }
 
-export function useDoubleFetch(url1, url1Type, url2, url2Type) {
-  const [data1, setData1] = useState([]);
-  const [data2, setData2] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await axios.get(url1);
-        setData1(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        getSecondData();
-      }
-    })();
-
-    async function getSecondData() {
-      try {
-        const response = await axios.get(url2);
-        setData2(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-  }, [url1, url2]);
-
-  return { data1, data2, error, loading };
-}
-
-export function useAxiosAll(url1, url2) {
+export function useAxiosGetAll(url1, url2) {
   const [sessions, setSessions] = useState([]);
   const [pulls, setPulls] = useState([]);
   const [error, setError] = useState(null);
