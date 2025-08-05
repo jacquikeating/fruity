@@ -12,24 +12,21 @@ const OverviewPage = ({ sessions }) => {
       return (
         <main className="overview-page">
           <h1 className="overview-page__title">Overview</h1>
-          <section className="overview-page__section">
-            {!loading ? (
-              <>
+
+          {!loading ? (
+            <>
+              <section className="overview-page__section">
                 <OverviewStats sessions={sessions} pulls={pulls} />
                 <PhaseBreakdownTable lastSession={sessions[0]} pulls={pulls} />
-              </>
-            ) : (
-              <p>Loading...</p>
-            )}
-          </section>
+              </section>
 
-          <section className="overview-page__section">
-            {!loading ? (
-              <SessionsList sessions={sessions} />
-            ) : (
-              <p>Loading...</p>
-            )}
-          </section>
+              <section className="overview-page__section">
+                <SessionsList sessions={sessions} />
+              </section>
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
         </main>
       );
     }
