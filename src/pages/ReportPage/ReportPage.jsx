@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -9,14 +9,12 @@ import {
   findStruggleMech,
   checkIfEmptyLink,
   getMechAfterProgMech,
-  convertMSToMinSec,
 } from "../../utils/shared-functions.js";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
-const API_KEY = import.meta.env.VITE_FFLOGS_API_KEY;
 
 const ReportPage = () => {
   const [sessionData, setSessionData] = useState();
@@ -48,7 +46,6 @@ const ReportPage = () => {
   useEffect(() => {
     let session = null;
     let pulls = null;
-    let ffLogs = null;
 
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
@@ -62,8 +59,6 @@ const ReportPage = () => {
     }
 
     async function getSessionData() {
-      const url = `${API_URL}/sessions/${sessionID}`;
-      console.log(url);
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
         session = result.data[0];
@@ -84,7 +79,7 @@ const ReportPage = () => {
       }
     }
 
-    async function getPullsData(logLink) {
+    async function getPullsData() {
       try {
         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
         pulls = result.data;
@@ -92,51 +87,10 @@ const ReportPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        // if (logLink.length > 1) {
-        //   getFFLogsData();
-        // } else {
         setPullsArray(pulls);
         setPullsToDisplay(pulls);
-        // }
       }
     }
-
-    // async function getFFLogsData() {
-    //   const reportCode = session.fflogs_link.substring(31);
-
-    //   try {
-    //     let result = await axios.get(
-    //       `https://www.fflogs.com:443/v1/report/fights/${reportCode}?api_key=${API_KEY}`
-    //     );
-    //     ffLogs = result.data.fights;
-    //     setFFLogsData(ffLogs);
-    //   } catch (error) {
-    //     console.error(error);
-    //   } finally {
-    //     if (ffLogs.length >= 1) {
-    //       for (let i = 0; i < pulls.length; i++) {
-    //         // console.log(ffLogs[i]);
-    //         if (ffLogs[i].combatTime) {
-    //           pulls[i].combatTime = convertMSToMinSec(ffLogs[i].combatTime);
-    //         } else {
-    //           pulls[i].combatTime = "?";
-    //         }
-    //         if (ffLogs[i].bossPercentage) {
-    //           pulls[i].bossPercentage = ffLogs[i].bossPercentage.toString();
-    //           // ffLogs[i].bossPercentage.toString().slice(1, 3) +
-    //           // "." +
-    //           // ffLogs[i].bossPercentage.toString().slice(1, 3) +
-    //           // "%";
-
-    //           // console.log(pulls[i].bossPercentage);
-    //         }
-    //       }
-    //     }
-    //     // console.log(pulls);
-    //     setPullsArray(pulls);
-    //     setPullsToDisplay(pulls);
-    //   }
-    // }
 
     getSessionData();
 
@@ -514,7 +468,6 @@ const ReportPage = () => {
                 breakpoint={breakpoint}
               />
             )}
-            {/* <button onClick={fillPullNumOverall}>x</button> */}
           </section>
         </>
       ) : (
