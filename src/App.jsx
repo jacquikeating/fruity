@@ -13,10 +13,8 @@ import TimelinePage from "./pages/TimelinePage/TimelinePage";
 import AltTimelinePage from "./pages/AltTimelinePage/AltTimelinePage";
 import "./styles/index.scss";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 function App() {
-  const { data: sessions, error, loading } = useAxiosGet(`${API_URL}/sessions`);
+  const { data: sessions, error, loading } = useAxiosGet(`sessions`);
   const revSessions = [...sessions].reverse();
 
   return (

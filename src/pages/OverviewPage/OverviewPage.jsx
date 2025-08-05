@@ -3,10 +3,8 @@ import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
 import { useAxiosGet } from "../../hooks/useFetch.js";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 const OverviewPage = ({ sessions }) => {
-  const { data: pulls, error, loading } = useAxiosGet(`${API_URL}/pulls`);
+  const { data: pulls, error, loading } = useAxiosGet(`pulls`);
 
   function getPullsAtProgPoint() {
     return pulls.filter((pull) => pull.mech == sessions[0].prog_mech).length;
