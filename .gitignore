@@ -26,3 +26,5 @@ dist-ssr
 
 notes.js
 .env
+
+src/utils/shit-i-hope-i-never-need-again.js
