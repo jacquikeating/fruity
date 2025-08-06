@@ -19,6 +19,11 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
   const { sessionID } = useParams();
+  const {
+    data: pulls,
+    error,
+    loading,
+  } = useAxiosGet(`sessions/${sessionID}/pulls`);
   const [sessionData, setSessionData] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
   const [ffLogsData, setFFLogsData] = useState([]);
