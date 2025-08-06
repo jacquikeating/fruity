@@ -24,9 +24,9 @@ const ReportPage = ({ sessions }) => {
     error,
     loading,
   } = useAxiosGet(`sessions/${sessionID}/pulls`);
+
   const [sessionData, setSessionData] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
-  const [ffLogsData, setFFLogsData] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
   const [editMode, setEditMode] = useState(false);
@@ -66,6 +66,13 @@ const ReportPage = ({ sessions }) => {
   }, [sessions]);
 
   useEffect(() => {
+    if (pulls) {
+      setPullsArray(pulls);
+      setPullsToDisplay(pulls);
+    }
+  }, [pulls]);
+
+  useEffect(() => {
     let session = null;
     let pulls = null;
 
@@ -100,19 +107,19 @@ const ReportPage = ({ sessions }) => {
     //   }
     // }
 
-    async function getPullsData() {
-      try {
-        let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
-        pulls = result.data;
-        pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setPullsArray(pulls);
-        setPullsToDisplay(pulls);
-      }
-    }
-    getPullsData();
+    // async function getPullsData() {
+    //   try {
+    //     let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
+    //     pulls = result.data;
+    //     pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
+    //   } catch (error) {
+    //     console.error(error);
+    //   } finally {
+    //     setPullsArray(pulls);
+    //     setPullsToDisplay(pulls);
+    //   }
+    // }
+    // getPullsData();
     // getSessionData();
 
     const handleWindowResize = () => setWidth(window.innerWidth);
@@ -182,9 +189,7 @@ const ReportPage = ({ sessions }) => {
   }
 
   function filterPulls(name) {
-    let newArray = pullsArray;
-
-    const arrayFilteredByPlayer = newArray.filter((pull) =>
+    const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
       pull.players_responsible.includes(name)
     );
 
