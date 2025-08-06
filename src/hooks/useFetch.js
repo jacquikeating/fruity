@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Working! Original version
-export default function useFetch(url) {
-  //   console.log(url);
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+// export default function useFetch(url) {
+//   const [loading, setLoading] = useState(true);
+//   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setLoading(false);
-        setData(data);
-        // console.log(data);
-      });
-  }, [url]);
+//   useEffect(() => {
+//     fetch(url)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setLoading(false);
+//         setData(data);
+//       });
+//   }, [url]);
 
-  return { loading, data };
-}
+//   return { loading, data };
+// }
 
 // Axios version
-export function useFetch2(url) {
+export function useAxiosGet(endpoint) {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -30,95 +29,53 @@ export function useFetch2(url) {
     (async function () {
       try {
         setLoading(true);
-        const response = await axios.get(url);
-        // console.log(response.data);
+        const response = await axios.get(`${API_URL}/${endpoint}`);
         setData(response.data);
+        console.log("api called!");
+        console.log(response.data);
       } catch (err) {
         setError(err);
       } finally {
         setLoading(false);
       }
     })();
-  }, [url]);
+  }, [endpoint]);
 
   return { data, error, loading };
 }
 
-export function useDoubleFetch(url1, url2) {
-  const [data1, setData1] = useState([]);
-  const [data2, setData2] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+// GET sessions and pulls
+// export function useAxiosGetAll(url1, url2) {
+//   const [sessions, setSessions] = useState([]);
+//   const [pulls, setPulls] = useState([]);
+//   const [error, setError] = useState(null);
+//   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await axios.get(url1);
-        // console.log(response.data);
-        setData1(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        getSecondData();
-      }
-    })();
-
-    async function getSecondData() {
-      try {
-        const response = await axios.get(url2);
-        // console.log(response.data);
-        setData2(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-  }, [url1, url2]);
-
-  return { data1, data2, error, loading };
-}
-
-// example: https://wis-fruity-1ed9bfddc2af.herokuapp.com/sessions/44
-
-// async function getSessionData() {
-//   try {
-//     let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
-//     session = result.data[0];
-//     setSessionData(session);
-//     setDate(session.date);
-//     setProgPhase(session.prog_phase);
-//     setProgMech(session.prog_mech);
-//     setFFLogsLink(session.fflogs_link);
-//     setTwitchLinks(session.twitch_links);
-//     setTwitchLinksArray(session.twitch_links.split(", "));
-//     setGoal(session.goal);
-//     setRoster(session.roster);
-//     setNotes(session.notes);
-//   } catch (error) {
-//     console.error(error);
-//   } finally {
-//     getPullsData(session.fflogs_link);
-//   }
-// }
-
-// async function getPullsData(logLink) {
+//   useEffect(() => {
+//     (async function () {
 //       try {
-//         let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
-//         pulls = result.data;
-//         pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-//       } catch (error) {
-//         console.error(error);
+//         const response = await axios.get(url1);
+//         setSessions(response.data.reverse());
+//       } catch (err) {
+//         setError(err);
 //       } finally {
+//         getPullsData();
+//       }
+//     })();
 
-//         setPullsArray(pulls);
-//         setPullsToDisplay(pulls);
+//     async function getPullsData() {
+//       try {
+//         const response = await axios.get(url2);
+//         setPulls(response.data);
+//       } catch (err) {
+//         setError(err);
+//       } finally {
+//         setLoading(false);
 //       }
 //     }
+//   }, [url1, url2]);
 
-//     getSessionData();
+//   return { sessions, pulls, error, loading };
+// }
 
-//     const handleWindowResize = () => setWidth(window.innerWidth);
-//     window.addEventListener("resize", handleWindowResize);
-//     return () => window.removeEventListener("resize"), handleWindowResize;
-//   }, [sessionID]);
+// example: https://wis-fruity-1ed9bfddc2af.herokuapp.com/sessions/44
