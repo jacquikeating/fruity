@@ -17,7 +17,10 @@ const OverviewPage = ({ sessions }) => {
             <>
               <section className="overview-page__section">
                 <OverviewStats sessions={sessions} pulls={pulls} />
-                <PhaseBreakdownTable lastSession={sessions[0]} pulls={pulls} />
+                <PhaseBreakdownTable
+                  progPhase={sessions[0].prog_phase}
+                  pulls={pulls}
+                />
               </section>
 
               <section className="overview-page__section">

@@ -17,6 +17,8 @@ const {
 
 //    let ffLogs = null;
 
+// const [ffLogsData, setFFLogsData] = useState([]);
+
 // Original getPullsData() function. Truncated in actual file.
 
 // async function getPullsData(logLink) {

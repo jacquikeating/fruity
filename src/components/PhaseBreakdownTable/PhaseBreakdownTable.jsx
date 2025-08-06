@@ -2,7 +2,7 @@ import React from "react";
 import { getTextColour } from "../../utils/shared-functions";
 import "./PhaseBreakdownTable.scss";
 
-const PhaseBreakdownTable = ({ lastSession, pulls }) => {
+const PhaseBreakdownTable = ({ progPhase, pulls }) => {
   function getPhaseBreakdown() {
     let phasesReached = [];
 
@@ -45,10 +45,7 @@ const PhaseBreakdownTable = ({ lastSession, pulls }) => {
                 <td
                   key={phaseNum}
                   className={`phases-table__cell 
-                phases-table__cell--${getTextColour(
-                  lastSession.prog_phase,
-                  phaseNum
-                )}`}
+                phases-table__cell--${getTextColour(progPhase, phaseNum)}`}
                 >
                   {phaseNum}
                 </td>
@@ -64,10 +61,7 @@ const PhaseBreakdownTable = ({ lastSession, pulls }) => {
                 <td
                   key={phaseNum}
                   className={`phases-table__cell 
-                phases-table__cell--${getTextColour(
-                  lastSession.prog_phase,
-                  phaseNum
-                )}`}
+                phases-table__cell--${getTextColour(progPhase, phaseNum)}`}
                 >
                   {numberOfWipes}
                 </td>
