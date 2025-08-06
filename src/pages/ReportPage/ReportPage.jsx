@@ -16,13 +16,13 @@ import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const ReportPage = () => {
-  const [sessionData, setSessionData] = useState();
+const ReportPage = ({ sessions }) => {
+  const { sessionID } = useParams();
+  const [sessionData, setSessionData] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
   const [ffLogsData, setFFLogsData] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
-  const { sessionID } = useParams();
   const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [allowDelete, setAllowDelete] = useState(false);
@@ -44,12 +44,27 @@ const ReportPage = () => {
   let role = "none";
 
   useEffect(() => {
+    if (sessions) {
+      const session = sessions.find((session) => session.id == sessionID);
+      setSessionData(session);
+      setDate(session.date);
+      setProgPhase(session.prog_phase);
+      setProgMech(session.prog_mech);
+      setFFLogsLink(session.fflogs_link);
+      setTwitchLinks(session.twitch_links);
+      setTwitchLinksArray(session.twitch_links.split(", "));
+      setGoal(session.goal);
+      setRoster(session.roster);
+      setNotes(session.notes);
+    }
+  }, [sessions]);
+
+  useEffect(() => {
     let session = null;
     let pulls = null;
 
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
-      console.log(role);
     }
     if (role === "admin") {
       setShowEdit(true);
@@ -58,26 +73,26 @@ const ReportPage = () => {
       setShowEdit(true);
     }
 
-    async function getSessionData() {
-      try {
-        let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
-        session = result.data[0];
-        setSessionData(session);
-        setDate(session.date);
-        setProgPhase(session.prog_phase);
-        setProgMech(session.prog_mech);
-        setFFLogsLink(session.fflogs_link);
-        setTwitchLinks(session.twitch_links);
-        setTwitchLinksArray(session.twitch_links.split(", "));
-        setGoal(session.goal);
-        setRoster(session.roster);
-        setNotes(session.notes);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        getPullsData(session.fflogs_link);
-      }
-    }
+    // async function getSessionData() {
+    //   try {
+    //     let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
+    //     session = result.data[0];
+    //     setSessionData(session);
+    //     setDate(session.date);
+    //     setProgPhase(session.prog_phase);
+    //     setProgMech(session.prog_mech);
+    //     setFFLogsLink(session.fflogs_link);
+    //     setTwitchLinks(session.twitch_links);
+    //     setTwitchLinksArray(session.twitch_links.split(", "));
+    //     setGoal(session.goal);
+    //     setRoster(session.roster);
+    //     setNotes(session.notes);
+    //   } catch (error) {
+    //     console.error(error);
+    //   } finally {
+    //     getPullsData(session.fflogs_link);
+    //   }
+    // }
 
     async function getPullsData() {
       try {
@@ -91,8 +106,8 @@ const ReportPage = () => {
         setPullsToDisplay(pulls);
       }
     }
-
-    getSessionData();
+    getPullsData();
+    // getSessionData();
 
     const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
@@ -172,7 +187,7 @@ const ReportPage = () => {
 
   return (
     <main className="report">
-      {sessionData ? (
+      {sessionData.id ? (
         <>
           <section className="report__section">
             <h1 className="report__heading">
