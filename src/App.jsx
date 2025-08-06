@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useAxiosGet } from "./hooks/useFetch";
 import Header from "./components/Header/Header";
@@ -15,15 +16,27 @@ import "./styles/index.scss";
 
 function App() {
   const { data: sessions, error, loading } = useAxiosGet(`sessions`);
-  const revSessions = [...sessions].reverse();
+  const [sessionsState, setSessionsState] = useState(null);
+
+  useEffect(() => {
+    if (sessions.length > 0) {
+      setSessionsState(sessions);
+    }
+  }, [sessions]);
 
   return (
     <>
       <BrowserRouter>
         <Header latestSession={sessions.length} />
         <Routes>
-          <Route path="/" element={<OverviewPage sessions={revSessions} />} />
-          <Route path="/report/:sessionID" element={<ReportPage />} />
+          <Route
+            path="/"
+            element={<OverviewPage sessions={[...sessions].reverse()} />}
+          />
+          <Route
+            path="/report/:sessionID"
+            element={<ReportPage sessions={sessionsState} />}
+          />
           <Route path="/add-data" element={<AddDataPage />} />
           <Route path="/about" element={<InfoPage />} />
           <Route path="/prog" element={<MechsPage />} />
