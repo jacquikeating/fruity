@@ -13,6 +13,7 @@ import {
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
+import { useAxiosGet } from "../../hooks/useFetch.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -375,10 +376,12 @@ const ReportPage = ({ sessions }) => {
                   ""
                 )}
               </div>
+
               <PhaseBreakdownTable
-                sessionData={sessionData}
-                pullsArray={pullsArray}
+                progPhase={sessionData.prog_phase}
+                pulls={pullsArray}
               />
+
               <div className="report__extra-info-right">
                 {notes.length > 0 ? (
                   <div className="report__extra-info">
