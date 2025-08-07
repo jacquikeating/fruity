@@ -28,7 +28,6 @@ function App() {
     method: "get",
     url: "/sessions",
   });
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     if (response !== null) {
