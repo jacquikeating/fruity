@@ -13,17 +13,30 @@ import {
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
-import { useAxiosGet } from "../../hooks/useFetch.js";
+import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
   const { sessionID } = useParams();
-  const {
-    data: pulls,
-    error,
-    loading,
-  } = useAxiosGet(`sessions/${sessionID}/pulls`);
+  // const {
+  //   data: pulls,
+  //   error,
+  //   loading,
+  // } = useAxiosGet(`sessions/${sessionID}/pulls`);
+
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: `/sessions/${sessionID}/pulls`,
+  });
+
+  useEffect(() => {
+    if (response !== null) {
+      console.log(response);
+      setPullsArray(response);
+      setPullsToDisplay(response);
+    }
+  }, [response]);
 
   const [sessionData, setSessionData] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
@@ -65,16 +78,16 @@ const ReportPage = ({ sessions }) => {
     }
   }, [sessions]);
 
-  useEffect(() => {
-    if (pulls) {
-      setPullsArray(pulls);
-      setPullsToDisplay(pulls);
-    }
-  }, [pulls]);
+  // useEffect(() => {
+  //   if (pulls) {
+  //     setPullsArray(pulls);
+  //     setPullsToDisplay(pulls);
+  //   }
+  // }, [pulls]);
 
   useEffect(() => {
-    let session = null;
-    let pulls = null;
+    // let session = null;
+    // let pulls = null;
 
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
