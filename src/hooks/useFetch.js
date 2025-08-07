@@ -46,29 +46,29 @@ export function useAxiosGet(endpoint) {
   return { data, error, loading };
 }
 
-export const useAxios = ({ url, method, body = null, headers = null }) => {
+export const useAxios = (
+  { url, method, body = null, headers = null },
+  runOnMount = false
+) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
-  const [loading, setloading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const callAPI = () => {
+    setLoading(true);
     axios[method](url, JSON.parse(headers), JSON.parse(body))
-      .then((res) => {
-        setResponse(res.data);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
-        setloading(false);
-      });
+      .then((res) => setResponse(res.data))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
-    callAPI();
-  }, [method, url, body, headers]);
+    if (runOnMount) {
+      callAPI();
+    }
+  }, [url, method, body, headers, runOnMount]);
 
-  return { response, error, loading };
+  return { response, error, loading, callAPI };
 };
 // GET sessions and pulls
 // export function useAxiosGetAll(url1, url2) {

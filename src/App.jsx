@@ -24,10 +24,13 @@ function App() {
 
   const [sessionsState, setSessionsState] = useState(null);
 
-  const { response, loading, error } = useAxios({
-    method: "get",
-    url: "/sessions",
-  });
+  const { response } = useAxios(
+    {
+      method: "get",
+      url: "/sessions",
+    },
+    true
+  );
 
   useEffect(() => {
     if (response !== null) {

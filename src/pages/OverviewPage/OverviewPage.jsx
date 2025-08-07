@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
 import OverviewStats from "../../components/OverviewStats/OverviewStats.jsx";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
@@ -6,15 +7,21 @@ import "./OverviewPage.scss";
 
 const OverviewPage = ({ sessions }) => {
   // const { data: pulls, error, loading } = useAxiosGet(`pulls`);
+  const [pulls, setPulls] = useState([]);
+  const { response, error, loading, callAPI } = useAxios(
+    {
+      method: "get",
+      url: "/pulls",
+    },
+    true
+  );
 
-  const {
-    response: pulls,
-    loading,
-    error,
-  } = useAxios({
-    method: "get",
-    url: "/pulls",
-  });
+  useEffect(() => {
+    if (response !== null) {
+      console.log(response);
+      setPulls(response);
+    }
+  }, [response]);
 
   return (
     <main className="overview-page">
