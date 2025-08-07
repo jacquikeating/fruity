@@ -55,6 +55,7 @@ export const useAxios = (
   const [loading, setLoading] = useState(false);
 
   const callAPI = () => {
+    console.log(url, method, body, headers, runOnMount);
     setLoading(true);
     axios[method](url, JSON.parse(headers), JSON.parse(body))
       .then((res) => setResponse(res.data))

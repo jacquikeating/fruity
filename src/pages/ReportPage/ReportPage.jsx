@@ -52,14 +52,9 @@ const ReportPage = ({ sessions }) => {
   } = useAxios(
     {
       method: "post",
-      url: `pulls/${pullToUpdate.id}`,
+      url: `/pulls/${pullToUpdate.id}`,
       headers: JSON.stringify({ accept: "*/*" }),
-      body: JSON.stringify({
-        userId: 1,
-        id: 19392,
-        title: "title",
-        body: "Sample text",
-      }),
+      body: JSON.stringify(pullToUpdate),
     },
     false // Don't run on mount
   );
@@ -206,7 +201,9 @@ const ReportPage = ({ sessions }) => {
 
   async function updatePull(pull) {
     delete pull.index;
+    console.log(pull);
     setPullToUpdate(pull);
+    console.log("Attempting to update...");
     update();
     // try {
     //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
@@ -214,6 +211,12 @@ const ReportPage = ({ sessions }) => {
     //   console.error(error);
     // }
   }
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (response) setData(response);
+    console.log(`Response: ${response}`);
+  }, [response]);
 
   async function editSession() {
     if (editMode === false) {
