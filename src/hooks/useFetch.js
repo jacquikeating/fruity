@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
+axios.defaults.baseURL = API_URL;
+
 // Working! Original version
 // export default function useFetch(url) {
 //   const [loading, setLoading] = useState(true);
@@ -44,6 +46,30 @@ export function useAxiosGet(endpoint) {
   return { data, error, loading };
 }
 
+export const useAxios = (
+  { url, method, body = null, headers = null },
+  runOnMount = false
+) => {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const callAPI = () => {
+    setLoading(true);
+    axios[method](url, JSON.parse(headers), JSON.parse(body))
+      .then((res) => setResponse(res.data))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    if (runOnMount) {
+      callAPI();
+    }
+  }, [url, method, body, headers, runOnMount]);
+
+  return { response, error, loading, callAPI };
+};
 // GET sessions and pulls
 // export function useAxiosGetAll(url1, url2) {
 //   const [sessions, setSessions] = useState([]);

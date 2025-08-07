@@ -13,19 +13,66 @@ import {
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
-import { useAxiosGet } from "../../hooks/useFetch.js";
+import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
+  const [pullToUpdate, setPullToUpdate] = useState({});
+
   const { sessionID } = useParams();
+  // const {
+  //   data: pulls,
+  //   error,
+  //   loading,
+  // } = useAxiosGet(`sessions/${sessionID}/pulls`);
+
+  const { response: pulls } = useAxios(
+    {
+      method: "get",
+      url: `/sessions/${sessionID}/pulls`,
+    },
+    true
+  );
+
+  useEffect(() => {
+    if (pulls !== null) {
+      console.log(pulls);
+      setPullsArray(pulls);
+      setPullsToDisplay(pulls);
+    }
+  }, [pulls]);
+
   const {
-    data: pulls,
+    response,
     error,
     loading,
-  } = useAxiosGet(`sessions/${sessionID}/pulls`);
+    callAPI: update,
+  } = useAxios(
+    {
+      method: "post",
+      url: `pulls/${pullToUpdate.id}`,
+      headers: JSON.stringify({ accept: "*/*" }),
+      body: JSON.stringify({
+        userId: 1,
+        id: 19392,
+        title: "title",
+        body: "Sample text",
+      }),
+    },
+    false // Don't run on mount
+  );
 
-  const [sessionData, setSessionData] = useState({});
+  // async function updatePull(pullToUpdate) {
+  //   delete pullToUpdate.index;
+  //   try {
+  //     await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+  const [session, setSession] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
@@ -51,30 +98,30 @@ const ReportPage = ({ sessions }) => {
 
   useEffect(() => {
     if (sessions) {
-      const session = sessions.find((session) => session.id == sessionID);
-      setSessionData(session);
-      setDate(session.date);
-      setProgPhase(session.prog_phase);
-      setProgMech(session.prog_mech);
-      setFFLogsLink(session.fflogs_link);
-      setTwitchLinks(session.twitch_links);
-      setTwitchLinksArray(session.twitch_links.split(", "));
-      setGoal(session.goal);
-      setRoster(session.roster);
-      setNotes(session.notes);
+      const thisSession = sessions.find((session) => session.id == sessionID);
+      setSession(thisSession);
+      setDate(thisSession.date);
+      setProgPhase(thisSession.prog_phase);
+      setProgMech(thisSession.prog_mech);
+      setFFLogsLink(thisSession.fflogs_link);
+      setTwitchLinks(thisSession.twitch_links);
+      setTwitchLinksArray(thisSession.twitch_links.split(", "));
+      setGoal(thisSession.goal);
+      setRoster(thisSession.roster);
+      setNotes(thisSession.notes);
     }
   }, [sessions]);
 
-  useEffect(() => {
-    if (pulls) {
-      setPullsArray(pulls);
-      setPullsToDisplay(pulls);
-    }
-  }, [pulls]);
+  // useEffect(() => {
+  //   if (pulls) {
+  //     setPullsArray(pulls);
+  //     setPullsToDisplay(pulls);
+  //   }
+  // }, [pulls]);
 
   useEffect(() => {
-    let session = null;
-    let pulls = null;
+    // let session = null;
+    // let pulls = null;
 
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
@@ -90,7 +137,7 @@ const ReportPage = ({ sessions }) => {
     //   try {
     //     let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
     //     session = result.data[0];
-    //     setSessionData(session);
+    //     setSession(session);
     //     setDate(session.date);
     //     setProgPhase(session.prog_phase);
     //     setProgMech(session.prog_mech);
@@ -156,13 +203,15 @@ const ReportPage = ({ sessions }) => {
     }
   }
 
-  async function updatePull(pullToUpdate) {
-    delete pullToUpdate.index;
-    try {
-      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-    } catch (error) {
-      console.error(error);
-    }
+  async function updatePull(pull) {
+    delete pull.index;
+    setPullToUpdate(pull);
+    update();
+    // try {
+    //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 
   async function editSession() {
@@ -198,7 +247,7 @@ const ReportPage = ({ sessions }) => {
 
   return (
     <main className="report">
-      {sessionData.id ? (
+      {session.id ? (
         <>
           <section className="report__section">
             <h1 className="report__heading">
@@ -219,7 +268,7 @@ const ReportPage = ({ sessions }) => {
             </h1>
 
             <p className="report__subtitle">
-              Session {sessionData.id}
+              Session {session.id}
               <span className="report__divider"> • </span>
               {!editMode ? (
                 progMech === "Reclears" && sessionID !== "37" ? (
@@ -388,7 +437,7 @@ const ReportPage = ({ sessions }) => {
               </div>
 
               <PhaseBreakdownTable
-                progPhase={sessionData.prog_phase}
+                progPhase={session.prog_phase}
                 pulls={pullsArray}
               />
 
@@ -442,7 +491,7 @@ const ReportPage = ({ sessions }) => {
                 />
                 Show prog pulls only
               </label>
-              {sessionData.roster.split(", ").length > 0 ? (
+              {session.roster.split(", ").length > 0 ? (
                 <label className="report__filter-label" htmlFor="playerSelect">
                   <select
                     name="playerSelect"
@@ -453,7 +502,7 @@ const ReportPage = ({ sessions }) => {
                     }}
                   >
                     <option value={""}>--</option>
-                    {sessionData.roster.split(", ").map((player) => {
+                    {session.roster.split(", ").map((player) => {
                       return (
                         <option
                           className="report__filter-option"
@@ -477,7 +526,7 @@ const ReportPage = ({ sessions }) => {
                 showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
-                progPhase={sessionData.prog_phase}
+                progPhase={session.prog_phase}
                 key={pullsArray}
                 allowDelete={allowDelete}
                 width={width}
@@ -489,7 +538,7 @@ const ReportPage = ({ sessions }) => {
                 showEdit={showEdit}
                 updatePull={updatePull}
                 deletePull={deletePull}
-                progPhase={sessionData.prog_phase}
+                progPhase={session.prog_phase}
                 key={pullsArray}
                 allowDelete={allowDelete}
                 width={width}
