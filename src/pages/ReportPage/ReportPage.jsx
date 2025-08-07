@@ -18,6 +18,8 @@ import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
+  const [pullToUpdate, setPullToUpdate] = useState({});
+
   const { sessionID } = useParams();
   // const {
   //   data: pulls,
@@ -25,18 +27,50 @@ const ReportPage = ({ sessions }) => {
   //   loading,
   // } = useAxiosGet(`sessions/${sessionID}/pulls`);
 
-  const { response, loading, error } = useAxios({
-    method: "get",
-    url: `/sessions/${sessionID}/pulls`,
-  });
+  const { response: pulls } = useAxios(
+    {
+      method: "get",
+      url: `/sessions/${sessionID}/pulls`,
+    },
+    true
+  );
 
   useEffect(() => {
-    if (response !== null) {
-      console.log(response);
-      setPullsArray(response);
-      setPullsToDisplay(response);
+    if (pulls !== null) {
+      console.log(pulls);
+      setPullsArray(pulls);
+      setPullsToDisplay(pulls);
     }
-  }, [response]);
+  }, [pulls]);
+
+  const {
+    response,
+    error,
+    loading,
+    callAPI: update,
+  } = useAxios(
+    {
+      method: "post",
+      url: `pulls/${pullToUpdate.id}`,
+      headers: JSON.stringify({ accept: "*/*" }),
+      body: JSON.stringify({
+        userId: 1,
+        id: 19392,
+        title: "title",
+        body: "Sample text",
+      }),
+    },
+    false // Don't run on mount
+  );
+
+  // async function updatePull(pullToUpdate) {
+  //   delete pullToUpdate.index;
+  //   try {
+  //     await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   const [session, setSession] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
@@ -169,13 +203,15 @@ const ReportPage = ({ sessions }) => {
     }
   }
 
-  async function updatePull(pullToUpdate) {
-    delete pullToUpdate.index;
-    try {
-      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-    } catch (error) {
-      console.error(error);
-    }
+  async function updatePull(pull) {
+    delete pull.index;
+    setPullToUpdate(pull);
+    update();
+    // try {
+    //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 
   async function editSession() {
