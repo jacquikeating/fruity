@@ -202,9 +202,9 @@ const ReportPage = ({ sessions }) => {
   async function updatePull(pull) {
     delete pull.index;
     // setPullToUpdate(pull);
-    pullToUpdate = pull;
+    pullToUpdate = { ...pull };
     console.log(pull);
-    update(pull);
+    update();
     // try {
     //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
     // } catch (error) {
