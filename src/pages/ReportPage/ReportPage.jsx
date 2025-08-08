@@ -38,7 +38,6 @@ const ReportPage = ({ sessions }) => {
 
   useEffect(() => {
     if (pulls !== null) {
-      console.log(pulls);
       pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
       setPullsArray(pulls);
       setPullsToDisplay(pulls);
@@ -204,7 +203,6 @@ const ReportPage = ({ sessions }) => {
     delete pull.index;
     // setPullToUpdate(pull);
     pullToUpdate = pull;
-    console.log(`Attempting to update pull:`);
     console.log(pull);
     update(pull);
     // try {
