@@ -29,8 +29,12 @@ const Pull = ({
   function editRow() {
     if (editMode === false) {
       setEditMode(true);
+      console.log("Edit button clicked. Edit mode on!");
     } else if (editMode === true) {
       setEditMode(false);
+      console.log(
+        "Checkmark button clicked. Edit mode off. Now attempting to update..."
+      );
       updatePull({
         id: pullData.id,
         session_id: pullData.session_id,

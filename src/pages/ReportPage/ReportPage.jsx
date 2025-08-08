@@ -18,7 +18,8 @@ import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
-  const [pullToUpdate, setPullToUpdate] = useState({});
+  // const [pullToUpdate, setPullToUpdate] = useState({});
+  let pullToUpdate = {};
 
   const { sessionID } = useParams();
   // const {
@@ -201,9 +202,9 @@ const ReportPage = ({ sessions }) => {
 
   async function updatePull(pull) {
     delete pull.index;
-    console.log(pull);
-    setPullToUpdate(pull);
-    console.log("Attempting to update...");
+    // setPullToUpdate(pull);
+    pullToUpdate = pull;
+    console.log(`Attempting to update pull: ${pull}`);
     update();
     // try {
     //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
