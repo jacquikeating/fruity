@@ -204,8 +204,9 @@ const ReportPage = ({ sessions }) => {
     delete pull.index;
     // setPullToUpdate(pull);
     pullToUpdate = pull;
-    console.log(`Attempting to update pull: ${pull}`);
-    update();
+    console.log(`Attempting to update pull:`);
+    console.log(pull);
+    update(pull);
     // try {
     //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
     // } catch (error) {

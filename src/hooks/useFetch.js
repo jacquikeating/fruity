@@ -54,10 +54,10 @@ export const useAxios = (
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const callAPI = () => {
-    console.log(url, method, body, headers, runOnMount);
+  const callAPI = (test) => {
+    console.log(url, method, test, headers, runOnMount);
     setLoading(true);
-    axios[method](url, JSON.parse(headers), JSON.parse(body))
+    axios[method](url, JSON.parse(headers), JSON.parse(test))
       .then((res) => setResponse(res.data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
