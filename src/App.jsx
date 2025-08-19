@@ -14,6 +14,14 @@ import TimelinePage from "./pages/TimelinePage/TimelinePage";
 import AltTimelinePage from "./pages/AltTimelinePage/AltTimelinePage";
 import "./styles/index.scss";
 
+import {
+  useQuery,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 function App() {
   // const { data: sessions, error, loading } = useAxiosGet(`sessions`);
   // useEffect(() => {
@@ -42,32 +50,55 @@ function App() {
   return (
     <>
       {sessionsState ? (
-        <BrowserRouter>
-          <Header latestSession={sessionsState.length} />
-          <Routes>
-            <Route
-              path="/"
-              element={<OverviewPage sessions={[...sessionsState].reverse()} />}
-            />
-            <Route
-              path="/report/:sessionID"
-              element={<ReportPage sessions={sessionsState} />}
-            />
-            <Route path="/add-data" element={<AddDataPage />} />
-            <Route path="/about" element={<InfoPage />} />
-            <Route path="/prog" element={<MechsPage />} />
-            <Route path="/clips" element={<NotesPage />} />
-            <Route path="/timeline" element={<TimelinePage />} />
-            <Route path="/alt-timeline" element={<AltTimelinePage />} />
-            <Route path="/account" element={<LoginPage />} />
-            <Route path="/*" element={<NotFoundPage />} />
-          </Routes>
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Test />
+            <Header latestSession={sessionsState.length} />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <OverviewPage sessions={[...sessionsState].reverse()} />
+                }
+              />
+              <Route
+                path="/report/:sessionID"
+                element={<ReportPage sessions={sessionsState} />}
+              />
+              <Route path="/add-data" element={<AddDataPage />} />
+              <Route path="/about" element={<InfoPage />} />
+              <Route path="/prog" element={<MechsPage />} />
+              <Route path="/clips" element={<NotesPage />} />
+              <Route path="/timeline" element={<TimelinePage />} />
+              <Route path="/alt-timeline" element={<AltTimelinePage />} />
+              <Route path="/account" element={<LoginPage />} />
+              <Route path="/*" element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
       ) : (
         ""
       )}
     </>
   );
+}
+
+function Test() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const { isPending, error, data, isFetching } = useQuery({
+    queryKey: ["x"],
+    queryFn: async () => {
+      const response = await fetch(`${API_URL}/sessions`);
+      const testData = await response.json();
+      console.log(testData);
+      return testData;
+    },
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 }
 
 export default App;
