@@ -18,7 +18,7 @@ const OverviewPage = ({ sessions }) => {
 
   useEffect(() => {
     if (response !== null) {
-      console.log(response);
+      // console.log(response);
       setPulls(response);
     }
   }, [response]);

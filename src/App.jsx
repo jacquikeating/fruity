@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (response !== null) {
-      console.log(response);
+      // console.log(response);
       setSessionsState(response);
     }
   }, [response]);

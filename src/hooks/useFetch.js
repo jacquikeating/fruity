@@ -33,8 +33,8 @@ export function useAxiosGet(endpoint) {
         setLoading(true);
         const response = await axios.get(`${API_URL}/${endpoint}`);
         setData(response.data);
-        console.log("api called!");
-        console.log(response.data);
+        // console.log("api called!");
+        // console.log(response.data);
       } catch (err) {
         setError(err);
       } finally {
@@ -55,7 +55,7 @@ export const useAxios = (
   const [loading, setLoading] = useState(false);
 
   const callAPI = () => {
-    console.log(url, method, body, headers, runOnMount);
+    // console.log(url, method, body, headers, runOnMount);
     setLoading(true);
     axios[method](url, JSON.parse(headers), JSON.parse(body))
       .then((res) => setResponse(res.data))
