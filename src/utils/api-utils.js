@@ -1,16 +1,32 @@
-/* useFetch syntax that could work, but seems to have more issues than using a double-fetch hook */
-const {
-  data: sessions,
-  loading: sessionsLoading,
-  error: sessionsError,
-} = useFetch2(`${API_URL}/sessions`);
+const API_URL = import.meta.env.VITE_API_URL;
 
-const {
-  data: pulls,
-  loading: pullsLoading,
-  error: pullsError,
-} = useFetch2(`${API_URL}/pulls`);
+//   const { isPending, error, data, isFetching } = useQuery({
+//     queryKey: ["x"],
+//     queryFn: async () => {
+//       const response = await fetch(`${API_URL}/sessions`);
+//       const testData = await response.json();
+//       console.log(testData);
+//       setSessionsState(testData);
+//       return testData;
+//     },
+//   });
 
+//   if (isPending) return "Loading...";
+
+//   if (error) return "An error has occurred: " + error.message;
+
+export function useTanQuery(endpoint, state, setState) {
+  const { isPending, error, data, isFetching } = useQuery({
+    queryKey: [endpoint, state],
+    queryFn: async () => {
+      const response = await fetch(`${API_URL}/${endpoint}`);
+      const testData = await response.json();
+      console.log(data);
+      setState(data);
+      return testData;
+    },
+  });
+}
 // FFLogs API stuff from ReportPage.jsx. -----------------------------------------------------------------------------------------------------------------
 
 // const API_KEY = import.meta.env.VITE_FFLOGS_API_KEY;

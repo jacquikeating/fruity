@@ -23,36 +23,55 @@ import {
 const queryClient = new QueryClient();
 
 function App() {
-  // const { data: sessions, error, loading } = useAxiosGet(`sessions`);
-  // useEffect(() => {
-  //   if (sessions.length > 0) {
-  //     setSessionsState(sessions);
-  //   }
-  // }, [sessions]);
+  const { data: sessions, error, loading } = useAxiosGet(`sessions`);
+  useEffect(() => {
+    if (sessions.length > 0) {
+      setSessionsState(sessions);
+    }
+  }, [sessions]);
 
   const [sessionsState, setSessionsState] = useState(null);
 
-  const { response } = useAxios(
-    {
-      method: "get",
-      url: "/sessions",
-    },
-    true
-  );
+  // const { response } = useAxios(
+  //   {
+  //     method: "get",
+  //     url: "/sessions",
+  //   },
+  //   true
+  // );
 
-  useEffect(() => {
-    if (response !== null) {
-      // console.log(response);
-      setSessionsState(response);
-    }
-  }, [response]);
+  // useEffect(() => {
+  //   if (response !== null) {
+  //     // console.log(response);
+  //     setSessionsState(response);
+  //   }
+  // }, [response]);
+
+  function Test({ setSessionsState }) {
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const { isPending, error, data, isFetching } = useQuery({
+      queryKey: ["sessionsData"],
+      queryFn: async () => {
+        const response = await fetch(`${API_URL}/sessions`);
+        const testData = await response.json();
+        console.log(testData);
+        setSessionsState(response.data);
+        return testData;
+      },
+    });
+
+    if (isPending) return "Loading...";
+
+    if (error) return "An error has occurred: " + error.message;
+  }
 
   return (
     <>
       {sessionsState ? (
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <Test />
+            {/* <Test setSessionsState={setSessionsState} /> */}
             <Header latestSession={sessionsState.length} />
             <Routes>
               <Route
@@ -77,28 +96,10 @@ function App() {
           </BrowserRouter>
         </QueryClientProvider>
       ) : (
-        ""
+        <p>rip</p>
       )}
     </>
   );
-}
-
-function Test() {
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ["x"],
-    queryFn: async () => {
-      const response = await fetch(`${API_URL}/sessions`);
-      const testData = await response.json();
-      console.log(testData);
-      return testData;
-    },
-  });
-
-  if (isPending) return "Loading...";
-
-  if (error) return "An error has occurred: " + error.message;
 }
 
 export default App;
