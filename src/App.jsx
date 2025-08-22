@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import useGetSessions from "./hooks/use-get-sessions";
+
 import Header from "./components/Header/Header";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import InfoPage from "./pages/InfoPage/InfoPage";
@@ -11,33 +12,25 @@ import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import TimelinePage from "./pages/TimelinePage/TimelinePage";
 import AltTimelinePage from "./pages/AltTimelinePage/AltTimelinePage";
+
 import "./styles/index.scss";
-const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
-  const getSessions = async () => {
-    const response = await fetch(`${API_URL}/sessions`);
-    return response.json();
-  };
-
-  const { data, isPending } = useQuery({
-    queryKey: ["sessions"],
-    queryFn: getSessions,
-  });
+  const { sessionsData, isPending } = useGetSessions();
 
   return (
     <>
       {!isPending ? (
         <BrowserRouter>
-          <Header latestSession={data.length} />
+          <Header latestSession={sessionsData.length} />
           <Routes>
             <Route
               path="/"
-              element={<OverviewPage sessions={[...data].reverse()} />}
+              element={<OverviewPage sessions={[...sessionsData].reverse()} />}
             />
             <Route
               path="/report/:sessionID"
-              element={<ReportPage sessions={data} />}
+              element={<ReportPage sessions={sessionsData} />}
             />
             <Route path="/add-data" element={<AddDataPage />} />
             <Route path="/about" element={<InfoPage />} />
