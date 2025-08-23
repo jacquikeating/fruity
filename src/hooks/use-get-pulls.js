@@ -8,16 +8,17 @@ const axiosInstance = axios.create({
 });
 
 export default function useGetPulls(sessionNum) {
-  const endpoint = `/pulls/${sessionNum}` || `/pulls`;
-  const key = `session-${sessionNum}-pulls` || `pulls`;
+  let endpoint = "/pulls";
+  let key = "pulls";
 
-  console.log(`Endpoint: ${endpoint}`);
-  console.log(`Key: ${key}`);
+  if (sessionNum) {
+    endpoint = `/sessions/${sessionNum}/pulls`;
+    key = `session-${sessionNum}-pulls`;
+  }
 
   const getPulls = async () => {
     try {
       const response = await axiosInstance.get(endpoint);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
