@@ -1,31 +1,11 @@
-import { useState, useEffect } from "react";
-import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
+import useGetPulls from "../../hooks/use-get-pulls";
 import OverviewStats from "../../components/OverviewStats/OverviewStats.jsx";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
 
-import useGetPulls from "../../hooks/use-get-pulls";
-
 const OverviewPage = ({ sessions }) => {
   const { pullsData, isPending } = useGetPulls();
-
-  // const { data: pulls, error, loading } = useAxiosGet(`pulls`);
-  const [pulls, setPulls] = useState([]);
-  const { response, error, loading, callAPI } = useAxios(
-    {
-      method: "get",
-      url: "/pulls",
-    },
-    true
-  );
-
-  useEffect(() => {
-    if (response !== null) {
-      // console.log(response);
-      setPulls(response);
-    }
-  }, [response]);
 
   return (
     <main className="overview-page">
