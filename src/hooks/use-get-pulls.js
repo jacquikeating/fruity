@@ -30,5 +30,5 @@ export default function useGetPulls(sessionNum) {
     queryFn: getPulls,
   });
 
-  return { sessionsData: data, isPending };
+  return { pullsData: data, isPending };
 }
