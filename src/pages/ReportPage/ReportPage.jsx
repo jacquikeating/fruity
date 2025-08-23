@@ -52,18 +52,18 @@ const ReportPage = ({ sessions }) => {
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(true);
   const [allowDelete, setAllowDelete] = useState(false);
 
-  const [date, setDate] = useState("");
-  const [progPhase, setProgPhase] = useState(0);
-  const [progMech, setProgMech] = useState("");
-  const [fflogsLink, setFFLogsLink] = useState("");
+  // const [date, setDate] = useState("");
+  // const [progPhase, setProgPhase] = useState(0);
+  // const [progMech, setProgMech] = useState("");
+  // const [fflogsLink, setFFLogsLink] = useState("");
   const [twitchLinks, setTwitchLinks] = useState("");
   const [twitchLinksArray, setTwitchLinksArray] = useState([]);
-  const [goal, setGoal] = useState("");
-  const [roster, setRoster] = useState("");
-  const [notes, setNotes] = useState("");
+  // const [roster, setRoster] = useState("");
+  // const [goal, setGoal] = useState("");
+  // const [notes, setNotes] = useState("");
 
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 1040;
@@ -75,15 +75,15 @@ const ReportPage = ({ sessions }) => {
     if (sessions) {
       const thisSession = sessions.find((session) => session.id == sessionID);
       setSession(thisSession);
-      setDate(thisSession.date);
-      setProgPhase(thisSession.prog_phase);
-      setProgMech(thisSession.prog_mech);
-      setFFLogsLink(thisSession.fflogs_link);
+      // setDate(thisSession.date);
+      // setProgPhase(thisSession.prog_phase);
+      // setProgMech(thisSession.prog_mech);
+      // setFFLogsLink(thisSession.fflogs_link);
       setTwitchLinks(thisSession.twitch_links);
       setTwitchLinksArray(thisSession.twitch_links.split(", "));
-      setGoal(thisSession.goal);
-      setRoster(thisSession.roster);
-      setNotes(thisSession.notes);
+      // setGoal(thisSession.goal);
+      // setRoster(thisSession.roster);
+      // setNotes(thisSession.notes);
     }
   }, [sessions]);
 
@@ -106,7 +106,8 @@ const ReportPage = ({ sessions }) => {
   function getProgPulls() {
     const filteredPullsArray = pullsToDisplay.filter(
       (pull) =>
-        pull.mech === progMech || pull.mech === getMechAfterProgMech(progMech)
+        pull.mech === session.prog_mech ||
+        pull.mech === getMechAfterProgMech(session.prog_mech)
     );
     return filteredPullsArray;
   }
@@ -148,17 +149,22 @@ const ReportPage = ({ sessions }) => {
       setEditMode(true);
     } else if (editMode === true) {
       const updatedSessionObj = {
-        date: date,
-        prog_phase: progPhase,
-        prog_mech: progMech,
-        fflogs_link: fflogsLink,
-        twitch_links: twitchLinks,
-        roster: roster,
-        goal: goal,
-        notes: notes,
+        date: session.date,
+        prog_phase: session.prog_phase,
+        prog_mech: session.prog_mech,
+        fflogs_link: session.fflogs_link,
+        twitch_links: session.twitch_links,
+        roster: session.roster,
+        goal: session.goal,
+        notes: session.notes,
       };
+      console.log(updatedSessionObj);
       try {
-        await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
+        let response = await axios.put(
+          `${API_URL}/sessions/${sessionID}`,
+          updatedSessionObj
+        );
+        console.log(response);
       } catch (error) {
         console.error(error);
       }
@@ -182,15 +188,22 @@ const ReportPage = ({ sessions }) => {
             <h1 className="report__heading">
               Report:
               {!editMode ? (
-                <span className="report__date">{createReadableDate(date)}</span>
+                <span className="report__date">
+                  {createReadableDate(session.date)}
+                </span>
               ) : (
                 <input
                   type="text"
                   id="date-input"
                   name="date-input"
                   placeholder="YYYY-MM-DD"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  value={session.date}
+                  // onChange={(e) => setDate(e.target.value)}
+                  onChange={(e) =>
+                    setSession((prevSession) => {
+                      return { ...prevSession, date: e.target.value };
+                    })
+                  }
                   className="report__input"
                 />
               )}
@@ -200,23 +213,33 @@ const ReportPage = ({ sessions }) => {
               Session {session.id}
               <span className="report__divider"> • </span>
               {!editMode ? (
-                progMech === "Reclears" && sessionID !== "37" ? (
+                session.prog_mech === "Reclears" && sessionID !== "37" ? (
                   "Reclears"
                 ) : (
-                  `Phase ${progPhase} ${progMech} Prog`
+                  `Phase ${session.prog_phase} ${session.prog_mech} Prog`
                 )
               ) : (
                 <>
                   <input
                     type="number"
-                    value={progPhase}
-                    onChange={(e) => setProgPhase(e.target.value)}
+                    value={session.prog_phase}
+                    // onChange={(e) => setProgPhase(e.target.value)}
+                    onChange={(e) =>
+                      setSession((prevSession) => {
+                        return { ...prevSession, prog_phase: e.target.value };
+                      })
+                    }
                     className="report__input"
                   />
                   <input
                     type="text"
-                    value={progMech}
-                    onChange={(e) => setProgMech(e.target.value)}
+                    value={session.prog_mech}
+                    // onChange={(e) => setProgMech(e.target.value)}
+                    onChange={(e) =>
+                      setSession((prevSession) => {
+                        return { ...prevSession, prog_mech: e.target.value };
+                      })
+                    }
                     className="report__input"
                   />
                 </>
@@ -224,8 +247,10 @@ const ReportPage = ({ sessions }) => {
               <span className="report__divider"> • </span>
               {!editMode ? (
                 <a
-                  className={`report__link ${checkIfEmptyLink(fflogsLink)}`}
-                  href={fflogsLink}
+                  className={`report__link ${checkIfEmptyLink(
+                    session.fflogs_link
+                  )}`}
+                  href={session.fflogs_link}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -243,8 +268,13 @@ const ReportPage = ({ sessions }) => {
                   /> */}
                   <input
                     type="text"
-                    value={fflogsLink}
-                    onChange={(e) => setFFLogsLink(e.target.value)}
+                    value={session.fflogs_link}
+                    // onChange={(e) => setFFLogsLink(e.target.value)}
+                    onChange={(e) =>
+                      setSession((prevSession) => {
+                        return { ...prevSession, fflogs_link: e.target.value };
+                      })
+                    }
                     className="report__input"
                   />
                 </>
@@ -322,12 +352,17 @@ const ReportPage = ({ sessions }) => {
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Goal: </span>
                   {!editMode ? (
-                    `${goal}`
+                    `${session.goal}`
                   ) : (
                     <input
                       type="text"
-                      value={goal}
-                      onChange={(e) => setGoal(e.target.value)}
+                      value={session.goal}
+                      // onChange={(e) => setGoal(e.target.value)}
+                      onChange={(e) =>
+                        setSession((prevSession) => {
+                          return { ...prevSession, goal: e.target.value };
+                        })
+                      }
                       className="report__input"
                     />
                   )}
@@ -335,12 +370,17 @@ const ReportPage = ({ sessions }) => {
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Roster: </span>
                   {!editMode ? (
-                    `${roster}`
+                    `${session.roster}`
                   ) : (
                     <input
                       type="text"
-                      value={roster}
-                      onChange={(e) => setRoster(e.target.value)}
+                      value={session.roster}
+                      // onChange={(e) => setRoster(e.target.value)}
+                      onChange={(e) =>
+                        setSession((prevSession) => {
+                          return { ...prevSession, roster: e.target.value };
+                        })
+                      }
                       className="report__input"
                     />
                   )}
@@ -353,7 +393,7 @@ const ReportPage = ({ sessions }) => {
                 </p>
                 <p className="report__extra-info">
                   <span className="report__extra-info--bold">Gold Stars: </span>
-                  {findGoldStars(pullsArray, roster)}
+                  {findGoldStars(pullsArray, session.roster)}
                 </p>
                 {sessionID == 14 ? (
                   <p className="report__extra-info">
@@ -371,13 +411,13 @@ const ReportPage = ({ sessions }) => {
               />
 
               <div className="report__extra-info-right">
-                {notes.length > 0 ? (
+                {session.notes.length > 0 ? (
                   <div className="report__extra-info">
                     <span className="report__extra-info--bold">Notes: </span>
                     <ul className="report__list">
                       {!editMode ? (
                         <>
-                          {notes.split(", ").map((note) => {
+                          {session.notes.split(", ").map((note) => {
                             return (
                               <li className="report__note" key={note}>
                                 {note}
@@ -387,8 +427,13 @@ const ReportPage = ({ sessions }) => {
                         </>
                       ) : (
                         <textarea
-                          value={notes}
-                          onChange={(e) => setNotes(e.target.value)}
+                          value={session.notes}
+                          // onChange={(e) => setNotes(e.target.value)}
+                          onChange={(e) =>
+                            setSession((prevSession) => {
+                              return { ...prevSession, notes: e.target.value };
+                            })
+                          }
                           className="report__input"
                         ></textarea>
                       )}
