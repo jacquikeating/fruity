@@ -44,29 +44,29 @@ const ReportPage = ({ sessions }) => {
     }
   }, [pulls]);
 
-  const {
-    response,
-    error,
-    loading,
-    callAPI: update,
-  } = useAxios(
-    {
-      method: "post",
-      url: `/pulls/${pullToUpdate.id}`,
-      headers: JSON.stringify({ accept: "*/*" }),
-      body: JSON.stringify(pullToUpdate),
-    },
-    false // Don't run on mount
-  );
+  // const {
+  //   response,
+  //   error,
+  //   loading,
+  //   callAPI: update,
+  // } = useAxios(
+  //   {
+  //     method: "post",
+  //     url: `/pulls/${pullToUpdate.id}`,
+  //     headers: JSON.stringify({ accept: "*/*" }),
+  //     body: JSON.stringify(pullToUpdate),
+  //   },
+  //   false // Don't run on mount
+  // );
 
-  // async function updatePull(pullToUpdate) {
-  //   delete pullToUpdate.index;
-  //   try {
-  //     await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  async function updatePull(pullToUpdate) {
+    delete pullToUpdate.index;
+    try {
+      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const [session, setSession] = useState({});
   const [pullsArray, setPullsArray] = useState([]);
@@ -204,19 +204,19 @@ const ReportPage = ({ sessions }) => {
     // setPullToUpdate(pull);
     pullToUpdate = { ...pull };
     console.log(pull);
-    update();
-    // try {
-    //   await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    // update();
+    try {
+      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+    } catch (error) {
+      console.error(error);
+    }
   }
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    if (response) setData(response);
-    console.log(`Response: ${response}`);
-  }, [response]);
+  // useEffect(() => {
+  //   if (response) setData(response);
+  //   console.log(`Response: ${response}`);
+  // }, [response]);
 
   async function editSession() {
     if (editMode === false) {
