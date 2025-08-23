@@ -18,9 +18,9 @@ import "./ReportPage.scss";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
-  let pullToUpdate = {};
-
   const { sessionID } = useParams();
+  let thisSession = sessions.find((session) => session.id == sessionID);
+  let pullToUpdate = {};
 
   const { response: pulls } = useAxios(
     {
@@ -47,7 +47,10 @@ const ReportPage = ({ sessions }) => {
     }
   }
 
-  const [session, setSession] = useState({});
+  const [session, setSession] = useState(thisSession);
+  const [twitchLinksArray, setTwitchLinksArray] = useState(
+    thisSession.twitch_links.split(", ")
+  );
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
@@ -55,37 +58,11 @@ const ReportPage = ({ sessions }) => {
   const [showEdit, setShowEdit] = useState(true);
   const [allowDelete, setAllowDelete] = useState(false);
 
-  // const [date, setDate] = useState("");
-  // const [progPhase, setProgPhase] = useState(0);
-  // const [progMech, setProgMech] = useState("");
-  // const [fflogsLink, setFFLogsLink] = useState("");
-  // const [twitchLinks, setTwitchLinks] = useState("");
-  const [twitchLinksArray, setTwitchLinksArray] = useState([]);
-  // const [roster, setRoster] = useState("");
-  // const [goal, setGoal] = useState("");
-  // const [notes, setNotes] = useState("");
-
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 1040;
 
   const { isAuthenticated, user } = useAuth0();
   let role = "none";
-
-  useEffect(() => {
-    if (sessions) {
-      const thisSession = sessions.find((session) => session.id == sessionID);
-      setSession(thisSession);
-      // setDate(thisSession.date);
-      // setProgPhase(thisSession.prog_phase);
-      // setProgMech(thisSession.prog_mech);
-      // setFFLogsLink(thisSession.fflogs_link);
-      // setTwitchLinks(thisSession.twitch_links);
-      setTwitchLinksArray(thisSession.twitch_links.split(", "));
-      // setGoal(thisSession.goal);
-      // setRoster(thisSession.roster);
-      // setNotes(thisSession.notes);
-    }
-  }, [sessions]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -198,7 +175,6 @@ const ReportPage = ({ sessions }) => {
                   name="date-input"
                   placeholder="YYYY-MM-DD"
                   value={session.date}
-                  // onChange={(e) => setDate(e.target.value)}
                   onChange={(e) =>
                     setSession((prevSession) => {
                       return { ...prevSession, date: e.target.value };
@@ -223,7 +199,6 @@ const ReportPage = ({ sessions }) => {
                   <input
                     type="number"
                     value={session.prog_phase}
-                    // onChange={(e) => setProgPhase(e.target.value)}
                     onChange={(e) =>
                       setSession((prevSession) => {
                         return { ...prevSession, prog_phase: e.target.value };
@@ -234,7 +209,6 @@ const ReportPage = ({ sessions }) => {
                   <input
                     type="text"
                     value={session.prog_mech}
-                    // onChange={(e) => setProgMech(e.target.value)}
                     onChange={(e) =>
                       setSession((prevSession) => {
                         return { ...prevSession, prog_mech: e.target.value };
@@ -262,14 +236,9 @@ const ReportPage = ({ sessions }) => {
                 </a>
               ) : (
                 <>
-                  {/* <img
-                    src="https://i.imgur.com/asZe3Wu.png"
-                    className="report__icon"
-                  /> */}
                   <input
                     type="text"
                     value={session.fflogs_link}
-                    // onChange={(e) => setFFLogsLink(e.target.value)}
                     onChange={(e) =>
                       setSession((prevSession) => {
                         return { ...prevSession, fflogs_link: e.target.value };
@@ -327,10 +296,6 @@ const ReportPage = ({ sessions }) => {
                 <input
                   type="text"
                   value={session.twitch_links}
-                  // onChange={(e) => {
-                  //   setTwitchLinks(e.target.value);
-                  //   setTwitchLinksArray(e.target.value.split(", "));
-                  // }}
                   onChange={(e) => {
                     setTwitchLinksArray(e.target.value.split(", "));
                     setSession((prevSession) => {
@@ -363,7 +328,6 @@ const ReportPage = ({ sessions }) => {
                     <input
                       type="text"
                       value={session.goal}
-                      // onChange={(e) => setGoal(e.target.value)}
                       onChange={(e) =>
                         setSession((prevSession) => {
                           return { ...prevSession, goal: e.target.value };
@@ -381,7 +345,6 @@ const ReportPage = ({ sessions }) => {
                     <input
                       type="text"
                       value={session.roster}
-                      // onChange={(e) => setRoster(e.target.value)}
                       onChange={(e) =>
                         setSession((prevSession) => {
                           return { ...prevSession, roster: e.target.value };
@@ -434,7 +397,6 @@ const ReportPage = ({ sessions }) => {
                       ) : (
                         <textarea
                           value={session.notes}
-                          // onChange={(e) => setNotes(e.target.value)}
                           onChange={(e) =>
                             setSession((prevSession) => {
                               return { ...prevSession, notes: e.target.value };
