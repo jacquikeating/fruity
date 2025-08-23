@@ -59,7 +59,7 @@ const ReportPage = ({ sessions }) => {
   // const [progPhase, setProgPhase] = useState(0);
   // const [progMech, setProgMech] = useState("");
   // const [fflogsLink, setFFLogsLink] = useState("");
-  const [twitchLinks, setTwitchLinks] = useState("");
+  // const [twitchLinks, setTwitchLinks] = useState("");
   const [twitchLinksArray, setTwitchLinksArray] = useState([]);
   // const [roster, setRoster] = useState("");
   // const [goal, setGoal] = useState("");
@@ -79,7 +79,7 @@ const ReportPage = ({ sessions }) => {
       // setProgPhase(thisSession.prog_phase);
       // setProgMech(thisSession.prog_mech);
       // setFFLogsLink(thisSession.fflogs_link);
-      setTwitchLinks(thisSession.twitch_links);
+      // setTwitchLinks(thisSession.twitch_links);
       setTwitchLinksArray(thisSession.twitch_links.split(", "));
       // setGoal(thisSession.goal);
       // setRoster(thisSession.roster);
@@ -308,9 +308,9 @@ const ReportPage = ({ sessions }) => {
                       <span className="report__divider"> • </span>
                       <a
                         className={`session__link ${checkIfEmptyLink(
-                          twitchLinks
+                          session.twitch_links
                         )}`}
-                        href={twitchLinks}
+                        href={session.twitch_links}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -326,10 +326,16 @@ const ReportPage = ({ sessions }) => {
               ) : (
                 <input
                   type="text"
-                  value={twitchLinks}
+                  value={session.twitch_links}
+                  // onChange={(e) => {
+                  //   setTwitchLinks(e.target.value);
+                  //   setTwitchLinksArray(e.target.value.split(", "));
+                  // }}
                   onChange={(e) => {
-                    setTwitchLinks(e.target.value);
                     setTwitchLinksArray(e.target.value.split(", "));
+                    setSession((prevSession) => {
+                      return { ...prevSession, twitch_links: e.target.value };
+                    });
                   }}
                   className="report__input"
                 />
