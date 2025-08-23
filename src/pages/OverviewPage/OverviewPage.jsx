@@ -31,13 +31,13 @@ const OverviewPage = ({ sessions }) => {
     <main className="overview-page">
       <h1 className="overview-page__title">Overview</h1>
 
-      {!loading ? (
+      {!isPending ? (
         <>
           <section className="overview-page__section">
-            <OverviewStats sessions={sessions} pulls={pulls} />
+            <OverviewStats sessions={sessions} pulls={pullsData} />
             <PhaseBreakdownTable
               progPhase={sessions[0].prog_phase}
-              pulls={pulls}
+              pulls={pullsData}
             />
           </section>
 
