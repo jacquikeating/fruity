@@ -125,23 +125,9 @@ const ReportPage = ({ sessions }) => {
     if (editMode === false) {
       setEditMode(true);
     } else if (editMode === true) {
-      const updatedSessionObj = {
-        date: session.date,
-        prog_phase: session.prog_phase,
-        prog_mech: session.prog_mech,
-        fflogs_link: session.fflogs_link,
-        twitch_links: session.twitch_links,
-        roster: session.roster,
-        goal: session.goal,
-        notes: session.notes,
-      };
-      console.log(updatedSessionObj);
+      const updatedSessionObj = { ...session };
       try {
-        let response = await axios.put(
-          `${API_URL}/sessions/${sessionID}`,
-          updatedSessionObj
-        );
-        console.log(response);
+        await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
       } catch (error) {
         console.error(error);
       }
