@@ -4,15 +4,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAxios } from "../../hooks/useFetch.js";
 import {
-  createReadableDate,
-  findGoldStars,
-  findStrugglePhase,
-  findStruggleMech,
-  checkIfEmptyLink,
+  // createReadableDate,
+  // findGoldStars,
+  // findStrugglePhase,
+  // findStruggleMech,
+  // checkIfEmptyLink,
   getMechAfterProgMech,
 } from "../../utils/shared-functions.js";
-import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
+// import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
+import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -48,9 +49,9 @@ const ReportPage = ({ sessions }) => {
   }
 
   const [session, setSession] = useState(thisSession);
-  const [twitchLinksArray, setTwitchLinksArray] = useState(
-    thisSession.twitch_links.split(", ")
-  );
+  // const [twitchLinksArray, setTwitchLinksArray] = useState(
+  //   thisSession.twitch_links.split(", ")
+  // );
   const [pullsArray, setPullsArray] = useState([]);
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
@@ -145,7 +146,7 @@ const ReportPage = ({ sessions }) => {
 
   return (
     <main className="report">
-      {session.id ? (
+      {/* {session.id ? (
         <>
           <section className="report__section">
             <h1 className="report__heading">
@@ -398,86 +399,87 @@ const ReportPage = ({ sessions }) => {
                 )}
               </div>
             </div>
-          </section>
-
-          <section className="report__section">
-            <div className="report__pulls-heading">
-              <h2 className="report__subheading">
-                Pulls ({pullsArray.length})
-              </h2>
-              <label
-                className="report__filter-label"
-                htmlFor="progOnlyCheckbox"
+          </section> */}
+      <SessionInfo
+        session={session}
+        setSession={setSession}
+        editSession={editSession}
+        pullsArray={pullsArray}
+        sessionID={sessionID}
+        editMode={editMode}
+        setEditMode={setEditMode}
+        showEdit={showEdit}
+      />
+      <section className="report__section">
+        <div className="report__pulls-heading">
+          <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+          <label className="report__filter-label" htmlFor="progOnlyCheckbox">
+            <input
+              type="checkbox"
+              name="progOnlyCheckbox"
+              id="progOnlyCheckbox"
+              className="report__filter-input"
+              value={progPullsOnly}
+              onChange={handleCheckbox}
+            />
+            Show prog pulls only
+          </label>
+          {session.roster.split(", ").length > 0 ? (
+            <label className="report__filter-label" htmlFor="playerSelect">
+              <select
+                name="playerSelect"
+                id="playerSelect"
+                className="report__filter-input"
+                onChange={(e) => {
+                  filterPulls(e.target.value);
+                }}
               >
-                <input
-                  type="checkbox"
-                  name="progOnlyCheckbox"
-                  id="progOnlyCheckbox"
-                  className="report__filter-input"
-                  value={progPullsOnly}
-                  onChange={handleCheckbox}
-                />
-                Show prog pulls only
-              </label>
-              {session.roster.split(", ").length > 0 ? (
-                <label className="report__filter-label" htmlFor="playerSelect">
-                  <select
-                    name="playerSelect"
-                    id="playerSelect"
-                    className="report__filter-input"
-                    onChange={(e) => {
-                      filterPulls(e.target.value);
-                    }}
-                  >
-                    <option value={""}>--</option>
-                    {session.roster.split(", ").map((player) => {
-                      return (
-                        <option
-                          className="report__filter-option"
-                          value={player}
-                        >
-                          {player}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  Filter by player
-                </label>
-              ) : (
-                ""
-              )}
-            </div>
+                <option value={""}>--</option>
+                {session.roster.split(", ").map((player) => {
+                  return (
+                    <option className="report__filter-option" value={player}>
+                      {player}
+                    </option>
+                  );
+                })}
+              </select>
+              Filter by player
+            </label>
+          ) : (
+            ""
+          )}
+        </div>
 
-            {progPullsOnly ? (
-              <PullsTable
-                pullsArray={getProgPulls(pullsToDisplay)}
-                showEdit={showEdit}
-                updatePull={updatePull}
-                deletePull={deletePull}
-                progPhase={session.prog_phase}
-                key={pullsArray}
-                allowDelete={allowDelete}
-                width={width}
-                breakpoint={breakpoint}
-              />
-            ) : (
-              <PullsTable
-                pullsArray={pullsToDisplay}
-                showEdit={showEdit}
-                updatePull={updatePull}
-                deletePull={deletePull}
-                progPhase={session.prog_phase}
-                key={pullsArray}
-                allowDelete={allowDelete}
-                width={width}
-                breakpoint={breakpoint}
-              />
-            )}
-          </section>
-        </>
+        {progPullsOnly ? (
+          <PullsTable
+            pullsArray={getProgPulls(pullsToDisplay)}
+            showEdit={showEdit}
+            updatePull={updatePull}
+            deletePull={deletePull}
+            progPhase={session.prog_phase}
+            key={pullsArray}
+            allowDelete={allowDelete}
+            width={width}
+            breakpoint={breakpoint}
+          />
+        ) : (
+          <PullsTable
+            pullsArray={pullsToDisplay}
+            showEdit={showEdit}
+            updatePull={updatePull}
+            deletePull={deletePull}
+            progPhase={session.prog_phase}
+            key={pullsArray}
+            allowDelete={allowDelete}
+            width={width}
+            breakpoint={breakpoint}
+          />
+        )}
+      </section>
+      {/* </>
       ) : (
         <p>Could not retrieve data for session #{sessionID}</p>
-      )}
+      )} */}
     </main>
   );
 };
