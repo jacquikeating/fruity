@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useAxios } from "../../hooks/useFetch.js";
 import {
   createReadableDate,
   findGoldStars,
@@ -13,20 +14,13 @@ import {
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import "./ReportPage.scss";
-import { useAxiosGet, useAxios } from "../../hooks/useFetch.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const ReportPage = ({ sessions }) => {
-  // const [pullToUpdate, setPullToUpdate] = useState({});
   let pullToUpdate = {};
 
   const { sessionID } = useParams();
-  // const {
-  //   data: pulls,
-  //   error,
-  //   loading,
-  // } = useAxiosGet(`sessions/${sessionID}/pulls`);
 
   const { response: pulls } = useAxios(
     {
@@ -43,21 +37,6 @@ const ReportPage = ({ sessions }) => {
       setPullsToDisplay(pulls);
     }
   }, [pulls]);
-
-  // const {
-  //   response,
-  //   error,
-  //   loading,
-  //   callAPI: update,
-  // } = useAxios(
-  //   {
-  //     method: "post",
-  //     url: `/pulls/${pullToUpdate.id}`,
-  //     headers: JSON.stringify({ accept: "*/*" }),
-  //     body: JSON.stringify(pullToUpdate),
-  //   },
-  //   false // Don't run on mount
-  // );
 
   async function updatePull(pullToUpdate) {
     delete pullToUpdate.index;
@@ -108,17 +87,7 @@ const ReportPage = ({ sessions }) => {
     }
   }, [sessions]);
 
-  // useEffect(() => {
-  //   if (pulls) {
-  //     setPullsArray(pulls);
-  //     setPullsToDisplay(pulls);
-  //   }
-  // }, [pulls]);
-
   useEffect(() => {
-    // let session = null;
-    // let pulls = null;
-
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
     }
@@ -128,42 +97,6 @@ const ReportPage = ({ sessions }) => {
     } else if (role === "static") {
       setShowEdit(true);
     }
-
-    // async function getSessionData() {
-    //   try {
-    //     let result = await axios.get(`${API_URL}/sessions/${sessionID}`);
-    //     session = result.data[0];
-    //     setSession(session);
-    //     setDate(session.date);
-    //     setProgPhase(session.prog_phase);
-    //     setProgMech(session.prog_mech);
-    //     setFFLogsLink(session.fflogs_link);
-    //     setTwitchLinks(session.twitch_links);
-    //     setTwitchLinksArray(session.twitch_links.split(", "));
-    //     setGoal(session.goal);
-    //     setRoster(session.roster);
-    //     setNotes(session.notes);
-    //   } catch (error) {
-    //     console.error(error);
-    //   } finally {
-    //     getPullsData(session.fflogs_link);
-    //   }
-    // }
-
-    // async function getPullsData() {
-    //   try {
-    //     let result = await axios.get(`${API_URL}/sessions/${sessionID}/pulls`);
-    //     pulls = result.data;
-    //     pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-    //   } catch (error) {
-    //     console.error(error);
-    //   } finally {
-    //     setPullsArray(pulls);
-    //     setPullsToDisplay(pulls);
-    //   }
-    // }
-    // getPullsData();
-    // getSessionData();
 
     const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
@@ -201,22 +134,14 @@ const ReportPage = ({ sessions }) => {
 
   async function updatePull(pull) {
     delete pull.index;
-    // setPullToUpdate(pull);
     pullToUpdate = { ...pull };
     console.log(pull);
-    // update();
     try {
       await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
     } catch (error) {
       console.error(error);
     }
   }
-  const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   if (response) setData(response);
-  //   console.log(`Response: ${response}`);
-  // }, [response]);
 
   async function editSession() {
     if (editMode === false) {
