@@ -14,7 +14,19 @@ const SessionContext = createContext();
 
 const ReportPage = ({ sessions }) => {
   const { sessionID } = useParams();
-  let thisSession = sessions.find((session) => session.id == sessionID);
+  const [session, setSession] = useState(
+    sessions.find((session) => session.id == sessionID)
+  );
+  const [pullsArray, setPullsArray] = useState([]);
+  const [progPullsOnly, setProgPullsOnly] = useState(false);
+  const [pullsToDisplay, setPullsToDisplay] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [allowDelete, setAllowDelete] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 1040;
+  const { isAuthenticated, user } = useAuth0();
+  let role = "none";
   let pullToUpdate = {};
 
   const { response: pulls } = useAxios(
@@ -33,28 +45,6 @@ const ReportPage = ({ sessions }) => {
     }
   }, [pulls]);
 
-  async function updatePull(pullToUpdate) {
-    delete pullToUpdate.index;
-    try {
-      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  const [session, setSession] = useState(thisSession);
-  const [pullsArray, setPullsArray] = useState([]);
-  const [progPullsOnly, setProgPullsOnly] = useState(false);
-  const [pullsToDisplay, setPullsToDisplay] = useState([]);
-  const [editMode, setEditMode] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [allowDelete, setAllowDelete] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 1040;
-
-  const { isAuthenticated, user } = useAuth0();
-  let role = "none";
-
   useEffect(() => {
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
@@ -71,6 +61,14 @@ const ReportPage = ({ sessions }) => {
     return () => window.removeEventListener("resize"), handleWindowResize;
   }, [sessionID]);
 
+  function handleCheckbox() {
+    if (progPullsOnly) {
+      setProgPullsOnly(false);
+    } else {
+      setProgPullsOnly(true);
+    }
+  }
+
   function getProgPulls() {
     const filteredPullsArray = pullsToDisplay.filter(
       (pull) =>
@@ -80,11 +78,21 @@ const ReportPage = ({ sessions }) => {
     return filteredPullsArray;
   }
 
-  function handleCheckbox() {
-    if (progPullsOnly) {
-      setProgPullsOnly(false);
-    } else {
-      setProgPullsOnly(true);
+  function filterPulls(name) {
+    const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
+      pull.players_responsible.includes(name)
+    );
+    setPullsToDisplay(arrayFilteredByPlayer);
+  }
+
+  async function updatePull(pull) {
+    delete pull.index;
+    pullToUpdate = { ...pull };
+    console.log(pull);
+    try {
+      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -101,17 +109,6 @@ const ReportPage = ({ sessions }) => {
     }
   }
 
-  async function updatePull(pull) {
-    delete pull.index;
-    pullToUpdate = { ...pull };
-    console.log(pull);
-    try {
-      await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   async function editSession() {
     if (editMode === false) {
       setEditMode(true);
@@ -124,14 +121,6 @@ const ReportPage = ({ sessions }) => {
       }
       setEditMode(false);
     }
-  }
-
-  function filterPulls(name) {
-    const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
-      pull.players_responsible.includes(name)
-    );
-
-    setPullsToDisplay(arrayFilteredByPlayer);
   }
 
   const sessionCtx = {
