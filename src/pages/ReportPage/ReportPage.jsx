@@ -47,7 +47,6 @@ const ReportPage = ({ sessions }) => {
   const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(true);
   const [allowDelete, setAllowDelete] = useState(false);
-
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 1040;
 
