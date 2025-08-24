@@ -45,7 +45,7 @@ const ReportPage = ({ sessions }) => {
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  const [showEdit, setShowEdit] = useState(true);
+  const [showEdit, setShowEdit] = useState(false);
   const [allowDelete, setAllowDelete] = useState(false);
 
   const [width, setWidth] = useState(window.innerWidth);
