@@ -6,6 +6,7 @@ import { useAxios } from "../../hooks/useFetch.js";
 import { getMechAfterProgMech } from "../../utils/shared-functions.js";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
+import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
 import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -146,6 +147,7 @@ const ReportPage = ({ sessions }) => {
             setEditMode={setEditMode}
             showEdit={showEdit}
           />
+          <SessionInfoEdit />
           <section className="report__section">
             <div className="report__pulls-heading">
               <h2 className="report__subheading">
