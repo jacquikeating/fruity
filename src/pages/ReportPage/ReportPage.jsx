@@ -150,8 +150,8 @@ const ReportPage = ({ sessions }) => {
       <main className="report">
         {session.id ? (
           <>
-            <SessionInfo />
-            <SessionInfoEdit />
+            {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
+
             <section className="report__section">
               <div className="report__pulls-heading">
                 <h2 className="report__subheading">
