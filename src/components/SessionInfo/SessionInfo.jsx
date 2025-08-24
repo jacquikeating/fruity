@@ -5,7 +5,6 @@ import {
   findStrugglePhase,
   findStruggleMech,
   checkIfEmptyLink,
-  getMechAfterProgMech,
 } from "../../utils/shared-functions.js";
 import { useState } from "react";
 
