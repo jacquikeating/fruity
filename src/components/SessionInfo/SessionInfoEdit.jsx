@@ -1,4 +1,3 @@
-import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 import {
   findGoldStars,
   findStrugglePhase,
@@ -6,6 +5,8 @@ import {
 } from "../../utils/shared-functions.js";
 import { useState, useContext } from "react";
 import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
+import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
+import SessionStats from "./SessionStats.jsx";
 
 const SessionInfoEdit = () => {
   const { sessionCtx } = useContext(SessionContext);
@@ -135,8 +136,8 @@ const SessionInfoEdit = () => {
           ) : (
             ""
           )}
+          <SessionStats />
         </div>
-
         <PhaseBreakdownTable
           progPhase={session.prog_phase}
           pulls={pullsArray}

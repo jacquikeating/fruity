@@ -1,4 +1,3 @@
-import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 import {
   createReadableDate,
   findGoldStars,
@@ -8,6 +7,8 @@ import {
 } from "../../utils/shared-functions.js";
 import { useState, useContext } from "react";
 import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
+import SessionStats from "./SessionStats.jsx";
+import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 
 const SessionInfo = () => {
   const { sessionCtx } = useContext(SessionContext);
@@ -120,6 +121,7 @@ const SessionInfo = () => {
           ) : (
             ""
           )}
+          <SessionStats />
         </div>
 
         <PhaseBreakdownTable
