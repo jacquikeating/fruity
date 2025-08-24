@@ -160,36 +160,29 @@ const ReportPage = ({ sessions }) => {
                   />
                   Show prog pulls only
                 </label>
-                {session.roster.split(", ").length > 0 ? (
-                  <label
-                    className="report__filter-label"
-                    htmlFor="playerSelect"
+                <label className="report__filter-label" htmlFor="playerSelect">
+                  <select
+                    name="playerSelect"
+                    id="playerSelect"
+                    className="report__filter-input"
+                    onChange={(e) => {
+                      filterPulls(e.target.value);
+                    }}
                   >
-                    <select
-                      name="playerSelect"
-                      id="playerSelect"
-                      className="report__filter-input"
-                      onChange={(e) => {
-                        filterPulls(e.target.value);
-                      }}
-                    >
-                      <option value={""}>--</option>
-                      {session.roster.split(", ").map((player) => {
-                        return (
-                          <option
-                            className="report__filter-option"
-                            value={player}
-                          >
-                            {player}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    Filter by player
-                  </label>
-                ) : (
-                  ""
-                )}
+                    <option value={""}>--</option>
+                    {session.roster.split(", ").map((player) => {
+                      return (
+                        <option
+                          className="report__filter-option"
+                          value={player}
+                        >
+                          {player}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  Filter by player
+                </label>
               </div>
 
               {progPullsOnly ? (
