@@ -9,17 +9,17 @@ import {
 import { useState, useContext } from "react";
 import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
 
-const SessionInfo = ({
-  session,
-  setSession,
-  editSession,
-  pullsArray,
-  sessionID,
-  editMode,
-  showEdit,
-}) => {
+const SessionInfo = () => {
   const { sessionCtx } = useContext(SessionContext);
-  console.log(sessionCtx);
+  const {
+    session,
+    setSession,
+    editSession,
+    pullsArray,
+    sessionID,
+    editMode,
+    showEdit,
+  } = sessionCtx;
 
   const [twitchLinksArray, setTwitchLinksArray] = useState(
     session.twitch_links.split(", ")
