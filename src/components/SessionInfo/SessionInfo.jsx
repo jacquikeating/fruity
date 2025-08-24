@@ -6,7 +6,8 @@ import {
   findStruggleMech,
   checkIfEmptyLink,
 } from "../../utils/shared-functions.js";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
 
 const SessionInfo = ({
   session,
@@ -17,6 +18,9 @@ const SessionInfo = ({
   editMode,
   showEdit,
 }) => {
+  const { sessionCtx } = useContext(SessionContext);
+  console.log(sessionCtx);
+
   const [twitchLinksArray, setTwitchLinksArray] = useState(
     session.twitch_links.split(", ")
   );
