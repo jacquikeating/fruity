@@ -1,12 +1,9 @@
-import {
-  createReadableDate,
-  findGoldStars,
-  findStrugglePhase,
-  findStruggleMech,
-  checkIfEmptyLink,
-} from "../../utils/shared-functions.js";
 import { useState, useContext } from "react";
 import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
+import {
+  createReadableDate,
+  checkIfEmptyLink,
+} from "../../utils/shared-functions.js";
 import SessionStats from "./SessionStats.jsx";
 import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 
@@ -103,24 +100,6 @@ const SessionInfo = () => {
             <span className="report__extra-info--bold">Roster: </span>
             {session.roster}
           </p>
-          <p className="report__extra-info">
-            <span className="report__extra-info--bold">Most Wipes: </span>
-            Phase {findStrugglePhase(pullsArray)}
-            <span className="report__divider"> • </span>
-            {findStruggleMech(pullsArray)}
-          </p>
-          <p className="report__extra-info">
-            <span className="report__extra-info--bold">Gold Stars: </span>
-            {findGoldStars(pullsArray, session.roster)}
-          </p>
-          {sessionID == 14 ? (
-            <p className="report__extra-info">
-              <span className="report__extra-info--bold">💩 Star: </span>
-              Sophia
-            </p>
-          ) : (
-            ""
-          )}
           <SessionStats />
         </div>
 
