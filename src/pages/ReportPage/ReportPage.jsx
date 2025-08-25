@@ -4,6 +4,7 @@ import { useState, useEffect, createContext } from "react";
 import axios from "axios";
 import { useAxios } from "../../hooks/useFetch.js";
 import { getMechAfterProgMech } from "../../utils/shared-functions.js";
+import PullsSection from "../../components/PullsSection.jsx/PullsSection.jsx";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
