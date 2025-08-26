@@ -127,6 +127,7 @@ const ReportPage = ({ sessions }) => {
   };
 
   const pullsCtx = {
+    pulls,
     width,
     breakpoint,
     pullsToDisplay,

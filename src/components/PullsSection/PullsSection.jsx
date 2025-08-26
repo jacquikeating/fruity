@@ -1,13 +1,19 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   SessionContext,
   PullsContext,
   EditContext,
 } from "../../pages/ReportPage/ReportPage.jsx";
+import { getMechAfterProgMech } from "../../utils/shared-functions.js";
+import PullsTable from "../PullsTable/PullsTable.jsx";
 
 const PullsSection = () => {
   const { sessionCtx } = useContext(SessionContext);
-  const { session, pullsArray, sessionID } = sessionCtx;
+  const {
+    session,
+    // pullsArray,
+    sessionID,
+  } = sessionCtx;
   const { editCtx } = useContext(EditContext);
   const {
     editMode,
@@ -22,7 +28,8 @@ const PullsSection = () => {
   const {
     width,
     breakpoint,
-    setPullsArray,
+    // setPullsArray,
+    pulls,
     // pullsToDisplay,
     // setPullsToDisplay,
     // getProgPulls,
@@ -30,8 +37,18 @@ const PullsSection = () => {
     // handleCheckbox,
   } = pullsCtx;
 
+  const [pullsArray, setPullsArray] = useState([]);
+
   const [progPullsOnly, setProgPullsOnly] = useState(false);
-  const [pullsToDisplay, setPullsToDisplay] = useState([]);
+  const [pullsToDisplay, setPullsToDisplay] = useState(pullsArray);
+
+  useEffect(() => {
+    if (pulls) {
+      pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
+      setPullsArray(pulls);
+      setPullsToDisplay(pulls);
+    }
+  }, [pulls]);
 
   function handleCheckbox() {
     if (progPullsOnly) {
@@ -67,6 +84,32 @@ const PullsSection = () => {
           Show prog pulls only
         </label>
       </div>
+
+      {progPullsOnly ? (
+        <PullsTable
+          pullsArray={getProgPulls(pullsToDisplay)}
+          showEdit={showEdit}
+          updatePull={updatePull}
+          deletePull={deletePull}
+          progPhase={session.prog_phase}
+          key={pullsArray}
+          allowDelete={allowDelete}
+          width={width}
+          breakpoint={breakpoint}
+        />
+      ) : (
+        <PullsTable
+          pullsArray={pullsToDisplay}
+          showEdit={showEdit}
+          updatePull={updatePull}
+          deletePull={deletePull}
+          progPhase={session.prog_phase}
+          key={pullsArray}
+          allowDelete={allowDelete}
+          width={width}
+          breakpoint={breakpoint}
+        />
+      )}
     </section>
   );
 };
