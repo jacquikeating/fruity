@@ -11,6 +11,8 @@ import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const SessionContext = createContext();
+const PullsContext = createContext();
+const EditContext = createContext();
 
 const ReportPage = ({ sessions }) => {
   const { sessionID } = useParams();
