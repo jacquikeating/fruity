@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect, createContext } from "react";
+import useGetPulls from "../../hooks/use-get-pulls.js";
 import axios from "axios";
 import { useAxios } from "../../hooks/useFetch.js";
 import { getMechAfterProgMech } from "../../utils/shared-functions.js";
@@ -36,6 +37,9 @@ const ReportPage = ({ sessions }) => {
     },
     true
   );
+
+  const { pullsData, isPending } = useGetPulls(sessionID);
+  console.log(pullsData);
 
   useEffect(() => {
     if (pulls !== null) {
