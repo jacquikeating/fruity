@@ -1,5 +1,8 @@
 import { useState, useContext } from "react";
-import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
+import {
+  SessionContext,
+  EditContext,
+} from "../../pages/ReportPage/ReportPage.jsx";
 import {
   createReadableDate,
   checkIfEmptyLink,
@@ -9,7 +12,9 @@ import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 
 const SessionInfo = () => {
   const { sessionCtx } = useContext(SessionContext);
-  const { session, editSession, pullsArray, sessionID, showEdit } = sessionCtx;
+  const { session, pullsArray, sessionID } = sessionCtx;
+  const { editCtx } = useContext(EditContext);
+  const { editSession, showEdit } = editCtx;
 
   const [twitchLinksArray, setTwitchLinksArray] = useState(
     session.twitch_links.split(", ")

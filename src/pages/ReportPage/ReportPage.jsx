@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect, createContext } from "react";
+import useGetPulls from "../../hooks/use-get-pulls.js";
 import axios from "axios";
-import { useAxios } from "../../hooks/useFetch.js";
 import { getMechAfterProgMech } from "../../utils/shared-functions.js";
 import PullsSection from "../../components/PullsSection.jsx/PullsSection.jsx";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
@@ -12,6 +12,8 @@ import "./ReportPage.scss";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const SessionContext = createContext();
+const PullsContext = createContext();
+const EditContext = createContext();
 
 const ReportPage = ({ sessions }) => {
   const { sessionID } = useParams();
@@ -30,16 +32,10 @@ const ReportPage = ({ sessions }) => {
   let role = "none";
   let pullToUpdate = {};
 
-  const { response: pulls } = useAxios(
-    {
-      method: "get",
-      url: `/sessions/${sessionID}/pulls`,
-    },
-    true
-  );
+  const { pulls, isPending } = useGetPulls(sessionID);
 
   useEffect(() => {
-    if (pulls !== null) {
+    if (!isPending) {
       pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
       setPullsArray(pulls);
       setPullsToDisplay(pulls);
@@ -125,100 +121,106 @@ const ReportPage = ({ sessions }) => {
   }
 
   const sessionCtx = {
-    session: session,
-    setSession: setSession,
-    editSession: editSession,
-    pullsArray: pullsArray,
-    sessionID: sessionID,
-    editMode: editMode,
-    setEditMode: setEditMode,
-    showEdit: showEdit,
+    session,
+    setSession,
+    editSession,
+    pullsArray,
+    sessionID,
   };
+
+  const pullsCtx = {};
+
+  const editCtx = { editMode, setEditMode, showEdit, allowDelete };
 
   return (
     <SessionContext.Provider value={{ sessionCtx }}>
-      <main className="report">
-        {session.id ? (
-          <>
-            {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
+      <EditContext.Provider value={{ editCtx }}>
+        <main className="report">
+          {session.id ? (
+            <>
+              {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
 
-            <section className="report__section">
-              <div className="report__pulls-heading">
-                <h2 className="report__subheading">
-                  Pulls ({pullsArray.length})
-                </h2>
-                <label
-                  className="report__filter-label"
-                  htmlFor="progOnlyCheckbox"
-                >
-                  <input
-                    type="checkbox"
-                    name="progOnlyCheckbox"
-                    id="progOnlyCheckbox"
-                    className="report__filter-input"
-                    value={progPullsOnly}
-                    onChange={handleCheckbox}
-                  />
-                  Show prog pulls only
-                </label>
-                <label className="report__filter-label" htmlFor="playerSelect">
-                  <select
-                    name="playerSelect"
-                    id="playerSelect"
-                    className="report__filter-input"
-                    onChange={(e) => {
-                      filterPulls(e.target.value);
-                    }}
+              <section className="report__section">
+                <div className="report__pulls-heading">
+                  <h2 className="report__subheading">
+                    Pulls ({pullsArray.length})
+                  </h2>
+                  <label
+                    className="report__filter-label"
+                    htmlFor="progOnlyCheckbox"
                   >
-                    <option value={""}>--</option>
-                    {session.roster.split(", ").map((player) => {
-                      return (
-                        <option
-                          className="report__filter-option"
-                          value={player}
-                        >
-                          {player}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  Filter by player
-                </label>
-              </div>
+                    <input
+                      type="checkbox"
+                      name="progOnlyCheckbox"
+                      id="progOnlyCheckbox"
+                      className="report__filter-input"
+                      value={progPullsOnly}
+                      onChange={handleCheckbox}
+                    />
+                    Show prog pulls only
+                  </label>
+                  <label
+                    className="report__filter-label"
+                    htmlFor="playerSelect"
+                  >
+                    <select
+                      name="playerSelect"
+                      id="playerSelect"
+                      className="report__filter-input"
+                      onChange={(e) => {
+                        filterPulls(e.target.value);
+                      }}
+                    >
+                      <option value={""}>--</option>
+                      {session.roster.split(", ").map((player) => {
+                        return (
+                          <option
+                            className="report__filter-option"
+                            value={player}
+                          >
+                            {player}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    Filter by player
+                  </label>
+                </div>
 
-              {progPullsOnly ? (
-                <PullsTable
-                  pullsArray={getProgPulls(pullsToDisplay)}
-                  showEdit={showEdit}
-                  updatePull={updatePull}
-                  deletePull={deletePull}
-                  progPhase={session.prog_phase}
-                  key={pullsArray}
-                  allowDelete={allowDelete}
-                  width={width}
-                  breakpoint={breakpoint}
-                />
-              ) : (
-                <PullsTable
-                  pullsArray={pullsToDisplay}
-                  showEdit={showEdit}
-                  updatePull={updatePull}
-                  deletePull={deletePull}
-                  progPhase={session.prog_phase}
-                  key={pullsArray}
-                  allowDelete={allowDelete}
-                  width={width}
-                  breakpoint={breakpoint}
-                />
-              )}
-            </section>
-          </>
-        ) : (
-          <p>Could not retrieve data for session #{sessionID}</p>
-        )}
-      </main>
+                {progPullsOnly ? (
+                  <PullsTable
+                    pullsArray={getProgPulls(pullsToDisplay)}
+                    showEdit={showEdit}
+                    updatePull={updatePull}
+                    deletePull={deletePull}
+                    progPhase={session.prog_phase}
+                    key={pullsArray}
+                    allowDelete={allowDelete}
+                    width={width}
+                    breakpoint={breakpoint}
+                  />
+                ) : (
+                  <PullsTable
+                    pullsArray={pullsToDisplay}
+                    showEdit={showEdit}
+                    updatePull={updatePull}
+                    deletePull={deletePull}
+                    progPhase={session.prog_phase}
+                    key={pullsArray}
+                    allowDelete={allowDelete}
+                    width={width}
+                    breakpoint={breakpoint}
+                  />
+                )}
+              </section>
+            </>
+          ) : (
+            <p>Could not retrieve data for session #{sessionID}</p>
+          )}
+        </main>
+      </EditContext.Provider>
     </SessionContext.Provider>
   );
 };
 export default ReportPage;
-export { SessionContext };
+export { SessionContext, EditContext, PullsContext };

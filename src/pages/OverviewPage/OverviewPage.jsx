@@ -5,7 +5,7 @@ import SessionsList from "../../components/SessionsList/SessionsList";
 import "./OverviewPage.scss";
 
 const OverviewPage = ({ sessions }) => {
-  const { pullsData, isPending } = useGetPulls();
+  const { pulls, isPending } = useGetPulls();
 
   return (
     <main className="overview-page">
@@ -14,10 +14,10 @@ const OverviewPage = ({ sessions }) => {
       {!isPending ? (
         <>
           <section className="overview-page__section">
-            <OverviewStats sessions={sessions} pulls={pullsData} />
+            <OverviewStats sessions={sessions} pulls={pulls} />
             <PhaseBreakdownTable
               progPhase={sessions[0].prog_phase}
-              pulls={pullsData}
+              pulls={pulls}
             />
           </section>
 
