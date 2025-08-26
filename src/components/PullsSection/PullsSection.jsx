@@ -29,7 +29,14 @@ const PullsSection = () => {
     filterPulls,
     handleCheckbox,
   } = pullsCtx;
-  return <p>PullsSection testing</p>;
+
+  return (
+    <section className="report__section">
+      <div className="report__pulls-heading">
+        <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+      </div>
+    </section>
+  );
 };
 
 export default PullsSection;
