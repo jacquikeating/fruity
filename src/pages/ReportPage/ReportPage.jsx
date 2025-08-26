@@ -3,7 +3,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect, createContext } from "react";
 import useGetPulls from "../../hooks/use-get-pulls.js";
 import axios from "axios";
-import { useAxios } from "../../hooks/useFetch.js";
 import { getMechAfterProgMech } from "../../utils/shared-functions.js";
 import PullsTable from "../../components/PullsTable/PullsTable.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
@@ -30,19 +29,10 @@ const ReportPage = ({ sessions }) => {
   let role = "none";
   let pullToUpdate = {};
 
-  const { response: pulls } = useAxios(
-    {
-      method: "get",
-      url: `/sessions/${sessionID}/pulls`,
-    },
-    true
-  );
-
-  const { pullsData, isPending } = useGetPulls(sessionID);
-  console.log(pullsData);
+  const { pulls, isPending } = useGetPulls(sessionID);
 
   useEffect(() => {
-    if (pulls !== null) {
+    if (!isPending) {
       pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
       setPullsArray(pulls);
       setPullsToDisplay(pulls);
