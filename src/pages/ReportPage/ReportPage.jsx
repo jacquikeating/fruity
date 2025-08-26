@@ -177,6 +177,7 @@ const ReportPage = ({ sessions }) => {
                           <option
                             className="report__filter-option"
                             value={player}
+                            key={player}
                           >
                             {player}
                           </option>
