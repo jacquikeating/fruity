@@ -67,6 +67,13 @@ const PullsSection = () => {
     return filteredPullsArray;
   }
 
+  function filterPulls(name) {
+    const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
+      pull.players_responsible.includes(name)
+    );
+    setPullsToDisplay(arrayFilteredByPlayer);
+  }
+
   return (
     <section className="report__section">
       <div className="report__pulls-heading">
@@ -82,6 +89,31 @@ const PullsSection = () => {
             onChange={handleCheckbox}
           />
           Show prog pulls only
+        </label>
+
+        <label className="report__filter-label" htmlFor="playerSelect">
+          <select
+            name="playerSelect"
+            id="playerSelect"
+            className="report__filter-input"
+            onChange={(e) => {
+              filterPulls(e.target.value);
+            }}
+          >
+            <option value={""}>--</option>
+            {session.roster.split(", ").map((player) => {
+              return (
+                <option
+                  className="report__filter-option"
+                  value={player}
+                  key={player}
+                >
+                  {player}
+                </option>
+              );
+            })}
+          </select>
+          Filter by player
         </label>
       </div>
 
