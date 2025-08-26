@@ -133,88 +133,93 @@ const ReportPage = ({ sessions }) => {
 
   return (
     <SessionContext.Provider value={{ sessionCtx }}>
-      <main className="report">
-        {session.id ? (
-          <>
-            {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
+      <EditContext.Provider value={{ editCtx }}>
+        <main className="report">
+          {session.id ? (
+            <>
+              {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
 
-            <section className="report__section">
-              <div className="report__pulls-heading">
-                <h2 className="report__subheading">
-                  Pulls ({pullsArray.length})
-                </h2>
-                <label
-                  className="report__filter-label"
-                  htmlFor="progOnlyCheckbox"
-                >
-                  <input
-                    type="checkbox"
-                    name="progOnlyCheckbox"
-                    id="progOnlyCheckbox"
-                    className="report__filter-input"
-                    value={progPullsOnly}
-                    onChange={handleCheckbox}
-                  />
-                  Show prog pulls only
-                </label>
-                <label className="report__filter-label" htmlFor="playerSelect">
-                  <select
-                    name="playerSelect"
-                    id="playerSelect"
-                    className="report__filter-input"
-                    onChange={(e) => {
-                      filterPulls(e.target.value);
-                    }}
+              <section className="report__section">
+                <div className="report__pulls-heading">
+                  <h2 className="report__subheading">
+                    Pulls ({pullsArray.length})
+                  </h2>
+                  <label
+                    className="report__filter-label"
+                    htmlFor="progOnlyCheckbox"
                   >
-                    <option value={""}>--</option>
-                    {session.roster.split(", ").map((player) => {
-                      return (
-                        <option
-                          className="report__filter-option"
-                          value={player}
-                        >
-                          {player}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  Filter by player
-                </label>
-              </div>
+                    <input
+                      type="checkbox"
+                      name="progOnlyCheckbox"
+                      id="progOnlyCheckbox"
+                      className="report__filter-input"
+                      value={progPullsOnly}
+                      onChange={handleCheckbox}
+                    />
+                    Show prog pulls only
+                  </label>
+                  <label
+                    className="report__filter-label"
+                    htmlFor="playerSelect"
+                  >
+                    <select
+                      name="playerSelect"
+                      id="playerSelect"
+                      className="report__filter-input"
+                      onChange={(e) => {
+                        filterPulls(e.target.value);
+                      }}
+                    >
+                      <option value={""}>--</option>
+                      {session.roster.split(", ").map((player) => {
+                        return (
+                          <option
+                            className="report__filter-option"
+                            value={player}
+                          >
+                            {player}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    Filter by player
+                  </label>
+                </div>
 
-              {progPullsOnly ? (
-                <PullsTable
-                  pullsArray={getProgPulls(pullsToDisplay)}
-                  showEdit={showEdit}
-                  updatePull={updatePull}
-                  deletePull={deletePull}
-                  progPhase={session.prog_phase}
-                  key={pullsArray}
-                  allowDelete={allowDelete}
-                  width={width}
-                  breakpoint={breakpoint}
-                />
-              ) : (
-                <PullsTable
-                  pullsArray={pullsToDisplay}
-                  showEdit={showEdit}
-                  updatePull={updatePull}
-                  deletePull={deletePull}
-                  progPhase={session.prog_phase}
-                  key={pullsArray}
-                  allowDelete={allowDelete}
-                  width={width}
-                  breakpoint={breakpoint}
-                />
-              )}
-            </section>
-          </>
-        ) : (
-          <p>Could not retrieve data for session #{sessionID}</p>
-        )}
-      </main>
+                {progPullsOnly ? (
+                  <PullsTable
+                    pullsArray={getProgPulls(pullsToDisplay)}
+                    showEdit={showEdit}
+                    updatePull={updatePull}
+                    deletePull={deletePull}
+                    progPhase={session.prog_phase}
+                    key={pullsArray}
+                    allowDelete={allowDelete}
+                    width={width}
+                    breakpoint={breakpoint}
+                  />
+                ) : (
+                  <PullsTable
+                    pullsArray={pullsToDisplay}
+                    showEdit={showEdit}
+                    updatePull={updatePull}
+                    deletePull={deletePull}
+                    progPhase={session.prog_phase}
+                    key={pullsArray}
+                    allowDelete={allowDelete}
+                    width={width}
+                    breakpoint={breakpoint}
+                  />
+                )}
+              </section>
+            </>
+          ) : (
+            <p>Could not retrieve data for session #{sessionID}</p>
+          )}
+        </main>
+      </EditContext.Provider>
     </SessionContext.Provider>
   );
 };
 export default ReportPage;
-export { SessionContext };
+export { SessionContext, EditContext, PullsContext };
