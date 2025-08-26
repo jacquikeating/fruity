@@ -9,11 +9,7 @@ import PullsTable from "../PullsTable/PullsTable.jsx";
 
 const PullsSection = () => {
   const { sessionCtx } = useContext(SessionContext);
-  const {
-    session,
-    // pullsArray,
-    sessionID,
-  } = sessionCtx;
+  const { session, pullsArray, sessionID } = sessionCtx;
   const { editCtx } = useContext(EditContext);
   const {
     editMode,
@@ -37,15 +33,13 @@ const PullsSection = () => {
     // handleCheckbox,
   } = pullsCtx;
 
-  const [pullsArray, setPullsArray] = useState([]);
-
   const [progPullsOnly, setProgPullsOnly] = useState(false);
-  const [pullsToDisplay, setPullsToDisplay] = useState(pullsArray);
+  const [pullsToDisplay, setPullsToDisplay] = useState([]);
 
   useEffect(() => {
     if (pulls) {
       pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-      setPullsArray(pulls);
+      // setPullsArray(pulls);
       setPullsToDisplay(pulls);
     }
   }, [pulls]);

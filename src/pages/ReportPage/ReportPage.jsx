@@ -21,8 +21,8 @@ const ReportPage = ({ sessions }) => {
     sessions.find((session) => session.id == sessionID)
   );
   const [pullsArray, setPullsArray] = useState([]);
-  const [progPullsOnly, setProgPullsOnly] = useState(false);
-  const [pullsToDisplay, setPullsToDisplay] = useState([]);
+  // const [progPullsOnly, setProgPullsOnly] = useState(false);
+  // const [pullsToDisplay, setPullsToDisplay] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [allowDelete, setAllowDelete] = useState(false);
@@ -34,13 +34,13 @@ const ReportPage = ({ sessions }) => {
 
   const { pulls, isPending } = useGetPulls(sessionID);
 
-  useEffect(() => {
-    if (!isPending) {
-      pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-      setPullsArray(pulls);
-      setPullsToDisplay(pulls);
-    }
-  }, [pulls]);
+  // useEffect(() => {
+  //   if (!isPending) {
+  //     pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
+  //     setPullsArray(pulls);
+  //     setPullsToDisplay(pulls);
+  //   }
+  // }, [pulls]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -58,29 +58,29 @@ const ReportPage = ({ sessions }) => {
     return () => window.removeEventListener("resize"), handleWindowResize;
   }, [sessionID]);
 
-  function handleCheckbox() {
-    if (progPullsOnly) {
-      setProgPullsOnly(false);
-    } else {
-      setProgPullsOnly(true);
-    }
-  }
+  // function handleCheckbox() {
+  //   if (progPullsOnly) {
+  //     setProgPullsOnly(false);
+  //   } else {
+  //     setProgPullsOnly(true);
+  //   }
+  // }
 
-  function getProgPulls() {
-    const filteredPullsArray = pullsToDisplay.filter(
-      (pull) =>
-        pull.mech === session.prog_mech ||
-        pull.mech === getMechAfterProgMech(session.prog_mech)
-    );
-    return filteredPullsArray;
-  }
+  // function getProgPulls() {
+  //   const filteredPullsArray = pullsToDisplay.filter(
+  //     (pull) =>
+  //       pull.mech === session.prog_mech ||
+  //       pull.mech === getMechAfterProgMech(session.prog_mech)
+  //   );
+  //   return filteredPullsArray;
+  // }
 
-  function filterPulls(name) {
-    const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
-      pull.players_responsible.includes(name)
-    );
-    setPullsToDisplay(arrayFilteredByPlayer);
-  }
+  // function filterPulls(name) {
+  //   const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
+  //     pull.players_responsible.includes(name)
+  //   );
+  //   setPullsToDisplay(arrayFilteredByPlayer);
+  // }
 
   async function updatePull(pull) {
     delete pull.index;
@@ -130,11 +130,11 @@ const ReportPage = ({ sessions }) => {
     pulls,
     width,
     breakpoint,
-    pullsToDisplay,
-    setPullsToDisplay,
-    getProgPulls,
-    filterPulls,
-    handleCheckbox,
+    // pullsToDisplay,
+    // setPullsToDisplay,
+    // getProgPulls,
+    // filterPulls,
+    // handleCheckbox,
   };
 
   const editCtx = {
@@ -161,7 +161,7 @@ const ReportPage = ({ sessions }) => {
               <PullsContext.Provider value={{ pullsCtx }}>
                 <PullsSection />
 
-                <section className="report__section">
+                {/* <section className="report__section">
                   <div className="report__pulls-heading">
                     <h2 className="report__subheading">
                       Pulls ({pullsArray.length})
@@ -234,7 +234,7 @@ const ReportPage = ({ sessions }) => {
                       breakpoint={breakpoint}
                     />
                   )}
-                </section>
+                </section> */}
               </PullsContext.Provider>
             </>
           ) : (
