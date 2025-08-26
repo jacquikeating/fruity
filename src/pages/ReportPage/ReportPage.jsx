@@ -122,15 +122,32 @@ const ReportPage = ({ sessions }) => {
 
   const sessionCtx = {
     session,
-    setSession,
-    editSession,
     pullsArray,
     sessionID,
   };
 
-  const pullsCtx = {};
+  const pullsCtx = {
+    width,
+    breakpoint,
+    pullsToDisplay,
+    setPullsToDisplay,
+    getProgPulls,
+    filterPulls,
+    handleCheckbox,
+  };
 
-  const editCtx = { editMode, setEditMode, showEdit, allowDelete };
+  const editCtx = {
+    editMode,
+    setEditMode,
+    showEdit,
+    allowDelete,
+    updatePull,
+    deletePull,
+    pullToUpdate,
+    setPullsArray,
+    setSession,
+    editSession,
+  };
 
   return (
     <SessionContext.Provider value={{ sessionCtx }}>
