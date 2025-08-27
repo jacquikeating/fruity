@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import PullLink from "../PullLink/PullLink";
 import "./Pull.scss";
@@ -27,28 +27,20 @@ const Pull = ({
   const index = pullData.index;
 
   function editRow() {
-    if (editMode === false) {
-      setEditMode(true);
-      console.log("Edit button clicked. Edit mode on!");
-    } else if (editMode === true) {
-      setEditMode(false);
-      console.log(
-        "Checkmark button clicked. Edit mode off. Now attempting to update..."
-      );
-      updatePull({
-        id: pullData.id,
-        session_id: pullData.session_id,
-        phase: phase,
-        mech: mech,
-        prog_point_reached: checkIfProgPointReached(progPhase, phase),
-        cause: cause,
-        players_responsible: playersResponsible,
-        log_link: logLink,
-        clip_link: clipLink,
-        notes: notes,
-        index: index,
-      });
-    }
+    setEditMode(!editMode);
+    updatePull({
+      id: pullData.id,
+      session_id: pullData.session_id,
+      phase: phase,
+      mech: mech,
+      prog_point_reached: checkIfProgPointReached(progPhase, phase),
+      cause: cause,
+      players_responsible: playersResponsible,
+      log_link: logLink,
+      clip_link: clipLink,
+      notes: notes,
+      index: index,
+    });
   }
 
   function handleLinkModalData(newLogLink, newClipLink) {
