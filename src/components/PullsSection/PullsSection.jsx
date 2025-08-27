@@ -31,15 +31,14 @@ const PullsSection = () => {
     // getProgPulls,
     // filterPulls,
     // handleCheckbox,
+    isPending,
   } = pullsCtx;
 
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
 
   useEffect(() => {
-    if (pulls) {
-      pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
-      // setPullsArray(pulls);
+    if (!isPending) {
       setPullsToDisplay(pulls);
     }
   }, [pulls]);

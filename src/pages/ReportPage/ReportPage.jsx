@@ -31,6 +31,13 @@ const ReportPage = ({ sessions }) => {
   const { pulls, isPending } = useGetPulls(sessionID);
 
   useEffect(() => {
+    if (!isPending) {
+      pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
+      setPullsArray(pulls);
+    }
+  }, [pulls]);
+
+  useEffect(() => {
     if (isAuthenticated) {
       role = user["https://wall-is-safe.netlify.app/roles"][0];
     }
@@ -94,6 +101,7 @@ const ReportPage = ({ sessions }) => {
     pulls,
     width,
     breakpoint,
+    isPending,
   };
 
   const editCtx = {
