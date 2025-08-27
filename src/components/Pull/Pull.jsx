@@ -87,7 +87,65 @@ const Pull = ({
           </td>
         </>
       ) : (
-        ""
+        <>
+          <td key={`#${index}`} className="pull__cell pull__cell--phase">
+            <input
+              className="pull__input pull_input--number"
+              type="number"
+              value={phase}
+              onChange={(e) => {
+                setPhase(e.target.value);
+              }}
+            />
+          </td>
+
+          <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
+            <input
+              className="pull__input"
+              type="text"
+              value={mech}
+              onChange={(e) => {
+                setMech(e.target.value);
+              }}
+            />
+          </td>
+
+          <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
+            <input
+              className="pull__input"
+              type="text"
+              value={cause}
+              onChange={(e) => {
+                setCause(e.target.value);
+              }}
+            />
+          </td>
+
+          <td
+            key={`${index}-players`}
+            className="pull__cell pull__cell--players"
+          >
+            <input
+              className="pull__input"
+              type="text"
+              value={playersResponsible}
+              onChange={(e) => {
+                setPlayersResponsible(e.target.value);
+              }}
+            />
+          </td>
+
+          <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
+            <input
+              className="pull__input"
+              type="text"
+              value={notes}
+              onChange={(e) => {
+                setNotes(e.target.value);
+              }}
+            />
+          </td>
+        </>
       )}
 
       {showEdit ? (
