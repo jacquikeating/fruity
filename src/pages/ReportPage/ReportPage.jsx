@@ -32,10 +32,9 @@ const ReportPage = ({ sessions }) => {
 
   useEffect(() => {
     if (!isPending) {
-      pulls.sort((a, b) => a.pull_num_today - b.pull_num_today);
       setPullsArray(pulls);
     }
-  }, [pulls]);
+  }, [isPending]);
 
   useEffect(() => {
     if (isAuthenticated) {

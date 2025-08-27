@@ -19,7 +19,16 @@ export default function useGetPulls(sessionNum) {
   const getPulls = async () => {
     try {
       const response = await axiosInstance.get(endpoint);
-      return response.data;
+      const data = response.data;
+
+      if (sessionNum) {
+        const sortedPulls = data.sort(
+          (a, b) => a.pull_num_today - b.pull_num_today
+        );
+        return sortedPulls;
+      } else {
+        return data;
+      }
     } catch (error) {
       console.error(error);
       return null;

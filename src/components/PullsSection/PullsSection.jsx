@@ -41,7 +41,7 @@ const PullsSection = () => {
     if (!isPending) {
       setPullsToDisplay(pulls);
     }
-  }, [pulls]);
+  }, [isPending]);
 
   function handleCheckbox() {
     if (progPullsOnly) {
