@@ -2,6 +2,7 @@ import { useState } from "react";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import PullLink from "../PullLink/PullLink";
 import "./Pull.scss";
+import useMutatePull from "../../hooks/use-mutation.js";
 
 const Pull = ({
   pullData,
@@ -41,6 +42,7 @@ const Pull = ({
       notes: notes,
       index: index,
     });
+    // useMutatePull(pullData);
   }
 
   function handleLinkModalData(newLogLink, newClipLink) {
