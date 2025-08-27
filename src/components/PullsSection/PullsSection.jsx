@@ -9,7 +9,7 @@ import PullsTable from "../PullsTable/PullsTable.jsx";
 
 const PullsSection = () => {
   const { sessionCtx } = useContext(SessionContext);
-  const { session, pullsArray, sessionID } = sessionCtx;
+  const { session, sessionID, pullsArray } = sessionCtx;
   const { editCtx } = useContext(EditContext);
   const {
     editMode,
@@ -19,20 +19,10 @@ const PullsSection = () => {
     updatePull,
     deletePull,
     pullToUpdate,
+    setPullsArray,
   } = editCtx;
   const { pullsCtx } = useContext(PullsContext);
-  const {
-    width,
-    breakpoint,
-    // setPullsArray,
-    pulls,
-    // pullsToDisplay,
-    // setPullsToDisplay,
-    // getProgPulls,
-    // filterPulls,
-    // handleCheckbox,
-    isPending,
-  } = pullsCtx;
+  const { width, breakpoint, pulls, isPending } = pullsCtx;
 
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
