@@ -110,31 +110,19 @@ const PullsSection = () => {
         </label>
       </div>
 
-      {progPullsOnly ? (
-        <PullsTable
-          pullsArray={getProgPulls(pullsToDisplay)}
-          showEdit={showEdit}
-          updatePull={updatePull}
-          deletePull={deletePull}
-          progPhase={session.prog_phase}
-          key={pullsArray}
-          allowDelete={allowDelete}
-          width={width}
-          breakpoint={breakpoint}
-        />
-      ) : (
-        <PullsTable
-          pullsArray={pullsToDisplay}
-          showEdit={showEdit}
-          updatePull={updatePull}
-          deletePull={deletePull}
-          progPhase={session.prog_phase}
-          key={pullsArray}
-          allowDelete={allowDelete}
-          width={width}
-          breakpoint={breakpoint}
-        />
-      )}
+      <PullsTable
+        pullsArray={
+          progPullsOnly ? getProgPulls(pullsToDisplay) : pullsToDisplay
+        }
+        showEdit={showEdit}
+        updatePull={updatePull}
+        deletePull={deletePull}
+        progPhase={session.prog_phase}
+        key={pullsArray}
+        allowDelete={allowDelete}
+        width={width}
+        breakpoint={breakpoint}
+      />
     </section>
   );
 };
